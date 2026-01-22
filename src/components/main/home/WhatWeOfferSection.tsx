@@ -4,13 +4,15 @@ import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import { Slides } from "@/data";
+import { useTranslations } from "next-intl";
 
 function WhatWeOfferSection() {
+  const t = useTranslations("home.what-we-offer");
   return (
     <section>
       <div className="mx-auto flex max-w-6xl flex-col items-center px-6 text-center">
         <h2 className="text-3xl font-semibold tracking-tight text-primary sm:text-4xl">
-          What We Offer
+          {t("title")}
         </h2>
 
         <div className="relative mt-12 w-full">
@@ -34,10 +36,10 @@ function WhatWeOfferSection() {
                   <div className="absolute inset-0 bg-linear-to-t from-primary/80 via-primary/40 to-transparent" />
                   <div className="absolute bottom-10 left-10 right-10 text-left text-white">
                     <h3 className="text-2xl font-semibold sm:text-3xl">
-                      {slide.title}
+                      {t(slide.title)}
                     </h3>
                     <p className="mt-3 max-w-2xl text-sm text-white/90 sm:text-base">
-                      {slide.description}
+                      {t(slide.description)}
                     </p>
                   </div>
                 </div>

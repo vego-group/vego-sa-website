@@ -1,6 +1,9 @@
+import { Button } from "@/components/ui/button";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 
 function HeroSection() {
+  const t = useTranslations("home.hero");
   return (
     <section className="relative overflow-hidden bg-primary h-screen">
       <div className="absolute inset-0">
@@ -26,23 +29,22 @@ function HeroSection() {
               fill="currentColor"
             />
           </svg>
-          Saudi Arabia&apos;s First Electric Mobility Company
+          {t("subtitle")}
         </span>
 
         <h1 className="mt-8 text-balance text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
-          Innovating the Future of Electric Mobility
+          {t("title")}
         </h1>
         <p className="mt-5 max-w-2xl text-base text-slate-100 sm:text-lg">
-          Integrated solutions combining technology, design, and sustainability
-          to make every journey smarter, cleaner, and more efficient.
+          {t("description")}
         </p>
 
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-          <button
+          <Button
             type="button"
             className="inline-flex items-center gap-2 rounded-full bg-emerald-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-emerald-500/40 transition hover:bg-emerald-400"
           >
-            Discover Our Products
+            {t("discover-our-products")}
             <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4">
               <path
                 d="M5 12h12m0 0l-4-4m4 4l-4 4"
@@ -53,13 +55,13 @@ function HeroSection() {
                 strokeLinejoin="round"
               />
             </svg>
-          </button>
-          <button
+          </Button>
+          <Button
             type="button"
             className="rounded-full border border-white/40 px-6 py-3 text-sm font-semibold text-white/90 backdrop-blur transition hover:border-white/70 hover:text-white"
           >
-            Contact Us
-          </button>
+            {t("contact-us")}
+          </Button>
         </div>
       </div>
     </section>

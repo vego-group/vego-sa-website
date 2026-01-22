@@ -3,29 +3,39 @@ import { Facebook, Instagram, Twitter, Linkedin, Youtube } from "lucide-react";
 
 export const footerLinks: FooterLink[] = [
   {
-    title: "Products",
+    title: "products.title",
     links: [
-      "Electric Motorcycles",
-      "Electric Scooters",
-      "Electric Bikes",
-      "Accessories",
+      "products.electric-motorcycles",
+      "products.electric-scooters",
+      "products.electric-bikes",
+      "products.accessories",
     ],
   },
   {
-    title: "Company",
-    links: ["About Us", "Our Technology", "Sustainability", "Careers"],
-  },
-  {
-    title: "Support",
-    links: ["Help Center", "Contact Us", "Warranty", "Service Centers"],
-  },
-  {
-    title: "Legal",
+    title: "company.title",
     links: [
-      "Privacy Policy",
-      "Terms of Service",
-      "Return Policy",
-      "Shipping Info",
+      "company.about-us",
+      "company.our-technology",
+      "company.sustainability",
+      "company.careers",
+    ],
+  },
+  {
+    title: "support.title",
+    links: [
+      "support.help-center",
+      "support.contact-us",
+      "support.warranty",
+      "support.service-centers",
+    ],
+  },
+  {
+    title: "legal.title",
+    links: [
+      "legal.privacy-policy",
+      "legal.terms-of-service",
+      "legal.return-policy",
+      "legal.shipping-info",
     ],
   },
 ];
