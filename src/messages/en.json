@@ -1,15 +1,98 @@
 {
   "nav": {
-    "brand": "دار القانون",
-    "home": "الرئيسية",
-    "about": "من نحن",
-    "vision": "رؤيتنا",
-    "mission": "رسالتنا",
-    "goals": "أهدافنا",
-    "difference": "لماذا نحن",
-    "services": "خدماتنا",
-    "values": "قيمنا",
-    "contact": "تواصل",
-    "lang": "English"
+    "home": "Home",
+    "products": "Products",
+    "technology": "Technology",
+    "who-we-serve": "Who We Serve",
+    "our-branches": "Our Branches",
+    "about": "About",
+    "contact": "Contact",
+    "lang": "AR"
+  },
+  "commitment-to-excellence": {
+    "title": "Commitment to Excellence",
+    "quality-assurance": "Quality Assurance",
+    "quality-assurance-desc": "Our products meet the highest industry standards and undergo rigorous testing to ensure safety and reliability.",
+    "customer-service": "Customer Service",
+    "customer-service-desc": "Our relationship extends beyond the purchase, with dedicated support and effective after-sales care."
+  },
+  "footer": {
+    "description": "Leading the electric revolution with innovative, sustainable, and high-perforance electric vehicles. Join us in creating a cleaner, greener future.",
+    "location": "Riyadh, Saudi Arabia",
+    "rights-reserved": "© 2026 VEGO Group. All rights reserved.",
+    "electric": "100% Electric. 0% Emissions.",
+    "products": {
+      "title": "Products",
+      "electric-motorcycles": "Electric Motorcycles",
+      "electric-scooters": "Electric Scooters",
+      "electric-bikes": "Electric Bikes",
+      "accessories": "Accessories"
+    },
+    "company": {
+      "title": "Company",
+      "about-us": "About Us",
+      "our-technology": "Our Technology",
+      "sustainability": "Sustainability",
+      "careers": "Careers"
+    },
+    "support": {
+      "title": "Support",
+      "help-center": "Help Center",
+      "contact-us": "Contact Us",
+      "warranty": "Warranty",
+      "service-centers": "Service Centers"
+    },
+    "legal": {
+      "title": "Legal",
+      "privacy-policy": "Privacy Policy",
+      "terms-of-service": "Terms of Service",
+      "return-policy": "Return Policy",
+      "shipping-info": "Shipping Info"
+    }
+  },
+  "home": {
+    "hero": {
+      "subtitle": "Saudi Arabia's First Electric Mobility Company",
+      "title": "Innovating the Future of Electric Mobility",
+      "description": "Integrated solutions combining technology, design, and sustainability to make every journey smarter, cleaner, and more efficient.",
+      "discover-our-products": "Discover Our Products",
+      "contact-us": "Contact Us"
+    },
+    "who-is-vego": {
+      "title": "Who is VEGO?",
+      "description": "The first Saudi company specialized in manufacturing electric mobility solutions globally. Our products include electric motorcycles, smart bikes and scooters, fast charging systems, and the my vego fleet management program, all within one integrated ecosystem."
+    },
+    "why-vego-group": {
+      "title": "Why VEGO Group?",
+      "description": "Because we innovate the future of electric mobility with solutions that combine technology, design, and sustainability to make every journey smarter, cleaner, and more efficient.",
+      "customer-focus": "Customer Focus",
+      "customer-focus-desc": "We craft mobility experiences that stay close to what our customers need most.",
+      "commitment-to-sustainability": "Commitment to Sustainability",
+      "commitment-to-sustainability-desc": "Electric solutions that cut emissions and build a cleaner future.",
+      "advanced-technology": "Advanced Technology",
+      "advanced-technology-desc": "Smart innovation that boosts performance and reliability."
+    },
+    "what-we-offer": {
+      "title": " What We Offer",
+      "micromobility": "Micromobility",
+      "micromobility-desc": "A smart urban mobility system using foldable e-bikes and e-scooters to ease short trips and reduce congestion.",
+      "delivery-solutions": "Delivery Solutions",
+      "delivery-solutions-desc": "Integrated delivery solutions with e-bikes equipped with smart, cooled boxes to ensure fast, efficient delivery.",
+      "electric-motorcycles": "Electric Motorcycles",
+      "electric-motorcycles-desc": "Smart electric motorcycles that blend high performance with modern design for smooth, eco-friendly city rides.",
+      "charging-systems": "Charging Systems",
+      "charging-systems-desc": "Fast, advanced charging stations that ensure a safe, efficient charging experience for individuals and businesses."
+    },
+    "news": {
+      "title": "News",
+      "more": "More",
+      "read-more": "Read More",
+      "news-1-title": "VEGO Group showcases the future of e-mobility and launches the micromobility project at Mobility Live 2025",
+      "news-1-summary": "Riyadh - in a major achievement",
+      "news-2-title": "VEGO Group and Sweater sign an agreement to advance sustainable e-mobility in Saudi cities",
+      "news-2-summary": "Partnership announcement",
+      "news-3-title": "VEGO signs a strategic agreement to export 1,000 electric motorcycles to Syria with Beeorder",
+      "news-3-summary": "Riyadh - October 20"
+    }
   }
 }

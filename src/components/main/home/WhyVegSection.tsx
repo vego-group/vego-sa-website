@@ -9,18 +9,18 @@ import {
   descriptionVariants,
 } from "@/data";
 import { cardData } from "@/data";
+import { useTranslations } from "next-intl";
 
 function WhyVegoSection() {
+  const t = useTranslations("home.why-vego-group");
   return (
     <section>
       <div className="mx-auto flex max-w-6xl flex-col items-center px-6 text-center">
         <h2 className="text-3xl font-semibold tracking-tight text-primary sm:text-4xl">
-          Why VEGO Group?
+          {t("title")}
         </h2>
         <p className="mt-5 max-w-3xl text-base leading-relaxed text-slate-600 sm:text-lg">
-          Because we innovate the future of electric mobility with solutions
-          that combine technology, design, and sustainability to make every
-          journey smarter, cleaner, and more efficient.
+          {t("description")}
         </p>
 
         <div className="mt-12 grid w-full gap-6 md:grid-cols-3">
@@ -58,14 +58,14 @@ function WhyVegoSection() {
                   variants={titleVariants}
                   transition={{ duration: 0.35, ease: "easeOut" }}
                 >
-                  {card.title}
+                  {t(card.title)}
                 </motion.h3>
                 <motion.p
                   className="text-sm leading-relaxed text-white/90"
                   variants={descriptionVariants}
                   transition={{ duration: 0.45, ease: "easeOut" }}
                 >
-                  {card.description}
+                  {t(card.description)}
                 </motion.p>
               </div>
             </motion.article>

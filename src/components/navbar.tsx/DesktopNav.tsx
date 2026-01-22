@@ -1,5 +1,6 @@
 import { Link } from "@/i18n/navigation";
 import { NavItem } from "@/interfaces/navbar";
+import { useTranslations } from "next-intl";
 import type { ReactElement } from "react";
 
 type DesktopNavProps = {
@@ -11,6 +12,7 @@ export default function DesktopNav({
   items,
   pathname,
 }: DesktopNavProps): ReactElement {
+  const t = useTranslations("nav");
   return (
     <nav className="hidden items-center lg:flex">
       <ul className="flex items-center gap-8 text-sm font-semibold text-slate-700">
@@ -22,7 +24,7 @@ export default function DesktopNav({
                 pathname === item.href ? "text-primary" : "text-slate-700"
               }`}
             >
-              {item.label}
+              {t(item.label)}
             </Link>
           </li>
         ))}

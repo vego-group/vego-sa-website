@@ -1,20 +1,23 @@
+import { Button } from "@/components/ui/button";
 import { newsItems } from "@/data";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 
 function NewsSection() {
+  const t = useTranslations("home.news");
   return (
     <section>
       <div className="mx-auto flex max-w-6xl flex-col gap-10 px-6">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <h2 className="text-3xl font-semibold tracking-tight text-primary sm:text-4xl">
-            News
+            {t("title")}
           </h2>
-          <button
+          <Button
             type="button"
             className="rounded-full border border-primary px-6 py-2 text-sm font-semibold text-primary transition hover:bg-primary hover:text-white"
           >
-            More
-          </button>
+            {t("more")}
+          </Button>
         </div>
 
         <div className="grid gap-6 md:grid-cols-3">
@@ -42,7 +45,7 @@ function NewsSection() {
                     overflow: "hidden",
                   }}
                 >
-                  {item.title}
+                  {t(item.title)}
                 </h3>
                 <p
                   className="text-sm text-slate-600"
@@ -53,15 +56,15 @@ function NewsSection() {
                     overflow: "hidden",
                   }}
                 >
-                  {item.summary}
+                  {t(item.summary)}
                 </p>
-                <button
+                <Button
                   type="button"
                   className="inline-flex items-center gap-2 text-sm font-semibold text-primary"
                 >
-                  Read More
+                  {t("read-more")}
                   <span aria-hidden="true">→</span>
-                </button>
+                </Button>
               </div>
             </article>
           ))}
