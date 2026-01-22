@@ -10,6 +10,7 @@ import "swiper/css/pagination";
 import Navbar from "@/components/navbar.tsx";
 import CommitmentToExcellence from "@/components/CommitmentToExcellence";
 import Footer from "@/components/Footer";
+import { LOGO, SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from "@/constants";
 
 const cairo = Cairo({
   variable: "--font-cairo",
@@ -22,11 +23,44 @@ const cormorant = Cormorant_Garamond({
   weight: ["400", "500", "600", "700"],
 });
 
-export const metadata: Metadata = {
-  title: "Vego Group",
-  description:
-    "Vego Group - Saudi Arabia\'s first electric mobility company. Discover innovative electric motorcycles, bikes, and smart delivery solutions with cutting-edge technology and sustainability.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const ogLocale = locale === "ar" ? "ar_AR" : "en_US";
+  const alternateLocale = locale === "ar" ? "en_US" : "ar_AR";
+
+  return {
+    metadataBase: new URL(SITE_URL),
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    openGraph: {
+      title: SITE_TITLE,
+      description: SITE_DESCRIPTION,
+      url: SITE_URL,
+      siteName: SITE_TITLE,
+      images: [
+        {
+          url: LOGO,
+          width: 1200,
+          height: 630,
+          alt: SITE_TITLE,
+        },
+      ],
+      locale: ogLocale,
+      alternateLocale: [alternateLocale],
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: SITE_TITLE,
+      description: SITE_DESCRIPTION,
+      images: [LOGO],
+    },
+  };
+}
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
