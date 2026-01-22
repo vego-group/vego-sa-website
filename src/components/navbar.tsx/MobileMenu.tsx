@@ -3,6 +3,7 @@ import { Link } from "@/i18n/navigation";
 import type { ReactElement } from "react";
 import { NavItem } from "@/interfaces/navbar";
 import LanguageButton from "./LanguageButton";
+import { Button } from "../ui/button";
 
 type MobileMenuProps = {
   items: NavItem[];
@@ -19,16 +20,10 @@ export default function MobileMenu({
     <div className="fixed inset-0 z-50 bg-primary/20 backdrop-blur-sm lg:hidden">
       <div className="flex min-h-full flex-col bg-slate-50 px-6 pb-10 pt-5">
         <div className="flex items-center justify-between">
-          <div>
-            <Image
-              src="/images/logo.svg"
-              alt="logo"
-              width={90}
-              height={90}
-              className="h-12 w-12 md:h-20 md:w-20"
-            />
-          </div>
-          <button
+          <Button>
+            <Image src="/images/logo.svg" alt="logo" width={90} height={90} />
+          </Button>
+          <Button
             type="button"
             className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 text-primary"
             aria-label="Close menu"
@@ -43,7 +38,7 @@ export default function MobileMenu({
                 strokeLinecap="round"
               />
             </svg>
-          </button>
+          </Button>
         </div>
 
         <nav className="mt-10 flex-1">
@@ -64,10 +59,7 @@ export default function MobileMenu({
           </ul>
         </nav>
 
-        <LanguageButton
-          label="العربية"
-          className="mt-8 flex items-center justify-center gap-2 rounded-full border border-primary px-4 py-3 text-sm font-semibold text-primary"
-        />
+        <LanguageButton className="mt-8 flex items-center justify-center gap-2 rounded-full border border-primary px-4 py-3 text-sm font-semibold text-primary" />
       </div>
     </div>
   );
