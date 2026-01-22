@@ -4,6 +4,7 @@ import type { ReactElement } from "react";
 import { NavItem } from "@/interfaces/navbar";
 import LanguageButton from "./LanguageButton";
 import { Button } from "../ui/button";
+import { useTranslations } from "next-intl";
 
 type MobileMenuProps = {
   items: NavItem[];
@@ -16,6 +17,7 @@ export default function MobileMenu({
   pathname,
   onClose,
 }: MobileMenuProps): ReactElement {
+  const t = useTranslations("nav");
   return (
     <div className="fixed inset-0 z-50 bg-primary/20 backdrop-blur-sm lg:hidden">
       <div className="flex min-h-full flex-col bg-slate-50 px-6 pb-10 pt-5">
@@ -52,7 +54,7 @@ export default function MobileMenu({
                   }`}
                   onClick={onClose}
                 >
-                  {item.label}
+                  {t(item.label)}
                 </Link>
               </li>
             ))}
