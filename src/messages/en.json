@@ -94,5 +94,86 @@
       "news-3-title": "VEGO signs a strategic agreement to export 1,000 electric motorcycles to Syria with Beeorder",
       "news-3-summary": "Riyadh - October 20"
     }
+  },
+  "products": {
+    "hero": {
+      "badge": "PREMIUM ELECTRIC MOBILITY",
+      "title": "Our Products",
+      "subtitle": "A refined collection of electric mobility solutions crafted for performance, elegance, and sustainability.",
+      "cta": "Explore Collection"
+    },
+    "electric-motorcycles": {
+    "badge": "Flagship Product",
+    "title": "Electric Motorcycles",
+    "description": "The ultimate generation of electric transport combines intelligence, modern technologies, and innovative design to create a leading Saudi industry. VEGO electric motorcycles carry a sustainable future vision powered by smart technology to support the future of intelligent mobility.",
+    "features": [
+      "Smart Battery System",
+      "Fast Charging",
+      "AI Navigation",
+      "Eco-Friendly Design",
+      "Remote Monitoring",
+      "5-Year Warranty"
+    ],
+    "learn-more": "Learn More"
+  },
+  "delivery-solutions": {
+    "badge": "Intelligent Logistics",
+    "title": "Smart Delivery Solutions",
+    "intro-1": "At VEGO, we provide an integrated ecosystem of intelligent delivery solutions designed to meet the needs of companies and delivery personnel with efficiency and sustainability.",
+    "intro-2": "From electric bicycles equipped with smart and refrigerated boxes, to fast charging systems and fleet management through the My VEGO platform—every element is designed to make delivery operations faster, more economical, and smarter.",
+    "intro-3": "Our solutions combine technology and sustainability to reduce operational costs and enhance service quality, supporting the transformation towards an eco-friendly delivery sector.",
+    "features": {
+      "title": "Platform Excellence",
+      "tracking": "Real-time Fleet Tracking",
+      "battery": "Battery Management System",
+      "analytics": "Intelligent Analytics Dashboard",
+      "devices": "Multi-Device Compatibility",
+      "sustainability": "Sustainability Integration"
+    },
+    "stats": {
+      "cost": "Cost Reduction",
+      "reliability": "Reliability",
+      "support": "Support"
+    }
+  },
+  "micromobility": {
+      "badge": "Urban Innovation",
+      "title": "Micromobility Solutions",
+      "intro-1": "Micromobility represents the future of urban transportation, offering smart and eco-friendly solutions that help reduce congestion and lower emissions.",
+      "intro-2": "At VEGO, we provide an integrated ecosystem of electric bikes and scooters designed to meet the needs of individuals and businesses for fast, efficient urban mobility.",
+      "intro-3": "VEGO's micromobility solutions redefine city travel with greater efficiency, flexibility, and a more sustainable experience.",
+      "features": {
+        "title": "Urban Mobility Advantages",
+        "eco-friendly": "Eco-Friendly Commuting",
+        "battery-tech": "Smart Battery Technology",
+        "urban-design": "Compact Urban Design",
+        "gps-tracking": "Real-time GPS Tracking",
+        "fast-charging": "Fast Charging System",
+        "low-cost": "Low Maintenance Cost"
+      },
+      "stats": {
+        "commute": "Faster Commute",
+        "emissions": "Zero Emissions",
+        "cost-saving": "Cost Saving"
+      }
+    },
+    "charging-systems": {
+    "badge": "Power Innovation",
+    "title": "Charging Systems",
+    "intro-1": "At VEGO, we provide comprehensive charging solutions designed to meet a wide range of operational needs, from individual use to large fleets.",
+    "intro-2": "Our charging systems include three main methods:",
+    "home-title": "Home Charging",
+    "home-desc": "Safe and convenient charging from any standard electrical outlet, ideal for daily personal use.",
+    "fast-title": "Fast Charging",
+    "fast-desc": "Advanced stations that deliver high-speed charging in record time.",
+    "swap-title": "Battery Swap",
+    "swap-desc": "Innovative technology that allows replacing a depleted battery with a fully charged one in seconds, ensuring uninterrupted operation.",
+    "summary": "VEGO’s charging systems are designed to provide flexibility, speed, and sustainability for every journey.",
+    "stats": {
+      "fast": "Faster Charging",
+      "uptime": "Uptime",
+      "compatible": "Fully Compatible"
+    }
+  }
   }
 }
