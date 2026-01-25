@@ -2,8 +2,11 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 export default function ProductsHero() {
+  const t = useTranslations("products.hero");
+
   return (
     <section className="relative min-h-[80vh] overflow-hidden bg-gradient-to-br from-emerald-900 via-primary to-emerald-800">
       
@@ -29,7 +32,7 @@ export default function ProductsHero() {
           transition={{ duration: 0.6 }}
           className="mb-6 inline-block rounded-full border border-emerald-400/40 px-6 py-2 text-xs tracking-widest text-emerald-200"
         >
-          PREMIUM ELECTRIC MOBILITY
+          {t("badge")}
         </motion.span>
 
         {/* Title */}
@@ -40,7 +43,7 @@ export default function ProductsHero() {
           className="font-serif text-5xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl"
         >
           <span className="bg-gradient-to-r from-emerald-300 to-white bg-clip-text text-transparent">
-            Our Products
+            {t("title")}
           </span>
         </motion.h1>
 
@@ -51,8 +54,7 @@ export default function ProductsHero() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="mt-6 max-w-2xl text-lg font-light leading-relaxed text-emerald-100/80 sm:text-xl"
         >
-          A refined collection of electric mobility solutions  
-          crafted for performance, elegance, and sustainability.
+          {t("subtitle")}
         </motion.p>
 
         {/* CTA */}
@@ -63,7 +65,7 @@ export default function ProductsHero() {
           className="mt-10"
         >
           <button className="rounded-full bg-emerald-600 px-10 py-4 text-sm font-semibold text-white transition-all hover:bg-emerald-500 hover:scale-105">
-            Explore Collection
+            {t("cta")}
           </button>
         </motion.div>
       </div>
