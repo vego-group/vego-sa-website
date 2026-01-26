@@ -36,6 +36,9 @@ export async function generateMetadata({
     metadataBase: new URL(SITE_URL),
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
+    // icons: {
+    //   icon: LOGO,
+    // },
     openGraph: {
       title: SITE_TITLE,
       description: SITE_DESCRIPTION,

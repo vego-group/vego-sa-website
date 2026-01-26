@@ -3,7 +3,6 @@ import { NavItem } from "@/interfaces/navbar";
 export const navItems: NavItem[] = [
   { label: "home", href: "/" },
   { label: "products", href: "/products" },
-  { label: "technology", href: "/technology" },
   { label: "who-we-serve", href: "/who-we-serve" },
   { label: "our-branches", href: "/our-branches" },
   { label: "about", href: "/about" },
