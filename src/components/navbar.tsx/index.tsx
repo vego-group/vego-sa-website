@@ -27,7 +27,13 @@ export default function Navbar(): ReactElement {
           onClick={handleScrollToTop}
           className="cursor-pointer"
         >
-          <Image src="/images/logo.svg" alt="logo" width={90} height={90} />
+          <Image
+            src="/images/logo.svg"
+            className="w-20 h-10 sm:w-22 sm:h-12"
+            alt="logo"
+            width={90}
+            height={90}
+          />
         </Button>
         <DesktopNav items={navItems} pathname={pathname} />
 
