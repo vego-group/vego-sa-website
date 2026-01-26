@@ -23,7 +23,13 @@ export default function MobileMenu({
       <div className="flex min-h-full flex-col bg-slate-50 px-6 pb-10 pt-5">
         <div className="flex items-center justify-between">
           <Button>
-            <Image src="/images/logo.svg" alt="logo" width={90} height={90} />
+            <Image
+              src="/images/logo.svg"
+              className="w-20 h-10 sm:w-22 sm:h-12"
+              alt="logo"
+              width={90}
+              height={90}
+            />
           </Button>
           <Button
             type="button"
