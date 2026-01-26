@@ -1,0 +1,53 @@
+.wrapper {
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  padding: 1rem;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 6rem 0;
+}
+
+.code {
+  font-size: 6rem;
+  font-weight: 800;
+  color: #0f172b;
+  padding: 10px;
+  margin: 0px;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0.5rem 0;
+}
+
+.oops {
+  color: oklch(57.7% 0.245 27.325);
+}
+
+.desc {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  opacity: 0.85;
+}
+
+.button {
+  display: inline-block;
+  background: #0f172b;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+}
