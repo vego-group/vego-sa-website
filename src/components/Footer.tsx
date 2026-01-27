@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { Mail, MapPin, Phone, Zap } from "lucide-react";
-import { footerLinks, socialLinks } from "@/data/main/footer";
+import { footerLinks, socialLinks } from "@/data/footer";
 import { useTranslations } from "next-intl";
 import { Button } from "./ui/button";
 
@@ -12,8 +12,8 @@ function Footer() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
   return (
-    <footer className="bg-green-100/60">
-      <div className="mx-auto flex max-w-6xl flex-col gap-12 px-6 py-16">
+    <footer className="bg-secondary/20">
+      <div className="mx-auto flex max-w-7xl flex-col gap-12 px-6 py-16">
         <div className="grid gap-12 lg:grid-cols-[1.3fr_2fr]">
           <div className="space-y-6">
             <Button
@@ -51,7 +51,7 @@ function Footer() {
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {footerLinks.map((group) => (
               <div key={group.title} className="space-y-4 text-sm">
-                <h3 className="text-base font-semibold text-slate-900">
+                <h3 className="text-base font-semibold text-primary">
                   {t(group.title)}
                 </h3>
                 <ul className="space-y-2 text-slate-600">
@@ -59,7 +59,7 @@ function Footer() {
                     <li key={link}>
                       <Button
                         type="button"
-                        className="transition hover:text-slate-900"
+                        className="transition hover:text-primary text-start"
                       >
                         {t(link)}
                       </Button>
@@ -80,7 +80,7 @@ function Footer() {
                   key={social.label}
                   type="button"
                   aria-label={social.label}
-                  className="flex h-11 w-11 items-center justify-center rounded-full bg-white text-slate-600 shadow-sm shadow-slate-900/10 transition hover:-translate-y-0.5 hover:text-slate-900"
+                  className="flex h-11 w-11 items-center justify-center rounded-full bg-white text-slate-600 shadow-sm shadow-slate-900/10 transition hover:-translate-y-0.5 hover:text-primary"
                 >
                   <Icon className="h-5 w-5" />
                 </Button>

@@ -8,15 +8,13 @@ import ChargingSystemsSection from "./ChargingSystemsSection";
 
 function Products() {
   return (
-    <>
+    <div className="space-y-20">
       <ProductsHero />
-      <div className="py-20 space-y-20">
-        <ElectricMotorcycles />
-        <DeliverySolutions />
-        <MicromobilitySection />
-        <ChargingSystemsSection />
-      </div>
-    </>
+      <ElectricMotorcycles />
+      <DeliverySolutions />
+      <MicromobilitySection />
+      <ChargingSystemsSection />
+    </div>
   );
 }
 

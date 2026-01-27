@@ -10,7 +10,7 @@ function WhatWeOfferSection() {
   const t = useTranslations("home.what-we-offer");
   return (
     <section>
-      <div className="mx-auto flex max-w-6xl flex-col items-center px-6 text-center">
+      <div className="mx-auto flex max-w-7xl flex-col items-center px-6 text-center">
         <h2 className="text-3xl font-semibold tracking-tight text-primary sm:text-4xl">
           {t("title")}
         </h2>
@@ -63,7 +63,7 @@ function WhatWeOfferSection() {
         .offer-swiper .swiper-pagination-bullet-active {
           width: 20px;
           border-radius: 999px;
-          background: #0d9f6d;
+          background: #1bd989;
           border-color: #0d9f6d;
           box-shadow: 0 6px 12px rgba(15, 23, 42, 0.2);
         }

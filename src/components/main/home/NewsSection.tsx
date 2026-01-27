@@ -7,7 +7,7 @@ function NewsSection() {
   const t = useTranslations("home.news");
   return (
     <section>
-      <div className="mx-auto flex max-w-6xl flex-col gap-10 px-6">
+      <div className="mx-auto flex max-w-7xl flex-col gap-10 px-6">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <h2 className="text-3xl font-semibold tracking-tight text-primary sm:text-4xl">
             {t("title")}
@@ -37,7 +37,7 @@ function NewsSection() {
               </div>
               <div className="space-y-3 px-6 pb-6 pt-5 text-center">
                 <h3
-                  className="text-lg font-semibold text-slate-900"
+                  className="text-lg font-semibold text-primary"
                   style={{
                     display: "-webkit-box",
                     WebkitBoxOrient: "vertical",
