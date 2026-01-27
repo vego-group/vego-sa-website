@@ -1,5 +1,11 @@
-function page() {
-  return <div>page</div>;
+import WhoWeServe from "@/components/main/who-we-serve";
+
+function WhoWeServePage() {
+  return (
+    <>
+      <WhoWeServe />
+    </>
+  );
 }
 
-export default page;
+export default WhoWeServePage;

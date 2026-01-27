@@ -9,6 +9,76 @@
     "contact": "Contact",
     "lang": "AR"
   },
+  "who-we-serve": {
+    "hero": {
+      "title": "Who We Serve",
+      "description": "We serve everyone looking for faster, cheaper, and cleaner transportation. From large corporations to individuals, our solutions are designed to fit everyone.",
+      "image-alt": "Who we serve hero background"
+    },
+    "sustainable": {
+      "title": "Driving Towards a",
+      "highlight": "Sustainable Future",
+      "description": "VEGO is committed to revolutionizing transportation in Saudi Arabia. By providing eco-friendly electric mobility solutions, we are helping businesses and individuals reduce their carbon footprint while improving operational efficiency.",
+      "stats": {
+        "founded": { "value": "2020", "label": "Founded" },
+        "electric": { "value": "100%", "label": "Electric" },
+        "hq": { "value": "KSA", "label": "Headquarters" }
+      }
+    },
+    "sections": {
+      "badge": "Business Solution",
+      "delivery-companies": {
+        "title": "Delivery Companies",
+        "description": "We provide electric bikes specialized for daily operations, featuring smart boxes, refrigeration options, and precise tracking systems for faster and more efficient delivery.",
+        "image-alt": "Delivery companies mobility",
+        "bullets": {
+          "smart-boxes": "Specialized smart boxes",
+          "tracking": "Precise tracking systems",
+          "refrigerated": "Refrigerated delivery options"
+        }
+      },
+      "logistics-fleets": {
+        "title": "Logistics & Transport Fleets",
+        "description": "The \"My VEGO\" program for fleet management allows you to monitor vehicle performance, track maintenance, and manage charging all from a single dashboard.",
+        "image-alt": "Logistics and transport fleets",
+        "bullets": {
+          "performance": "Performance monitoring",
+          "maintenance": "Maintenance scheduling",
+          "charging": "Unified charging management"
+        }
+      },
+      "individuals-couriers": {
+        "title": "Individuals & Couriers",
+        "description": "Practical and economical electric bikes, ideal for daily commutes or independent delivery work, offering a cost-effective and green alternative.",
+        "image-alt": "Individuals and couriers",
+        "bullets": {
+          "economic": "Economic personal transport",
+          "zero-emissions": "Zero emission commuting",
+          "gig-workers": "Ideal for gig economy workers"
+        }
+      },
+      "municipalities-urban": {
+        "title": "Municipalities & Urban Projects",
+        "description": "Micromobility solutions for cities, residential complexes, and universities. We support sustainability goals and help reduce urban traffic congestion.",
+        "image-alt": "Municipalities and urban projects",
+        "bullets": {
+          "infrastructure": "Micromobility infrastructure",
+          "sustainability": "Sustainability goal alignment",
+          "campus": "Campus mobility solutions"
+        }
+      },
+      "restaurants-stores": {
+        "title": "Restaurants & Stores",
+        "description": "Smart electric bikes designed for daily delivery needs, combining efficiency and economy while highlighting your brand’s commercial identity in a sustainable way.",
+        "image-alt": "Restaurants and stores delivery",
+        "bullets": {
+          "economic": "Economic daily operations",
+          "brand": "Brand identity customization",
+          "navigation": "Efficient urban navigation"
+        }
+      }
+    }
+  },
   "commitment-to-excellence": {
     "title": "Commitment to Excellence",
     "quality-assurance": "Quality Assurance",
