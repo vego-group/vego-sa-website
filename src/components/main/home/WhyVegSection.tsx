@@ -15,7 +15,7 @@ function WhyVegoSection() {
   const t = useTranslations("home.why-vego-group");
   return (
     <section>
-      <div className="mx-auto flex max-w-6xl flex-col items-center px-6 text-center">
+      <div className="mx-auto flex max-w-7xl flex-col items-center px-6 text-center">
         <h2 className="text-3xl font-semibold tracking-tight text-primary sm:text-4xl">
           {t("title")}
         </h2>

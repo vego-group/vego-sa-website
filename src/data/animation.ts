@@ -16,3 +16,17 @@ export const descriptionVariants = {
   rest: { opacity: 0, y: 12 },
   hover: { opacity: 1, y: 0 },
 };
+
+export const containerVariants = {
+  hidden: { opacity: 0, y: 12 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { staggerChildren: 0.18, ease: "easeOut", duration: 0.6 },
+  },
+};
+
+export const itemVariants = {
+  hidden: { opacity: 0, y: 18 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+};
