@@ -1,5 +1,11 @@
-function page() {
-  return <div>page</div>;
+import Contact from "@/components/main/contact";
+
+function ContactPage() {
+  return (
+    <>
+      <Contact />
+    </>
+  );
 }
 
-export default page;
+export default ContactPage;
