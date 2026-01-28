@@ -10,12 +10,15 @@ import MobileMenuButton from "./MobileMenuButton";
 import MobileMenu from "./MobileMenu";
 import { navItems } from "@/data/navbar";
 import { Button } from "../ui/button";
+import { useLocale } from "next-intl";
 
 export default function Navbar(): ReactElement {
   const pathname = usePathname();
+  const locale = useLocale();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const handleScrollToTop = (): void => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    // window.scrollTo({ top: 0, behavior: "smooth" });
+    window.location.href = `/${locale}`;
   };
 
   return (
