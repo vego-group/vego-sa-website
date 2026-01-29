@@ -1,5 +1,11 @@
-function page() {
-  return <div>page</div>;
+import OurBranches from "@/components/main/our-branches";
+
+function OurBranchesPage() {
+  return (
+    <>
+      <OurBranches />
+    </>
+  );
 }
 
-export default page;
+export default OurBranchesPage;
