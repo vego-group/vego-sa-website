@@ -79,6 +79,63 @@
       }
     }
   },
+  "our-branches": {
+    "hero": {
+      "title": "Our Branches",
+      "description": "VEGO starts from the Kingdom to the world, leading the future of electric mobility with smart and sustainable solutions. From our headquarters in Riyadh to our regional and international branches, we continue to expand our presence to deliver our products and services globally.",
+      "image-alt": "Global map background"
+    },
+    "branches": {
+      "badge": "Global Footprint",
+      "title": "Where We Operate",
+      "description": "Our network spans regional and international hubs designed to keep VEGO closer to our partners, customers, and supply chains.",
+      "items": {
+        "hq": {
+          "tag": "PRIMARY OFFICE",
+          "title": "Headquarters",
+          "location": "Riyadh, Saudi Arabia",
+          "image-alt": "Headquarters in Riyadh"
+        },
+        "regional-jordan": {
+          "tag": "MIDDLE EAST OPERATIONS",
+          "title": "Regional Branch",
+          "location": "Jordan",
+          "image-alt": "Regional branch in Jordan"
+        },
+        "regional-bahrain": {
+          "tag": "GCC SUPPORT",
+          "title": "Regional Branch",
+          "location": "Bahrain",
+          "image-alt": "Regional branch in Bahrain"
+        },
+        "regional-kuwait": {
+          "tag": "GCC SUPPORT",
+          "title": "Regional Branch",
+          "location": "Kuwait",
+          "image-alt": "Regional branch in Kuwait"
+        },
+        "international-china": {
+          "tag": "GLOBAL SUPPLY CHAIN",
+          "title": "International Branch",
+          "location": "China - Yiwu",
+          "image-alt": "International branch in China"
+        },
+        "international-hongkong": {
+          "tag": "INTERNATIONAL TRADING",
+          "title": "International Branch",
+          "location": "Hong Kong",
+          "image-alt": "International branch in Hong Kong"
+        }
+      }
+    },
+    "cta": {
+      "badge": "Global Expansion",
+      "title": "Connecting the Future of Electric Mobility",
+      "description": "Our network is growing every day. We are establishing new hubs and service centers across major trade routes to ensure seamless support for our customers worldwide.",
+      "primary": "Partner With Us",
+      "secondary": "Contact Global HQ"
+    }
+  },
   "commitment-to-excellence": {
     "title": "Commitment to Excellence",
     "quality-assurance": "Quality Assurance",
