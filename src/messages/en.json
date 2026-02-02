@@ -433,5 +433,58 @@
         "compatible": "Fully Compatible"
       }
     }
+  },
+  "contact": {
+    "hero": {
+      "title": "Get in Touch with VEGO",
+      "subtitle": "We'd love to hear from you. Reach out for any inquiries or support."
+    },
+    "intro": {
+      "title": "Contact Us with Confidence",
+      "description": "We are here to support you and provide <bold>smart solutions</bold> that keep up with the future of mobility and technology."
+    },
+    "cards": {
+      "phone": {
+        "title": "Phone",
+        "value": "920014486"
+      },
+      "email": {
+        "title": "Email",
+        "value": "info@vego.sa"
+      },
+      "hours": {
+        "title": "Working Hours",
+        "value": "Sun-Thu: 8 AM - 5 PM"
+      }
+    },
+    "form": {
+      "title": "Send Us a Message",
+      "description": "Fill out the form and our team will get back to you shortly.",
+      "name": "Full Name",
+      "email": "Email",
+      "phone": "Phone",
+      "subjectPlaceholder": "Select a subject",
+      "message": "Write your message here...",
+      "submit": "Send Message",
+      "subjects": {
+        "general": "General Inquiry",
+        "products": "Products",
+        "partnership": "Partnership",
+        "support": "Support",
+        "jobs": "Jobs"
+      }
+    },
+    "location": {
+      "title": "Our Location",
+      "addressLabel": "Address:",
+      "address": "Vego Group, Saad Tower 12th Floor, King Fahd Branch St, Al Malqa, Riyadh 13521, Saudi Arabia",
+      "phoneLabel": "Phone:",
+      "phone": "920014486",
+      "emailLabel": "Email:",
+      "email": "info@vego.sa",
+      "directionsText": "Get Directions",
+      "directionsLink": "https://maps.app.goo.gl/f7SbBRdjzA5zbSVB6",
+      "mapSrc": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3623.384237511246!2d46.69263971501215!3d24.769903684114865!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e2f03b9e3b1d4f7%3A0x5de7f8a2a1d4f7a6!2sVego%20Group!5e0!3m2!1sen!2ssa!4v1706490000000!5m2!1sen!2ssa"
+    }
   }
 }
