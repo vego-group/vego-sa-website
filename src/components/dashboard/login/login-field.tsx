@@ -50,7 +50,7 @@ function LoginField({
           {...register(name)}
         />
       </div>
-      {error ? <p className="text-xs text-rose-300/90">{error}</p> : null}
+      {error && <p className="text-xs text-rose-300/90">{error}</p>}
     </div>
   );
 }
