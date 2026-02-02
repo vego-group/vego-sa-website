@@ -1,30 +1,13 @@
 "use client";
 
-import { motion, type Variants } from "framer-motion";
+import { motion } from "framer-motion";
 
 import { LoginCard } from "./login-card";
 import { LoginFooter } from "./login-footer";
 import { LoginForm } from "./login-form";
 import { LoginHeader } from "./login-header";
 import { LoginShell } from "./login-shell";
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 24, scale: 0.98 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: { duration: 0.55, ease: "easeOut" },
-  },
-} satisfies Variants;
-
-const contentVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { duration: 0.4, delay: 0.12 },
-  },
-} satisfies Variants;
+import { cardVariants, contentVariants } from "@/lib";
 
 function Login() {
   return (
@@ -37,6 +20,8 @@ function Login() {
       >
         <LoginCard>
           <motion.div
+            initial="hidden"
+            animate="visible"
             variants={contentVariants}
             className="space-y-7"
           >
