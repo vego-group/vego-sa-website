@@ -27,7 +27,7 @@ export default function AboutLeadership() {
   const t = useTranslations("about.leadership");
 
   return (
-    <section className="relative overflow-hidden py-24">
+    <section className="relative overflow-hidden py-8">
       {/* Removed: Background Pattern */}
 
       <div className="relative z-10 mx-auto max-w-7xl px-6">
