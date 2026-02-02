@@ -5,7 +5,7 @@ import Image from "next/image";
 function HeroSection() {
   const t = useTranslations("home.hero");
   return (
-    <section className="relative overflow-hidden bg-primary h-screen">
+    <section className="relative overflow-hidden bg-primary h-svh">
       <div className="absolute inset-0">
         <Image
           src="/images/hero-motorcycle.jpg"
