@@ -7,9 +7,6 @@ import { routing } from "@/i18n/routing";
 import "./globals.css";
 import "swiper/css";
 import "swiper/css/pagination";
-import Navbar from "@/components/navbar.tsx";
-import CommitmentToExcellence from "@/components/CommitmentToExcellence";
-import Footer from "@/components/Footer";
 import { LOGO, SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from "@/constants";
 
 const cairo = Cairo({
@@ -87,12 +84,9 @@ export default async function RootLayout({
   return (
     <html lang={locale} dir={dir}>
       <body className={`${cairo.variable} ${cormorant.variable} antialiased`}>
-        <div className="min-h-screen">
+        <div className="min-h-svh">
           <NextIntlClientProvider messages={messages}>
-            <Navbar />
             {children}
-            <CommitmentToExcellence />
-            <Footer />
           </NextIntlClientProvider>
         </div>
       </body>
