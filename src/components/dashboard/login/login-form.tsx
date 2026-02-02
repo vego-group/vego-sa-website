@@ -1,30 +1,11 @@
-"use client"
+import { zodResolver } from "@hookform/resolvers/zod";
+import { motion } from "framer-motion";
+import { Lock, Mail, MoveRight } from "lucide-react";
+import { useForm } from "react-hook-form";
 
-import { zodResolver } from "@hookform/resolvers/zod"
-import { motion } from "framer-motion"
-import { Lock, Mail, MoveRight } from "lucide-react"
-import { useForm } from "react-hook-form"
+import { loginSchema, type LoginSchema } from "@/schemas";
 
-import { loginSchema, type LoginSchema } from "@/schemas"
-
-import { LoginField } from "./login-field"
-
-const formVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.12 },
-  },
-}
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 12 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.35, ease: "easeOut" },
-  },
-}
+import { LoginField } from "./login-field";
 
 function LoginForm() {
   const form = useForm<LoginSchema>({
@@ -34,21 +15,25 @@ function LoginForm() {
       password: "",
     },
     mode: "onSubmit",
-  })
+  });
 
   const onSubmit = (values: LoginSchema) => {
-    void values
-  }
+    void values;
+  };
 
   return (
     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
       <motion.div
-        variants={formVariants}
-        initial="hidden"
-        animate="visible"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.35 }}
         className="space-y-5"
       >
-        <motion.div variants={itemVariants}>
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.35, ease: "easeOut" }}
+        >
           <LoginField
             name="email"
             label="Email"
@@ -61,7 +46,11 @@ function LoginForm() {
           />
         </motion.div>
 
-        <motion.div variants={itemVariants}>
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.35, delay: 0.08, ease: "easeOut" }}
+        >
           <LoginField
             name="password"
             label="Password"
@@ -77,9 +66,9 @@ function LoginForm() {
 
       <motion.button
         type="submit"
-        variants={itemVariants}
-        initial="hidden"
-        animate="visible"
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.35, delay: 0.16, ease: "easeOut" }}
         className="group flex w-full items-center justify-center gap-3 rounded-2xl bg-secondary px-6 py-3 text-sm font-semibold text-primary shadow-[0_18px_40px_-24px_color-mix(in_oklab,var(--color-secondary)_80%,transparent)] transition duration-300 hover:bg-secondary/90"
       >
         Log In
@@ -89,7 +78,7 @@ function LoginForm() {
         />
       </motion.button>
     </form>
-  )
+  );
 }
 
-export { LoginForm }
+export { LoginForm };

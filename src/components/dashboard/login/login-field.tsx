@@ -1,22 +1,20 @@
-"use client"
+import type { ReactNode } from "react";
+import type { UseFormRegister } from "react-hook-form";
 
-import type { ReactNode } from "react"
-import type { UseFormRegister } from "react-hook-form"
-
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import type { LoginSchema } from "@/schemas"
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import type { LoginSchema } from "@/schemas";
 
 type LoginFieldProps = {
-  name: keyof LoginSchema
-  label: string
-  type: string
-  placeholder: string
-  autoComplete?: string
-  icon?: ReactNode
-  register: UseFormRegister<LoginSchema>
-  error?: string
-}
+  name: keyof LoginSchema;
+  label: string;
+  type: string;
+  placeholder: string;
+  autoComplete?: string;
+  icon?: ReactNode;
+  register: UseFormRegister<LoginSchema>;
+  error?: string;
+};
 
 function LoginField({
   name,
@@ -28,7 +26,7 @@ function LoginField({
   register,
   error,
 }: LoginFieldProps) {
-  const inputId = `login-${name}`
+  const inputId = `login-${name}`;
 
   return (
     <div className="space-y-3">
@@ -52,11 +50,9 @@ function LoginField({
           {...register(name)}
         />
       </div>
-      {error ? (
-        <p className="text-xs text-rose-300/90">{error}</p>
-      ) : null}
+      {error ? <p className="text-xs text-rose-300/90">{error}</p> : null}
     </div>
-  )
+  );
 }
 
-export { LoginField }
+export { LoginField };
