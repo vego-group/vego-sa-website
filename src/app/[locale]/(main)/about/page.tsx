@@ -1,5 +1,11 @@
-function page() {
-  return <div>page</div>;
+import About from "@/components/main/about";
+
+function AboutPage() {
+  return (
+    <>
+      <About />
+    </>
+  );
 }
 
-export default page;
+export default AboutPage; 
