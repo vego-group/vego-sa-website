@@ -434,5 +434,58 @@
         "compatible": "توافق كامل"
       }
     }
+  },
+  "contact": {
+    "hero": {
+      "title": "تواصل معنا في VEGO",
+      "subtitle": "يسعدنا سماع رأيك. تواصل معنا لأي استفسارات أو دعم."
+    },
+    "intro": {
+      "title": "تواصل معنا بثقة",
+      "description": "نحن هنا لدعمك وتقديم <bold>الحلول الذكية</bold> التي تواكب مستقبل التنقّل والتقنية."
+    },
+    "cards": {
+      "phone": {
+        "title": "الهاتف",
+        "value": "920014486"
+      },
+      "email": {
+        "title": "البريد الإلكتروني",
+        "value": "info@vego.sa"
+      },
+      "hours": {
+        "title": "أوقات العمل",
+        "value": "من الأحد إلى الخميس: 8 صباحًا - 5 مساءً"
+      }
+    },
+    "form": {
+      "title": "أرسل لنا رسالة",
+      "description": "املأ النموذج وسيتواصل فريقنا معك في أقرب وقت.",
+      "name": "الاسم الكامل",
+      "email": "البريد الإلكتروني",
+      "phone": "رقم الهاتف",
+      "subjectPlaceholder": "اختر الموضوع",
+      "message": "اكتب رسالتك هنا...",
+      "submit": "إرسال الرسالة",
+      "subjects": {
+        "general": "استفسار عام",
+        "products": "معلومات عن المنتجات",
+        "partnership": "فرص الشراكة",
+        "support": "الدعم الفني",
+        "jobs": "فرص العمل"
+      }
+    },
+    "location": {
+      "title": "أين تجدنا",
+      "addressLabel": "العنوان:",
+      "address": "مجموعة فيجو، برج سعد الدور 12، شارع الملك فهد الفرعي، حي الملقا، الرياض 13521، المملكة العربية السعودية",
+      "phoneLabel": "رقم الهاتف:",
+      "phone": "920014486",
+      "emailLabel": "البريد الإلكتروني:",
+      "email": "info@vego.sa",
+      "directionsText": "احصل على الاتجاهات",
+      "directionsLink": "https://maps.app.goo.gl/f7SbBRdjzA5zbSVB6",
+      "mapSrc": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3623.384237511246!2d46.69263971501215!3d24.769903684114865!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e2f03b9e3b1d4f7%3A0x5de7f8a2a1d4f7a6!2sVego%20Group!5e0!3m2!1sar!2ssa!4v1706490000000!5m2!1sar!2ssa"
+    }
   }
 }

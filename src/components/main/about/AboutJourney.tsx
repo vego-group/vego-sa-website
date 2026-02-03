@@ -8,7 +8,7 @@ export default function AboutJourney() {
   const t = useTranslations("about.journey");
 
   return (
-    <section id="journey-section" className="bg-white py-24">
+    <section id="journey-section" className="bg-white">
       <motion.div
         className="mx-auto max-w-4xl px-6 text-center"
         variants={sectionVariants}

@@ -2,32 +2,37 @@
 
 import { motion } from "framer-motion";
 import { Phone, Mail, Clock } from "lucide-react";
-
-const items = [
-  {
-    icon: <Phone className="h-5 w-5 text-primary" />,
-    title: "رقم الهاتف",
-    value: "920014486",
-    link: "tel:920014486",
-  },
-  {
-    icon: <Mail className="h-5 w-5 text-primary" />,
-    title: "البريد الإلكتروني",
-    value: "info@vego.sa",
-    link: "mailto:info@vego.sa",
-  },
-  {
-    icon: <Clock className="h-5 w-5 text-primary" />,
-    title: "ساعات العمل",
-    value: "الأحد – الخميس | 8:00 ص – 6:00 م",
-  },
-];
+import { useTranslations } from "next-intl";
 
 export default function ContactCards() {
+  const t = useTranslations("contact.cards");
+
+  // قائمة البطاقات
+  const cards = [
+    {
+      icon: <Phone className="h-5 w-5 text-primary" />,
+      title: t("phone.title"),
+      value: t("phone.value"),
+      link: "tel:920014486",
+    },
+    {
+      icon: <Mail className="h-5 w-5 text-primary" />,
+      title: t("email.title"),
+      value: t("email.value"),
+      link: "mailto:info@vego.sa",
+    },
+    {
+      icon: <Clock className="h-5 w-5 text-primary" />,
+      title: t("hours.title"),
+      value: t("hours.value"),
+      link: null,
+    },
+  ];
+
   return (
-    <section>
+    <section className="py-10">
       <div className="mx-auto grid max-w-7xl gap-6 px-6 sm:grid-cols-3">
-        {items.map((item, index) => (
+        {cards.map((card, index) => (
           <motion.div
             key={index}
             initial={{ opacity: 0, y: 20 }}
@@ -37,25 +42,19 @@ export default function ContactCards() {
             className="group rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg"
           >
             <div className="mb-4 flex items-center gap-3">
-              <div className="rounded-xl bg-primary/10 p-3 transition-colors group-hover:bg-primary/15">
-                {item.icon}
-              </div>
-              <h4 className="text-lg font-semibold text-slate-800">
-                {item.title}
-              </h4>
+              <div className="rounded-xl bg-primary/10 p-3">{card.icon}</div>
+              <h4 className="text-lg font-semibold text-slate-800">{card.title}</h4>
             </div>
 
-            {item.link ? (
+            {card.link ? (
               <a
-                href={item.link}
-                className="text-base font-medium text-primary transition-colors hover:text-emerald-600"
+                href={card.link}
+                className="text-base font-medium text-primary hover:text-emerald-600"
               >
-                {item.value}
+                {card.value}
               </a>
             ) : (
-              <p className="text-base leading-relaxed text-slate-600">
-                {item.value}
-              </p>
+              <p className="text-base text-slate-600">{card.value}</p>
             )}
           </motion.div>
         ))}

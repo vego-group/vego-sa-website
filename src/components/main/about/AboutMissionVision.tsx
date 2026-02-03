@@ -9,7 +9,7 @@ export default function AboutMissionVision() {
   const t = useTranslations("about.missionVision");
 
   return (
-    <section className="relative py-24 bg-white overflow-hidden">
+    <section className="relative bg-white overflow-hidden">
       <motion.div
         className="mx-auto max-w-7xl px-6"
         variants={sectionVariants}
