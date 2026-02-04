@@ -4,7 +4,7 @@ import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
-import "./globals.css";
+import "../globals.css";
 import "swiper/css";
 import "swiper/css/pagination";
 import { LOGO, SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from "@/constants";
