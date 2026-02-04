@@ -1,5 +1,7 @@
-function page() {
-  return <div>page</div>;
+import Dashboard from "@/components/dashboard/dashboard";
+
+function DashboardPage() {
+  return <Dashboard />;
 }
 
-export default page;
+export default DashboardPage;
