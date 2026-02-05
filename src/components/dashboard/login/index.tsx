@@ -16,7 +16,7 @@ function Login() {
         initial="hidden"
         animate="visible"
         variants={cardVariants}
-        className="w-full max-w-130"
+        className="w-full max-w-130 py-10"
       >
         <LoginCard>
           <motion.div

@@ -11,7 +11,7 @@ function LoginHeader() {
         Secure Portal for Fleet &amp; Content Management
       </p>
     </div>
-  )
+  );
 }
 
-export { LoginHeader }
+export { LoginHeader };
