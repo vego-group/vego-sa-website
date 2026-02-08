@@ -1,8 +1,6 @@
 "use client";
 
 import Modal from "@/components/ui/modal";
-import { motion, AnimatePresence } from "framer-motion";
-import { X } from "lucide-react";
 import { useEffect } from "react";
 
 type ArticleEditorPopupProps = {
