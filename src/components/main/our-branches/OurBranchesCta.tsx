@@ -1,6 +1,5 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { sectionVariants } from "@/data";
@@ -51,18 +50,18 @@ function OurBranchesCta() {
           transition={{ duration: 0.6, ease: "easeOut", delay: 0.26 }}
           viewport={{ once: true, amount: 0.6 }}
         >
-          <Button
+          <button
             type="button"
             className="rounded-full bg-primary px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-slate-900/20 transition hover:bg-slate-800"
           >
             {t("primary")}
-          </Button>
-          <Button
+          </button>
+          <button
             type="button"
             className="rounded-full border border-secondary/40 bg-white px-7 py-3 text-sm font-semibold text-secondary transition hover:border-secondary hover:text-emerald-700"
           >
             {t("secondary")}
-          </Button>
+          </button>
         </motion.div>
       </motion.div>
     </section>
