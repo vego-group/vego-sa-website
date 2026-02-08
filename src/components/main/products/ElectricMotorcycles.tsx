@@ -2,12 +2,13 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useTranslations } from "next-intl";
-import { Button } from "../../ui/button";
+import { useLocale, useTranslations } from "next-intl";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
 function ElectricMotorcycles() {
   const t = useTranslations("products.electric-motorcycles");
-
+  const locale = useLocale();
+  const Arrow = locale === "en" ? ArrowRight : ArrowLeft;
   return (
     <section>
       <div className="mx-auto flex max-w-7xl flex-col gap-12 px-6 md:flex-row md:items-center">
@@ -40,20 +41,14 @@ function ElectricMotorcycles() {
           </p>
 
           <div className="pt-4">
-            <Link href="/products/electric-motorcycles">
-              <Button className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-primary/40 transition hover:bg-emerald-600">
-                {t("learn-more")}
-                <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4">
-                  <path
-                    d="M5 12h12m0 0l-4-4m4 4l-4 4"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.8"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </Button>
+            <Link
+              href={`https://vegobike.com/${locale}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-primary/40 transition hover:bg-emerald-600"
+            >
+              {t("learn-more")}
+              <Arrow className="size-4" />
             </Link>
           </div>
 

@@ -1,49 +1,50 @@
 import { FooterLink, SocialLink } from "@/interfaces/footer";
-import { Facebook, Instagram, Twitter, Linkedin, Youtube } from "lucide-react";
+import { Instagram, Twitter, Linkedin } from "lucide-react";
+import { TbBrandSnapchat } from "react-icons/tb";
+import { FaWhatsapp } from "react-icons/fa";
 
 export const footerLinks: FooterLink[] = [
   {
-    title: "products.title",
-    links: [
-      "products.electric-motorcycles",
-      "products.electric-scooters",
-      "products.electric-bikes",
-      "products.accessories",
-    ],
-  },
-  {
     title: "company.title",
     links: [
-      "company.about-us",
-      "company.our-technology",
-      "company.sustainability",
-      "company.careers",
+      { label: "company.products", href: "/products" },
+      { label: "company.branches", href: "/branches" },
+      { label: "company.about-us", href: "/about-us" },
     ],
   },
   {
     title: "support.title",
-    links: [
-      "support.help-center",
-      "support.contact-us",
-      "support.warranty",
-      "support.service-centers",
-    ],
+    links: [{ label: "support.contact-us", href: "/contact-us" }],
   },
   {
     title: "legal.title",
     links: [
-      "legal.privacy-policy",
-      "legal.terms-of-service",
-      "legal.return-policy",
-      "legal.shipping-info",
+      { label: "legal.privacy-policy", href: "/privacy-policy" },
+      { label: "legal.terms-and-conditions", href: "/terms-and-conditions" },
     ],
   },
 ];
 
 export const socialLinks: SocialLink[] = [
-  { label: "Facebook", icon: Facebook },
-  { label: "Instagram", icon: Instagram },
-  { label: "Twitter", icon: Twitter },
-  { label: "LinkedIn", icon: Linkedin },
-  { label: "YouTube", icon: Youtube },
+  {
+    label: "WhatsApp",
+    icon: FaWhatsapp,
+    href: "https://wa.me/966112345678",
+  },
+  {
+    label: "Instagram",
+    icon: Instagram,
+    href: "https://www.instagram.com/vego_group1?igsh=MjF1d2s1ajdjeTc2",
+  },
+  { label: "Twitter", icon: Twitter, href: "https://x.com/vego_group1?s=11" },
+  {
+    label: "LinkedIn",
+    icon: Linkedin,
+    href: "https://www.linkedin.com/company/vego-group1/",
+  },
+  {
+    label: "SnapChat",
+    icon: TbBrandSnapchat,
+    href: "https://www.snapchat.com/add/vego_group1",
+  },
 ];
