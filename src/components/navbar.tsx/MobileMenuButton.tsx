@@ -1,5 +1,4 @@
 import type { ReactElement } from "react";
-import { Button } from "../ui/button";
 
 type MobileMenuButtonProps = {
   onClick: () => void;
@@ -9,7 +8,7 @@ export default function MobileMenuButton({
   onClick,
 }: MobileMenuButtonProps): ReactElement {
   return (
-    <Button
+    <button
       type="button"
       className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 text-primary lg:hidden"
       aria-label="Open menu"
@@ -24,6 +23,6 @@ export default function MobileMenuButton({
           strokeLinecap="round"
         />
       </svg>
-    </Button>
+    </button>
   );
 }
