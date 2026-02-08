@@ -156,17 +156,17 @@
       }
     },
     "missionVision": {
-    "title": "Our Mission & Vision",
-    "subtitle": "Driven by purpose and guided by a sustainable future",
-    "mission": {
-      "title": "Our Mission",
-      "description": "At VEGO Group, our mission is to deliver sustainable and innovative mobility solutions that move the industry forward and contribute to a cleaner, greener world. We believe that through our commitment to excellence, we can create a future where transportation is not only efficient and accessible, but also environmentally responsible."
+      "title": "Our Mission & Vision",
+      "subtitle": "Driven by purpose and guided by a sustainable future",
+      "mission": {
+        "title": "Our Mission",
+        "description": "At VEGO Group, our mission is to deliver sustainable and innovative mobility solutions that move the industry forward and contribute to a cleaner, greener world. We believe that through our commitment to excellence, we can create a future where transportation is not only efficient and accessible, but also environmentally responsible."
+      },
+      "vision": {
+        "title": "Our Vision",
+        "description": "Our vision is to lead the global transition toward clean energy mobility by continuously pushing the boundaries of innovation and technology. We aspire to set the benchmark for sustainability in the industry, ensuring our products are not only technologically advanced, but also contribute to a better future for the planet and its people."
+      }
     },
-    "vision": {
-      "title": "Our Vision",
-      "description": "Our vision is to lead the global transition toward clean energy mobility by continuously pushing the boundaries of innovation and technology. We aspire to set the benchmark for sustainability in the industry, ensuring our products are not only technologically advanced, but also contribute to a better future for the planet and its people."
-    }
-  },
     "values": {
       "badge": "Our Values",
       "title": "The principles that guide everything we do",
@@ -191,10 +191,10 @@
       }
     },
     "journey": {
-    "title": "Our Story",
-    "subtitle": "A Vision for a Sustainable Future",
-    "description": "VEGO Group was founded in 2020 in Saudi Arabia with a clear mission: to transform the way the world approaches transportation. With growing environmental concerns and the need for sustainable solutions, we recognized the opportunity to make a real difference. From our humble beginnings, our commitment has always been to lead the industry in clean and innovative transportation technologies that not only reduce carbon emissions but also improve quality of life in communities worldwide.\n\nOur journey began with the development of the first electric bikes and smart operating systems that push the boundaries of what is possible in mobility. Today, VEGO Group stands at the forefront of the clean energy revolution, dedicating its efforts to shaping the future of transportation."
-  },
+      "title": "Our Story",
+      "subtitle": "A Vision for a Sustainable Future",
+      "description": "VEGO Group was founded in 2020 in Saudi Arabia with a clear mission: to transform the way the world approaches transportation. With growing environmental concerns and the need for sustainable solutions, we recognized the opportunity to make a real difference. From our humble beginnings, our commitment has always been to lead the industry in clean and innovative transportation technologies that not only reduce carbon emissions but also improve quality of life in communities worldwide.\n\nOur journey began with the development of the first electric bikes and smart operating systems that push the boundaries of what is possible in mobility. Today, VEGO Group stands at the forefront of the clean energy revolution, dedicating its efforts to shaping the future of transportation."
+    },
     "leadership": {
       "badge": "Leadership Team",
       "title": "Meet Our Inspiring Leaders",
@@ -218,27 +218,27 @@
       }
     },
     "sustainability": {
-    "title": "Our Innovative Solutions",
-    "subtitle": "At VEGO Group, we provide advanced solutions designed to enhance both mobility and efficiency.",
-    "solutions": {
-      "electricBikes": {
-        "title": "VEGO Electric Bikes",
-        "description": "Representing the next generation of smart mobility, VEGO electric bikes combine performance, efficiency, and advanced technology. Made in Saudi Arabia with a modern identity, they serve delivery companies and individuals seeking an economical and eco-friendly transportation solution. Every VEGO bike reflects a vision for sustainable, efficient urban mobility, offering a comfortable and safe ride, with advanced technical specifications to ensure long-lasting and reliable performance."
-      },
-      "deliverySolutions": {
-        "title": "Delivery Solutions",
-        "description": "At VEGO, we provide a complete ecosystem of smart delivery solutions designed to meet the needs of companies and couriers efficiently and sustainably. From electric bikes equipped with smart and refrigerated boxes, to fast charging systems and fleet management via the My VEGO platform, every element is designed to make delivery operations faster, cost-effective, and smarter. Our solutions combine technology and sustainability to reduce operational costs, improve service quality, and support the transition towards an eco-friendly delivery sector, with accurate reporting to optimize performance and resource management."
-      },
-      "micromobility": {
-        "title": "Micromobility",
-        "description": "Micromobility represents the future of urban transportation, providing smart and eco-friendly solutions that help reduce congestion and emissions. At VEGO, we offer a comprehensive system of electric bikes and scooters designed to meet the needs of individuals and companies for fast city mobility. VEGO's micromobility solutions redefine urban travel with higher efficiency, greater flexibility, and a more sustainable experience, supporting shared mobility and integration with smart city infrastructure."
-      },
-      "chargingSystems": {
-        "title": "Charging Systems",
-        "description": "At VEGO, we offer integrated charging solutions suitable for all operational needs, from individual use to large fleets. Our smart systems ensure fast charging, energy efficiency, and seamless integration with all our mobility solutions. With precise monitoring and advanced performance analytics, clients can ensure operational continuity, reduce downtime, and maximize the benefits of clean energy for a sustainable and reliable operation model."
+      "title": "Our Innovative Solutions",
+      "subtitle": "At VEGO Group, we provide advanced solutions designed to enhance both mobility and efficiency.",
+      "solutions": {
+        "electricBikes": {
+          "title": "VEGO Electric Bikes",
+          "description": "Representing the next generation of smart mobility, VEGO electric bikes combine performance, efficiency, and advanced technology. Made in Saudi Arabia with a modern identity, they serve delivery companies and individuals seeking an economical and eco-friendly transportation solution. Every VEGO bike reflects a vision for sustainable, efficient urban mobility, offering a comfortable and safe ride, with advanced technical specifications to ensure long-lasting and reliable performance."
+        },
+        "deliverySolutions": {
+          "title": "Delivery Solutions",
+          "description": "At VEGO, we provide a complete ecosystem of smart delivery solutions designed to meet the needs of companies and couriers efficiently and sustainably. From electric bikes equipped with smart and refrigerated boxes, to fast charging systems and fleet management via the My VEGO platform, every element is designed to make delivery operations faster, cost-effective, and smarter. Our solutions combine technology and sustainability to reduce operational costs, improve service quality, and support the transition towards an eco-friendly delivery sector, with accurate reporting to optimize performance and resource management."
+        },
+        "micromobility": {
+          "title": "Micromobility",
+          "description": "Micromobility represents the future of urban transportation, providing smart and eco-friendly solutions that help reduce congestion and emissions. At VEGO, we offer a comprehensive system of electric bikes and scooters designed to meet the needs of individuals and companies for fast city mobility. VEGO's micromobility solutions redefine urban travel with higher efficiency, greater flexibility, and a more sustainable experience, supporting shared mobility and integration with smart city infrastructure."
+        },
+        "chargingSystems": {
+          "title": "Charging Systems",
+          "description": "At VEGO, we offer integrated charging solutions suitable for all operational needs, from individual use to large fleets. Our smart systems ensure fast charging, energy efficiency, and seamless integration with all our mobility solutions. With precise monitoring and advanced performance analytics, clients can ensure operational continuity, reduce downtime, and maximize the benefits of clean energy for a sustainable and reliable operation model."
+        }
       }
-    }
-  },
+    },
     "cta": {
       "badge": "Join the Revolution",
       "title": "Be part of the sustainable transportation movement",
@@ -273,33 +273,20 @@
     "location": "Riyadh, Saudi Arabia",
     "rights-reserved": "© 2026 VEGO Group. All rights reserved.",
     "electric": "100% Electric. 0% Emissions.",
-    "products": {
-      "title": "Products",
-      "electric-motorcycles": "Electric Motorcycles",
-      "electric-scooters": "Electric Scooters",
-      "electric-bikes": "Electric Bikes",
-      "accessories": "Accessories"
-    },
     "company": {
       "title": "Company",
-      "about-us": "About Us",
-      "our-technology": "Our Technology",
-      "sustainability": "Sustainability",
-      "careers": "Careers"
+      "products": "Our-Products",
+      "branches": "Our-Branches",
+      "about-us": "About Us"
     },
     "support": {
       "title": "Support",
-      "help-center": "Help Center",
-      "contact-us": "Contact Us",
-      "warranty": "Warranty",
-      "service-centers": "Service Centers"
+      "contact-us": "Contact Us"
     },
     "legal": {
       "title": "Legal",
       "privacy-policy": "Privacy Policy",
-      "terms-of-service": "Terms of Service",
-      "return-policy": "Return Policy",
-      "shipping-info": "Shipping Info"
+      "terms-and-conditions": "Terms and Conditions"
     }
   },
   "not-found": {

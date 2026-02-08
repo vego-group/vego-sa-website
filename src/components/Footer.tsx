@@ -5,6 +5,7 @@ import { Mail, MapPin, Phone, Zap } from "lucide-react";
 import { footerLinks, socialLinks } from "@/data/footer";
 import { useTranslations } from "next-intl";
 import { Button } from "./ui/button";
+import { Link } from "@/i18n/navigation";
 
 function Footer() {
   const t = useTranslations("footer");
@@ -35,12 +36,30 @@ function Footer() {
             <div className="space-y-3 text-sm text-slate-700">
               <div className="flex items-center gap-3">
                 <Phone className="h-4 w-4 text-slate-500" />
-                <span dir="ltr">+966 11 234 5678</span>
+                <Link
+                  href="tel:+966112345678"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  dir="ltr"
+                  className="hover:underline"
+                >
+                  +966 11 234 5678
+                </Link>
               </div>
+
               <div className="flex items-center gap-3">
                 <Mail className="h-4 w-4 text-slate-500" />
-                <span className="ltr">info@vegogroup.com</span>
+                <Link
+                  href="mailto:info@vegogroup.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  dir="ltr"
+                  className="hover:underline"
+                >
+                  info@vegogroup.com
+                </Link>
               </div>
+
               <div className="flex items-center gap-3">
                 <MapPin className="h-4 w-4 text-slate-500" />
                 <span>{t("location")}</span>
@@ -56,13 +75,13 @@ function Footer() {
                 </h3>
                 <ul className="space-y-2 text-slate-600">
                   {group.links.map((link) => (
-                    <li key={link}>
-                      <Button
-                        type="button"
+                    <li key={link.label}>
+                      <Link
+                        href={link.href}
                         className="transition hover:text-primary text-start"
                       >
-                        {t(link)}
-                      </Button>
+                        {t(link.label)}
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -76,14 +95,15 @@ function Footer() {
             {socialLinks.map((social) => {
               const Icon = social.icon;
               return (
-                <Button
+                <Link
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   key={social.label}
-                  type="button"
-                  aria-label={social.label}
                   className="flex h-11 w-11 items-center justify-center rounded-full bg-white text-slate-600 shadow-sm shadow-slate-900/10 transition hover:-translate-y-0.5 hover:text-primary"
                 >
                   <Icon className="h-5 w-5" />
-                </Button>
+                </Link>
               );
             })}
           </div>
@@ -92,7 +112,7 @@ function Footer() {
         <div className="flex flex-wrap items-center justify-between gap-4 border-t border-slate-200/70 pt-8 text-sm text-slate-500">
           <span>{t("rights-reserved")}</span>
           <div className="flex items-center gap-2 text-slate-700">
-            <Zap className="h-4 w-4 text-slate-800" />
+            <Zap className="size-4 text-slate-800" />
             <span>{t("electric")}</span>
           </div>
         </div>
