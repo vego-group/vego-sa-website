@@ -1,9 +1,12 @@
-import { Button } from "@/components/ui/button";
-import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
+import { ArrowRight, ArrowLeft } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 
 function HeroSection() {
   const t = useTranslations("home.hero");
+  const locale = useLocale();
+  const Arrow = locale === "en" ? ArrowRight : ArrowLeft;
   return (
     <section className="relative overflow-hidden bg-primary h-svh">
       <div className="absolute inset-0">
@@ -40,28 +43,19 @@ function HeroSection() {
         </p>
 
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-          <Button
-            type="button"
+          <Link
+            href="/products"
             className="inline-flex items-center gap-2 rounded-full bg-secondary px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-emerald-500/40 transition hover:bg-emerald-400"
           >
             {t("discover-our-products")}
-            <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4">
-              <path
-                d="M5 12h12m0 0l-4-4m4 4l-4 4"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </Button>
-          <Button
-            type="button"
+            <Arrow className="size-5" />
+          </Link>
+          <Link
+            href="/contact"
             className="rounded-full border border-white/40 px-6 py-3 text-sm font-semibold text-white/90 backdrop-blur transition hover:border-white/70 hover:text-white"
           >
             {t("contact-us")}
-          </Button>
+          </Link>
         </div>
       </div>
     </section>
