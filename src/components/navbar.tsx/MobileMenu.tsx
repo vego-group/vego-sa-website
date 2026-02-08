@@ -3,7 +3,6 @@ import { Link } from "@/i18n/navigation";
 import type { ReactElement } from "react";
 import { NavItem } from "@/interfaces/navbar";
 import LanguageButton from "./LanguageButton";
-import { Button } from "../ui/button";
 import { useTranslations } from "next-intl";
 
 type MobileMenuProps = {
@@ -22,7 +21,7 @@ export default function MobileMenu({
     <div className="fixed inset-0 z-50 bg-primary/20 backdrop-blur-sm lg:hidden">
       <div className="flex min-h-full flex-col bg-slate-50 px-6 pb-10 pt-5">
         <div className="flex items-center justify-between">
-          <Button>
+          <button>
             <Image
               src="/images/logo.svg"
               className="w-20 h-10 sm:w-22 sm:h-12"
@@ -30,8 +29,8 @@ export default function MobileMenu({
               width={90}
               height={90}
             />
-          </Button>
-          <Button
+          </button>
+          <button
             type="button"
             className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 text-primary"
             aria-label="Close menu"
@@ -46,7 +45,7 @@ export default function MobileMenu({
                 strokeLinecap="round"
               />
             </svg>
-          </Button>
+          </button>
         </div>
 
         <nav className="mt-10 flex-1">

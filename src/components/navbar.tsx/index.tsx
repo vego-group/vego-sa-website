@@ -9,7 +9,6 @@ import LanguageButton from "./LanguageButton";
 import MobileMenuButton from "./MobileMenuButton";
 import MobileMenu from "./MobileMenu";
 import { navItems } from "@/data/navbar";
-import { Button } from "../ui/button";
 import { useLocale } from "next-intl";
 
 export default function Navbar(): ReactElement {
@@ -24,7 +23,7 @@ export default function Navbar(): ReactElement {
   return (
     <header className="fixed inset-x-0 top-0 z-50 w-full bg-white shadow">
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-5">
-        <Button
+        <button
           type="button"
           aria-label="Scroll to top"
           onClick={handleScrollToTop}
@@ -37,7 +36,7 @@ export default function Navbar(): ReactElement {
             width={90}
             height={90}
           />
-        </Button>
+        </button>
         <DesktopNav items={navItems} pathname={pathname} />
 
         <div className="flex items-center gap-3">

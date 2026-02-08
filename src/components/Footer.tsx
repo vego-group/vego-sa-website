@@ -4,7 +4,6 @@ import Image from "next/image";
 import { Mail, MapPin, Phone, Zap } from "lucide-react";
 import { footerLinks, socialLinks } from "@/data/footer";
 import { useTranslations } from "next-intl";
-import { Button } from "./ui/button";
 import { Link } from "@/i18n/navigation";
 
 function Footer() {
@@ -17,7 +16,7 @@ function Footer() {
       <div className="mx-auto flex max-w-7xl flex-col gap-12 px-6 py-16">
         <div className="grid gap-12 lg:grid-cols-[1.3fr_2fr]">
           <div className="space-y-6">
-            <Button
+            <button
               type="button"
               aria-label="Scroll to top"
               onClick={handleScrollToTop}
@@ -29,7 +28,7 @@ function Footer() {
                 width={90}
                 height={90}
               />
-            </Button>
+            </button>
             <p className="max-w-md text-sm leading-relaxed text-slate-600">
               {t("description")}
             </p>

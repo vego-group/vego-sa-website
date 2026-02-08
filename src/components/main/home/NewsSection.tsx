@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import { newsItems } from "@/data";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
@@ -12,12 +11,12 @@ function NewsSection() {
           <h2 className="text-3xl font-semibold tracking-tight text-primary sm:text-4xl">
             {t("title")}
           </h2>
-          <Button
+          <button
             type="button"
             className="rounded-full border border-primary px-6 py-2 text-sm font-semibold text-primary transition hover:bg-primary hover:text-white"
           >
             {t("more")}
-          </Button>
+          </button>
         </div>
 
         <div className="grid gap-6 md:grid-cols-3">
@@ -58,13 +57,13 @@ function NewsSection() {
                 >
                   {t(item.summary)}
                 </p>
-                <Button
+                <button
                   type="button"
                   className="inline-flex items-center gap-2 text-sm font-semibold text-primary"
                 >
                   {t("read-more")}
                   <span aria-hidden="true">→</span>
-                </Button>
+                </button>
               </div>
             </article>
           ))}
