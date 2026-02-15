@@ -1,9 +1,15 @@
-import { useState } from "react";
+"use client";
+
+import { useState, useEffect } from "react";
 import { ArticleTable } from "./article-table";
 import { ArticleEditorPopup } from "./article-editor-popup";
 import { DeleteConfirmationPopup } from "./delete-confirmation-popup";
 
-function DashboardTable() {
+type DashboardTableProps = {
+  activeTab?: "all" | "published" | "drafts";
+};
+
+function DashboardTable({ activeTab = "all" }: DashboardTableProps) {
   const [articles, setArticles] = useState([
     {
       id: "1",
@@ -11,9 +17,10 @@ function DashboardTable() {
       category: "News",
       date: "Feb 02, 2026",
       news: "Company Updates",
+      status: "Published",
       imageUrl: "https://images.unsplash.com/photo-1713098965471-d324f294a71d?q=80&w=640",
       shortExcerpt: "Leading the electric revolution across the Middle East with new hubs in Jordan and Bahrain.",
-      fullContent: "Detailed content about regional expansion... VEGO continues to lead the electric revolution across the Middle East with strategic expansions into new markets. Our new hubs in Jordan and Bahrain will provide enhanced services and support to our growing customer base in these regions."
+      fullContent: "Detailed content about regional expansion..."
     },
     {
       id: "2",
@@ -21,7 +28,8 @@ function DashboardTable() {
       category: "Technology",
       date: "Jan 15, 2026",
       news: "Tech Innovations",
-      imageUrl: "https://images.unsplash.com/photo-...",
+      status: "Published",
+      imageUrl: "",
       shortExcerpt: "Latest breakthroughs in EV battery technology and charging infrastructure.",
       fullContent: "Full article about EV technology advances..."
     },
@@ -31,7 +39,8 @@ function DashboardTable() {
       category: "Events",
       date: "Mar 10, 2026",
       news: "Upcoming Events",
-      imageUrl: "https://images.unsplash.com/photo-...",
+      status: "Draft",
+      imageUrl: "",
       shortExcerpt: "Join us for the annual sustainable energy solutions conference.",
       fullContent: "Full article about the conference..."
     }
@@ -41,6 +50,24 @@ function DashboardTable() {
   const [deletingArticle, setDeletingArticle] = useState<any>(null);
   const [isEditorOpen, setIsEditorOpen] = useState(false);
   const [isDeletePopupOpen, setIsDeletePopupOpen] = useState(false);
+
+  // فلترة المقالات حسب التبويب النشط
+  const filteredArticles = articles.filter(article => {
+    if (activeTab === "published") return article.status === "Published";
+    if (activeTab === "drafts") return article.status === "Draft";
+    return true; // all
+  });
+
+  useEffect(() => {
+    // استقبال حدث فتح نافذة المقال الجديد
+    const handleOpenNewArticle = () => {
+      setEditingArticle(null);
+      setIsEditorOpen(true);
+    };
+
+    window.addEventListener('openNewArticle', handleOpenNewArticle);
+    return () => window.removeEventListener('openNewArticle', handleOpenNewArticle);
+  }, []);
 
   const handleEdit = (id: string) => {
     const article = articles.find(article => article.id === id);
@@ -61,14 +88,8 @@ function DashboardTable() {
   const handleDeleteConfirm = () => {
     if (deletingArticle) {
       setArticles(articles.filter(article => article.id !== deletingArticle.id));
-      alert(`"${deletingArticle.title}" has been deleted successfully!`);
     }
     setDeletingArticle(null);
-  };
-
-  const handleNewArticle = () => {
-    setEditingArticle(null);
-    setIsEditorOpen(true);
   };
 
   const handleSubmitArticle = (articleData: any) => {
@@ -79,12 +100,10 @@ function DashboardTable() {
           ? { 
               ...article, 
               ...articleData,
-              id: editingArticle.id, // الحفاظ على الـ ID
-              date: article.date // الحفاظ على تاريخ الإنشاء
+              status: article.status // الحفاظ على الحالة
             }
           : article
       ));
-      alert("Article updated successfully!");
     } else {
       // إضافة مقال جديد
       const newArticle = {
@@ -94,10 +113,10 @@ function DashboardTable() {
           month: 'short', 
           day: '2-digit', 
           year: 'numeric' 
-        })
+        }),
+        status: "Draft" // المقالات الجديدة تكون Draft افتراضياً
       };
       setArticles([...articles, newArticle]);
-      alert("New article created successfully!");
     }
     
     setIsEditorOpen(false);
@@ -106,13 +125,17 @@ function DashboardTable() {
   return (
     <>
       <ArticleTable
-        articles={articles.map(({ id, title, category, date }) => ({ id, title, category, date }))}
+        articles={filteredArticles.map(({ id, title, category, date, status }) => ({ 
+          id, 
+          title, 
+          category, 
+          date,
+          status 
+        }))}
         onEdit={handleEdit}
         onDelete={handleDeleteClick}
-        onNew={handleNewArticle}
       />
 
-      {/* Edit/New Article Popup */}
       <ArticleEditorPopup
         isOpen={isEditorOpen}
         onClose={() => {
@@ -123,7 +146,6 @@ function DashboardTable() {
         article={editingArticle}
       />
 
-      {/* Delete Confirmation Popup */}
       <DeleteConfirmationPopup
         isOpen={isDeletePopupOpen}
         onClose={() => {
