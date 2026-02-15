@@ -1,4 +1,10 @@
+"use client";
+
+import { useRouter } from "next/navigation";
+
 function DashboardContent() {
+  const router = useRouter();
+  
   const stats = [
     { label: "Total Blogs", value: 3, change: "+12%", icon: "📄" },
     { label: "Total FAQs", value: 3, change: "+8%", icon: "❓" },
@@ -32,6 +38,35 @@ function DashboardContent() {
       time: "2 days ago"
     }
   ];
+
+  // دالة فتح نافذة المقال الجديد
+  const handleCreateNewBlog = () => {
+    // أولاً: التوجه إلى صفحة blogs
+    router.push('/dashboard/blogs');
+    
+    // ثانياً: فتح الـ popup بعد التحميل
+    setTimeout(() => {
+      const event = new CustomEvent('openNewArticle');
+      window.dispatchEvent(event);
+    }, 100);
+  };
+
+  // دالة فتح نافذة الـ FAQ الجديد
+  const handleAddNewFaq = () => {
+    // أولاً: التوجه إلى صفحة faqs
+    router.push('/dashboard/faqs');
+    
+    // ثانياً: فتح الـ popup بعد التحميل
+    setTimeout(() => {
+      const event = new CustomEvent('openNewFaq');
+      window.dispatchEvent(event);
+    }, 100);
+  };
+
+  // دالة التوجه إلى صفحة الـ leads
+  const handleViewLeads = () => {
+    router.push('/dashboard/leads');
+  };
 
   return (
     <div className="space-y-8">
@@ -92,34 +127,43 @@ function DashboardContent() {
         </div>
       </div>
 
-      {/* Quick Actions */}
+      {/* Quick Actions - Now Clickable */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="bg-white/10 backdrop-blur-sm rounded-2xl border border-white/10 p-6 hover:border-secondary/30 transition-colors">
+        <button
+          onClick={handleCreateNewBlog}
+          className="text-left bg-white/10 backdrop-blur-sm rounded-2xl border border-white/10 p-6 hover:border-secondary/30 transition-colors hover:bg-white/20 cursor-pointer w-full"
+        >
           <h3 className="font-semibold text-white mb-1">
             Create New Blog
           </h3>
           <p className="text-sm text-white/70">
             Start writing a new blog post
           </p>
-        </div>
+        </button>
 
-        <div className="bg-white/10 backdrop-blur-sm rounded-2xl border border-white/10 p-6 hover:border-secondary/30 transition-colors">
+        <button
+          onClick={handleAddNewFaq}
+          className="text-left bg-white/10 backdrop-blur-sm rounded-2xl border border-white/10 p-6 hover:border-secondary/30 transition-colors hover:bg-white/20 cursor-pointer w-full"
+        >
           <h3 className="font-semibold text-white mb-1">
             Add New FAQ
           </h3>
           <p className="text-sm text-white/70">
             Help your customers with new answers
           </p>
-        </div>
+        </button>
 
-        <div className="bg-white/10 backdrop-blur-sm rounded-2xl border border-white/10 p-6 hover:border-secondary/30 transition-colors">
+        <button
+          onClick={handleViewLeads}
+          className="text-left bg-white/10 backdrop-blur-sm rounded-2xl border border-white/10 p-6 hover:border-secondary/30 transition-colors hover:bg-white/20 cursor-pointer w-full"
+        >
           <h3 className="font-semibold text-white mb-1">
             View Contact Leads
           </h3>
           <p className="text-sm text-white/70">
             Check new inquiries from customers
           </p>
-        </div>
+        </button>
       </div>
     </div>
   );

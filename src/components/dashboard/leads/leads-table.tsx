@@ -13,7 +13,6 @@ type LeadsTableProps = {
 type Lead = {
   id: string;
   name: string;
-  company: string;
   email: string;
   phone: string;
   message: string;
@@ -26,7 +25,6 @@ function LeadsTable({ activeTab = "all", searchQuery = "" }: LeadsTableProps) {
     {
       id: "1",
       name: "John Smith",
-      company: "ABC Corporation",
       email: "john.smith@abccorp.com",
       phone: "+1 (555) 123-4567",
       message: "We are interested in implementing an ERP solution for our manufacturing business. Could you provide information about your ERP system, pricing, and implementation timeline? We have 200+ employees and need a scalable solution.",
@@ -36,7 +34,6 @@ function LeadsTable({ activeTab = "all", searchQuery = "" }: LeadsTableProps) {
     {
       id: "2",
       name: "Emma Wilson",
-      company: "TechStart Inc",
       email: "emma.wilson@techstart.com",
       phone: "+1 (555) 987-6543",
       message: "Looking for a cloud-based ERP solution for our growing startup. What modules do you offer for small businesses? We're particularly interested in finance and HR modules.",
@@ -46,7 +43,6 @@ function LeadsTable({ activeTab = "all", searchQuery = "" }: LeadsTableProps) {
     {
       id: "3",
       name: "Ahmed Hassan",
-      company: "GlobalTech",
       email: "ahmed.hassan@globaltech.ae",
       phone: "+971 50 123 4567",
       message: "We need ERP implementation support for our Dubai office. Do you provide training and ongoing support? We're specifically looking for Arabic language support.",
@@ -70,7 +66,6 @@ function LeadsTable({ activeTab = "all", searchQuery = "" }: LeadsTableProps) {
       const query = searchQuery.toLowerCase();
       return (
         lead.name.toLowerCase().includes(query) ||
-        lead.company.toLowerCase().includes(query) ||
         lead.email.toLowerCase().includes(query) ||
         lead.message.toLowerCase().includes(query)
       );
@@ -152,9 +147,6 @@ function LeadsTable({ activeTab = "all", searchQuery = "" }: LeadsTableProps) {
                 <h3 className="text-sm font-medium text-white mb-1">
                   {lead.name}
                 </h3>
-                <p className="text-xs text-white/50">
-                  {lead.company}
-                </p>
               </div>
 
               {/* Contact Info */}
