@@ -4,45 +4,47 @@ import { useState, useEffect } from "react";
 import { FaqEditorPopup } from "./faq-editor-popup";
 import { DeleteConfirmationPopup } from "../dashboard/delete-confirmation-popup";
 
-type TabType = "all" | "general" | "implementation" | "security";
-
 type FaqsTableProps = {
-  activeTab?: TabType;
+  searchQuery?: string;
 };
 
 type Faq = {
   id: string;
   order: number;
-  question: string;
-  category: string;
-  answer: string;
+  questionEn: string;
+  questionAr: string;
+  answerEn: string;
+  answerAr: string;
   languages: string[];
 };
 
-function FaqsTable({ activeTab = "all" }: FaqsTableProps) {
+function FaqsTable({ searchQuery = "" }: FaqsTableProps) {
   const [faqs, setFaqs] = useState<Faq[]>([
     {
       id: "1",
       order: 1,
-      question: "What is ERP and why does my business need it?",
-      category: "General",
-      answer: "ERP (Enterprise Resource Planning) is an integrated software system that manages core business processes like finance, HR, manufacturing, and supply chain in real-time.",
+      questionEn: "What is ERP and why does my business need it?",
+      questionAr: "ما هو تخطيط موارد المؤسسة ولماذا يحتاجه عملي؟",
+      answerEn: "ERP (Enterprise Resource Planning) is an integrated software system that manages core business processes like finance, HR, manufacturing, and supply chain in real-time.",
+      answerAr: "نظام تخطيط موارد المؤسسة (ERP) هو نظام برمجي متكامل يدير العمليات التجارية الأساسية مثل المالية والموارد البشرية والتصنيع وسلسلة التوريد في الوقت الفعلي.",
       languages: ["EN", "AR"]
     },
     {
       id: "2",
       order: 2,
-      question: "How long does ERP implementation typically take?",
-      category: "Implementation",
-      answer: "Implementation time varies based on company size and complexity. Small to medium businesses typically take 3-6 months, while larger enterprises may need 6-12 months.",
+      questionEn: "How long does ERP implementation typically take?",
+      questionAr: "كم من الوقت يستغرق تنفيذ نظام تخطيط موارد المؤسسة عادة؟",
+      answerEn: "Implementation time varies based on company size and complexity. Small to medium businesses typically take 3-6 months, while larger enterprises may need 6-12 months.",
+      answerAr: "يختلف وقت التنفيذ بناءً على حجم الشركة وتعقيدها. تستغرق الشركات الصغيرة والمتوسطة عادة من 3 إلى 6 أشهر، بينما قد تحتاج المؤسسات الأكبر من 6 إلى 12 شهراً.",
       languages: ["EN", "AR"]
     },
     {
       id: "3",
       order: 3,
-      question: "Is cloud ERP more secure than on-premise solutions?",
-      category: "Security",
-      answer: "Modern cloud ERP solutions offer enterprise-grade security with encryption, regular updates, and compliance certifications that many on-premise systems struggle to match.",
+      questionEn: "Is cloud ERP more secure than on-premise solutions?",
+      questionAr: "هل نظام تخطيط موارد المؤسسة السحابي أكثر أماناً من الحلول المحلية؟",
+      answerEn: "Modern cloud ERP solutions offer enterprise-grade security with encryption, regular updates, and compliance certifications that many on-premise systems struggle to match.",
+      answerAr: "توفر حلول تخطيط موارد المؤسسة السحابية الحديثة أماناً على مستوى المؤسسات مع التشفير والتحديثات المنتظمة وشهادات الامتثال التي تجد العديد من الأنظمة المحلية صعوبة في مضاهاتها.",
       languages: ["EN", "AR"]
     }
   ]);
@@ -51,11 +53,20 @@ function FaqsTable({ activeTab = "all" }: FaqsTableProps) {
   const [deletingFaq, setDeletingFaq] = useState<Faq | null>(null);
   const [isEditorOpen, setIsEditorOpen] = useState(false);
   const [isDeletePopupOpen, setIsDeletePopupOpen] = useState(false);
+  const [language, setLanguage] = useState<"en" | "ar">("en");
 
-  // Filter FAQs by category
+  // Filter FAQs by search query
   const filteredFaqs = faqs.filter(faq => {
-    if (activeTab === "all") return true;
-    return faq.category.toLowerCase() === activeTab.toLowerCase();
+    if (searchQuery) {
+      const query = searchQuery.toLowerCase();
+      return (
+        faq.questionEn.toLowerCase().includes(query) ||
+        faq.questionAr.includes(query) ||
+        faq.answerEn.toLowerCase().includes(query) ||
+        faq.answerAr.includes(query)
+      );
+    }
+    return true;
   });
 
   useEffect(() => {
@@ -100,7 +111,7 @@ function FaqsTable({ activeTab = "all" }: FaqsTableProps) {
           ? { 
               ...faq, 
               ...faqData,
-              order: faq.order // Keep original order
+              order: faqData.order,
             }
           : faq
       ));
@@ -108,8 +119,6 @@ function FaqsTable({ activeTab = "all" }: FaqsTableProps) {
       // Add new FAQ
       const newFaq = {
         ...faqData,
-        id: Date.now().toString(),
-        order: faqs.length + 1,
         languages: ["EN", "AR"]
       };
       setFaqs([...faqs, newFaq]);
@@ -122,21 +131,46 @@ function FaqsTable({ activeTab = "all" }: FaqsTableProps) {
     return (
       <div className="text-center py-16">
         <p className="text-white/40 text-lg">No FAQs found</p>
-        <p className="text-white/20 text-sm mt-2">Try changing the filter or create a new FAQ</p>
+        <p className="text-white/20 text-sm mt-2">Try changing the search query or create a new FAQ</p>
       </div>
     );
   }
 
   return (
     <>
+      {/* Language Toggle */}
+      <div className="flex justify-end p-4 border-b border-white/10">
+        <div className="flex gap-2 bg-white/5 rounded-lg p-1">
+          <button
+            onClick={() => setLanguage("en")}
+            className={`px-4 py-2 text-sm font-medium rounded-md transition-colors
+              ${language === "en" 
+                ? "bg-secondary text-primary" 
+                : "text-white/60 hover:text-white"
+              }`}
+          >
+            English
+          </button>
+          <button
+            onClick={() => setLanguage("ar")}
+            className={`px-4 py-2 text-sm font-medium rounded-md transition-colors
+              ${language === "ar" 
+                ? "bg-secondary text-primary" 
+                : "text-white/60 hover:text-white"
+              }`}
+          >
+            العربية
+          </button>
+        </div>
+      </div>
+
       <div className="text-white/70">
         {/* Table Header */}
         <div className="grid grid-cols-12 gap-4 px-6 py-4 border-b border-white/10 text-xs font-medium text-white/50 uppercase tracking-wider">
-          <div className="col-span-1">Order</div>
-          <div className="col-span-4">Question (EN)</div>
-          <div className="col-span-2">Category</div>
+          <div className="col-span-1">#</div>
+          <div className="col-span-7">Question</div>
           <div className="col-span-2">Languages</div>
-          <div className="col-span-3 text-right">Actions</div>
+          <div className="col-span-2 text-right">Actions</div>
         </div>
 
         {/* Table Body */}
@@ -151,20 +185,13 @@ function FaqsTable({ activeTab = "all" }: FaqsTableProps) {
               </div>
 
               {/* Question */}
-              <div className="col-span-4">
-                <h3 className="text-sm font-medium text-white mb-2">
-                  {faq.question}
+              <div className="col-span-7">
+                <h3 className="text-sm font-medium text-white mb-2" dir={language === "ar" ? "rtl" : "ltr"}>
+                  {language === "en" ? faq.questionEn : faq.questionAr}
                 </h3>
-                <p className="text-xs text-white/50 line-clamp-2">
-                  {faq.answer}
+                <p className="text-xs text-white/50 line-clamp-2" dir={language === "ar" ? "rtl" : "ltr"}>
+                  {language === "en" ? faq.answerEn : faq.answerAr}
                 </p>
-              </div>
-
-              {/* Category */}
-              <div className="col-span-2">
-                <span className="inline-flex px-3 py-1.5 text-xs rounded-full bg-secondary/20 text-secondary border border-secondary/30">
-                  {faq.category}
-                </span>
               </div>
 
               {/* Languages */}
@@ -182,7 +209,7 @@ function FaqsTable({ activeTab = "all" }: FaqsTableProps) {
               </div>
 
               {/* Actions */}
-              <div className="col-span-3 flex items-start justify-end gap-1">
+              <div className="col-span-2 flex items-start justify-end gap-1">
                 <button
                   onClick={() => handleEdit(faq.id)}
                   className="p-2 hover:bg-white/10 rounded-lg transition-colors text-white/60 hover:text-white"
@@ -203,15 +230,6 @@ function FaqsTable({ activeTab = "all" }: FaqsTableProps) {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
                       d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" 
                     />
-                  </svg>
-                </button>
-                <button
-                  className="p-2 hover:bg-white/10 rounded-lg transition-colors text-white/60 hover:text-white"
-                  title="View details"
-                >
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 015.656 0l4 4a4 4 0 01-5.656 5.656l-1.102-1.101" />
                   </svg>
                 </button>
               </div>
@@ -237,7 +255,7 @@ function FaqsTable({ activeTab = "all" }: FaqsTableProps) {
           setDeletingFaq(null);
         }}
         onConfirm={handleDeleteConfirm}
-        articleTitle={deletingFaq?.question}
+        articleTitle={language === "en" ? deletingFaq?.questionEn : deletingFaq?.questionAr}
       />
     </>
   );
