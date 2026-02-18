@@ -3,3 +3,5 @@ export { BlogsHeader } from "./blogs-header";
 export { BlogsStats } from "./blogs-stats";
 export { BlogsTabs } from "./blogs-tabs";
 export { BlogsActions } from "./blogs-actions";
+export { BlogsTable } from "./blogs-table";
+export { BlogEditorPopup } from "./blog-editor-popup";
