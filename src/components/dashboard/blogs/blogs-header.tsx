@@ -5,7 +5,7 @@ function BlogsHeader() {
         Blogs Management
       </h1>
       <p className="text-sm sm:text-base text-white/70">
-        Create and manage your blog posts in English and Arabic
+        Create and manage your blog posts
       </p>
     </div>
   );
