@@ -76,8 +76,6 @@ function BlogsTable({ activeTab = "all", searchQuery = "" }: BlogsTableProps) {
   const [deletingBlog, setDeletingBlog] = useState<Blog | null>(null);
   const [isEditorOpen, setIsEditorOpen] = useState(false);
   const [isDeletePopupOpen, setIsDeletePopupOpen] = useState(false);
-  const [language, setLanguage] = useState<"en" | "ar">("en");
-
 
   // Filter blogs by status and search query
   const filteredBlogs = blogs.filter(blog => {
@@ -90,9 +88,7 @@ function BlogsTable({ activeTab = "all", searchQuery = "" }: BlogsTableProps) {
       const query = searchQuery.toLowerCase();
       return (
         blog.titleEn.toLowerCase().includes(query) ||
-        blog.titleAr.includes(query) ||
-        blog.excerptEn.toLowerCase().includes(query) ||
-        blog.excerptAr.includes(query)
+        blog.excerptEn.toLowerCase().includes(query)
       );
     }
     
@@ -151,7 +147,7 @@ function BlogsTable({ activeTab = "all", searchQuery = "" }: BlogsTableProps) {
 
   const formatDate = (dateString: string | null) => {
     if (!dateString) return "-";
-    return new Date(dateString).toLocaleDateString(language === "en" ? "en-US" : "ar-SA", {
+    return new Date(dateString).toLocaleDateString("en-US", {
       year: 'numeric',
       month: 'short',
       day: 'numeric'
@@ -162,13 +158,13 @@ function BlogsTable({ activeTab = "all", searchQuery = "" }: BlogsTableProps) {
     if (status === "published") {
       return (
         <span className="inline-flex px-2 sm:px-3 py-1 sm:py-1.5 text-xs rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
-          {language === "en" ? "Published" : "منشور"}
+          Published
         </span>
       );
     }
     return (
       <span className="inline-flex px-2 sm:px-3 py-1 sm:py-1.5 text-xs rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/30">
-        {language === "en" ? "Draft" : "مسودة"}
+        Draft
       </span>
     );
   };
@@ -184,60 +180,26 @@ function BlogsTable({ activeTab = "all", searchQuery = "" }: BlogsTableProps) {
 
   return (
     <>
-      {/* Language Toggle - Responsive */}
-      <div className="flex justify-end p-3 sm:p-4 border-b border-white/10">
-        <div className="flex gap-1 sm:gap-2 bg-white/5 rounded-lg p-1">
-          <button
-            onClick={() => setLanguage("en")}
-            className={`px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-medium rounded-md transition-colors
-              ${language === "en" 
-                ? "bg-secondary text-primary" 
-                : "text-white/60 hover:text-white"
-              }`}
-          >
-            English
-          </button>
-          <button
-            onClick={() => setLanguage("ar")}
-            className={`px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-medium rounded-md transition-colors
-              ${language === "ar" 
-                ? "bg-secondary text-primary" 
-                : "text-white/60 hover:text-white"
-              }`}
-          >
-            العربية
-          </button>
-        </div>
-      </div>
-
       {/* Mobile View (Card Layout) */}
       <div className="block lg:hidden divide-y divide-white/10">
         {filteredBlogs.map((blog) => (
           <div key={blog.id} className="p-4 space-y-3 hover:bg-white/5 transition-colors">
             {/* Title and Status */}
             <div className="flex items-start justify-between gap-2">
-              <h3 className="text-sm font-medium text-white line-clamp-2" dir={language === "ar" ? "rtl" : "ltr"}>
-                {language === "en" ? blog.titleEn : blog.titleAr}
+              <h3 className="text-sm font-medium text-white line-clamp-2">
+                {blog.titleEn}
               </h3>
               {getStatusBadge(blog.status)}
             </div>
 
             {/* Excerpt */}
-            <p className="text-xs text-white/50 line-clamp-2" dir={language === "ar" ? "rtl" : "ltr"}>
-              {language === "en" ? blog.excerptEn : blog.excerptAr}
+            <p className="text-xs text-white/50 line-clamp-2">
+              {blog.excerptEn}
             </p>
 
-            {/* Meta Info */}
-            <div className="flex flex-wrap items-center gap-3 text-xs text-white/40">
+            {/* Meta Info - فقط التاريخ الآن */}
+            <div className="flex items-center gap-3 text-xs text-white/40">
               <span>{formatDate(blog.publishedAt)}</span>
-              <span>•</span>
-              <div className="flex gap-1">
-                {blog.languages.map((lang) => (
-                  <span key={lang} className="px-1.5 py-0.5 bg-white/10 rounded text-[10px]">
-                    {lang}
-                  </span>
-                ))}
-              </div>
             </div>
 
             {/* Actions */}
@@ -245,7 +207,7 @@ function BlogsTable({ activeTab = "all", searchQuery = "" }: BlogsTableProps) {
               <button
                 onClick={() => handleEdit(blog.id)}
                 className="p-2 hover:bg-white/10 rounded-lg transition-colors text-white/60 hover:text-white"
-                title={language === "en" ? "Edit" : "تعديل"}
+                title="Edit"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
@@ -256,7 +218,7 @@ function BlogsTable({ activeTab = "all", searchQuery = "" }: BlogsTableProps) {
               <button
                 onClick={() => handleDeleteClick(blog.id)}
                 className="p-2 hover:bg-red-500/10 rounded-lg transition-colors text-white/60 hover:text-red-400"
-                title={language === "en" ? "Delete" : "حذف"}
+                title="Delete"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
@@ -272,26 +234,25 @@ function BlogsTable({ activeTab = "all", searchQuery = "" }: BlogsTableProps) {
       {/* Desktop View (Table Layout) */}
       <div className="hidden lg:block text-white/70 overflow-x-auto">
         <div className="min-w-[800px]">
-          {/* Table Header */}
-          <div className="grid grid-cols-12 gap-4 px-6 py-4 border-b border-white/10 text-xs font-medium text-white/50 uppercase tracking-wider">
+          {/* Table Header - بدون عمود Languages */}
+          <div className="grid grid-cols-11 gap-4 px-6 py-4 border-b border-white/10 text-xs font-medium text-white/50 uppercase tracking-wider">
             <div className="col-span-5">Title</div>
             <div className="col-span-2">Status</div>
-            <div className="col-span-2">Date</div>
-            <div className="col-span-2">Languages</div>
+            <div className="col-span-3">Date</div>
             <div className="col-span-1 text-right">Actions</div>
           </div>
 
           {/* Table Body */}
           <div className="divide-y divide-white/10">
             {filteredBlogs.map((blog) => (
-              <div key={blog.id} className="grid grid-cols-12 gap-4 px-6 py-5 hover:bg-white/5 transition-colors">
+              <div key={blog.id} className="grid grid-cols-11 gap-4 px-6 py-5 hover:bg-white/5 transition-colors">
                 {/* Title */}
                 <div className="col-span-5">
-                  <h3 className="text-sm font-medium text-white mb-1 line-clamp-1" dir={language === "ar" ? "rtl" : "ltr"}>
-                    {language === "en" ? blog.titleEn : blog.titleAr}
+                  <h3 className="text-sm font-medium text-white mb-1 line-clamp-1">
+                    {blog.titleEn}
                   </h3>
-                  <p className="text-xs text-white/50 line-clamp-1" dir={language === "ar" ? "rtl" : "ltr"}>
-                    {language === "en" ? blog.excerptEn : blog.excerptAr}
+                  <p className="text-xs text-white/50 line-clamp-1">
+                    {blog.excerptEn}
                   </p>
                 </div>
 
@@ -301,24 +262,10 @@ function BlogsTable({ activeTab = "all", searchQuery = "" }: BlogsTableProps) {
                 </div>
 
                 {/* Date */}
-                <div className="col-span-2">
+                <div className="col-span-3">
                   <span className="text-sm text-white/60">
                     {formatDate(blog.publishedAt)}
                   </span>
-                </div>
-
-                {/* Languages */}
-                <div className="col-span-2">
-                  <div className="flex gap-1">
-                    {blog.languages.map((lang) => (
-                      <span 
-                        key={lang}
-                        className="px-2 py-1 text-xs bg-white/10 text-white/70 rounded"
-                      >
-                        {lang}
-                      </span>
-                    ))}
-                  </div>
                 </div>
 
                 {/* Actions */}
@@ -371,7 +318,7 @@ function BlogsTable({ activeTab = "all", searchQuery = "" }: BlogsTableProps) {
           setDeletingBlog(null);
         }}
         onConfirm={handleDeleteConfirm}
-        articleTitle={language === "en" ? deletingBlog?.titleEn : deletingBlog?.titleAr}
+        articleTitle={deletingBlog?.titleEn}
       />
     </>
   );

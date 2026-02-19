@@ -7,14 +7,12 @@ type LeadDetailsPopupProps = {
   isOpen: boolean;
   onClose: () => void;
   lead: any;
-  onMarkAsReplied?: (id: string) => void;
 };
 
 function LeadDetailsPopup({
   isOpen,
   onClose,
   lead,
-  onMarkAsReplied,
 }: LeadDetailsPopupProps) {
 
   useEffect(() => {
@@ -32,19 +30,6 @@ function LeadDetailsPopup({
 
   if (!lead) return null;
 
-  const getStatusColor = (status: string) => {
-    switch(status) {
-      case "New":
-        return "bg-blue-500/20 text-blue-400";
-      case "Read":
-        return "bg-amber-500/20 text-amber-400";
-      case "Replied":
-        return "bg-emerald-500/20 text-emerald-400";
-      default:
-        return "bg-white/10 text-white/60";
-    }
-  };
-
   return (
     <Modal
       open={isOpen}
@@ -55,11 +40,8 @@ function LeadDetailsPopup({
       closeButtonClassname="text-white"
     >
       <div className="space-y-6">
-        {/* Status Badge */}
-        <div className="flex justify-between items-start">
-          <span className={`inline-flex px-3 py-1.5 text-xs rounded-full font-medium ${getStatusColor(lead.status)}`}>
-            {lead.status}
-          </span>
+        {/* Date only - removed status badge */}
+        <div className="flex justify-end items-start">
           <span className="text-sm text-white/50">{lead.date}</span>
         </div>
 
@@ -107,8 +89,8 @@ function LeadDetailsPopup({
           </div>
         </div>
 
-        {/* Actions */}
-        <div className="flex justify-end gap-4 pt-6 border-t border-white/10">
+        {/* Actions - Only close button now */}
+        <div className="flex justify-end pt-6 border-t border-white/10">
           <button
             type="button"
             onClick={onClose}
@@ -116,23 +98,6 @@ function LeadDetailsPopup({
           >
             Close
           </button>
-          {lead.status !== "Replied" && onMarkAsReplied && (
-            <button
-              type="button"
-              onClick={() => {
-                onMarkAsReplied(lead.id);
-                onClose();
-              }}
-              className="px-6 py-3 rounded-2xl bg-secondary text-primary font-semibold hover:bg-secondary/90 transition-colors flex items-center gap-2"
-            >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
-                  d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" 
-                />
-              </svg>
-              Mark as Replied
-            </button>
-          )}
         </div>
       </div>
     </Modal>

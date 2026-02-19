@@ -2,25 +2,23 @@
 
 import { motion } from "framer-motion";
 
-type TabType = "all" | "general" | "implementation" | "security";
+type TabType = "all" | "published" | "drafts";
 
 type FaqsTabsProps = {
   activeTab: TabType;
   onTabChange: (tab: TabType) => void;
   counts: {
     all: number;
-    general: number;
-    implementation: number;
-    security: number;
+    published: number;
+    drafts: number;
   };
 };
 
 function FaqsTabs({ activeTab, onTabChange, counts }: FaqsTabsProps) {
   const tabs = [
     { id: "all", label: "All FAQs", count: counts.all },
-    { id: "general", label: "General", count: counts.general },
-    { id: "implementation", label: "Implementation", count: counts.implementation },
-    { id: "security", label: "Security", count: counts.security },
+    { id: "published", label: "Published", count: counts.published },
+    { id: "drafts", label: "Drafts", count: counts.drafts },
   ];
 
   return (
