@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { LeadDetailsPopup } from "./lead-details-popup";
 
 type TabType = "all" | "new" | "read" | "replied";
@@ -18,6 +18,7 @@ type Lead = {
   message: string;
   date: string;
   status: "New" | "Read" | "Replied";
+  category: string;
 };
 
 function LeadsTable({ activeTab = "all", searchQuery = "" }: LeadsTableProps) {
@@ -29,7 +30,8 @@ function LeadsTable({ activeTab = "all", searchQuery = "" }: LeadsTableProps) {
       phone: "+1 (555) 123-4567",
       message: "We are interested in implementing an ERP solution for our manufacturing business. Could you provide information about your ERP system, pricing, and implementation timeline? We have 200+ employees and need a scalable solution.",
       date: "Feb 9, 2025",
-      status: "New"
+      status: "New",
+      category: "Products"
     },
     {
       id: "2",
@@ -38,7 +40,8 @@ function LeadsTable({ activeTab = "all", searchQuery = "" }: LeadsTableProps) {
       phone: "+1 (555) 987-6543",
       message: "Looking for a cloud-based ERP solution for our growing startup. What modules do you offer for small businesses? We're particularly interested in finance and HR modules.",
       date: "Feb 8, 2025",
-      status: "Read"
+      status: "Read",
+      category: "General Inquiry"
     },
     {
       id: "3",
@@ -47,7 +50,8 @@ function LeadsTable({ activeTab = "all", searchQuery = "" }: LeadsTableProps) {
       phone: "+971 50 123 4567",
       message: "We need ERP implementation support for our Dubai office. Do you provide training and ongoing support? We're specifically looking for Arabic language support.",
       date: "Feb 7, 2025",
-      status: "Replied"
+      status: "Replied",
+      category: "Support"
     }
   ]);
 
@@ -67,7 +71,8 @@ function LeadsTable({ activeTab = "all", searchQuery = "" }: LeadsTableProps) {
       return (
         lead.name.toLowerCase().includes(query) ||
         lead.email.toLowerCase().includes(query) ||
-        lead.message.toLowerCase().includes(query)
+        lead.message.toLowerCase().includes(query) ||
+        lead.category?.toLowerCase().includes(query)
       );
     }
     
@@ -99,16 +104,21 @@ function LeadsTable({ activeTab = "all", searchQuery = "" }: LeadsTableProps) {
     ));
   };
 
-  const getStatusColor = (status: string) => {
-    switch(status) {
-      case "New":
+  // Function to get category badge color based on category type
+  const getCategoryColor = (category: string) => {
+    switch(category) {
+      case "General Inquiry":
+        return "bg-purple-500/20 text-purple-400 border border-purple-500/30";
+      case "Products":
         return "bg-blue-500/20 text-blue-400 border border-blue-500/30";
-      case "Read":
+      case "Partnership":
+        return "bg-green-500/20 text-green-400 border border-green-500/30";
+      case "Support":
         return "bg-amber-500/20 text-amber-400 border border-amber-500/30";
-      case "Replied":
-        return "bg-emerald-500/20 text-emerald-400 border border-emerald-500/30";
+      case "Jobs":
+        return "bg-pink-500/20 text-pink-400 border border-pink-500/30";
       default:
-        return "bg-white/10 text-white/60";
+        return "bg-white/10 text-white/60 border border-white/10";
     }
   };
 
@@ -126,12 +136,12 @@ function LeadsTable({ activeTab = "all", searchQuery = "" }: LeadsTableProps) {
       <div className="text-white/70">
         {/* Table Header */}
         <div className="grid grid-cols-12 gap-4 px-6 py-4 border-b border-white/10 text-xs font-medium text-white/50 uppercase tracking-wider">
-          <div className="col-span-3">Name & Company</div>
-          <div className="col-span-3">Contact Info</div>
+          <div className="col-span-2">Name & Company</div>
+          <div className="col-span-2">Contact Info</div>
           <div className="col-span-3">Message Preview</div>
           <div className="col-span-1">Date</div>
-          <div className="col-span-1">Status</div>
-          <div className="col-span-1 text-right">Actions</div>
+          <div className="col-span-2">Category</div>
+          <div className="col-span-2 text-right">Actions</div>
         </div>
 
         {/* Table Body */}
@@ -143,14 +153,14 @@ function LeadsTable({ activeTab = "all", searchQuery = "" }: LeadsTableProps) {
               onClick={() => handleViewDetails(lead.id)}
             >
               {/* Name & Company */}
-              <div className="col-span-3">
+              <div className="col-span-2">
                 <h3 className="text-sm font-medium text-white mb-1">
                   {lead.name}
                 </h3>
               </div>
 
               {/* Contact Info */}
-              <div className="col-span-3">
+              <div className="col-span-2">
                 <p className="text-sm text-white/80 mb-1">
                   {lead.email}
                 </p>
@@ -173,15 +183,15 @@ function LeadsTable({ activeTab = "all", searchQuery = "" }: LeadsTableProps) {
                 </span>
               </div>
 
-              {/* Status */}
-              <div className="col-span-1">
-                <span className={`inline-flex px-3 py-1.5 text-xs rounded-full font-medium ${getStatusColor(lead.status)}`}>
-                  {lead.status}
+              {/* Category - Read only with badge styling */}
+              <div className="col-span-2">
+                <span className={`inline-flex px-3 py-1.5 text-xs rounded-full font-medium ${getCategoryColor(lead.category)}`}>
+                  {lead.category || "Not specified"}
                 </span>
               </div>
 
               {/* Actions */}
-              <div className="col-span-1 flex items-start justify-end gap-1">
+              <div className="col-span-2 flex items-start justify-end gap-1">
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
@@ -199,22 +209,6 @@ function LeadsTable({ activeTab = "all", searchQuery = "" }: LeadsTableProps) {
                     />
                   </svg>
                 </button>
-                {lead.status !== "Replied" && (
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleMarkAsReplied(lead.id);
-                    }}
-                    className="p-2 hover:bg-emerald-500/10 rounded-lg transition-colors text-white/60 hover:text-emerald-400"
-                    title="Mark as replied"
-                  >
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
-                        d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" 
-                      />
-                    </svg>
-                  </button>
-                )}
               </div>
             </div>
           ))}
@@ -228,7 +222,6 @@ function LeadsTable({ activeTab = "all", searchQuery = "" }: LeadsTableProps) {
           setSelectedLead(null);
         }}
         lead={selectedLead}
-        onMarkAsReplied={handleMarkAsReplied}
       />
     </>
   );

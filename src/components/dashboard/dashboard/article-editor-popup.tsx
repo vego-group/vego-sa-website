@@ -59,7 +59,7 @@ function ArticleEditorPopup({
       onClose={onClose}
       title={article ? "Edit Article" : "New Article"}
       titleClassName="text-xl sm:text-2xl font-semibold text-white"
-      contentClassName="bg-gradient-to-br from-primary via-primary to-emerald-950 w-[95vw] sm:max-w-2xl lg:max-w-3xl max-h-[90vh] overflow-y-auto"
+      contentClassName="bg-gradient-to-br from-primary via-primary to-emerald-950 w-[95vw] sm:max-w-2xl lg:max-w-3xl"
       closeButtonClassname="text-white"
     >
       <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6 p-4 sm:p-6">
