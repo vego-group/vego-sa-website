@@ -1,9 +1,9 @@
 import { Cairo, Cormorant_Garamond } from "next/font/google";
 import type { ReactNode } from "react";
-import "../globals.css";  // تعديل المسار: من dashboard إلى app
+import "../globals.css";
 import "swiper/css";
 import "swiper/css/pagination";
-import { Sidebar } from "../../components/dashboard/dashboard/sidebar";  // هذا المسار صحيح
+import { Sidebar } from "../../components/dashboard/dashboard/sidebar";
 
 type DashboardLayoutProps = {
   children: ReactNode;
@@ -32,9 +32,12 @@ function DashboardLayout({ children }: DashboardLayoutProps) {
           
           <div className="relative flex min-h-svh">
             <Sidebar />
-            <div className="flex-1 ml-64">
-              {children}
-            </div>
+            {/* Main content - responsive margins */}
+            <main className="flex-1 w-full min-w-0 pt-[57px] md:pt-0 md:ml-16 lg:ml-64">
+              <div className="max-w-full overflow-x-hidden">
+                {children}
+              </div>
+            </main>
           </div>
         </div>
       </body>

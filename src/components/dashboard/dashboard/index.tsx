@@ -17,7 +17,7 @@ function Dashboard() {
       */}
       <main className="flex-1 min-w-0 pt-[57px] md:pt-0 md:ml-16 lg:ml-64">
         <DashboardShell>
-          <div className="w-full space-y-4 sm:space-y-6">
+          <div className="w-full space-y-3 sm:space-y-4 md:space-y-6">
             <DashboardHeader />
             <DashboardContent />
           </div>

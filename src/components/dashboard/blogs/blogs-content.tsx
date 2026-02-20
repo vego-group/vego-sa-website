@@ -21,19 +21,34 @@ function BlogsContent() {
   };
 
   return (
-    <div className="w-full space-y-4 sm:space-y-6 lg:space-y-8 px-3 sm:px-4 lg:px-0">
+    <div className="w-full space-y-4 sm:space-y-5 lg:space-y-6 px-3 sm:px-4 lg:px-0 pb-6 sm:pb-8">
       <BlogsHeader />
       <BlogsStats />
-      <DashboardSearch 
-        placeholder={activeTab === "all" ? "Search all blogs..." : activeTab === "published" ? "Search published blogs..." : "Search drafts..."}
-        onSearch={setSearchQuery}
-      />
-      <BlogsTabs 
-        activeTab={activeTab} 
-        onTabChange={setActiveTab} 
-        counts={counts}
-      />
-      <BlogsActions />
+      
+      {/* Search Section */}
+      <div className="px-3 sm:px-0">
+        <DashboardSearch 
+          placeholder={
+            activeTab === "all" ? "Search all blogs by title or content..." : 
+            activeTab === "published" ? "Search published blogs..." : 
+            "Search drafts..."
+          }
+          onSearch={setSearchQuery}
+          value={searchQuery}
+        />
+      </div>
+      
+      {/* Tabs and Actions - Reordered for mobile */}
+      <div className="space-y-3 sm:space-y-4">
+        <BlogsTabs 
+          activeTab={activeTab} 
+          onTabChange={setActiveTab} 
+          counts={counts}
+        />
+        <BlogsActions />
+      </div>
+      
+      {/* Table Section */}
       <div className="bg-white/5 backdrop-blur-sm rounded-xl sm:rounded-2xl border border-white/10 overflow-hidden">
         <BlogsTable activeTab={activeTab} searchQuery={searchQuery} />
       </div>
