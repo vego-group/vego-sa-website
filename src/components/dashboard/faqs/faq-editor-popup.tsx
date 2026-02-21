@@ -47,7 +47,7 @@ function FaqEditorPopup({
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    
+
     const faqData = {
       id: faq?.id || Date.now().toString(),
       order: parseInt(formData.get("order") as string) || 1,
@@ -56,10 +56,13 @@ function FaqEditorPopup({
       answerEn: formData.get("answerEn") as string,
       answerAr: formData.get("answerAr") as string,
       status: formData.get("status") as string,
-      publishedAt: formData.get("status") === "published" ? new Date().toISOString() : null,
+      publishedAt:
+        formData.get("status") === "published"
+          ? new Date().toISOString()
+          : null,
       languages: ["EN", "AR"],
     };
-    
+
     onSubmit(faqData);
   };
 
@@ -69,19 +72,23 @@ function FaqEditorPopup({
       onClose={onClose}
       title={faq ? "Edit FAQ" : "Create New FAQ"}
       titleClassName="text-xl sm:text-2xl font-semibold text-white"
-      contentClassName="bg-gradient-to-br from-primary via-primary to-emerald-950 w-[95vw] sm:max-w-2xl lg:max-w-3xl"
+      contentClassName="bg-linear-to-br from-emerald-950 via-primary to-emerald-950 sm:max-w-2xl lg:max-w-3xl"
       closeButtonClassname="text-white"
     >
-      <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6 p-4 sm:p-6">
+      <form
+        onSubmit={handleSubmit}
+        className="space-y-4 sm:space-y-6 p-4 sm:p-6"
+      >
         {/* Language Tabs - Responsive */}
-        <div className="flex flex-col sm:flex-row gap-2 border-b border-white/10 pb-2">
+        <div className="flex flex-col sm:flex-row gap-2 pb-2">
           <button
             type="button"
             onClick={() => setActiveLanguage("en")}
             className={`px-4 py-2 text-sm font-medium transition-colors relative rounded-lg sm:rounded-none
-              ${activeLanguage === "en" 
-                ? "text-white bg-secondary/20 sm:bg-transparent" 
-                : "text-white/60 hover:text-white/80"
+              ${
+                activeLanguage === "en"
+                  ? "text-white bg-secondary/20 sm:bg-transparent"
+                  : "text-white/60 hover:text-white/80"
               }`}
           >
             English Version
@@ -93,9 +100,10 @@ function FaqEditorPopup({
             type="button"
             onClick={() => setActiveLanguage("ar")}
             className={`px-4 py-2 text-sm font-medium transition-colors relative rounded-lg sm:rounded-none
-              ${activeLanguage === "ar" 
-                ? "text-white bg-secondary/20 sm:bg-transparent" 
-                : "text-white/60 hover:text-white/80"
+              ${
+                activeLanguage === "ar"
+                  ? "text-white bg-secondary/20 sm:bg-transparent"
+                  : "text-white/60 hover:text-white/80"
               }`}
           >
             Arabic Version (النسخة العربية)
@@ -106,9 +114,9 @@ function FaqEditorPopup({
         </div>
 
         {/* English Version */}
-        <div className={`space-y-4 sm:space-y-6 ${activeLanguage === "en" ? "block" : "hidden"}`}>
-          <h3 className="text-lg font-medium text-white border-b border-white/10 pb-2">English Version</h3>
-          
+        <div
+          className={`space-y-4 sm:space-y-6 ${activeLanguage === "en" ? "block" : "hidden"}`}
+        >
           {/* Question EN */}
           <div>
             <label className="block text-sm font-medium text-white/80 mb-1 sm:mb-2">
@@ -142,9 +150,10 @@ function FaqEditorPopup({
         </div>
 
         {/* Arabic Version */}
-        <div className={`space-y-4 sm:space-y-6 ${activeLanguage === "ar" ? "block" : "hidden"}`} dir="rtl">
-          <h3 className="text-lg font-medium text-white border-b border-white/10 pb-2">Arabic Version (النسخة العربية)</h3>
-          
+        <div
+          className={`space-y-4 sm:space-y-6 ${activeLanguage === "ar" ? "block" : "hidden"}`}
+          dir="rtl"
+        >
           {/* Question AR */}
           <div>
             <label className="block text-sm font-medium text-white/80 mb-1 sm:mb-2 text-right">
@@ -178,12 +187,12 @@ function FaqEditorPopup({
         </div>
 
         {/* Separator */}
-        <div className="border-t border-white/10 my-2 sm:my-4"></div>
+        <div className="my-2 sm:my-4"></div>
 
         {/* Settings */}
         <div className="space-y-4 sm:space-y-6">
-          <h3 className="text-lg font-medium text-white border-b border-white/10 pb-2">Settings</h3>
-          
+          <h3 className="text-lg font-medium text-white pb-2">Settings</h3>
+
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
             {/* Display Order */}
             <div>
@@ -197,7 +206,9 @@ function FaqEditorPopup({
                 min="1"
                 className="w-full rounded-xl sm:rounded-2xl border border-white/10 bg-white/5 px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base text-white focus:border-secondary/60 focus:ring-1 focus:ring-secondary/30 focus:outline-none"
               />
-              <p className="text-xs text-white/40 mt-1">Lower numbers appear first</p>
+              <p className="text-xs text-white/40 mt-1">
+                Lower numbers appear first
+              </p>
             </div>
 
             {/* Status */}
@@ -210,8 +221,12 @@ function FaqEditorPopup({
                 defaultValue={currentFaq.status || "draft"}
                 className="w-full rounded-xl sm:rounded-2xl border border-white/10 bg-white/5 px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base text-white focus:border-secondary/60 focus:ring-1 focus:ring-secondary/30 focus:outline-none"
               >
-                <option value="draft" className="bg-primary">Save as Draft</option>
-                <option value="published" className="bg-primary">Publish</option>
+                <option value="draft" className="bg-primary">
+                  Save as Draft
+                </option>
+                <option value="published" className="bg-primary">
+                  Publish
+                </option>
               </select>
             </div>
           </div>
@@ -220,12 +235,14 @@ function FaqEditorPopup({
         {/* Tip Section */}
         <div className="bg-white/5 rounded-xl sm:rounded-2xl border border-white/10 p-3 sm:p-4">
           <p className="text-xs sm:text-sm text-white/70">
-            <span className="font-semibold text-secondary">Tip:</span> Keep questions concise (under 100 characters) and answers informative but not too long (under 500 characters) for better readability.
+            <span className="font-semibold text-secondary">Tip:</span> Keep
+            questions concise (under 100 characters) and answers informative but
+            not too long (under 500 characters) for better readability.
           </p>
         </div>
 
         {/* Buttons */}
-        <div className="flex flex-col-reverse sm:flex-row justify-end gap-3 sm:gap-4 pt-4 sm:pt-6 border-t border-white/10">
+        <div className="flex flex-col-reverse sm:flex-row justify-end gap-3 sm:gap-4 pt-4 sm:pt-6">
           <button
             type="button"
             onClick={onClose}

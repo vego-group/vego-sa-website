@@ -1,6 +1,7 @@
 "use client";
 
 import Modal from "@/components/ui/modal";
+import Image from "next/image";
 import { useEffect, useState, useRef } from "react";
 
 type BlogEditorPopupProps = {
@@ -65,7 +66,7 @@ function BlogEditorPopup({
     const file = e.target.files?.[0];
     if (file) {
       setUploadedImage(file);
-      
+
       // Create preview URL
       const reader = new FileReader();
       reader.onloadend = () => {
@@ -87,9 +88,9 @@ function BlogEditorPopup({
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    
+
     const coverImage = imagePreview || selectedImage;
-    
+
     const blogData = {
       id: blog?.id || Date.now().toString(),
       titleEn: formData.get("titleEn") as string,
@@ -104,10 +105,13 @@ function BlogEditorPopup({
       metaDescriptionAr: formData.get("metaDescriptionAr") as string,
       status: formData.get("status") as string,
       coverImage: coverImage,
-      publishedAt: formData.get("status") === "published" ? new Date().toISOString() : null,
+      publishedAt:
+        formData.get("status") === "published"
+          ? new Date().toISOString()
+          : null,
       languages: ["EN", "AR"],
     };
-    
+
     onSubmit(blogData);
   };
 
@@ -117,19 +121,23 @@ function BlogEditorPopup({
       onClose={onClose}
       title={blog ? "Edit Blog Post" : "Create New Blog"}
       titleClassName="text-xl sm:text-2xl font-semibold text-white"
-      contentClassName="bg-gradient-to-br from-primary via-primary to-emerald-950 w-[95vw] sm:max-w-4xl mx-auto max-h-[90vh] overflow-y-auto"
+      contentClassName="bg-linear-to-br from-emerald-950 via-primary to-emerald-950 sm:max-w-4xl"
       closeButtonClassname="text-white"
     >
-      <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6 p-3 sm:p-4 lg:p-6">
+      <form
+        onSubmit={handleSubmit}
+        className="space-y-4 sm:space-y-6 p-3 sm:p-4 lg:p-6"
+      >
         {/* Language Tabs - Improved mobile */}
-        <div className="flex flex-col sm:flex-row gap-2 border-b border-white/10 pb-2 sticky top-0 bg-primary/95 backdrop-blur-sm z-10 -mt-2 pt-2">
+        <div className="flex flex-col sm:flex-row gap-2 pb-2 -mt-2 pt-2">
           <button
             type="button"
             onClick={() => setActiveLanguage("en")}
             className={`px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium transition-colors relative rounded-lg sm:rounded-none
-              ${activeLanguage === "en" 
-                ? "text-white bg-secondary/20 sm:bg-transparent" 
-                : "text-white/60 hover:text-white/80"
+              ${
+                activeLanguage === "en"
+                  ? "text-white bg-secondary/20 sm:bg-transparent"
+                  : "text-white/60 hover:text-white/80"
               }`}
           >
             <span className="sm:hidden">🇬🇧 EN</span>
@@ -142,13 +150,16 @@ function BlogEditorPopup({
             type="button"
             onClick={() => setActiveLanguage("ar")}
             className={`px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium transition-colors relative rounded-lg sm:rounded-none
-              ${activeLanguage === "ar" 
-                ? "text-white bg-secondary/20 sm:bg-transparent" 
-                : "text-white/60 hover:text-white/80"
+              ${
+                activeLanguage === "ar"
+                  ? "text-white bg-secondary/20 sm:bg-transparent"
+                  : "text-white/60 hover:text-white/80"
               }`}
           >
             <span className="sm:hidden">🇸🇦 AR</span>
-            <span className="hidden sm:inline">Arabic Version (النسخة العربية)</span>
+            <span className="hidden sm:inline">
+              Arabic Version (النسخة العربية)
+            </span>
             {activeLanguage === "ar" && (
               <div className="hidden sm:block absolute bottom-0 left-0 right-0 h-0.5 bg-secondary" />
             )}
@@ -156,9 +167,9 @@ function BlogEditorPopup({
         </div>
 
         {/* English Version */}
-        <div className={`space-y-4 sm:space-y-6 ${activeLanguage === "en" ? "block" : "hidden"}`}>
-          <h3 className="text-base sm:text-lg font-medium text-white border-b border-white/10 pb-2">English Version</h3>
-          
+        <div
+          className={`space-y-4  sm:space-y-6 ${activeLanguage === "en" ? "block" : "hidden"}`}
+        >
           {/* Blog Title */}
           <div>
             <label className="block text-xs sm:text-sm font-medium text-white/80 mb-1 sm:mb-2">
@@ -204,13 +215,17 @@ function BlogEditorPopup({
               required
               dir="ltr"
             />
-            <p className="text-xs text-white/40 mt-1">You can use HTML tags for formatting</p>
+            <p className="text-xs text-white/40 mt-1">
+              You can use HTML tags for formatting
+            </p>
           </div>
 
           {/* English SEO Settings */}
-          <div className="space-y-3 sm:space-y-4 pt-3 sm:pt-4 border-t border-white/10">
-            <h4 className="text-sm sm:text-base font-medium text-white">SEO Settings (English)</h4>
-            
+          <div className="space-y-3 sm:space-y-4 pt-3 sm:pt-4">
+            <h4 className="text-sm sm:text-base font-medium text-white">
+              SEO Settings (English)
+            </h4>
+
             <div>
               <label className="block text-xs sm:text-sm font-medium text-white/80 mb-1 sm:mb-2">
                 Meta Title
@@ -240,9 +255,10 @@ function BlogEditorPopup({
         </div>
 
         {/* Arabic Version */}
-        <div className={`space-y-4 sm:space-y-6 ${activeLanguage === "ar" ? "block" : "hidden"}`} dir="rtl">
-          <h3 className="text-base sm:text-lg font-medium text-white border-b border-white/10 pb-2">Arabic Version (النسخة العربية)</h3>
-          
+        <div
+          className={`space-y-4 sm:space-y-6 ${activeLanguage === "ar" ? "block" : "hidden"}`}
+          dir="rtl"
+        >
           {/* Blog Title AR */}
           <div>
             <label className="block text-xs sm:text-sm font-medium text-white/80 mb-1 sm:mb-2">
@@ -288,13 +304,17 @@ function BlogEditorPopup({
               required
               dir="rtl"
             />
-            <p className="text-xs text-white/40 mt-1 text-right">يمكنك استخدام وسوم HTML للتنسيق</p>
+            <p className="text-xs text-white/40 mt-1 text-right">
+              يمكنك استخدام وسوم HTML للتنسيق
+            </p>
           </div>
 
           {/* Arabic SEO Settings */}
-          <div className="space-y-3 sm:space-y-4 pt-3 sm:pt-4 border-t border-white/10">
-            <h4 className="text-sm sm:text-base font-medium text-white text-right">إعدادات تحسين محركات البحث (SEO)</h4>
-            
+          <div className="space-y-3 sm:space-y-4 pt-3 sm:pt-4">
+            <h4 className="text-sm sm:text-base font-medium text-white text-right">
+              إعدادات تحسين محركات البحث (SEO)
+            </h4>
+
             <div>
               <label className="block text-xs sm:text-sm font-medium text-white/80 mb-1 sm:mb-2 text-right">
                 العنوان لتحسين محركات البحث
@@ -324,9 +344,11 @@ function BlogEditorPopup({
         </div>
 
         {/* Cover Image */}
-        <div className="space-y-3 sm:space-y-4 pt-3 sm:pt-4 border-t border-white/10">
-          <h3 className="text-base sm:text-lg font-medium text-white">Cover Image</h3>
-          
+        <div className="space-y-3 sm:space-y-4 pt-3 sm:pt-4">
+          <h3 className="text-base sm:text-lg font-medium text-white">
+            Cover Image
+          </h3>
+
           <div className="space-y-3 sm:space-y-4">
             {/* File Upload Area */}
             <div className="flex flex-col items-center justify-center w-full">
@@ -335,14 +357,26 @@ function BlogEditorPopup({
                 className="flex flex-col items-center justify-center w-full h-24 sm:h-32 border-2 border-dashed border-white/20 rounded-xl bg-white/5 hover:bg-white/10 cursor-pointer transition-colors"
               >
                 <div className="flex flex-col items-center justify-center px-4 py-3 sm:py-5">
-                  <svg className="w-5 h-5 sm:w-6 sm:h-6 mb-2 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  <svg
+                    className="w-5 h-5 sm:w-6 sm:h-6 mb-2 text-white/40"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                    />
                   </svg>
                   <p className="text-xs sm:text-sm text-white/60 text-center">
                     <span className="font-semibold">Click to upload</span>
                     <span className="hidden sm:inline"> or drag and drop</span>
                   </p>
-                  <p className="text-xs text-white/40 mt-1">PNG, JPG, JPEG, GIF (Max 5MB)</p>
+                  <p className="text-xs text-white/40 mt-1">
+                    PNG, JPG, JPEG, GIF (Max 5MB)
+                  </p>
                 </div>
                 <input
                   id="image-upload"
@@ -357,26 +391,41 @@ function BlogEditorPopup({
 
             {/* Image Preview */}
             {imagePreview ? (
-              <div className="relative rounded-xl overflow-hidden border border-white/10 max-w-full sm:max-w-md group">
-                <img 
-                  src={imagePreview} 
-                  alt="Cover preview" 
-                  className="w-full h-32 sm:h-40 md:h-48 object-cover"
-                />
+              <div className="relative rounded-xl overflow-hidden border border-white/10 group">
+                <div className="w-full h-32 sm:h-40 md:h-48">
+                  <Image
+                    src={imagePreview}
+                    alt="Cover preview"
+                    className="object-cover"
+                    fill
+                  />
+                </div>
                 <button
                   type="button"
                   onClick={handleRemoveImage}
                   className="absolute top-2 right-2 p-1.5 bg-red-500/80 hover:bg-red-600 rounded-lg transition-colors opacity-0 group-hover:opacity-100"
                   title="Remove image"
                 >
-                  <svg className="w-3 h-3 sm:w-4 sm:h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  <svg
+                    className="w-3 h-3 sm:w-4 sm:h-4 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
                   </svg>
                 </button>
               </div>
             ) : (
               <div className="p-6 sm:p-8 bg-white/5 rounded-xl border border-white/10 flex items-center justify-center">
-                <p className="text-white/40 text-xs sm:text-sm">No image selected</p>
+                <p className="text-white/40 text-xs sm:text-sm">
+                  No image selected
+                </p>
               </div>
             )}
 
@@ -390,9 +439,11 @@ function BlogEditorPopup({
         </div>
 
         {/* Publish Settings */}
-        <div className="space-y-3 sm:space-y-4 pt-3 sm:pt-4 border-t border-white/10">
-          <h3 className="text-base sm:text-lg font-medium text-white">Publish Settings</h3>
-          
+        <div className="space-y-3 sm:space-y-4 pt-3 sm:pt-4">
+          <h3 className="text-base sm:text-lg font-medium text-white">
+            Publish Settings
+          </h3>
+
           <div>
             <label className="block text-xs sm:text-sm font-medium text-white/80 mb-1 sm:mb-2">
               Status
@@ -402,14 +453,18 @@ function BlogEditorPopup({
               defaultValue={currentBlog.status || "draft"}
               className="w-full sm:max-w-xs rounded-xl border border-white/10 bg-white/5 px-3 sm:px-4 py-2 text-sm text-white focus:border-secondary/60 focus:ring-1 focus:ring-secondary/30 focus:outline-none"
             >
-              <option value="draft" className="bg-primary">Save as Draft</option>
-              <option value="published" className="bg-primary">Publish Now</option>
+              <option value="draft" className="bg-primary">
+                Save as Draft
+              </option>
+              <option value="published" className="bg-primary">
+                Publish Now
+              </option>
             </select>
           </div>
         </div>
 
         {/* Action Buttons - Improved mobile */}
-        <div className="flex flex-col-reverse sm:flex-row justify-end gap-2 sm:gap-3 pt-4 sm:pt-6 border-t border-white/10 sticky bottom-0 bg-primary/95 backdrop-blur-sm -mb-3 pb-3">
+        <div className="flex flex-col-reverse sm:flex-row justify-end gap-2 sm:gap-3 pt-4 sm:pt-6 -mb-3 pb-3">
           <button
             type="button"
             onClick={onClose}
