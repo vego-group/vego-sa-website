@@ -37,14 +37,14 @@ function Modal({
   titleClassName,
   descriptionClassName,
   scrollAreaClassname,
-}: // closeButtonClassname,
-IProps) {
+  closeButtonClassname,
+}: IProps) {
   return (
     <Dialog open={open} onOpenChange={onClose}>
-      <DialogContent className={contentClassName}>
+      <DialogContent className={contentClassName} showCloseButton={false}>
         {title && (
           <DialogHeader>
-            {/* <CloseButtonModal closeButtonClassname={closeButtonClassname} /> */}
+            <CloseButtonModal closeButtonClassname={closeButtonClassname} />
             <DialogTitle className={titleClassName}>{title}</DialogTitle>
             {description && (
               <DialogDescription className={descriptionClassName}>
