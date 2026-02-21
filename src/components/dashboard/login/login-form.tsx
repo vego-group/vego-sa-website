@@ -6,6 +6,8 @@ import { useForm } from "react-hook-form";
 import { loginSchema, type LoginSchema } from "@/schemas";
 
 import { LoginField } from "./login-field";
+import { setToken } from "@/lib";
+import { useRouter } from "next/navigation";
 
 const formVariants = {
   hidden: { opacity: 0 },
@@ -25,6 +27,7 @@ const itemVariants = {
 } satisfies Variants;
 
 function LoginForm() {
+  const router = useRouter();
   const form = useForm<LoginSchema>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -34,8 +37,10 @@ function LoginForm() {
     mode: "onSubmit",
   });
 
-  const onSubmit = (values: LoginSchema) => {
-    void values;
+  const onSubmit = async (values: LoginSchema) => {
+    console.log(values);
+    await setToken("12345");
+    router.push("/dashboard");
   };
 
   return (

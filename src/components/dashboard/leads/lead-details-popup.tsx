@@ -9,12 +9,7 @@ type LeadDetailsPopupProps = {
   lead: any;
 };
 
-function LeadDetailsPopup({
-  isOpen,
-  onClose,
-  lead,
-}: LeadDetailsPopupProps) {
-
+function LeadDetailsPopup({ isOpen, onClose, lead }: LeadDetailsPopupProps) {
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -35,25 +30,31 @@ function LeadDetailsPopup({
       onClose={onClose}
       title="Lead Details"
       titleClassName="text-xl sm:text-2xl font-semibold text-white"
-      contentClassName="bg-gradient-to-br from-primary via-primary to-emerald-950 w-[95vw] sm:max-w-2xl mx-auto"
+      contentClassName="bg-linear-to-br from-emerald-950 via-primary to-emerald-950 sm:max-w-2xl mx-auto"
       closeButtonClassname="text-white"
     >
       <div className="space-y-4 sm:space-y-6 p-3 sm:p-4 md:p-6">
         {/* Date */}
         <div className="flex justify-end items-start">
-          <span className="text-xs sm:text-sm text-white/50 px-1">{lead.date}</span>
+          <span className="text-xs sm:text-sm text-white/50 px-1">
+            {lead.date}
+          </span>
         </div>
 
         {/* Name & Company */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
           <div className="space-y-1">
-            <label className="block text-xs font-medium text-white/50 uppercase tracking-wider">Name</label>
+            <label className="block text-xs font-medium text-white/50 uppercase tracking-wider">
+              Name
+            </label>
             <p className="text-sm sm:text-base text-white font-medium break-words bg-white/5 rounded-lg p-2 sm:p-3 border border-white/10">
               {lead.name}
             </p>
           </div>
           <div className="space-y-1">
-            <label className="block text-xs font-medium text-white/50 uppercase tracking-wider">Company</label>
+            <label className="block text-xs font-medium text-white/50 uppercase tracking-wider">
+              Company
+            </label>
             <p className="text-sm sm:text-base text-white font-medium break-words bg-white/5 rounded-lg p-2 sm:p-3 border border-white/10">
               {lead.company || "—"}
             </p>
@@ -63,9 +64,11 @@ function LeadDetailsPopup({
         {/* Contact Info */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
           <div className="space-y-1">
-            <label className="block text-xs font-medium text-white/50 uppercase tracking-wider">Email</label>
+            <label className="block text-xs font-medium text-white/50 uppercase tracking-wider">
+              Email
+            </label>
             <div className="bg-white/5 rounded-lg p-2 sm:p-3 border border-white/10">
-              <a 
+              <a
                 href={`mailto:${lead.email}`}
                 className="text-sm sm:text-base text-secondary hover:underline break-all block"
               >
@@ -74,9 +77,11 @@ function LeadDetailsPopup({
             </div>
           </div>
           <div className="space-y-1">
-            <label className="block text-xs font-medium text-white/50 uppercase tracking-wider">Phone</label>
+            <label className="block text-xs font-medium text-white/50 uppercase tracking-wider">
+              Phone
+            </label>
             <div className="bg-white/5 rounded-lg p-2 sm:p-3 border border-white/10">
-              <a 
+              <a
                 href={`tel:${lead.phone}`}
                 className="text-sm sm:text-base text-secondary hover:underline break-all block"
               >
@@ -88,7 +93,9 @@ function LeadDetailsPopup({
 
         {/* Category */}
         <div className="space-y-1">
-          <label className="block text-xs font-medium text-white/50 uppercase tracking-wider">Category</label>
+          <label className="block text-xs font-medium text-white/50 uppercase tracking-wider">
+            Category
+          </label>
           <div className="bg-white/5 rounded-lg p-2 sm:p-3 border border-white/10">
             <p className="text-sm sm:text-base text-white">
               {lead.category || "Not specified"}
@@ -98,7 +105,9 @@ function LeadDetailsPopup({
 
         {/* Message */}
         <div className="space-y-2">
-          <label className="block text-xs font-medium text-white/50 uppercase tracking-wider">Message</label>
+          <label className="block text-xs font-medium text-white/50 uppercase tracking-wider">
+            Message
+          </label>
           <div className="bg-white/5 rounded-xl sm:rounded-2xl border border-white/10 p-3 sm:p-4 max-h-48 sm:max-h-64 overflow-y-auto custom-scrollbar">
             <p className="text-sm sm:text-base text-white/90 whitespace-pre-wrap break-words leading-relaxed">
               {lead.message}
