@@ -1,9 +1,11 @@
 import { newsItems } from "@/data";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
+import { Link } from "@/i18n/navigation";
 
 function NewsSection() {
   const t = useTranslations("home.news");
+  
   return (
     <section>
       <div className="mx-auto flex max-w-7xl flex-col gap-10 px-6">
@@ -11,12 +13,14 @@ function NewsSection() {
           <h2 className="text-3xl font-semibold tracking-tight text-primary sm:text-4xl">
             {t("title")}
           </h2>
-          <button
-            type="button"
-            className="rounded-full border border-primary px-6 py-2 text-sm font-semibold text-primary transition hover:bg-primary hover:text-white"
+          
+          {/* استبدلنا الـ button العادي بـ Link */}
+          <Link
+            href="/blogs"
+            className="rounded-full border border-primary px-6 py-2 text-sm font-semibold text-primary transition hover:bg-primary hover:text-white inline-block"
           >
             {t("more")}
-          </button>
+          </Link>
         </div>
 
         <div className="grid gap-6 md:grid-cols-3">
@@ -57,13 +61,15 @@ function NewsSection() {
                 >
                   {t(item.summary)}
                 </p>
-                <button
-                  type="button"
-                  className="inline-flex items-center gap-2 text-sm font-semibold text-primary"
+                
+                {/* هنا برضه ممكن نحولها لـ Link عشان تودي على المقال الفردي */}
+                <Link
+                  href={`/blogs/${item.id}`} // لو عندك id لكل مقال
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-secondary transition-colors group"
                 >
                   {t("read-more")}
-                  <span aria-hidden="true">→</span>
-                </button>
+                  <span aria-hidden="true" className="group-hover:translate-x-1 transition-transform">→</span>
+                </Link>
               </div>
             </article>
           ))}
