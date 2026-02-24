@@ -1,12 +1,29 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
 
 function Sidebar() {
   const pathname = usePathname();
   const router = useRouter();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  // Close sidebar when route changes on mobile
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [pathname]);
+
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMobileMenuOpen]);
 
   const navItems = [
     { id: "dashboard", label: "Dashboard", icon: "📊", path: "/dashboard" },
@@ -130,77 +147,109 @@ function Sidebar() {
       </aside>
 
       {/* ============================================
-          MOBILE TOP BAR + DROPDOWN MENU (sm-)
+          MOBILE HEADER WITH MENU BUTTON (below md)
           ============================================ */}
-      <div className="md:hidden fixed top-0 left-0 right-0 z-50">
-        {/* Top Bar */}
-        <div className="flex items-center justify-between px-4 py-3 bg-primary/95 backdrop-blur-xl border-b border-white/10">
-          {/* Brand */}
-          <div className="flex items-center gap-2">
-            <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-secondary text-white font-semibold text-sm">
-              V
-            </div>
-            <div>
-              <div className="font-semibold text-white text-sm leading-tight">My Vego</div>
-              <div className="text-[10px] text-white/50 leading-tight">Admin Panel</div>
-            </div>
-          </div>
+      
+      {/* Mobile header with menu button */}
+      <div className="md:hidden fixed top-0 left-0 right-0 bg-primary/95 backdrop-blur-xl border-b border-white/10 z-40">
+        <div className="flex items-center justify-between px-4 py-3">
+          {/* Menu button */}
+          <button
+            onClick={() => setIsMobileMenuOpen(true)}
+            className="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-white/10 transition-colors"
+            aria-label="Open menu"
+          >
+            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
 
-          {/* Current page label */}
-          <span className="text-sm text-white/70 font-medium">
+          {/* Page title */}
+          <span className="text-white font-medium">
             {navItems.find(item => item.path === pathname)?.label ?? "Dashboard"}
           </span>
 
-          {/* Hamburger */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="w-9 h-9 flex flex-col items-center justify-center gap-1.5 rounded-lg hover:bg-white/10 transition-colors"
-            aria-label="Toggle menu"
-          >
-            <span className={`block w-5 h-0.5 bg-white transition-all duration-300 ${isMobileMenuOpen ? "rotate-45 translate-y-2" : ""}`} />
-            <span className={`block w-5 h-0.5 bg-white transition-all duration-300 ${isMobileMenuOpen ? "opacity-0 scale-x-0" : ""}`} />
-            <span className={`block w-5 h-0.5 bg-white transition-all duration-300 ${isMobileMenuOpen ? "-rotate-45 -translate-y-2" : ""}`} />
-          </button>
+          {/* Placeholder for balance */}
+          <div className="w-10" />
         </div>
+      </div>
 
-        {/* Dropdown Menu */}
-        <div className={`overflow-hidden transition-all duration-300 ease-in-out bg-primary/95 backdrop-blur-xl border-b border-white/10 ${isMobileMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"}`}>
-          <nav className="px-4 py-3 space-y-1">
+      {/* Spacer for fixed header */}
+      <div className="md:hidden h-[57px]" />
+
+      {/* Overlay */}
+      {isMobileMenuOpen && (
+        <div
+          className="md:hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-50"
+          onClick={() => setIsMobileMenuOpen(false)}
+        />
+      )}
+
+      {/* Side drawer */}
+      <aside
+        className={`md:hidden fixed top-0 left-0 h-full w-64 bg-primary/95 backdrop-blur-xl border-r border-white/10 z-50 transform transition-transform duration-300 ease-in-out ${
+          isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
+        }`}
+      >
+        <nav className="flex flex-col h-full px-4 py-6 text-sm text-white/80">
+          
+          {/* Header with close button */}
+          <div className="flex items-center justify-between mb-8">
+            <div className="flex items-center gap-3 px-3">
+              <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-secondary text-white font-semibold text-lg flex-shrink-0">
+                V
+              </div>
+              <div>
+                <div className="font-semibold text-white">My Vego</div>
+                <div className="text-xs text-white/50">Admin Panel</div>
+              </div>
+            </div>
+            
+            {/* Close button */}
+            <button
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-white/10 transition-colors"
+              aria-label="Close menu"
+            >
+              <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+
+          {/* Navigation */}
+          <ul className="space-y-1 mb-auto">
             {navItems.map(({ id, label, icon, path }) => {
               const isActive = pathname === path;
               return (
-                <button
-                  key={id}
-                  onClick={() => handleNavigation(path)}
-                  className={`flex items-center gap-3 w-full px-4 py-3 rounded-xl transition-colors text-left
-                    ${isActive
-                      ? "bg-secondary/90 text-white shadow-sm"
-                      : "text-white/70 hover:bg-white/5 hover:text-white"
-                    }`}
-                >
-                  <span className="text-lg">{icon}</span>
-                  <span className="text-sm font-medium">{label}</span>
-                  {isActive && (
-                    <svg className="w-4 h-4 ml-auto text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  )}
-                </button>
+                <li key={id}>
+                  <button
+                    onClick={() => handleNavigation(path)}
+                    className={`flex items-center gap-3 w-full px-4 py-3 rounded-lg transition-colors
+                      ${isActive
+                        ? "bg-secondary/90 text-white shadow-sm"
+                        : "hover:bg-white/5 hover:text-white"
+                      }`}
+                  >
+                    <span className="text-lg">{icon}</span>
+                    <span className="text-sm font-medium">{label}</span>
+                  </button>
+                </li>
               );
             })}
+          </ul>
 
-            {/* Logout in dropdown */}
-            <div className="pt-2 mt-2 border-t border-white/10">
-              <button className="flex items-center gap-3 w-full px-4 py-3 text-red-400 hover:text-red-300 hover:bg-red-500/10 rounded-xl transition-colors">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
-                </svg>
-                <span className="text-sm font-medium">Logout</span>
-              </button>
-            </div>
-          </nav>
-        </div>
-      </div>
+          {/* Logout */}
+          <div className="pt-4 mt-6 border-t border-white/10">
+            <button className="flex items-center gap-3 w-full px-4 py-3 text-red-400 hover:text-red-300 hover:bg-red-500/10 rounded-lg transition-colors">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+              </svg>
+              <span className="text-sm font-medium">Logout</span>
+            </button>
+          </div>
+        </nav>
+      </aside>
     </>
   );
 }
