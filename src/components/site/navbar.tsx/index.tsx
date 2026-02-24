@@ -40,7 +40,7 @@ export default function Navbar(): ReactElement {
         <DesktopNav items={navItems} pathname={pathname} />
 
         <div className="flex items-center gap-3">
-          <LanguageButton className="hidden items-center gap-2 rounded-full border border-primary px-4 py-2 text-sm font-semibold text-primary lg:flex" />
+          <LanguageButton className="hidden items-center gap-2 rounded-full border hover:bg-primary hover:text-white border-primary bg-white px-4 py-2 text-sm font-semibold text-primary lg:flex" />
           <MobileMenuButton onClick={() => setIsMobileMenuOpen(true)} />
         </div>
       </div>

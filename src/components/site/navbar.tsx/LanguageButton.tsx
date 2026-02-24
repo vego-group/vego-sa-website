@@ -2,7 +2,7 @@ import { usePathname, useRouter } from "@/i18n/navigation";
 import { Globe } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import type { ReactElement } from "react";
-import { Button } from "../ui/button";
+import { Button } from "../../ui/button";
 
 type LanguageButtonProps = {
   className: string;

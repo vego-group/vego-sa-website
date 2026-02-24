@@ -1,8 +1,8 @@
 import type { ReactNode } from "react";
 
-import CommitmentToExcellence from "@/components/CommitmentToExcellence";
-import Footer from "@/components/Footer";
-import Navbar from "@/components/navbar.tsx";
+import CommitmentToExcellence from "@/components/site/CommitmentToExcellence";
+import Footer from "@/components/site/Footer";
+import Navbar from "@/components/site/navbar.tsx";
 
 type MainLayoutProps = {
   children: ReactNode;

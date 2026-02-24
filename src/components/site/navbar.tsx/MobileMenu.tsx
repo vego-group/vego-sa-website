@@ -66,7 +66,7 @@ export default function MobileMenu({
           </ul>
         </nav>
 
-        <LanguageButton className="mt-8 flex items-center justify-center gap-2 rounded-full border border-primary px-4 py-3 text-sm font-semibold text-primary" />
+        <LanguageButton className="mt-8 flex items-center justify-center gap-2 rounded-full border border-primary hover:bg-primary hover:text-white bg-white px-4 py-3 text-sm font-semibold text-primary" />
       </div>
     </div>
   );

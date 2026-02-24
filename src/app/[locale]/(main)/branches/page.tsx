@@ -1,4 +1,4 @@
-import OurBranches from "@/components/main/our-branches";
+import OurBranches from "@/components/site/main/our-branches";
 
 function OurBranchesPage() {
   return (
