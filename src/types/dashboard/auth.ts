@@ -1,1 +1,1 @@
-export type AuthResponse = { data?: { token?: string } };
+export type AuthResponse = { token?: string };

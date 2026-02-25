@@ -1,3 +1,4 @@
+"use server";
 import { LoginSchema } from "@/schemas";
 import { safeApi } from "..";
 import { AuthResponse } from "@/types";

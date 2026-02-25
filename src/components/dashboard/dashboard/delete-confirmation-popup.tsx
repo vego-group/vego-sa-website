@@ -6,7 +6,7 @@ import { useEffect } from "react";
 type DeleteConfirmationPopupProps = {
   isOpen: boolean;
   onClose: () => void;
-  onConfirm: () => void;
+  onConfirm?: () => void;
   articleTitle?: string;
 };
 
@@ -30,7 +30,7 @@ function DeleteConfirmationPopup({
   }, [isOpen]);
 
   const handleConfirm = () => {
-    onConfirm();
+    // onConfirm();
     onClose();
   };
 

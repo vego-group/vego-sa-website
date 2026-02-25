@@ -7,7 +7,7 @@ import { useEffect, useState, useRef } from "react";
 type BlogEditorPopupProps = {
   isOpen: boolean;
   onClose: () => void;
-  onSubmit: (blogData: any) => void;
+  onSubmit?: (blogData: any) => void;
   blog?: any;
 };
 
@@ -111,8 +111,6 @@ function BlogEditorPopup({
           : null,
       languages: ["EN", "AR"],
     };
-
-    onSubmit(blogData);
   };
 
   return (

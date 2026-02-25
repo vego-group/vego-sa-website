@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import type { ReactElement } from "react";
-import { NavItem } from "@/interfaces/navbar";
+import { NavItem } from "@/interfaces";
 import LanguageButton from "./LanguageButton";
 import { useTranslations } from "next-intl";
 

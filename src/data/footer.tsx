@@ -1,4 +1,4 @@
-import { FooterLink, SocialLink } from "@/interfaces/footer";
+import { FooterLink, SocialLink } from "@/interfaces";
 import { Instagram, Twitter, Linkedin } from "lucide-react";
 import { TbBrandSnapchat } from "react-icons/tb";
 import { FaWhatsapp } from "react-icons/fa";

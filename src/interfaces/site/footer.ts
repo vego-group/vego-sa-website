@@ -3,10 +3,11 @@ import { IconType } from "react-icons/lib";
 
 export interface FooterLink {
   title: string;
-  links: {
-    label: string;
-    href: string;
-  }[];
+  links: Link[];
+}
+export interface Link {
+  label: string;
+  href: string;
 }
 export interface SocialLink {
   label: string;

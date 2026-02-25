@@ -1,5 +1,5 @@
 import { Link } from "@/i18n/navigation";
-import { NavItem } from "@/interfaces/navbar";
+import { NavItem } from "@/interfaces";
 import { useTranslations } from "next-intl";
 import type { ReactElement } from "react";
 
