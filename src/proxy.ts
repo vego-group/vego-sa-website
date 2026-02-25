@@ -3,12 +3,12 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { routing } from "@/i18n/routing";
 
-const intlMiddleware = createMiddleware({
+const intlProxy = createMiddleware({
   ...routing,
   localeDetection: false,
 });
 
-export default function middleware(req: NextRequest) {
+export default function proxy(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
   // ✅ Dashboard guard
@@ -37,7 +37,7 @@ export default function middleware(req: NextRequest) {
   }
 
   // ✅ باقي الموقع public + next-intl شغال
-  return intlMiddleware(req);
+  return intlProxy(req);
 }
 
 export const config = {
