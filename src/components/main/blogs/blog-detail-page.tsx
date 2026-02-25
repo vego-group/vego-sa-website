@@ -5,7 +5,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { motion } from "framer-motion";
-import { ArrowLeft, Calendar, User, Share2, Linkedin, Twitter, Facebook } from "lucide-react";
+import {
+  ArrowLeft,
+  Calendar,
+  User,
+  Share2,
+  Linkedin,
+  Twitter,
+  Facebook,
+} from "lucide-react";
 import { useLocale } from "next-intl";
 
 type Blog = {
@@ -31,7 +39,7 @@ function BlogDetailPage() {
   const params = useParams();
   const [blog, setBlog] = useState<Blog | null>(null);
   const [isLoading, setIsLoading] = useState(true);
-  
+
   // استخدام locale من next-intl
   const locale = useLocale();
   const language = locale as "en" | "ar";
@@ -40,15 +48,18 @@ function BlogDetailPage() {
     const fetchBlog = async () => {
       setIsLoading(true);
       try {
-        await new Promise(resolve => setTimeout(resolve, 500));
-        
-        
+        await new Promise((resolve) => setTimeout(resolve, 500));
+
         const mockBlog: Blog = {
           id: params.id as string,
-          titleEn: "Vego Group Showcases the Future of Electric Mobility and Launches Micromobility Project at Mobility Live 2025 in Riyadh",
-          titleAr: "فيجو جروب تستعرض مستقبل التنقل الكهربائي وتدشن مشروع المايكرو موبيليتي في معرض موبيليتي اليف 2025 بالرياض",
-          excerptEn: "With high-level attendance from transportation and technology leaders, the event witnessed...",
-          excerptAr: "الرياض – 20 أكتوبر 2025م وسط حضور رفيع من قادة قطاع النقل والتقنية، شهدت [...]",
+          titleEn:
+            "Vego Group Showcases the Future of Electric Mobility and Launches Micromobility Project at Mobility Live 2025 in Riyadh",
+          titleAr:
+            "فيجو جروب تستعرض مستقبل التنقل الكهربائي وتدشن مشروع المايكرو موبيليتي في معرض موبيليتي اليف 2025 بالرياض",
+          excerptEn:
+            "With high-level attendance from transportation and technology leaders, the event witnessed...",
+          excerptAr:
+            "الرياض – 20 أكتوبر 2025م وسط حضور رفيع من قادة قطاع النقل والتقنية، شهدت [...]",
           contentEn: `
             <h2 class="text-2xl font-bold text-primary mt-8 mb-4">A Landmark Event for Electric Mobility</h2>
             <p class="text-slate-600 leading-relaxed mb-6">With high-level attendance from transportation and technology leaders, the event witnessed the launch of Vego Group's micromobility project, marking a significant milestone in Saudi Arabia's journey towards sustainable urban transportation.</p>
@@ -74,12 +85,13 @@ function BlogDetailPage() {
             </ul>
           `,
           status: "published",
-          coverImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&auto=format",
+          coverImage:
+            "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&auto=format",
           publishedAt: "2025-10-20T10:00:00Z",
           languages: ["EN", "AR"],
           author: language === "en" ? "Vego Team" : "فريق فيجو",
         };
-        
+
         setBlog(mockBlog);
       } catch (error) {
         console.error("Error fetching blog:", error);
@@ -95,11 +107,14 @@ function BlogDetailPage() {
 
   const formatDate = (dateString: string | null) => {
     if (!dateString) return "";
-    return new Date(dateString).toLocaleDateString(language === "en" ? "en-US" : "ar-SA", {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    });
+    return new Date(dateString).toLocaleDateString(
+      language === "en" ? "en-US" : "ar-SA",
+      {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      },
+    );
   };
 
   if (isLoading) {
@@ -109,7 +124,9 @@ function BlogDetailPage() {
           <div className="flex flex-col items-center justify-center space-y-4">
             <div className="w-16 h-16 border-4 border-secondary border-t-transparent rounded-full animate-spin"></div>
             <p className="text-slate-600 text-lg">
-              {language === "en" ? "Loading article..." : "جاري تحميل المقال..."}
+              {language === "en"
+                ? "Loading article..."
+                : "جاري تحميل المقال..."}
             </p>
           </div>
         </div>
@@ -124,7 +141,10 @@ function BlogDetailPage() {
           <h1 className="text-2xl text-slate-900 mb-4">
             {language === "en" ? "Article not found" : "المقال غير موجود"}
           </h1>
-          <Link href="/blog" className="text-secondary hover:underline inline-flex items-center gap-2">
+          <Link
+            href="/blog"
+            className="text-secondary hover:underline inline-flex items-center gap-2"
+          >
             <ArrowLeft className="w-4 h-4" />
             {language === "en" ? "Back to blog" : "العودة إلى المدونة"}
           </Link>
@@ -134,42 +154,51 @@ function BlogDetailPage() {
   }
 
   return (
-    <div className="min-h-screen bg-white" dir={language === "ar" ? "rtl" : "ltr"}>
+    <div
+      className="min-h-screen bg-white"
+      dir={language === "ar" ? "rtl" : "ltr"}
+    >
       {/* Hero Section - مصغرة ومنظمة */}
-<section className="relative h-[30vh] overflow-hidden bg-gradient-to-br from-emerald-900 via-primary to-emerald-800">
-  <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/70" />
-  
-  <div className="relative z-10 mx-auto flex h-full max-w-3xl flex-col items-center justify-center px-4 text-center">
-    <motion.h1
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-      className="font-serif text-xl sm:text-2xl md:text-3xl font-bold text-white line-clamp-3 px-2"
-    >
-      {language === "en" ? blog.titleEn : blog.titleAr}
-    </motion.h1>
-    
-    {/* اختصار النص في وصف صغير */}
-    <motion.p
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.8, delay: 0.2 }}
-      className="text-white/80 text-sm sm:text-base mt-2 line-clamp-2 max-w-2xl"
-    >
-      {language === "en" ? blog.excerptEn : blog.excerptAr}
-    </motion.p>
-  </div>
-</section>
+      <section className="relative h-[30vh] overflow-hidden bg-gradient-to-br from-emerald-900 via-primary to-emerald-800">
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/70" />
+
+        <div className="relative z-10 mx-auto flex h-full max-w-3xl flex-col items-center justify-center px-4 text-center">
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="font-serif text-xl sm:text-2xl md:text-3xl font-bold text-white line-clamp-3 px-2"
+          >
+            {language === "en" ? blog.titleEn : blog.titleAr}
+          </motion.h1>
+
+          {/* اختصار النص في وصف صغير */}
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-white/80 text-sm sm:text-base mt-2 line-clamp-2 max-w-2xl"
+          >
+            {language === "en" ? blog.excerptEn : blog.excerptAr}
+          </motion.p>
+        </div>
+      </section>
 
       {/* Main Content */}
       <div className="container mx-auto max-w-4xl px-4 py-12">
         {/* Back Link */}
-        <Link 
-          href="/blog" 
+        <Link
+          href="/blog"
           className="inline-flex items-center gap-2 text-slate-600 hover:text-secondary mb-8 transition-colors group"
         >
-          <ArrowLeft className={`w-5 h-5 transition-transform group-hover:-translate-x-1 ${language === "ar" ? "rotate-180" : ""}`} />
-          <span>{language === "en" ? "Back to all articles" : "العودة إلى جميع المقالات"}</span>
+          <ArrowLeft
+            className={`w-5 h-5 transition-transform group-hover:-translate-x-1 ${language === "ar" ? "rotate-180" : ""}`}
+          />
+          <span>
+            {language === "en"
+              ? "Back to all articles"
+              : "العودة إلى جميع المقالات"}
+          </span>
         </Link>
 
         {/* Article Meta */}
@@ -210,8 +239,8 @@ function BlogDetailPage() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.4 }}
           className="prose prose-lg max-w-none"
-          dangerouslySetInnerHTML={{ 
-            __html: language === "en" ? blog.contentEn : blog.contentAr 
+          dangerouslySetInnerHTML={{
+            __html: language === "en" ? blog.contentEn : blog.contentAr,
           }}
         />
 
@@ -259,8 +288,8 @@ function BlogDetailPage() {
                 <div className="h-32 bg-gradient-to-br from-secondary/20 to-secondary/5" />
                 <div className="p-4">
                   <h4 className="font-medium text-slate-900 group-hover:text-secondary transition-colors line-clamp-2">
-                    {language === "en" 
-                      ? "Sample related article title" 
+                    {language === "en"
+                      ? "Sample related article title"
                       : "عنوان مقال ذي صلة"}
                   </h4>
                 </div>

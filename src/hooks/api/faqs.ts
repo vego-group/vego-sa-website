@@ -1,11 +1,11 @@
-import { blogAPI, blogsAPI } from "@/services/queries/blogs";
+import { faqAPI, faqsAPI } from "@/services/queries/faq";
 import { useCustomInfiniteQuery, useCustomQuery } from "../useCustomQuery";
 
-export function useBlogs() {
+export function useFaqs() {
   return useCustomInfiniteQuery(
-    ["public", "blogs"],
+    ["public", "faqs"],
     async ({ pageParam = 1 }) => {
-      return blogsAPI(pageParam);
+      return faqsAPI(pageParam);
     },
     {
       initialPageParam: 1,
@@ -24,12 +24,12 @@ export function useBlogs() {
   );
 }
 
-export function useDashboardBlogs(page: number) {
-  return useCustomQuery(["dashboard", "blogs", page], async () =>
-    blogsAPI(page, true),
+export function useDashboardFaqs(page: number) {
+  return useCustomQuery(["dashboard", "faqs", page], async () =>
+    faqsAPI(page, true),
   );
 }
 
-export function useBlog(id: number, auth: boolean = false) {
-  return useCustomQuery(["blog", id], async () => blogAPI(id, auth));
+export function useFaq(id: number, auth: boolean = false) {
+  return useCustomQuery(["faq", id], async () => faqAPI(id, auth));
 }

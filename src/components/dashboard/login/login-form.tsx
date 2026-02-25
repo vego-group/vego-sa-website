@@ -45,15 +45,15 @@ function LoginForm() {
   });
 
   const onSubmit = async (data: LoginSchema) => {
-    const res = await loginAPI(data);
-    if (res?.ok) {
-      toast.success(res?.message || "Login successful");
-      const token = res.data?.token;
+    const result = await loginAPI(data);
+    if (result?.ok) {
+      toast.success(result?.message || "Login successful");
+      const token = result?.data?.token;
       if (token) await setToken(token);
       router.replace("/dashboard");
       return;
     }
-    toast.error(res?.message);
+    toast.error(result?.message);
   };
 
   return (

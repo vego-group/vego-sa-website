@@ -24,11 +24,14 @@ type UserBlogFeaturedProps = {
 function UserBlogFeatured({ blog, language }: UserBlogFeaturedProps) {
   const formatDate = (dateString: string | null) => {
     if (!dateString) return "";
-    return new Date(dateString).toLocaleDateString(language === "en" ? "en-US" : "ar-SA", {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    });
+    return new Date(dateString).toLocaleDateString(
+      language === "en" ? "en-US" : "ar-SA",
+      {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      },
+    );
   };
 
   return (
@@ -65,7 +68,10 @@ function UserBlogFeatured({ blog, language }: UserBlogFeaturedProps) {
           </div>
 
           <h2 className="text-3xl sm:text-4xl font-bold text-primary mb-4">
-            <Link href={`/blog/${blog.id}`} className="hover:text-secondary transition-colors">
+            <Link
+              href={`/blog/${blog.id}`}
+              className="hover:text-secondary transition-colors"
+            >
               {language === "en" ? blog.titleEn : blog.titleAr}
             </Link>
           </h2>
@@ -92,7 +98,9 @@ function UserBlogFeatured({ blog, language }: UserBlogFeaturedProps) {
             className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-secondary text-white font-semibold rounded-xl hover:bg-secondary/90 transition-all hover:shadow-lg hover:-translate-y-1 w-full sm:w-auto group"
           >
             {language === "en" ? "Read Full Article" : "اقرأ المقال كاملاً"}
-            <ArrowLeft className={`w-5 h-5 transition-transform group-hover:-translate-x-1 ${language === "ar" ? "rotate-180" : ""}`} />
+            <ArrowLeft
+              className={`w-5 h-5 transition-transform group-hover:-translate-x-1 ${language === "ar" ? "rotate-180" : ""}`}
+            />
           </Link>
         </div>
       </div>

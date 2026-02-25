@@ -1,7 +1,7 @@
 import { Lang } from ".";
 
 export type Blog = {
-  id: number | string;
+  id: number;
   title?: Lang | null;
   excerpt?: Lang | null;
   content?: Lang | null;

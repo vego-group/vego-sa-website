@@ -1,50 +1,54 @@
 "use client";
 
+import Loader from "@/components/ui/loader";
 import Modal from "@/components/ui/modal";
-import { useEffect } from "react";
+import { deleteBlogAPI } from "@/services/mutations/blogs";
+import { useQueryClient } from "@tanstack/react-query";
+import { Trash2 } from "lucide-react";
+import { useState } from "react";
+import toast from "react-hot-toast";
 
-type DeleteConfirmationPopupProps = {
+type DeleteBlogConfirmationPopupProps = {
   isOpen: boolean;
   onClose: () => void;
-  onConfirm?: () => void;
-  articleTitle?: string;
+  id: number;
+  blogTitle: string;
 };
 
-function DeleteConfirmationPopup({
+function DeleteBlogConfirmationPopup({
   isOpen,
   onClose,
-  onConfirm,
-  articleTitle,
-}: DeleteConfirmationPopupProps) {
-  useEffect(() => {
-    // Prevent scrolling when popup is open
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
+  id,
+  blogTitle,
+}: DeleteBlogConfirmationPopupProps) {
+  const queryClient = useQueryClient();
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  const handleDelete = async () => {
+    if (!id || isDeleting) return;
+    setIsDeleting(true);
+    const result = await deleteBlogAPI(id);
+    setIsDeleting(false);
+    if (!result.ok) {
+      toast.error(result.message ?? "Could not delete post.");
+      return;
     }
-
-    return () => {
-      document.body.style.overflow = "unset";
-    };
-  }, [isOpen]);
-
-  const handleConfirm = () => {
-    // onConfirm();
+    toast.success(result.message ?? "Blog deleted successfully");
     onClose();
+    await queryClient.invalidateQueries({
+      queryKey: ["dashboard", "blogs"],
+    });
   };
-
   return (
     <Modal
       open={isOpen}
       onClose={onClose}
-      title="Delete Article"
+      title="Delete Blog"
       titleClassName="text-lg sm:text-xl md:text-2xl font-semibold text-white"
       contentClassName="bg-linear-to-br from-emerald-950 via-primary to-emerald-950 sm:max-w-md sm:w-[90vw]"
       closeButtonClassname="text-white"
     >
       <div className="space-y-4 sm:space-y-6 p-2 sm:p-4">
-        {/* Warning Message */}
         <div className="bg-white/5 rounded-lg sm:rounded-2xl border border-white/10 p-4 sm:p-6 text-center">
           <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-red-500/20 flex items-center justify-center mx-auto mb-3 sm:mb-4">
             <svg
@@ -63,11 +67,15 @@ function DeleteConfirmationPopup({
           </div>
 
           <p className="text-white/70 mb-2 text-xs sm:text-sm">
-            Are you sure you want to delete this article?
+            Are you sure you want to delete this blog?
           </p>
+          {blogTitle ? (
+            <p className="text-white text-sm font-medium line-clamp-2 max-w-full break-all">
+              {blogTitle}
+            </p>
+          ) : null}
         </div>
 
-        {/* Buttons */}
         <div className="flex flex-col-reverse sm:flex-row justify-end gap-2 sm:gap-3 pt-3 sm:pt-4 border-t border-white/10">
           <button
             type="button"
@@ -77,24 +85,19 @@ function DeleteConfirmationPopup({
             Cancel
           </button>
           <button
+            disabled={isDeleting}
             type="button"
-            onClick={handleConfirm}
+            onClick={handleDelete}
             className="px-3 sm:px-6 py-2 sm:py-3 rounded-lg sm:rounded-2xl bg-red-600 text-white font-semibold hover:bg-red-700 transition-colors flex items-center justify-center gap-2 text-xs sm:text-sm md:text-base order-1 sm:order-2"
           >
-            <svg
-              className="w-3 h-3 sm:w-4 sm:h-4"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-              />
-            </svg>
-            Delete
+            {isDeleting ? (
+              <Loader />
+            ) : (
+              <>
+                <Trash2 className="size-5" />
+                Delete
+              </>
+            )}
           </button>
         </div>
       </div>
@@ -102,4 +105,4 @@ function DeleteConfirmationPopup({
   );
 }
 
-export { DeleteConfirmationPopup };
+export { DeleteBlogConfirmationPopup };

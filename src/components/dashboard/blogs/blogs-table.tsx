@@ -8,7 +8,7 @@ import {
   BlogsPagination,
 } from "./blogs-table-ui";
 import { Blog } from "@/interfaces";
-import { SingleSkeletonCard } from "@/components/skeleton/card";
+import { SkeletonCard } from "@/components/skeleton/card";
 
 type BlogsTableProps = {
   activeTab?: "all" | "published" | "drafts";
@@ -21,7 +21,6 @@ function BlogsTableContent({ activeTab, searchQuery }: BlogsTableContentProps) {
   const [currentPage, setCurrentPage] = useState(1);
   const { data, isLoading, isFetching } = useDashboardBlogs(currentPage);
   const blogs: Blog[] = data?.data?.data ?? [];
-  console.log(data?.data?.meta);
   const filteredBlogs = blogs.filter((item) => {
     const status =
       item.status === "publish" || item.status === "published"
@@ -45,7 +44,7 @@ function BlogsTableContent({ activeTab, searchQuery }: BlogsTableContentProps) {
   const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
 
   if (isLoading) {
-    return <SingleSkeletonCard />;
+    return <SkeletonCard className="sm:h-100" />;
   }
 
   return (

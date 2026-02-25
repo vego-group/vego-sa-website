@@ -24,11 +24,14 @@ type UserBlogGridProps = {
 function UserBlogGrid({ blogs, language }: UserBlogGridProps) {
   const formatDate = (dateString: string | null) => {
     if (!dateString) return "";
-    return new Date(dateString).toLocaleDateString(language === "en" ? "en-US" : "ar-SA", {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric'
-    });
+    return new Date(dateString).toLocaleDateString(
+      language === "en" ? "en-US" : "ar-SA",
+      {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+      },
+    );
   };
 
   if (blogs.length === 0) {
@@ -38,9 +41,7 @@ function UserBlogGrid({ blogs, language }: UserBlogGridProps) {
           {language === "en" ? "No articles found" : "لم يتم العثور على مقالات"}
         </p>
         <p className="text-slate-400 text-sm mt-2">
-          {language === "en" 
-            ? "Try adjusting your search" 
-            : "حاول تعديل بحثك"}
+          {language === "en" ? "Try adjusting your search" : "حاول تعديل بحثك"}
         </p>
       </div>
     );
@@ -58,7 +59,10 @@ function UserBlogGrid({ blogs, language }: UserBlogGridProps) {
           className="group bg-white rounded-2xl shadow-lg shadow-slate-200/50 overflow-hidden hover:shadow-2xl hover:shadow-secondary/10 hover:-translate-y-2 transition-all duration-500"
         >
           {/* Cover Image */}
-          <Link href={`/blog/${blog.id}`} className="block relative h-56 overflow-hidden">
+          <Link
+            href={`/blog/${blog.id}`}
+            className="block relative h-56 overflow-hidden"
+          >
             {blog.coverImage ? (
               <Image
                 src={blog.coverImage}
@@ -106,7 +110,9 @@ function UserBlogGrid({ blogs, language }: UserBlogGridProps) {
                 className="text-secondary hover:text-secondary/80 text-sm font-medium inline-flex items-center gap-1 group/link"
               >
                 {language === "en" ? "Read more" : "اقرأ المزيد"}
-                <ArrowLeft className={`w-4 h-4 transition-transform group-hover/link:-translate-x-1 ${language === "ar" ? "rotate-180" : ""}`} />
+                <ArrowLeft
+                  className={`w-4 h-4 transition-transform group-hover/link:-translate-x-1 ${language === "ar" ? "rotate-180" : ""}`}
+                />
               </Link>
             </div>
           </div>

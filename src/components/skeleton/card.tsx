@@ -1,13 +1,13 @@
 import { cn } from "@/lib";
 
-interface ISingleSkeletonCardProps {
+interface ISkeletonCardProps {
   className?: string;
 }
-export function SingleSkeletonCard({ className }: ISingleSkeletonCardProps) {
+export function SkeletonCard({ className }: ISkeletonCardProps) {
   return (
     <div
       className={cn(
-        "rounded-md bg-stone-200 animate-pulse h-50 sm:h-100 w-full",
+        "rounded-md bg-stone-200 animate-pulse h-50 w-full",
         className,
       )}
     />

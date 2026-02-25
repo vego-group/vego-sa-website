@@ -5,3 +5,4 @@ export { BlogsTabs } from "./blogs-tabs";
 export { BlogsActions } from "./blogs-actions";
 export { BlogsTable } from "./blogs-table";
 export { BlogEditorPopup } from "./blog-editor-popup";
+export { AddBlogPopup } from "./add-blog-popup";

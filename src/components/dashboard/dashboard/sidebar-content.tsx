@@ -3,6 +3,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { logoutAPI } from "@/services/mutations/auth";
 import { removeToken } from "@/lib";
 import { sidebarNavItems } from "@/data";
+import { LogOut } from "lucide-react";
 
 function SidebarContent({
   isMobileMenuOpen,
@@ -51,7 +52,7 @@ function SidebarContent({
           </div>
 
           {/* Navigation */}
-          <ul className="space-y-1 mb-auto">
+          <ul className="space-y-3 mb-auto">
             {sidebarNavItems.map(({ id, label, icon, path }) => {
               const isActive = pathname === path;
               return (
@@ -75,20 +76,11 @@ function SidebarContent({
 
           {/* Logout */}
           <div className="pt-4 mt-6 border-t border-white/10">
-            <button className="flex items-center justify-center gap-3 w-full px-4 py-3 text-red-400 hover:text-red-300 hover:bg-red-500/10 rounded-lg transition-colors">
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={2}
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
-                />
-              </svg>
+            <button
+              onClick={handleLogout}
+              className="flex items-center justify-center cursor-pointer gap-3 w-full px-4 py-3 text-red-500 hover:text-red-300 bg-red-500/10 hover:bg-red-500/30 rounded-lg transition-colors"
+            >
+              <LogOut className="size-5" />
               <span className="text-sm font-medium">Logout</span>
             </button>
           </div>
@@ -279,21 +271,9 @@ function SidebarContent({
           <div className="pt-4 mt-6 border-t border-white/10">
             <button
               onClick={handleLogout}
-              className="flex items-center gap-3 w-full px-4 py-3 text-red-400 hover:text-red-300 hover:bg-red-500/10 rounded-lg transition-colors"
+              className="flex items-center gap-3 w-full px-4 py-3 text-red-500 hover:text-red-300 bg-red-500/10 hover:bg-red-500/30 cursor-pointer rounded-lg transition-colors"
             >
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={2}
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
-                />
-              </svg>
+              <LogOut className="size-5" />
               <span className="text-sm font-medium">Logout</span>
             </button>
           </div>
