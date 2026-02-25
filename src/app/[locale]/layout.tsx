@@ -7,9 +7,6 @@ import { LOGO, SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from "@/constants";
 import CommitmentToExcellence from "@/components/site/CommitmentToExcellence";
 import Footer from "@/components/site/Footer";
 import Navbar from "@/components/site/navbar.tsx";
-import "swiper/css";
-import "swiper/css/pagination";
-import "../globals.css";
 
 export async function generateMetadata({
   params,
@@ -76,7 +73,7 @@ export default async function LocaleLayout({
     <div lang={locale} dir={dir} className="min-h-svh">
       <NextIntlClientProvider messages={messages}>
         <Navbar />
-        {children}
+        <main>{children}</main>
         <CommitmentToExcellence />
         <Footer />
       </NextIntlClientProvider>

@@ -4,6 +4,8 @@ import QueryProvider from "@/provider";
 import { LOGO, SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from "@/constants";
 import { Cairo, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
+import "swiper/css";
+import "swiper/css/pagination";
 
 const cairo = Cairo({
   variable: "--font-cairo",
