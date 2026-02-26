@@ -467,6 +467,16 @@
         "partnership": "Partnership",
         "support": "Support",
         "jobs": "Jobs"
+      },
+      "validation": {
+        "nameRequired": "Name is required",
+        "emailRequired": "Email is required",
+        "emailInvalid": "Enter a valid email",
+        "phoneRequired": "Phone is required",
+        "subjectRequired": "Subject is required",
+        "subjectInvalid": "Invalid subject",
+        "messageRequired": "Message is required",
+        "localeRequired": "Locale is required"
       }
     },
     "location": {

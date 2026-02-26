@@ -7,7 +7,6 @@ import { UserBlogGrid } from "./user-blog-grid";
 import { UserBlogFeatured } from "./user-blog-featured";
 import { Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
-import { useLocale } from "next-intl";
 
 type Blog = {
   id: string;
@@ -35,8 +34,7 @@ function UserBlogPage() {
   const [isLoading, setIsLoading] = useState(true);
 
   // استخدام locale من next-intl بدلاً من state داخلية
-  const locale = useLocale();
-  const language = locale as "en" | "ar";
+  const language = "en" as const;
 
   useEffect(() => {
     const fetchBlogs = async () => {
@@ -65,7 +63,7 @@ function UserBlogPage() {
               "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format",
             publishedAt: "2025-10-20T10:00:00Z",
             languages: ["EN", "AR"],
-            author: language === "en" ? "Vego Team" : "فريق فيجو",
+            author: "Vego Team",
           },
           {
             id: "2",
@@ -86,7 +84,7 @@ function UserBlogPage() {
               "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&auto=format",
             publishedAt: "2025-11-07T14:30:00Z",
             languages: ["EN", "AR"],
-            author: language === "en" ? "Vego Team" : "فريق فيجو",
+            author: "Vego Team",
           },
           {
             id: "3",
@@ -107,7 +105,7 @@ function UserBlogPage() {
               "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&auto=format",
             publishedAt: "2025-09-15T09:15:00Z",
             languages: ["EN", "AR"],
-            author: language === "en" ? "Vego Team" : "فريق فيجو",
+            author: "Vego Team",
           },
           {
             id: "4",
@@ -123,7 +121,7 @@ function UserBlogPage() {
               "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&auto=format",
             publishedAt: "2025-08-10T11:45:00Z",
             languages: ["EN", "AR"],
-            author: language === "en" ? "Vego Team" : "فريق فيجو",
+            author: "Vego Team",
           },
           {
             id: "5",
@@ -142,7 +140,7 @@ function UserBlogPage() {
               "https://images.unsplash.com/photo-1578894381163-e3c7aff9be9e?w=800&auto=format",
             publishedAt: "2025-07-22T10:30:00Z",
             languages: ["EN", "AR"],
-            author: language === "en" ? "Vego Team" : "فريق فيجو",
+            author: "Vego Team",
           },
           {
             id: "6",
@@ -163,7 +161,7 @@ function UserBlogPage() {
               "https://images.unsplash.com/photo-1560179707-f14e90ef36e3?w=800&auto=format",
             publishedAt: "2025-06-18T13:45:00Z",
             languages: ["EN", "AR"],
-            author: language === "en" ? "Vego Team" : "فريق فيجو",
+            author: "Vego Team",
           },
           {
             id: "7",
@@ -183,7 +181,7 @@ function UserBlogPage() {
               "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=800&auto=format",
             publishedAt: "2025-05-30T08:20:00Z",
             languages: ["EN", "AR"],
-            author: language === "en" ? "Vego Team" : "فريق فيجو",
+            author: "Vego Team",
           },
           {
             id: "8",
@@ -202,7 +200,7 @@ function UserBlogPage() {
               "https://images.unsplash.com/photo-1544928147-79a2dbc1f389?w=800&auto=format",
             publishedAt: "2025-04-12T09:00:00Z",
             languages: ["EN", "AR"],
-            author: language === "en" ? "Vego Team" : "فريق فيجو",
+            author: "Vego Team",
           },
           {
             id: "9",
@@ -221,7 +219,7 @@ function UserBlogPage() {
               "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&auto=format",
             publishedAt: "2025-03-05T11:15:00Z",
             languages: ["EN", "AR"],
-            author: language === "en" ? "Vego Team" : "فريق فيجو",
+            author: "Vego Team",
           },
           {
             id: "10",
@@ -241,7 +239,7 @@ function UserBlogPage() {
               "https://images.unsplash.com/photo-1590650153855-d9e808231d41?w=800&auto=format",
             publishedAt: "2025-02-18T10:00:00Z",
             languages: ["EN", "AR"],
-            author: language === "en" ? "Vego Team" : "فريق فيجو",
+            author: "Vego Team",
           },
         ];
 
@@ -255,7 +253,7 @@ function UserBlogPage() {
     };
 
     fetchBlogs();
-  }, [language]);
+  }, []);
 
   useEffect(() => {
     let filtered = blogs;
@@ -263,8 +261,8 @@ function UserBlogPage() {
     if (searchQuery) {
       const query = searchQuery.toLowerCase();
       filtered = filtered.filter((blog) => {
-        const title = language === "en" ? blog.titleEn : blog.titleAr;
-        const excerpt = language === "en" ? blog.excerptEn : blog.excerptAr;
+        const title = blog.titleEn;
+        const excerpt = blog.excerptEn;
         return (
           title.toLowerCase().includes(query) ||
           excerpt.toLowerCase().includes(query)
@@ -273,36 +271,16 @@ function UserBlogPage() {
     }
 
     setFilteredBlogs(filtered);
-  }, [searchQuery, blogs, language]);
+  }, [searchQuery, blogs]);
 
   const featuredBlog = blogs.length > 0 ? blogs[0] : null;
 
-  if (isLoading) {
-    return (
-      <div className="min-h-screen bg-white">
-        <div className="container mx-auto px-4 py-16">
-          <div className="flex flex-col items-center justify-center space-y-4">
-            <div className="w-16 h-16 border-4 border-secondary border-t-transparent rounded-full animate-spin"></div>
-            <p className="text-slate-600 text-lg">
-              {language === "en"
-                ? "Loading articles..."
-                : "جاري تحميل المقالات..."}
-            </p>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
   return (
-    <div
-      className="min-h-screen bg-white"
-      dir={language === "ar" ? "rtl" : "ltr"}
-    >
+    <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative h-[50vh] overflow-hidden bg-gradient-to-br from-emerald-900 via-primary to-emerald-800">
+      <section className="relative h-[70vh] overflow-hidden bg-linear-to-br from-emerald-900 via-primary to-emerald-800">
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/70" />
+          <div className="absolute inset-0 bg-linear-to-b from-black/50 via-black/40 to-black/70" />
         </div>
 
         <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col items-center justify-center px-6 text-center">
@@ -322,7 +300,7 @@ function UserBlogPage() {
             className="font-serif text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white"
           >
             <span className="bg-gradient-to-r from-emerald-300 to-white bg-clip-text text-transparent">
-              {language === "en" ? "Vego Group Blog" : "مدونة فيجو جروب"}
+              Vego Group Blog
             </span>
           </motion.h1>
 
@@ -332,9 +310,7 @@ function UserBlogPage() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="mt-6 max-w-2xl text-lg font-light leading-relaxed text-emerald-100/80 sm:text-xl"
           >
-            {language === "en"
-              ? "Latest news, updates, and achievements in electric mobility and sustainable solutions"
-              : "آخر الأخبار والتحديثات والإنجازات في مجال التنقل الكهربائي والحلول المستدامة"}
+            Latest news, updates, and achievements in electric mobility and sustainable solutions
           </motion.p>
         </div>
       </section>
@@ -353,7 +329,7 @@ function UserBlogPage() {
                 viewport={{ once: true }}
               >
                 <Sparkles className="h-4 w-4" />
-                {language === "en" ? "Featured Article" : "أحدث المقالات"}
+                Featured Article
               </motion.span>
 
               <motion.h2
@@ -363,7 +339,7 @@ function UserBlogPage() {
                 transition={{ duration: 0.7, delay: 0.1 }}
                 viewport={{ once: true }}
               >
-                {language === "en" ? "Latest News" : "آخر الأخبار"}
+                Latest News
               </motion.h2>
 
               <motion.div

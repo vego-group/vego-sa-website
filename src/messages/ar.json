@@ -467,6 +467,16 @@
         "partnership": "فرص الشراكة",
         "support": "الدعم الفني",
         "jobs": "فرص العمل"
+      },
+      "validation": {
+        "nameRequired": "الاسم مطلوب",
+        "emailRequired": "البريد الإلكتروني مطلوب",
+        "emailInvalid": "أدخل بريدًا إلكترونيًا صحيحًا",
+        "phoneRequired": "رقم الهاتف مطلوب",
+        "subjectRequired": "الموضوع مطلوب",
+        "subjectInvalid": "الموضوع غير صحيح",
+        "messageRequired": "الرسالة مطلوبة",
+        "localeRequired": "اللغة مطلوبة"
       }
     },
     "location": {

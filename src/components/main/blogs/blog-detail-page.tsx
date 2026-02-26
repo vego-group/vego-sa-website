@@ -14,7 +14,6 @@ import {
   Twitter,
   Facebook,
 } from "lucide-react";
-import { useLocale } from "next-intl";
 
 type Blog = {
   id: string;
@@ -41,8 +40,6 @@ function BlogDetailPage() {
   const [isLoading, setIsLoading] = useState(true);
 
   // استخدام locale من next-intl
-  const locale = useLocale();
-  const language = locale as "en" | "ar";
 
   useEffect(() => {
     const fetchBlog = async () => {
@@ -89,7 +86,7 @@ function BlogDetailPage() {
             "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&auto=format",
           publishedAt: "2025-10-20T10:00:00Z",
           languages: ["EN", "AR"],
-          author: language === "en" ? "Vego Team" : "فريق فيجو",
+          author: "Vego Team",
         };
 
         setBlog(mockBlog);
@@ -103,50 +100,30 @@ function BlogDetailPage() {
     if (params.id) {
       fetchBlog();
     }
-  }, [params.id, language]);
+  }, [params.id]);
 
   const formatDate = (dateString: string | null) => {
     if (!dateString) return "";
-    return new Date(dateString).toLocaleDateString(
-      language === "en" ? "en-US" : "ar-SA",
-      {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-      },
-    );
+    return new Date(dateString).toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
   };
-
-  if (isLoading) {
-    return (
-      <div className="min-h-screen bg-white">
-        <div className="container mx-auto px-4 py-16">
-          <div className="flex flex-col items-center justify-center space-y-4">
-            <div className="w-16 h-16 border-4 border-secondary border-t-transparent rounded-full animate-spin"></div>
-            <p className="text-slate-600 text-lg">
-              {language === "en"
-                ? "Loading article..."
-                : "جاري تحميل المقال..."}
-            </p>
-          </div>
-        </div>
-      </div>
-    );
-  }
 
   if (!blog) {
     return (
       <div className="min-h-screen bg-white">
         <div className="container mx-auto px-4 py-16 text-center">
           <h1 className="text-2xl text-slate-900 mb-4">
-            {language === "en" ? "Article not found" : "المقال غير موجود"}
+            Article not found
           </h1>
           <Link
             href="/blog"
             className="text-secondary hover:underline inline-flex items-center gap-2"
           >
             <ArrowLeft className="w-4 h-4" />
-            {language === "en" ? "Back to blog" : "العودة إلى المدونة"}
+            Back to blog
           </Link>
         </div>
       </div>
@@ -154,14 +131,20 @@ function BlogDetailPage() {
   }
 
   return (
-    <div
-      className="min-h-screen bg-white"
-      dir={language === "ar" ? "rtl" : "ltr"}
-    >
+    <div className="min-h-screen bg-white">
       {/* Hero Section - مصغرة ومنظمة */}
-      <section className="relative h-[30vh] overflow-hidden bg-gradient-to-br from-emerald-900 via-primary to-emerald-800">
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/70" />
-
+      <section className="relative h-[70vh] overflow-hidden bg-linear-to-br from-emerald-900 via-primary to-emerald-800">
+        <div className="absolute inset-0">
+          <Image
+            src="/images/دراجة-خلفية.jpg"
+            alt="VEGO Electric Motorcycle"
+            fill
+            priority
+            quality={90}
+            className="object-cover opacity-25"
+          />
+          <div className="absolute inset-0 bg-linear-to-b from-black/50 via-black/40 to-black/70" />
+        </div>
         <div className="relative z-10 mx-auto flex h-full max-w-3xl flex-col items-center justify-center px-4 text-center">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
@@ -169,7 +152,7 @@ function BlogDetailPage() {
             transition={{ duration: 0.8 }}
             className="font-serif text-xl sm:text-2xl md:text-3xl font-bold text-white line-clamp-3 px-2"
           >
-            {language === "en" ? blog.titleEn : blog.titleAr}
+            {blog.titleEn}
           </motion.h1>
 
           {/* اختصار النص في وصف صغير */}
@@ -179,7 +162,7 @@ function BlogDetailPage() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-white/80 text-sm sm:text-base mt-2 line-clamp-2 max-w-2xl"
           >
-            {language === "en" ? blog.excerptEn : blog.excerptAr}
+            {blog.excerptEn}
           </motion.p>
         </div>
       </section>
@@ -192,12 +175,10 @@ function BlogDetailPage() {
           className="inline-flex items-center gap-2 text-slate-600 hover:text-secondary mb-8 transition-colors group"
         >
           <ArrowLeft
-            className={`w-5 h-5 transition-transform group-hover:-translate-x-1 ${language === "ar" ? "rotate-180" : ""}`}
+            className="w-5 h-5 transition-transform group-hover:-translate-x-1"
           />
           <span>
-            {language === "en"
-              ? "Back to all articles"
-              : "العودة إلى جميع المقالات"}
+            Back to all articles
           </span>
         </Link>
 
@@ -225,7 +206,7 @@ function BlogDetailPage() {
           >
             <Image
               src={blog.coverImage}
-              alt={language === "en" ? blog.titleEn : blog.titleAr}
+              alt={blog.titleEn}
               fill
               className="object-cover"
               priority
@@ -240,7 +221,7 @@ function BlogDetailPage() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="prose prose-lg max-w-none"
           dangerouslySetInnerHTML={{
-            __html: language === "en" ? blog.contentEn : blog.contentAr,
+            __html: blog.contentEn,
           }}
         />
 
@@ -253,7 +234,7 @@ function BlogDetailPage() {
         >
           <h3 className="text-lg font-semibold text-primary mb-4 flex items-center gap-2">
             <Share2 className="w-5 h-5" />
-            {language === "en" ? "Share this article" : "شارك هذا المقال"}
+            Share this article
           </h3>
           <div className="flex gap-3">
             <button className="p-3 bg-slate-100 hover:bg-[#1DA1F2] hover:text-white rounded-xl transition-all text-slate-600">
@@ -276,7 +257,7 @@ function BlogDetailPage() {
           className="mt-20"
         >
           <h3 className="text-2xl font-bold text-primary mb-8 text-center">
-            {language === "en" ? "Related Articles" : "مقالات ذات صلة"}
+            Related Articles
           </h3>
           <div className="grid md:grid-cols-3 gap-6">
             {[1, 2, 3].map((i) => (
@@ -288,9 +269,7 @@ function BlogDetailPage() {
                 <div className="h-32 bg-gradient-to-br from-secondary/20 to-secondary/5" />
                 <div className="p-4">
                   <h4 className="font-medium text-slate-900 group-hover:text-secondary transition-colors line-clamp-2">
-                    {language === "en"
-                      ? "Sample related article title"
-                      : "عنوان مقال ذي صلة"}
+                    Sample related article title
                   </h4>
                 </div>
               </Link>

@@ -8,7 +8,7 @@ export default function ContactHero() {
   const t = useTranslations("contact.hero");
 
   return (
-    <section className="relative h-[70vh] overflow-hidden bg-gradient-to-br from-emerald-900 via-primary to-emerald-800">
+    <section className="relative h-[70vh] overflow-hidden bg-linear-to-br from-emerald-900 via-primary to-emerald-800">
       {/* Background */}
       <div className="absolute inset-0">
         <Image
@@ -19,7 +19,7 @@ export default function ContactHero() {
           quality={90}
           className="object-cover opacity-25"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/70" />
+        <div className="absolute inset-0 bg-linear-to-b from-black/50 via-black/40 to-black/70" />
       </div>
 
       {/* Content */}
@@ -30,7 +30,7 @@ export default function ContactHero() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white"
         >
-          <span className="bg-gradient-to-r from-emerald-300 to-white bg-clip-text text-transparent">
+          <span className="bg-linear-to-r from-emerald-300 to-white bg-clip-text text-transparent">
             {t("title")}
           </span>
         </motion.h1>

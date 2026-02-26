@@ -62,6 +62,22 @@ function getCategoryColor(category?: string | null) {
   }
 }
 
+function getStatusColor(status?: string | null) {
+  switch ((status ?? "").toLowerCase()) {
+    case "new":
+      return "bg-cyan-500/20 text-cyan-300 border border-cyan-500/30";
+    case "contacted":
+      return "bg-blue-500/20 text-blue-300 border border-blue-500/30";
+    case "in progress":
+      return "bg-amber-500/20 text-amber-300 border border-amber-500/30";
+    case "resolved":
+    case "closed":
+      return "bg-emerald-500/20 text-emerald-300 border border-emerald-500/30";
+    default:
+      return "bg-white/10 text-white/60 border border-white/10";
+  }
+}
+
 function LeadsTableContent({ searchQuery }: Required<LeadsTableProps>) {
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedLead, setSelectedLead] = useState<ApiLead | null>(null);
@@ -224,7 +240,8 @@ function LeadsTableContent({ searchQuery }: Required<LeadsTableProps>) {
           <div className="col-span-3">Message Preview</div>
           <div className="col-span-1">Date</div>
           <div className="col-span-2">Category</div>
-          <div className="col-span-2 text-right">Actions</div>
+          <div className="col-span-1">Status</div>
+          <div className="col-span-1 text-right">Actions</div>
         </div>
 
         <div className="divide-y divide-white/10">
@@ -241,12 +258,6 @@ function LeadsTableContent({ searchQuery }: Required<LeadsTableProps>) {
                 >
                   {getText(lead.name)}
                 </h3>
-                <p
-                  className="text-xs text-white/40 truncate"
-                  title={getText(lead.status, "No status")}
-                >
-                  {getText(lead.status, "No status")}
-                </p>
               </div>
 
               <div className="col-span-2">
@@ -284,7 +295,15 @@ function LeadsTableContent({ searchQuery }: Required<LeadsTableProps>) {
                 </span>
               </div>
 
-              <div className="col-span-2 flex items-start justify-end gap-1">
+              <div className="col-span-1">
+                <span
+                  className={`inline-flex px-3 py-1.5 text-xs rounded-full font-medium ${getStatusColor(lead.status)}`}
+                >
+                  {getText(lead.status, "No status")}
+                </span>
+              </div>
+
+              <div className="col-span-1 flex items-start justify-end gap-1">
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
