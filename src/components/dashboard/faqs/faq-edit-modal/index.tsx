@@ -4,7 +4,11 @@ import InputErrorMessage from "@/components/ui/InputErrorMessage";
 import Loader from "@/components/ui/loader";
 import Modal from "@/components/ui/modal";
 import { useFaq } from "@/hooks/api/faqs";
-import { editFaqSchema, type EditFaqSchema } from "@/schemas";
+import {
+  editFaqSchema,
+  type EditFaqFormValues,
+  type EditFaqSchema,
+} from "@/schemas";
 import { updateFaqAPI } from "@/services/mutations/faqs";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useQueryClient } from "@tanstack/react-query";
@@ -22,12 +26,14 @@ type FaqEditorPopupProps = {
 
 type FaqDetails = {
   id?: number | string;
+  display_order?: number;
   order?: number;
   sort_order?: number;
   question_en?: string;
   question_ar?: string;
   answer_en?: string;
   answer_ar?: string;
+  is_active?: number | boolean | string | null;
   status?: string;
   published_at?: string | null;
 };
@@ -56,7 +62,7 @@ function FaqEditorPopup({ isOpen, onClose, id }: FaqEditorPopupProps) {
     reset,
     watch,
     formState: { errors, isSubmitting },
-  } = useForm<EditFaqSchema>({
+  } = useForm<EditFaqFormValues, unknown, EditFaqSchema>({
     resolver: zodResolver(editFaqSchema),
     mode: "onChange",
     defaultValues: {
@@ -64,8 +70,8 @@ function FaqEditorPopup({ isOpen, onClose, id }: FaqEditorPopupProps) {
       question_ar: "",
       answer_en: "",
       answer_ar: "",
-      order: 1,
-      status: "draft",
+      display_order: 1,
+      is_active: 0,
     },
   });
 
@@ -77,13 +83,17 @@ function FaqEditorPopup({ isOpen, onClose, id }: FaqEditorPopupProps) {
       question_ar: faq?.question_ar ?? "",
       answer_en: faq?.answer_en ?? "",
       answer_ar: faq?.answer_ar ?? "",
-      order: Number(faq?.order ?? faq?.sort_order ?? 1),
-      status:
-        String(faq?.status ?? "").toLowerCase() === "published"
-          ? "publish"
-          : String(faq?.status ?? "").toLowerCase() === "publish"
-            ? "publish"
-            : "draft",
+      display_order: Number(
+        faq?.display_order ?? faq?.order ?? faq?.sort_order ?? 1,
+      ),
+      is_active:
+        faq?.is_active === true ||
+        String(faq?.is_active ?? "").toLowerCase() === "1" ||
+        String(faq?.is_active ?? "").toLowerCase() === "true" ||
+        String(faq?.status ?? "").toLowerCase() === "published" ||
+        String(faq?.status ?? "").toLowerCase() === "publish"
+          ? 1
+          : 0,
     });
   }, [faq, isOpen, reset]);
 
@@ -93,11 +103,14 @@ function FaqEditorPopup({ isOpen, onClose, id }: FaqEditorPopupProps) {
   }, [isOpen]);
 
   const watchedValues = watch();
-  const englishFieldKeys: (keyof EditFaqSchema)[] = [
+  const englishFieldKeys: (keyof EditFaqFormValues)[] = [
     "question_en",
     "answer_en",
   ];
-  const arabicFieldKeys: (keyof EditFaqSchema)[] = ["question_ar", "answer_ar"];
+  const arabicFieldKeys: (keyof EditFaqFormValues)[] = [
+    "question_ar",
+    "answer_ar",
+  ];
 
   const hasValue = (value: unknown) =>
     typeof value === "string" ? value.trim().length > 0 : false;
@@ -112,11 +125,11 @@ function FaqEditorPopup({ isOpen, onClose, id }: FaqEditorPopupProps) {
     activeLanguage === "en" ? isEnglishComplete : isArabicComplete;
 
   const hasAnyFieldError = (
-    formErrors: FieldErrors<EditFaqSchema>,
-    keys: (keyof EditFaqSchema)[],
+    formErrors: FieldErrors<EditFaqFormValues>,
+    keys: (keyof EditFaqFormValues)[],
   ) => keys.some((key) => Boolean(formErrors[key]));
 
-  const onInvalidSubmit = (formErrors: FieldErrors<EditFaqSchema>) => {
+  const onInvalidSubmit = (formErrors: FieldErrors<EditFaqFormValues>) => {
     const currentLanguage = activeLanguage;
     const oppositeLanguage = currentLanguage === "en" ? "ar" : "en";
 
@@ -287,25 +300,28 @@ function FaqEditorPopup({ isOpen, onClose, id }: FaqEditorPopupProps) {
                   <input
                     type="number"
                     min={1}
-                    {...register("order", { valueAsNumber: true })}
+                    {...register("display_order", { valueAsNumber: true })}
                     className={inputClassName}
                   />
-                  <FieldError msg={errors.order?.message} />
+                  <FieldError msg={errors.display_order?.message} />
                 </div>
 
                 <div>
                   <label className="block text-xs sm:text-sm font-medium text-white/80 mb-1 sm:mb-2">
                     Status
                   </label>
-                  <select {...register("status")} className={inputClassName}>
-                    <option value="draft" className="bg-primary">
+                  <select
+                    {...register("is_active", { valueAsNumber: true })}
+                    className={inputClassName}
+                  >
+                    <option value={0} className="bg-primary">
                       Save as Draft
                     </option>
-                    <option value="publish" className="bg-primary">
+                    <option value={1} className="bg-primary">
                       Publish Now
                     </option>
                   </select>
-                  <FieldError msg={errors.status?.message} />
+                  <FieldError msg={errors.is_active?.message} />
                 </div>
               </div>
             </div>

@@ -3,7 +3,11 @@
 import InputErrorMessage from "@/components/ui/InputErrorMessage";
 import Loader from "@/components/ui/loader";
 import Modal from "@/components/ui/modal";
-import { addFaqSchema, type AddFaqSchema } from "@/schemas";
+import {
+  addFaqSchema,
+  type AddFaqFormValues,
+  type AddFaqSchema,
+} from "@/schemas";
 import { addFaqAPI } from "@/services/mutations/faqs";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useQueryClient } from "@tanstack/react-query";
@@ -40,7 +44,7 @@ function AddFaqPopup({ isOpen, onClose }: AddFaqPopupProps) {
     reset,
     watch,
     formState: { errors, isSubmitting },
-  } = useForm<AddFaqSchema>({
+  } = useForm<AddFaqFormValues, unknown, AddFaqSchema>({
     resolver: zodResolver(addFaqSchema),
     mode: "onChange",
     defaultValues: {
@@ -48,8 +52,8 @@ function AddFaqPopup({ isOpen, onClose }: AddFaqPopupProps) {
       question_ar: "",
       answer_en: "",
       answer_ar: "",
-      order: 1,
-      status: "draft",
+      display_order: 1,
+      is_active: 0,
     },
   });
 
@@ -61,14 +65,20 @@ function AddFaqPopup({ isOpen, onClose }: AddFaqPopupProps) {
       question_ar: "",
       answer_en: "",
       answer_ar: "",
-      order: 1,
-      status: "draft",
+      display_order: 1,
+      is_active: 0,
     });
   }, [isOpen, reset]);
 
   const watchedValues = watch();
-  const englishFieldKeys: (keyof AddFaqSchema)[] = ["question_en", "answer_en"];
-  const arabicFieldKeys: (keyof AddFaqSchema)[] = ["question_ar", "answer_ar"];
+  const englishFieldKeys: (keyof AddFaqFormValues)[] = [
+    "question_en",
+    "answer_en",
+  ];
+  const arabicFieldKeys: (keyof AddFaqFormValues)[] = [
+    "question_ar",
+    "answer_ar",
+  ];
 
   const hasValue = (value: unknown) =>
     typeof value === "string" ? value.trim().length > 0 : false;
@@ -83,11 +93,11 @@ function AddFaqPopup({ isOpen, onClose }: AddFaqPopupProps) {
     activeLanguage === "en" ? isEnglishComplete : isArabicComplete;
 
   const hasAnyFieldError = (
-    formErrors: FieldErrors<AddFaqSchema>,
-    keys: (keyof AddFaqSchema)[],
+    formErrors: FieldErrors<AddFaqFormValues>,
+    keys: (keyof AddFaqFormValues)[],
   ) => keys.some((key) => Boolean(formErrors[key]));
 
-  const onInvalidSubmit = (formErrors: FieldErrors<AddFaqSchema>) => {
+  const onInvalidSubmit = (formErrors: FieldErrors<AddFaqFormValues>) => {
     const currentLanguage = activeLanguage;
     const oppositeLanguage = currentLanguage === "en" ? "ar" : "en";
 
@@ -241,28 +251,31 @@ function AddFaqPopup({ isOpen, onClose }: AddFaqPopupProps) {
               <label className="block text-xs sm:text-sm font-medium text-white/80 mb-1 sm:mb-2">
                 Display Order
               </label>
-              <input
-                type="number"
-                min={1}
-                {...register("order", { valueAsNumber: true })}
-                className={inputClassName}
-              />
-              <FieldError msg={errors.order?.message} />
+                <input
+                  type="number"
+                  min={1}
+                  {...register("display_order", { valueAsNumber: true })}
+                  className={inputClassName}
+                />
+              <FieldError msg={errors.display_order?.message} />
             </div>
 
             <div>
               <label className="block text-xs sm:text-sm font-medium text-white/80 mb-1 sm:mb-2">
                 Status
               </label>
-              <select {...register("status")} className={inputClassName}>
-                <option value="draft" className="bg-primary">
+              <select
+                {...register("is_active", { valueAsNumber: true })}
+                className={inputClassName}
+              >
+                <option value={0} className="bg-primary">
                   Save as Draft
                 </option>
-                <option value="publish" className="bg-primary">
+                <option value={1} className="bg-primary">
                   Publish Now
                 </option>
               </select>
-              <FieldError msg={errors.status?.message} />
+              <FieldError msg={errors.is_active?.message} />
             </div>
           </div>
         </div>

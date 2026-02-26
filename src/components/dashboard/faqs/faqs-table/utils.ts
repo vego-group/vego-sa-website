@@ -1,8 +1,11 @@
 import type { FaqApiItem } from "./types";
 
 function isFaqPublished(faq: FaqApiItem) {
+  const rawIsActive = String(faq.is_active ?? "").toLowerCase();
   const rawStatus = String(faq.status ?? "").toLowerCase();
   return (
+    rawIsActive === "1" ||
+    rawIsActive === "true" ||
     rawStatus === "publish" ||
     rawStatus === "published" ||
     rawStatus === "active" ||
@@ -12,7 +15,7 @@ function isFaqPublished(faq: FaqApiItem) {
 }
 
 function getFaqOrder(faq: FaqApiItem) {
-  return Number(faq.order ?? faq.sort_order ?? 0) || "-";
+  return Number(faq.display_order ?? faq.order ?? faq.sort_order ?? 0) || "-";
 }
 
 function getDashboardFaqItems(data: unknown): FaqApiItem[] {
