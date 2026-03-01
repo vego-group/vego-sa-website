@@ -1,8 +1,8 @@
 "use client";
 
 import Modal from "@/components/ui/modal";
-import { useBlog } from "@/hooks/api";
-import type { Blog } from "@/interfaces";
+import { useDashboardBlog } from "@/hooks/api";
+
 import { editBlogSchema, type EditBlogSchema } from "@/schemas";
 import { updateBlogAPI } from "@/services/mutations/blogs";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -18,6 +18,7 @@ import { BlogEditLoadingSkeleton } from "./loading-skeleton";
 import { ModalActions } from "./modal-actions";
 import { PublishSettingsSection } from "./publish-settings-section";
 import type { ActiveLanguage, BlogEditorPopupProps } from "./types";
+import { Blog } from "@/interfaces/dashboard/blogs";
 
 function BlogEditorPopup({ isOpen, onClose, id }: BlogEditorPopupProps) {
   const queryClient = useQueryClient();
@@ -50,7 +51,7 @@ function BlogEditorPopup({ isOpen, onClose, id }: BlogEditorPopupProps) {
     },
   });
 
-  const { data, isLoading, isFetching } = useBlog(id, isOpen);
+  const { data, isLoading, isFetching } = useDashboardBlog(id);
   const blog: Blog = data?.blog;
 
   useEffect(() => {
@@ -141,6 +142,9 @@ function BlogEditorPopup({ isOpen, onClose, id }: BlogEditorPopupProps) {
     onClose();
     await queryClient.invalidateQueries({
       queryKey: ["dashboard", "blogs"],
+    });
+    await queryClient.invalidateQueries({
+      queryKey: ["dashboard", "blog", id],
     });
   };
 

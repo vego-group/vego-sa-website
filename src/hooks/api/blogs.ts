@@ -1,4 +1,9 @@
-import { blogAPI, blogsAPI } from "@/services/queries/blogs";
+import {
+  blogAPI,
+  blogDashboardAPI,
+  blogsAPI,
+  blogsDashboardAPI,
+} from "@/services/queries/blogs";
 import { useCustomInfiniteQuery, useCustomQuery } from "../useCustomQuery";
 
 export function useBlogs() {
@@ -26,10 +31,16 @@ export function useBlogs() {
 
 export function useDashboardBlogs(page: number) {
   return useCustomQuery(["dashboard", "blogs", page], async () =>
-    blogsAPI(page, true),
+    blogsDashboardAPI(page),
   );
 }
 
-export function useBlog(id: number, auth: boolean = false) {
-  return useCustomQuery(["blog", id], async () => blogAPI(id, auth));
+export function useBlog(id: number) {
+  return useCustomQuery(["public", "blog", id], async () => blogAPI(id));
+}
+
+export function useDashboardBlog(id: number) {
+  return useCustomQuery(["dashboard", "blog", id], async () =>
+    blogDashboardAPI(id),
+  );
 }

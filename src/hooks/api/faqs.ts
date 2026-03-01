@@ -1,4 +1,4 @@
-import { faqAPI, faqsAPI } from "@/services/queries/faq";
+import { faqAPI, faqsAPI, faqsDashboardAPI } from "@/services/queries/faq";
 import { useCustomInfiniteQuery, useCustomQuery } from "../useCustomQuery";
 
 export function useFaqs() {
@@ -26,10 +26,10 @@ export function useFaqs() {
 
 export function useDashboardFaqs(page: number) {
   return useCustomQuery(["dashboard", "faqs", page], async () =>
-    faqsAPI(page, true),
+    faqsDashboardAPI(page),
   );
 }
 
-export function useFaq(id: number, auth: boolean = false) {
-  return useCustomQuery(["faq", id], async () => faqAPI(id, auth));
+export function useFaq(id: number) {
+  return useCustomQuery(["faq", id], async () => faqAPI(id));
 }

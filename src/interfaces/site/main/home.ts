@@ -9,3 +9,9 @@ export interface NewsItem {
   summary: string;
   image: string;
 }
+
+export interface Faq {
+  id: number;
+  answer: string;
+  question: string;
+}

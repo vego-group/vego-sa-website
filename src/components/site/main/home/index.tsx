@@ -3,6 +3,7 @@ import NewsSection from "./NewsSection";
 import WhoIsVegoSection from "./WhoIsVegoSection";
 import WhyVegoSection from "./WhyVegSection";
 import WhatWeOfferSection from "./WhatWeOfferSection";
+import Faqs from "./Faqs";
 
 function Home() {
   return (
@@ -13,6 +14,7 @@ function Home() {
         <WhyVegoSection />
         <WhatWeOfferSection />
         <NewsSection />
+        <Faqs />
       </div>
     </>
   );

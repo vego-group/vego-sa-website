@@ -7,8 +7,8 @@ import {
   BlogsMobileList,
   BlogsPagination,
 } from "./blogs-table-ui";
-import { Blog } from "@/interfaces";
 import { SkeletonCard } from "@/components/skeleton/card";
+import { Blog } from "@/interfaces/dashboard/blogs";
 
 type BlogsTableProps = {
   activeTab?: "all" | "published" | "drafts";

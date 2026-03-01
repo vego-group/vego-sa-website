@@ -1,9 +1,6 @@
-import type { Blog } from "@/interfaces";
+import { Blog } from "@/interfaces/dashboard/blogs";
 import type { EditBlogSchema } from "@/schemas";
-import type {
-  FieldErrors,
-  UseFormRegister,
-} from "react-hook-form";
+import type { FieldErrors, UseFormRegister } from "react-hook-form";
 
 type ActiveLanguage = "en" | "ar";
 

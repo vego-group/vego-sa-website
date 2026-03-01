@@ -1,8 +1,17 @@
 import { PAGE_SIZE } from "@/constants";
 import { baseAPI } from "..";
 
-export const blogsAPI = async (page: number, auth: boolean = false) =>
-  await baseAPI("GET", `/blogs?page=${page}&per_page=${PAGE_SIZE}`, auth);
+export const blogsDashboardAPI = async (page: number) =>
+  await baseAPI("GET", `/blogs?page=${page}&per_page=${PAGE_SIZE}`, true);
 
-export const blogAPI = async (id: number, auth: boolean = false) =>
-  await baseAPI("GET", `/blogs/${id}`, auth);
+export const blogsAPI = async (page: number) =>
+  await baseAPI(
+    "GET",
+    `/blogs/with-language?page=${page}&per_page=${PAGE_SIZE}`,
+  );
+
+export const blogDashboardAPI = async (id: number) =>
+  await baseAPI("GET", `/blogs/${id}`, true);
+
+export const blogAPI = async (id: number) =>
+  await baseAPI("GET", `/blogs/${id}/with-language`);

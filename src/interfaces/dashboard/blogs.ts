@@ -1,4 +1,4 @@
-import { Lang } from ".";
+import { Lang } from "./lang";
 
 export type Blog = {
   id: number;

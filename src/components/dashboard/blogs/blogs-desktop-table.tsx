@@ -1,7 +1,7 @@
 import { formatDate } from "@/lib";
-import type { Blog } from "@/interfaces";
 import { BlogStatusBadge } from "./blog-status-badge";
 import { RowActions } from "./blog-row-actions";
+import { Blog } from "@/interfaces/dashboard/blogs";
 
 type BlogsDesktopTableProps = {
   blogs: Blog[];

@@ -328,25 +328,31 @@
       "charging-systems": "Charging Systems",
       "charging-systems-desc": "Fast, advanced charging stations that ensure a safe, efficient charging experience for individuals and businesses."
     },
-   "news": {
-    "title": "Latest News",
-    "more": "More",
-    "read-more": "Read more",
-    "news": {                    
-      "erp": {
-        "title": "Getting Started with ERP: A Comprehensive Guide",
-        "summary": "Learn the basics of ERP systems and how they can transform your business operations."
-      },
-      "cloud": {
-        "title": "Cloud ERP vs On-Premise: Which is Right for You?",
-        "summary": "Compare the pros and cons of cloud-based and on-premise ERP solutions."
-      },
-      "implementation": {
-        "title": "ERP Implementation Best Practices",
-        "summary": "Discover key strategies and best practices for successful ERP implementation."
+    "faqs": {
+      "title": "Frequently Asked Questions",
+      "description": "Quick answers to the most common questions.",
+      "empty": "No FAQs available right now.",
+      "load-more": "Load more"
+    },
+    "news": {
+      "title": "Latest News",
+      "more": "More",
+      "read-more": "Read more",
+      "news": {
+        "erp": {
+          "title": "Getting Started with ERP: A Comprehensive Guide",
+          "summary": "Learn the basics of ERP systems and how they can transform your business operations."
+        },
+        "cloud": {
+          "title": "Cloud ERP vs On-Premise: Which is Right for You?",
+          "summary": "Compare the pros and cons of cloud-based and on-premise ERP solutions."
+        },
+        "implementation": {
+          "title": "ERP Implementation Best Practices",
+          "summary": "Discover key strategies and best practices for successful ERP implementation."
+        }
       }
     }
-  }
   },
   "products": {
     "hero": {
@@ -429,6 +435,27 @@
       }
     }
   },
+  "blogs": {
+    "hero": {
+      "title": "Vego Group Blogs",
+      "description": "Latest news, updates, and achievements in electric mobility and sustainable solutions"
+    },
+    "search": {
+      "placeholder": "Search blogs by title, excerpt, or content..."
+    },
+    "empty": {
+      "title": "No blogs found",
+      "description": "Try adjusting your search"
+    },
+    "fallback": {
+      "noImage": "No image"
+    },
+    "actions": {
+      "readMore": "Read more",
+      "showMore": "Show more",
+      "loading": "Loading..."
+    }
+  },
   "contact": {
     "hero": {
       "title": "Get in Touch with VEGO",
@@ -491,5 +518,15 @@
       "directionsLink": "https://maps.app.goo.gl/f7SbBRdjzA5zbSVB6",
       "mapSrc": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3623.384237511246!2d46.69263971501215!3d24.769903684114865!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e2f03b9e3b1d4f7%3A0x5de7f8a2a1d4f7a6!2sVego%20Group!5e0!3m2!1sen!2ssa!4v1706490000000!5m2!1sen!2ssa"
     }
+  },
+  "blogs-detail": {
+    "backToAllArticles": "Back to all blogs",
+    "contentHeading": "Blog Content",
+    "publishedOn": "Published on:",
+    "updating": "Updating...",
+    "notFoundTitle": "Blog not found",
+    "backToBlog": "Back to blog",
+    "relatedBlogs": "Related Blogs",
+    "relatedBlogPlaceholder": "Related blog title"
   }
 }

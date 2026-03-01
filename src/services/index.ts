@@ -1,5 +1,5 @@
 import axios, { AxiosError, Method } from "axios";
-import { getToken } from "@/lib";
+import { getCurrentLocale, getToken } from "@/lib";
 import { ApiResult, ErrorBody, ExtraConfig } from "@/types";
 import { getPayloadMessage, getValidationErrors } from "@/lib/utils/helper";
 
@@ -10,7 +10,11 @@ export const api = axios.create({
 
 export const initApi = async () => {
   const token = await getToken();
+  //  const locale = await getCurrentLocale();
   if (token) api.defaults.headers.common.Authorization = `Bearer ${token}`;
+  //   if (locale) {
+  //   api.defaults.headers.common["Accept-Language"] = locale;
+  // }
 };
 
 const safe = async <T = unknown, E extends { message: string } = ErrorBody>(
@@ -71,12 +75,13 @@ export const baseAPI = async (
   if (auth) {
     await initApi();
   }
-
+  const locale = await getCurrentLocale();
   const response = await api.request({
     method,
     url,
     headers: {
       "Content-Type": "application/json",
+      "Accept-Language": locale,
     },
   });
 

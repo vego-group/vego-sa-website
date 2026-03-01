@@ -1,6 +1,6 @@
-import type { Blog } from "@/interfaces";
 import InputErrorMessage from "@/components/ui/InputErrorMessage";
 import type { PublishSettingsSectionFormProps } from "./types";
+import { Blog } from "@/interfaces/dashboard/blogs";
 
 type PublishSettingsSectionProps = {
   blog?: Blog;
@@ -14,7 +14,9 @@ function PublishSettingsSection({
 }: PublishSettingsSectionProps) {
   return (
     <div className="space-y-3 sm:space-y-4 pt-3 sm:pt-4">
-      <h3 className="text-base sm:text-lg font-medium text-white">Publish Settings</h3>
+      <h3 className="text-base sm:text-lg font-medium text-white">
+        Publish Settings
+      </h3>
       <div>
         <label className="block text-xs sm:text-sm font-medium text-white/80 mb-1 sm:mb-2">
           Status
