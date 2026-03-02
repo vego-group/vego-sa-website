@@ -1,27 +1,23 @@
 "use client";
 
 import Modal from "@/components/ui/modal";
-import { useEffect } from "react";
+
+type LeadDetailsPopupLead = {
+  date?: string | null;
+  name?: string | null;
+  email?: string | null;
+  phone?: string | null;
+  category?: string | null;
+  message?: string | null;
+};
 
 type LeadDetailsPopupProps = {
   isOpen: boolean;
   onClose: () => void;
-  lead: any;
+  lead: LeadDetailsPopupLead | null;
 };
 
 function LeadDetailsPopup({ isOpen, onClose, lead }: LeadDetailsPopupProps) {
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-
-    return () => {
-      document.body.style.overflow = "unset";
-    };
-  }, [isOpen]);
-
   if (!lead) return null;
 
   return (
@@ -30,40 +26,30 @@ function LeadDetailsPopup({ isOpen, onClose, lead }: LeadDetailsPopupProps) {
       onClose={onClose}
       title="Lead Details"
       titleClassName="text-xl sm:text-2xl font-semibold text-white"
-      contentClassName="bg-linear-to-br from-emerald-950 via-primary to-emerald-950 sm:max-w-2xl mx-auto"
+      contentClassName="bg-linear-to-br from-emerald-950 via-primary to-emerald-950 sm:max-w-2xl mx-auto overflow-hidden"
       closeButtonClassname="text-white"
+      scrollAreaClassname="max-w-full"
     >
-      <div className="space-y-4 sm:space-y-6 p-3 sm:p-4 md:p-6">
-        {/* Date */}
+      <div className="space-y-4 sm:space-y-6 p-3 sm:p-4 md:p-6 max-w-full overflow-x-hidden">
         <div className="flex justify-end items-start">
           <span className="text-xs sm:text-sm text-white/50 px-1">
             {lead.date}
           </span>
         </div>
 
-        {/* Name & Company */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-          <div className="space-y-1">
+        <div className="grid grid-cols-1 gap-4 sm:gap-6">
+          <div className="space-y-1 min-w-0">
             <label className="block text-xs font-medium text-white/50 uppercase tracking-wider">
               Name
             </label>
-            <p className="text-sm sm:text-base text-white font-medium break-words bg-white/5 rounded-lg p-2 sm:p-3 border border-white/10">
+            <p className="text-sm sm:text-base text-white font-medium wrap-break-word bg-white/5 rounded-lg p-2 sm:p-3 border border-white/10">
               {lead.name}
-            </p>
-          </div>
-          <div className="space-y-1">
-            <label className="block text-xs font-medium text-white/50 uppercase tracking-wider">
-              Company
-            </label>
-            <p className="text-sm sm:text-base text-white font-medium break-words bg-white/5 rounded-lg p-2 sm:p-3 border border-white/10">
-              {lead.company || "—"}
             </p>
           </div>
         </div>
 
-        {/* Contact Info */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-          <div className="space-y-1">
+          <div className="space-y-1 min-w-0">
             <label className="block text-xs font-medium text-white/50 uppercase tracking-wider">
               Email
             </label>
@@ -76,7 +62,8 @@ function LeadDetailsPopup({ isOpen, onClose, lead }: LeadDetailsPopupProps) {
               </a>
             </div>
           </div>
-          <div className="space-y-1">
+
+          <div className="space-y-1 min-w-0">
             <label className="block text-xs font-medium text-white/50 uppercase tracking-wider">
               Phone
             </label>
@@ -91,32 +78,33 @@ function LeadDetailsPopup({ isOpen, onClose, lead }: LeadDetailsPopupProps) {
           </div>
         </div>
 
-        {/* Category */}
-        <div className="space-y-1">
+        <div className="space-y-1 min-w-0">
           <label className="block text-xs font-medium text-white/50 uppercase tracking-wider">
             Category
           </label>
           <div className="bg-white/5 rounded-lg p-2 sm:p-3 border border-white/10">
-            <p className="text-sm sm:text-base text-white">
+            <p className="text-sm sm:text-base text-white wrap-break-word">
               {lead.category || "Not specified"}
             </p>
           </div>
         </div>
 
-        {/* Message */}
-        <div className="space-y-2">
+        <div className="space-y-2 min-w-0">
           <label className="block text-xs font-medium text-white/50 uppercase tracking-wider">
             Message
           </label>
-          <div className="bg-white/5 rounded-xl sm:rounded-2xl border border-white/10 p-3 sm:p-4 max-h-48 sm:max-h-64 overflow-y-auto custom-scrollbar">
-            <p className="text-sm sm:text-base text-white/90 whitespace-pre-wrap break-words leading-relaxed">
-              {lead.message}
-            </p>
+          <div className="w-full max-w-full bg-white/5 rounded-xl sm:rounded-2xl border border-white/10 p-2 sm:p-3 overflow-hidden">
+            <textarea
+              readOnly
+              value={lead.message ?? ""}
+              rows={3}
+              className="w-full min-h-20 sm:min-h-24 max-h-64 resize-none bg-transparent px-2 py-1 text-sm sm:text-base text-white/90 leading-relaxed outline-none border-0 whitespace-pre-wrap break-all wrap-anywhere custom-scrollbar"
+              style={{ wordBreak: "break-word" }}
+            />
           </div>
         </div>
 
-        {/* Actions */}
-        <div className="flex justify-end pt-4 sm:pt-6 border-t border-white/10">
+        <div className="flex justify-end pt-4 sm:pt-6">
           <button
             type="button"
             onClick={onClose}

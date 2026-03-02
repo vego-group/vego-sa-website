@@ -1,33 +1,11 @@
-import { Cairo, Cormorant_Garamond } from "next/font/google";
 import type { ReactNode } from "react";
-import "../globals.css";
-import "swiper/css";
-import "swiper/css/pagination";
-import { Sidebar } from "../../components/dashboard/dashboard/sidebar"; // هذا المسار صحيح
 
 type DashboardLayoutProps = {
   children: ReactNode;
 };
 
-const cairo = Cairo({
-  variable: "--font-cairo",
-  subsets: ["arabic", "latin"],
-});
-
-const cormorant = Cormorant_Garamond({
-  variable: "--font-cormorant",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
-
 function DashboardLayout({ children }: DashboardLayoutProps) {
-  return (
-    <html lang="en" dir="ltr">
-      <body className={`${cairo.variable} ${cormorant.variable} antialiased`}>
-        {children}
-      </body>
-    </html>
-  );
+  return <div className="min-h-svh">{children}</div>;
 }
 
 export default DashboardLayout;
