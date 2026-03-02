@@ -1,4 +1,4 @@
-import { NavItem } from "@/interfaces/navbar";
+import { NavItem } from "@/interfaces";
 
 export const navItems: NavItem[] = [
   { label: "home", href: "/" },

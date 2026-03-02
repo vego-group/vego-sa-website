@@ -1,1 +1,3 @@
-export * from "./login";
+export * from "./auth";
+export * from "./blogs";
+export * from "./faqs";

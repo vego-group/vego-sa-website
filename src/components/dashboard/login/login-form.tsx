@@ -8,6 +8,9 @@ import { loginSchema, type LoginSchema } from "@/schemas";
 import { LoginField } from "./login-field";
 import { setToken } from "@/lib";
 import { useRouter } from "next/navigation";
+import { loginAPI } from "@/services/mutations/auth";
+import toast from "react-hot-toast";
+import Loader from "@/components/ui/loader";
 
 const formVariants = {
   hidden: { opacity: 0 },
@@ -28,23 +31,33 @@ const itemVariants = {
 
 function LoginForm() {
   const router = useRouter();
-  const form = useForm<LoginSchema>({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<LoginSchema>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
       email: "",
       password: "",
     },
-    mode: "onSubmit",
+    mode: "onChange",
   });
 
-  const onSubmit = async (values: LoginSchema) => {
-    console.log(values);
-    await setToken("12345");
-    router.push("/dashboard");
+  const onSubmit = async (data: LoginSchema) => {
+    const result = await loginAPI(data);
+    if (result?.ok) {
+      toast.success(result?.message || "Login successful");
+      const token = result?.data?.token;
+      if (token) await setToken(token);
+      router.replace("/dashboard");
+      return;
+    }
+    toast.error(result?.message);
   };
 
   return (
-    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
       <motion.div
         initial="hidden"
         animate="visible"
@@ -59,8 +72,8 @@ function LoginForm() {
             placeholder="admin@vego.sa"
             autoComplete="email"
             icon={<Mail size={18} />}
-            register={form.register}
-            error={form.formState.errors.email?.message}
+            register={register}
+            error={errors.email?.message}
           />
         </motion.div>
 
@@ -72,8 +85,8 @@ function LoginForm() {
             placeholder="••••••••"
             autoComplete="current-password"
             icon={<Lock size={18} />}
-            register={form.register}
-            error={form.formState.errors.password?.message}
+            register={register}
+            error={errors.password?.message}
           />
         </motion.div>
       </motion.div>
@@ -85,11 +98,18 @@ function LoginForm() {
         animate="visible"
         className="group flex w-full items-center justify-center gap-3 rounded-2xl bg-secondary px-6 py-3 text-sm font-semibold text-primary shadow-[0_18px_40px_-24px_color-mix(in_oklab,var(--color-secondary)_80%,transparent)] transition duration-300 hover:bg-secondary/90"
       >
-        Log In
-        <MoveRight
-          size={18}
-          className="transition duration-300 group-hover:translate-x-1"
-        />
+        {isSubmitting ? (
+          <Loader />
+        ) : (
+          <>
+            {" "}
+            Log In
+            <MoveRight
+              size={18}
+              className="transition duration-300 group-hover:translate-x-1"
+            />
+          </>
+        )}
       </motion.button>
     </form>
   );

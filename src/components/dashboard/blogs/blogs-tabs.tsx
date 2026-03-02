@@ -1,60 +1,55 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useEffect, useMemo, useState } from "react";
+import type { Swiper as SwiperType } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { BlogsTabItem } from "./blogs-tab-item";
 
 type TabType = "all" | "published" | "drafts";
 
 type BlogsTabsProps = {
   activeTab: TabType;
   onTabChange: (tab: TabType) => void;
-  counts: {
-    all: number;
-    published: number;
-    drafts: number;
-  };
 };
 
-function BlogsTabs({ activeTab, onTabChange, counts }: BlogsTabsProps) {
-  const tabs = [
-    { id: "all", label: "All Blogs", count: counts.all },
-    { id: "published", label: "Published", count: counts.published },
-    { id: "drafts", label: "Drafts", count: counts.drafts },
-  ];
+function BlogsTabs({ activeTab, onTabChange }: BlogsTabsProps) {
+  const [tabsSwiper, setTabsSwiper] = useState<SwiperType | null>(null);
+  const tabs = useMemo(
+    () => [
+      { id: "all", label: "All" },
+      { id: "published", label: "Published" },
+      { id: "drafts", label: "Drafts" },
+    ],
+    [],
+  );
+
+  useEffect(() => {
+    if (!tabsSwiper) return;
+
+    const activeIndex = tabs.findIndex((tab) => tab.id === activeTab);
+    if (activeIndex >= 0) {
+      tabsSwiper.slideTo(activeIndex, 250);
+    }
+  }, [activeTab, tabs, tabsSwiper]);
 
   return (
     <div className="border-b border-white/10">
-      <div className="flex items-center gap-2">
+      <Swiper
+        onSwiper={setTabsSwiper}
+        slidesPerView="auto"
+        spaceBetween={8}
+        className="w-full"
+      >
         {tabs.map((tab) => (
-          <button
-            key={tab.id}
-            onClick={() => onTabChange(tab.id as TabType)}
-            className={`relative px-5 py-3 text-sm font-medium transition-colors
-              ${activeTab === tab.id 
-                ? "text-white" 
-                : "text-white/60 hover:text-white/80"
-              }`}
-          >
-            {activeTab === tab.id && (
-              <motion.div
-                layoutId="activeBlogTab"
-                className="absolute inset-x-0 bottom-0 h-0.5 bg-secondary"
-                transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-              />
-            )}
-            <span className="flex items-center gap-2">
-              {tab.label}
-              <span className={`text-xs px-2 py-0.5 rounded-full 
-                ${activeTab === tab.id 
-                  ? "bg-secondary/20 text-secondary" 
-                  : "bg-white/10 text-white/60"
-                }`}
-              >
-                {tab.count}
-              </span>
-            </span>
-          </button>
+          <SwiperSlide key={tab.id} className="w-auto!">
+            <BlogsTabItem
+              isActive={activeTab === tab.id}
+              label={tab.label}
+              onClick={() => onTabChange(tab.id as TabType)}
+            />
+          </SwiperSlide>
         ))}
-      </div>
+      </Swiper>
     </div>
   );
 }

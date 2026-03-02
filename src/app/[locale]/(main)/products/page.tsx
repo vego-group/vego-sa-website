@@ -1,4 +1,4 @@
-import Products from "@/components/main/products";
+import Products from "@/components/site/main/products";
 
 function ProductsPage() {
   return (

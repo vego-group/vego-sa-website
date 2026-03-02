@@ -1,4 +1,4 @@
-import { FooterLink, SocialLink } from "@/interfaces/footer";
+import { FooterLink, SocialLink } from "@/interfaces";
 import { Instagram, Twitter, Linkedin } from "lucide-react";
 import { TbBrandSnapchat } from "react-icons/tb";
 import { FaWhatsapp } from "react-icons/fa";
@@ -9,12 +9,12 @@ export const footerLinks: FooterLink[] = [
     links: [
       { label: "company.products", href: "/products" },
       { label: "company.branches", href: "/branches" },
-      { label: "company.about-us", href: "/about-us" },
+      { label: "company.about-us", href: "/about" },
     ],
   },
   {
     title: "support.title",
-    links: [{ label: "support.contact-us", href: "/contact-us" }],
+    links: [{ label: "support.contact-us", href: "/contact" }],
   },
   {
     title: "legal.title",
