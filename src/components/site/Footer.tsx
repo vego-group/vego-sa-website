@@ -49,7 +49,7 @@ function Footer() {
               <div className="flex items-center gap-3">
                 <Mail className="h-4 w-4 text-slate-500" />
                 <Link
-                  href="mailto:info@vegogroup.com"
+                  href="mailto:info@vego.sa"
                   target="_blank"
                   rel="noopener noreferrer"
                   dir="ltr"
