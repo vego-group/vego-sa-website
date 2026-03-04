@@ -1,4 +1,4 @@
-import About from "@/components/main/about";
+import About from "@/components/site/main/about";
 
 function AboutPage() {
   return (
@@ -8,4 +8,4 @@ function AboutPage() {
   );
 }
 
-export default AboutPage; 
+export default AboutPage;

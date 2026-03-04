@@ -4,5 +4,6 @@ export { FaqsStats } from "./faqs-stats";
 export { FaqsTabs } from "./faqs-tabs";
 export { FaqsActions } from "./faqs-actions";
 export { FaqsTable } from "./faqs-table";
+export { AddFaqPopup } from "./add-faq-popup";
 export { FaqEditorPopup } from "./faq-editor-popup";
 export { DeleteFaqConfirmationPopup } from "./delete-faq-confirmation-popup";

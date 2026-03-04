@@ -1,12 +1,10 @@
-import BlogDetailPage from "@/components/main/blogs/blog-detail-page";
+import { BlogDetailPage } from "@/components/site/main/blogs";
 
-interface BlogDetailPageProps {
-  params: {
-    id: string;
-    locale: string;
-  };
-}
-
-export default function Page({ params }: BlogDetailPageProps) {
-  return <BlogDetailPage />;
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
+  return <BlogDetailPage id={id} />;
 }

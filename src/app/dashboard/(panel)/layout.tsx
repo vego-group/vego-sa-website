@@ -1,4 +1,4 @@
-import { Sidebar } from "@/components/dashboard/dashboard/sidebar";
+import Sidebar from "@/components/dashboard/dashboard/sidebar";
 import type { ReactNode } from "react";
 
 type PanelLayoutProps = {

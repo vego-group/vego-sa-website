@@ -8,30 +8,13 @@ type TabType = "all" | "published" | "drafts";
 type FaqsTabsProps = {
   activeTab: TabType;
   onTabChange: (tab: TabType) => void;
-  counts: {
-    all: number;
-    published: number;
-    drafts: number;
-  };
 };
 
-function FaqsTabs({ activeTab, onTabChange, counts }: FaqsTabsProps) {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 640);
-    };
-    
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
-
+function FaqsTabs({ activeTab, onTabChange }: FaqsTabsProps) {
   const tabs = [
-    { id: "all", label: "All", fullLabel: "All FAQs", count: counts.all },
-    { id: "published", label: "Published", fullLabel: "Published", count: counts.published },
-    { id: "drafts", label: "Drafts", fullLabel: "Drafts", count: counts.drafts },
+    { id: "all", label: "All", fullLabel: "All" },
+    { id: "published", label: "Published", fullLabel: "Published" },
+    { id: "drafts", label: "Drafts", fullLabel: "Drafts" },
   ];
 
   return (
@@ -42,9 +25,10 @@ function FaqsTabs({ activeTab, onTabChange, counts }: FaqsTabsProps) {
             key={tab.id}
             onClick={() => onTabChange(tab.id as TabType)}
             className={`relative px-3 sm:px-5 py-2.5 sm:py-3 text-xs sm:text-sm font-medium transition-colors whitespace-nowrap
-              ${activeTab === tab.id 
-                ? "text-white" 
-                : "text-white/60 hover:text-white/80"
+              ${
+                activeTab === tab.id
+                  ? "text-white"
+                  : "text-white/60 hover:text-white/80"
               }`}
           >
             {activeTab === tab.id && (
@@ -56,14 +40,8 @@ function FaqsTabs({ activeTab, onTabChange, counts }: FaqsTabsProps) {
             )}
             <span className="flex items-center gap-1.5 sm:gap-2">
               <span className="sm:hidden">{tab.label}</span>
-              <span className="hidden sm:inline">{tab.fullLabel || tab.label}</span>
-              <span className={`text-xs px-1.5 sm:px-2 py-0.5 rounded-full 
-                ${activeTab === tab.id 
-                  ? "bg-secondary/20 text-secondary" 
-                  : "bg-white/10 text-white/60"
-                }`}
-              >
-                {tab.count}
+              <span className="hidden sm:inline">
+                {tab.fullLabel || tab.label}
               </span>
             </span>
           </button>

@@ -18,24 +18,6 @@ export const cardData: HomeCard[] = [
   },
 ];
 
-export const newsItems: NewsItem[] = [
-  {
-    title: "news-1-title",
-    summary: "news-1-summary",
-    image: "/images/news-3.jpeg",
-  },
-  {
-    title: "news-2-title",
-    summary: "news-2-summary",
-    image: "/images/news-2.jpg",
-  },
-  {
-    title: "news-3-title",
-    summary: "news-3-summary",
-    image: "/images/news-1.png",
-  },
-];
-
 export const Slides: HomeCard[] = [
   {
     title: "micromobility",

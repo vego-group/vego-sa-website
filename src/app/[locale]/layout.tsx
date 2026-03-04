@@ -1,24 +1,12 @@
 import type { Metadata } from "next";
-import { Cairo, Cormorant_Garamond } from "next/font/google";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
-import "../globals.css";
-import "swiper/css";
-import "swiper/css/pagination";
 import { LOGO, SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from "@/constants";
-
-const cairo = Cairo({
-  variable: "--font-cairo",
-  subsets: ["arabic", "latin"],
-});
-
-const cormorant = Cormorant_Garamond({
-  variable: "--font-cormorant",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
+import CommitmentToExcellence from "@/components/site/CommitmentToExcellence";
+import Footer from "@/components/site/Footer";
+import Navbar from "@/components/site/navbar.tsx";
 
 export async function generateMetadata({
   params,
@@ -66,7 +54,7 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-export default async function RootLayout({
+export default async function LocaleLayout({
   children,
   params,
 }: Readonly<{
@@ -82,14 +70,13 @@ export default async function RootLayout({
   const dir = locale === "ar" ? "rtl" : "ltr";
 
   return (
-    <html lang={locale} dir={dir}>
-      <body className={`${cairo.variable} ${cormorant.variable} antialiased`}>
-        <div className="min-h-svh">
-          <NextIntlClientProvider messages={messages}>
-            {children}
-          </NextIntlClientProvider>
-        </div>
-      </body>
-    </html>
+    <div lang={locale} dir={dir} className="min-h-svh">
+      <NextIntlClientProvider messages={messages}>
+        <Navbar />
+        <main>{children}</main>
+        <CommitmentToExcellence />
+        <Footer />
+      </NextIntlClientProvider>
+    </div>
   );
 }
