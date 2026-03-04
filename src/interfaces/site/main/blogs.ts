@@ -7,5 +7,13 @@ export interface BlogGuest {
   meta_description: string | null;
   meta_title: string | null;
   title: string;
+  recommended_blogs: RecommendedBlog[];
   updated_at: string;
+}
+
+export interface RecommendedBlog {
+  id: number;
+  title: string;
+  excerpt: string;
+  cover_image: string;
 }
