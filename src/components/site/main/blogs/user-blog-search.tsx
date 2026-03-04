@@ -18,7 +18,7 @@ function UserBlogSearch({ onSearch, value }: UserBlogSearchProps) {
           value={value}
           onChange={(e) => onSearch(e.target.value)}
           placeholder={t("placeholder")}
-          className={`w-full rounded-xl bg-linear-to-br from-emerald-800 via-primary to-emerald-800 px-4 py-3 text-white placeholder:text-white/40 focus:border-secondary/60 focus:ring-1 focus:ring-secondary/30 focus:outline-none ${isArabic ? "pr-12 pl-4 text-right" : "pl-12 pr-4 text-left"}`}
+          className={`w-full rounded-xl bg-primary px-4 py-3 text-white  focus:border-secondary/60 focus:ring-1 focus:ring-secondary/30 focus:outline-none ${isArabic ? "pr-12 pl-4 text-right" : "pl-12 pr-4 text-left"}`}
         />
         <svg
           className={`absolute top-1/2 -translate-y-1/2 h-5 w-5 text-white/40 ${isArabic ? "right-4" : "left-4"}`}
@@ -39,5 +39,3 @@ function UserBlogSearch({ onSearch, value }: UserBlogSearchProps) {
 }
 
 export { UserBlogSearch };
-
-
