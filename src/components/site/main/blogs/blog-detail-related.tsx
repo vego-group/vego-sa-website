@@ -3,28 +3,16 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
-import { useBlogs } from "@/hooks/api";
 import { Link } from "@/i18n/navigation";
-import { BlogGuest } from "@/interfaces/site/main/blogs";
+import { BlogGuest, RecommendedBlog } from "@/interfaces/site/main/blogs";
 
 type BlogDetailRelatedProps = {
-  currentBlogId: number;
+  recommendedBlogs: RecommendedBlog[] | undefined;
 };
 
-function BlogDetailRelated({ currentBlogId }: BlogDetailRelatedProps) {
+function BlogDetailRelated({ recommendedBlogs }: BlogDetailRelatedProps) {
   const t = useTranslations("blogs-detail");
-  const { data } = useBlogs();
-
-  const blogs: BlogGuest[] =
-    data?.pages?.flatMap((page) => page?.data ?? [])?.filter(Boolean) ?? [];
-
-  const related = blogs
-    .filter((item) => item.id !== currentBlogId)
-    .slice(0, 3);
-
-  const placeholders = [1, 2, 3];
-  const cards = related.length > 0 ? related : placeholders;
-
+  if (!recommendedBlogs || !recommendedBlogs?.length) return null;
   return (
     <section className="mt-16">
       <h3 className="mb-8 text-center text-3xl font-extrabold text-primary">
@@ -32,7 +20,7 @@ function BlogDetailRelated({ currentBlogId }: BlogDetailRelatedProps) {
       </h3>
 
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {cards.map((item, index) => {
+        {recommendedBlogs?.map((item, index) => {
           const isBlog = typeof item === "object";
           const key = isBlog ? item.id : `placeholder-${index}`;
           const blogItem = isBlog ? (item as BlogGuest) : null;
@@ -55,7 +43,9 @@ function BlogDetailRelated({ currentBlogId }: BlogDetailRelatedProps) {
                   unoptimized
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 400px"
                   className={`${
-                    blogItem?.cover_image ? "object-cover" : "object-contain p-7"
+                    blogItem?.cover_image
+                      ? "object-cover"
+                      : "object-contain p-7"
                   }`}
                 />
               </div>

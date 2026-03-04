@@ -6,13 +6,15 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'images.unsplash.com',
-        port: '',
-        pathname: '/**',
+        protocol: "https",
+        hostname: "images.unsplash.com",
+        pathname: "/**",
       },
-      // يمكنك إضافة المزيد من النطاقات هنا إذا احتجت
-      // مثال: hostname: 'another-image-host.com',
+      {
+        protocol: "https",
+        hostname: "api.vego.sa",
+        pathname: "/**",
+      },
     ],
   },
 };

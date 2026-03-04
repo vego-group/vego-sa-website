@@ -55,7 +55,7 @@ function Footer() {
                   dir="ltr"
                   className="hover:underline"
                 >
-                  info@vegogroup.com
+                  info@vego.sa
                 </Link>
               </div>
 

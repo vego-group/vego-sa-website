@@ -5,7 +5,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { useBlog } from "@/hooks/api";
 import { Link } from "@/i18n/navigation";
-import { BlogGuest } from "@/interfaces/site/main/blogs";
+import { BlogGuest, RecommendedBlog } from "@/interfaces/site/main/blogs";
 import { BlogDetailEmpty } from "./blog-detail-empty";
 import { BlogDetailHero } from "./blog-detail-hero";
 import { BlogDetailLoading } from "./blog-detail-loading";
@@ -23,7 +23,10 @@ function BlogDetailPage({ id }: BlogProps) {
 
   const { data, isLoading } = useBlog(Number(id));
   const blog: BlogGuest | undefined = data?.data;
+  const recommendedBlogs: RecommendedBlog[] | undefined =
+    blog?.recommended_blogs;
 
+  console.log(blog);
   if (isLoading) return <BlogDetailLoading />;
   if (!blog) return <BlogDetailEmpty />;
 
@@ -64,7 +67,7 @@ function BlogDetailPage({ id }: BlogProps) {
           {blog.content}
         </motion.article>
 
-        <BlogDetailRelated currentBlogId={blog.id} />
+        <BlogDetailRelated recommendedBlogs={recommendedBlogs} />
       </div>
     </div>
   );
