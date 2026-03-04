@@ -26,7 +26,6 @@ function BlogDetailPage({ id }: BlogProps) {
   const recommendedBlogs: RecommendedBlog[] | undefined =
     blog?.recommended_blogs;
 
-  console.log(blog);
   if (isLoading) return <BlogDetailLoading />;
   if (!blog) return <BlogDetailEmpty />;
 
