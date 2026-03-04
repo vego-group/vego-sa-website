@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { logoutAPI } from "@/services/mutations/auth";
 import { removeToken } from "@/lib";
@@ -14,13 +14,17 @@ function SidebarContent({
 }) {
   const pathname = usePathname();
   const router = useRouter();
+  const previousPathnameRef = useRef(pathname);
 
-  // Close menu on route change (defer update to avoid cascading warning)
+  // Close mobile menu only when route actually changes
   useEffect(() => {
-    if (!isMobileMenuOpen) return;
+    const didPathChange = previousPathnameRef.current !== pathname;
 
-    const id = requestAnimationFrame(() => setIsMobileMenuOpen(false));
-    return () => cancelAnimationFrame(id);
+    if (isMobileMenuOpen && didPathChange) {
+      setIsMobileMenuOpen(false);
+    }
+
+    previousPathnameRef.current = pathname;
   }, [pathname, isMobileMenuOpen, setIsMobileMenuOpen]);
 
   const handleNavigation = (path: string) => {
@@ -46,7 +50,7 @@ function SidebarContent({
               V
             </div>
             <div>
-              <div className="font-semibold text-white">My Vego</div>
+              <div className="font-semibold text-white">VEGO GROUP</div>
               <div className="text-xs text-white/50">Admin Panel</div>
             </div>
           </div>
@@ -217,7 +221,7 @@ function SidebarContent({
                 V
               </div>
               <div>
-                <div className="font-semibold text-white">My Vego</div>
+                <div className="font-semibold text-white">VEGO GROUP</div>
                 <div className="text-xs text-white/50">Admin Panel</div>
               </div>
             </div>
