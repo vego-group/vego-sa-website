@@ -31,7 +31,7 @@ function UserBlogPage() {
     <div className="min-h-screen bg-white">
       <BlogsHero title={t("hero.title")} description={t("hero.description")} />
 
-      <div className="container mx-auto px-4 py-16">
+      <div className="max-w-7xl mx-auto px-4 py-16">
         <div className="mx-auto mb-16 max-w-4xl">
           <UserBlogSearch onSearch={setSearchQuery} value={searchQuery} />
         </div>

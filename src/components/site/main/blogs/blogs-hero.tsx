@@ -31,7 +31,7 @@ function BlogsHero({ title, description }: BlogsHeroProps) {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="font-serif text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white"
         >
-          <span className="bg-gradient-to-r from-emerald-300 to-white bg-clip-text text-transparent">
+          <span className="bg-linear-to-r from-emerald-300 to-white bg-clip-text text-transparent">
             {title}
           </span>
         </motion.h1>
@@ -50,4 +50,3 @@ function BlogsHero({ title, description }: BlogsHeroProps) {
 }
 
 export { BlogsHero };
-
