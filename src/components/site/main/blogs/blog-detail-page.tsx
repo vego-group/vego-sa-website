@@ -31,7 +31,7 @@ function BlogDetailPage({ id }: BlogProps) {
 
   return (
     <div className="min-h-screen bg-white">
-      <BlogDetailHero title={blog.title} excerpt={blog.excerpt} />
+      <BlogDetailHero title={blog.title} coverImage={blog?.cover_image} />
 
       <div className="container mx-auto max-w-4xl px-4 py-12">
         <Link

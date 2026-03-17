@@ -27,9 +27,19 @@ function UserBlogGrid({ blogs }: UserBlogGridProps) {
 
   if (blogs.length === 0) {
     return (
-      <div className="py-16 text-center">
-        <p className="text-lg text-slate-600">{t("empty.title")}</p>
-        <p className="mt-2 text-sm text-slate-400">{t("empty.description")}</p>
+      <div className="max-w-7xl mx-auto rounded-[2rem] border border-slate-200 bg-white px-6 py-14 shadow-sm sm:px-10">
+        <div className="mx-auto flex max-w-xl flex-col items-center text-center">
+          <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-primary/5 ring-1 ring-primary/10">
+            <div className="relative h-9 w-11 rounded-xl border-2 border-primary/20 bg-white">
+              <span className="absolute left-1/2 top-2 h-1.5 w-5 -translate-x-1/2 rounded-full bg-primary/20" />
+              <span className="absolute left-1/2 top-5 h-1.5 w-7 -translate-x-1/2 rounded-full bg-slate-200" />
+            </div>
+          </div>
+
+          <h3 className="text-2xl font-semibold text-slate-900 sm:text-3xl">
+            {t("empty.title")}
+          </h3>
+        </div>
       </div>
     );
   }

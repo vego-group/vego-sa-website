@@ -51,7 +51,7 @@ function BlogDetailRelated({ recommendedBlogs }: BlogDetailRelatedProps) {
               </div>
 
               <div className="bg-slate-100 px-6 py-5">
-                <h4 className="line-clamp-1 text-center text-2xl font-bold text-primary">
+                <h4 className="line-clamp-1 text-center font-bold text-primary">
                   {blogItem?.title || t("relatedBlogPlaceholder")}
                 </h4>
               </div>

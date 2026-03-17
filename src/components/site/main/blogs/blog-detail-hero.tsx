@@ -1,16 +1,30 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 type BlogDetailHeroProps = {
   title: string;
-  excerpt: string;
+  coverImage: string | null;
 };
 
-function BlogDetailHero({ title, excerpt }: BlogDetailHeroProps) {
+function BlogDetailHero({ title, coverImage }: BlogDetailHeroProps) {
+  const heroImage = coverImage?.trim() || "/images/placeholder-logo.jpeg";
+
   return (
     <section className="relative h-[65vh] overflow-hidden bg-linear-to-br from-emerald-900 via-primary to-emerald-800">
-      <div className="absolute inset-0 bg-linear-to-b from-black/50 via-black/40 to-black/70" />
+      <Image
+        src={heroImage}
+        alt={title}
+        fill
+        unoptimized
+        priority
+        sizes="100vw"
+        className={`${
+          coverImage?.trim() ? "" : "object-contain bg-white p-10"
+        }`}
+      />
+      <div className="absolute inset-0 bg-linear-to-b from-black/55 via-black/45 to-black/75" />
 
       <div className="relative z-10 mx-auto flex h-full max-w-3xl flex-col items-center justify-center px-4 text-center">
         <motion.h1
@@ -21,15 +35,6 @@ function BlogDetailHero({ title, excerpt }: BlogDetailHeroProps) {
         >
           {title}
         </motion.h1>
-
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="mt-2 line-clamp-3 max-w-2xl text-sm text-white/80 sm:text-base"
-        >
-          {excerpt}
-        </motion.p>
       </div>
     </section>
   );
