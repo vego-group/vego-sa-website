@@ -29,7 +29,7 @@ export const socialLinks: SocialLink[] = [
   {
     label: "WhatsApp",
     icon: FaWhatsapp,
-    href: "https://wa.me/966112345678",
+    href: "https://wa.me/966579820538",
   },
   {
     label: "Instagram",
