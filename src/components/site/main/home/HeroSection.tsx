@@ -8,7 +8,7 @@ function HeroSection() {
   const locale = useLocale();
   const Arrow = locale === "en" ? ArrowRight : ArrowLeft;
   return (
-    <section className="relative overflow-hidden bg-primary h-svh">
+    <section className="relative overflow-hidden bg-primary h-[calc(100svh-80px)] md:h-[calc(100svh-88px)]">
       <div className="absolute inset-0">
         <Image
           src="/images/hero-motorcycle.jpg"

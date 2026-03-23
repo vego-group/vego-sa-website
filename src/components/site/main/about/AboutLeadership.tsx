@@ -47,7 +47,7 @@ export default function AboutLeadership() {
 
           {/* Title */}
           <motion.h2
-            className="mt-8 font-serif text-4xl font-bold tracking-tight text-primary sm:text-5xl md:text-6xl"
+            className="mt-8 font-serif text-3xl font-bold tracking-tight text-primary sm:text-4xl lg:text-5xl"
             initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.2 }}

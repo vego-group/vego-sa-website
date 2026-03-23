@@ -109,7 +109,7 @@ function AboutSustainability() {
           </motion.div>
 
           <motion.h2
-            className="text-6xl font-bold bg-gradient-to-r from-[#0d163f] via-[#0d163f] to-[#1bd989] bg-clip-text text-transparent sm:text-7xl font-arabic tracking-tight pb-2"
+            className="text-3xl font-bold bg-gradient-to-r from-[#0d163f] via-[#0d163f] to-[#1bd989] bg-clip-text text-transparent sm:text-4xl md:text-5xl font-arabic tracking-tight pb-2"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}

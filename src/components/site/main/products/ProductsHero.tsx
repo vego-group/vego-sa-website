@@ -8,7 +8,7 @@ export default function ProductsHero() {
   const t = useTranslations("products.hero");
 
   return (
-    <section className="relative h-[70vh] overflow-hidden bg-linear-to-br from-emerald-900 via-primary to-emerald-800">
+    <section className="relative h-[60vh] overflow-hidden bg-linear-to-br from-emerald-900 via-primary to-emerald-800">
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image
