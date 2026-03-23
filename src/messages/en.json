@@ -268,6 +268,127 @@
     "customer-service": "Customer Service",
     "customer-service-desc": "Our relationship extends beyond the purchase, with dedicated support and effective after-sales care."
   },
+  "terms-and-conditions": {
+    "hero": {
+      "title": "Terms and Conditions",
+      "description": "Welcome to the VEGO Group website and services. By accessing and using our website, Sadiq App, or any of our services, you agree to comply with and be bound by the following Terms and Conditions. Please read them carefully before using our products and services."
+    },
+    "sections": {
+      "introduction": {
+        "title": "1. Introduction",
+        "paragraphs": [
+          "These Terms and Conditions govern your use of the VEGO Group website, products, and services, including the Sadiq App, and apply to all users, including visitors, customers, and partners.",
+          "By using our website or services, you agree to these terms. If you do not agree with these terms, you must not use our website or services."
+        ]
+      },
+      "use-of-services": {
+        "title": "2. Use of the Website and Services",
+        "items": {
+          "eligibility": {
+            "label": "Eligibility",
+            "description": "You must be at least 18 years old to use our services. By using our services, you represent that you are of legal age."
+          },
+          "license": {
+            "label": "License",
+            "description": "We grant you a limited, non-exclusive, non-transferable license to access and use our website and services for personal, non-commercial purposes."
+          },
+          "prohibited": {
+            "label": "Prohibited Activities",
+            "description": "You agree not to misuse our services, including but not limited to:"
+          },
+          "prohibited-list": [
+            "Attempting to hack or disrupt our systems.",
+            "Using our services for any illegal or unauthorized purposes.",
+            "Violating any applicable laws while using our services."
+          ]
+        }
+      },
+      "products-services": {
+        "title": "3. Products and Services",
+        "items": {
+          "vehicles": {
+            "label": "Electric Vehicles and Motorcycles",
+            "description": "VEGO Group offers electric cars and motorcycles designed to enhance urban mobility and reduce environmental impact. By purchasing and using these vehicles, you agree to follow all applicable driving and safety regulations in your country or region."
+          },
+          "smart-os": {
+            "label": "Smart OS",
+            "description": "Our vehicles are equipped with a smart operating system that integrates real-time updates, navigation, and personalized settings to improve your driving experience. VEGO Group is not liable for any navigation errors or system failures."
+          },
+          "sadiq-app": {
+            "label": "Sadiq App",
+            "description": "The Sadiq App provides delivery drivers with tools to maximize efficiency and income. VEGO Group is not responsible for earnings or delivery outcomes, as they depend on driver performance and market demand."
+          }
+        }
+      },
+      "payment": {
+        "title": "4. Payment Terms",
+        "items": {
+          "pricing": {
+            "label": "Pricing",
+            "description": "All prices for products and services are displayed on our website and are subject to change without prior notice."
+          },
+          "payment": {
+            "label": "Payment",
+            "description": "You agree to pay for any products or services you purchase through our website or Sadiq App. Payment details must be accurate and complete."
+          },
+          "refunds": {
+            "label": "Refunds and Cancellations",
+            "description": "All sales are final unless otherwise specified. For refund and cancellation policies, please contact us at info@vego.sa."
+          }
+        }
+      },
+      "warranties": {
+        "title": "5. Warranties and Disclaimers",
+        "items": {
+          "products": {
+            "label": "Products Warranty",
+            "description": "VEGO Group guarantees that its products meet the highest industry standards and have undergone rigorous testing. However, we do not provide any warranty beyond those legally required unless expressly stated."
+          },
+          "service": {
+            "label": "Service Disclaimer",
+            "description": "While we strive to provide uninterrupted access to our website and services, we do not guarantee that they will always be available or free from errors or interruptions."
+          }
+        }
+      },
+      "liability": {
+        "title": "6. Limitation of Liability",
+        "description": "To the fullest extent permitted by law, VEGO Group shall not be held liable for any direct, indirect, incidental, or consequential damages resulting from the use or inability to use our products or services, including but not limited to:",
+        "items": [
+          "Loss of profits or revenue.",
+          "Damage to your vehicle or personal property.",
+          "Data loss or system failures."
+        ]
+      },
+      "intellectual-property": {
+        "title": "7. Intellectual Property",
+        "description": "All content on the VEGO Group website, including text, graphics, logos, images, and software, is the intellectual property of VEGO Group or its licensors. You may not use, reproduce, or distribute any content without our prior written permission."
+      },
+      "third-party-links": {
+        "title": "8. Third-Party Links",
+        "description": "Our website and services may contain links to third-party websites or services that are not owned or controlled by VEGO Group. We are not responsible for the content, policies, or practices of any third-party sites."
+      },
+      "termination": {
+        "title": "9. Termination",
+        "description": "We reserve the right to terminate or suspend your access to our website or services at any time, without notice, for any reason, including violation of these Terms and Conditions."
+      },
+      "governing-law": {
+        "title": "10. Governing Law",
+        "description": "These Terms and Conditions are governed by the laws of the Kingdom of Saudi Arabia. Any disputes arising from the use of our website or services shall be subject to the exclusive jurisdiction of the courts in Riyadh, Saudi Arabia."
+      },
+      "changes": {
+        "title": "11. Changes to the Terms and Conditions",
+        "description": "We reserve the right to modify these Terms and Conditions at any time. Any changes will be posted on this page, and your continued use of our services constitutes acceptance of the revised terms."
+      },
+      "contact": {
+        "title": "12. Contact Us",
+        "description": "If you have any questions about these Terms and Conditions, please contact us at:",
+        "company": "VEGO Group",
+        "location": "Riyadh, Saudi Arabia",
+        "emailLabel": "Email",
+        "email": "info@vego.sa"
+      }
+    }
+  },
   "footer": {
     "description": "Leading the electric revolution with innovative, sustainable, and high-perforance electric vehicles. Join us in creating a cleaner, greener future.",
     "location": "Riyadh, Saudi Arabia",
