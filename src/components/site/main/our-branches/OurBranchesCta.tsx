@@ -13,42 +13,37 @@ function OurBranchesCta() {
         className="mx-auto flex max-w-5xl flex-col items-center px-6 py-20 text-center"
         variants={sectionVariants}
         initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.3 }}
+        animate="show"
       >
         <motion.span
           className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-2 text-xs font-semibold uppercase tracking-wide text-secondary shadow-sm"
           initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
-          viewport={{ once: true, amount: 0.6 }}
         >
           {t("badge")}
         </motion.span>
         <motion.h2
           className="mt-6 text-balance text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl md:text-5xl"
           initial={{ opacity: 0, y: 14 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
-          viewport={{ once: true, amount: 0.6 }}
         >
           {t("title")}
         </motion.h2>
         <motion.p
           className="mt-5 max-w-3xl text-base leading-relaxed text-slate-600 sm:text-lg"
           initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut", delay: 0.18 }}
-          viewport={{ once: true, amount: 0.6 }}
         >
           {t("description")}
         </motion.p>
         <motion.div
           className="mt-10 flex flex-wrap items-center justify-center gap-4"
           initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut", delay: 0.26 }}
-          viewport={{ once: true, amount: 0.6 }}
         >
           <button
             type="button"

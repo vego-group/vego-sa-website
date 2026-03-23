@@ -16,8 +16,7 @@ function OurBranchesGrid() {
         className="mx-auto flex max-w-6xl flex-col gap-10 px-6"
         variants={sectionVariants}
         initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.2 }}
+        animate="show"
       >
         <div className="text-center">
           <span className="inline-flex items-center gap-2 rounded-full border border-secondary/30 bg-secondary/10 px-5 py-2 text-xs font-semibold uppercase tracking-wide text-secondary">
@@ -37,13 +36,12 @@ function OurBranchesGrid() {
               key={branch.key}
               className="group relative min-h-64 overflow-hidden rounded-3xl shadow-lg shadow-slate-200/60"
               initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{
                 duration: 0.6,
                 ease: "easeOut",
                 delay: index * 0.08,
               }}
-              viewport={{ once: true, amount: 0.3 }}
             >
               <Image
                 src={branch.image}
