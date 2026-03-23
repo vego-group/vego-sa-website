@@ -8,7 +8,7 @@ import { heroContainerVariants } from "@/data";
 function WhoWeServeHero() {
   const t = useTranslations("who-we-serve.hero");
   return (
-    <section className="relative overflow-hidden h-[70vh] bg-linear-to-br from-emerald-900 via-primary to-emerald-800 ">
+    <section className="relative overflow-hidden h-[60vh] bg-linear-to-br from-emerald-900 via-primary to-emerald-800 ">
       <div className="absolute inset-0">
         <Image
           src="/images/who-we-server.jpg"
