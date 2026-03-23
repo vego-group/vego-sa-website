@@ -20,13 +20,13 @@ export default function TermsHero({ hero }: TermsHeroProps) {
           transition={{ duration: 0.7 }}
           className="max-w-4xl"
         >
-          <h1 className="font-serif text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl">
+          <h1 className="font-serif  text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white">
             <span className="bg-linear-to-r from-emerald-300 via-white to-emerald-200 bg-clip-text text-transparent">
               {hero.title}
             </span>
           </h1>
 
-          <p className="mx-auto mt-8 max-w-3xl text-base leading-8 text-emerald-50/85 sm:text-lg">
+          <p className="mx-auto mt-8 max-w-3xl leading-8 text-emerald-50/85 text-lg sm:text-xl">
             {hero.description}
           </p>
         </motion.div>
