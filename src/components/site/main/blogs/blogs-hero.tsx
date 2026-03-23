@@ -10,7 +10,7 @@ type BlogsHeroProps = {
 
 function BlogsHero({ title, description }: BlogsHeroProps) {
   return (
-    <section className="relative h-[70vh] overflow-hidden bg-linear-to-br from-emerald-900 via-primary to-emerald-800">
+    <section className="relative h-[60vh] overflow-hidden bg-linear-to-br from-emerald-900 via-primary to-emerald-800">
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-linear-to-b from-black/50 via-black/40 to-black/70" />
       </div>

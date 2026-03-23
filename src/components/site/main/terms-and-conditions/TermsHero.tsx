@@ -9,7 +9,7 @@ type TermsHeroProps = {
 
 export default function TermsHero({ hero }: TermsHeroProps) {
   return (
-    <section className="relative h-[70vh] overflow-hidden bg-linear-to-br from-emerald-900 via-primary to-emerald-800">
+    <section className="relative h-[60vh] overflow-hidden bg-linear-to-br from-emerald-900 via-primary to-emerald-800">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.18),transparent_38%),radial-gradient(circle_at_bottom_left,rgba(27,217,137,0.22),transparent_32%)]" />
       <div className="absolute inset-0 bg-black/30" />
 

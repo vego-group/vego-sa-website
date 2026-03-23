@@ -33,7 +33,7 @@ function AboutValues() {
           <span className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-2 text-xs font-semibold uppercase tracking-wide text-secondary shadow-sm">
             {t("badge")}
           </span>
-          <h2 className="mt-5 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
+          <h2 className="mt-5 text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">
             {t("title")}
           </h2>
           <p className="mx-auto mt-4 max-w-3xl text-lg leading-relaxed text-slate-600">
