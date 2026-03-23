@@ -21,7 +21,7 @@ export default function Navbar(): ReactElement {
   };
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 w-full bg-white shadow">
+    <header className="sticky inset-x-0 top-0 z-50 w-full bg-white shadow">
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-5">
         <button
           type="button"
