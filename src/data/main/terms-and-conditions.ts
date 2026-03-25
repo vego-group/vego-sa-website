@@ -144,12 +144,12 @@ export function buildTermsAndConditionsContent({
 }: BuildTermsContentParams): TermsAndConditionsContent {
   return {
     hero: {
-      badge: "VEGO Group",
+      badge: "Vego Group",
       title: t("hero.title"),
       description: t("hero.description"),
     },
     overview: {
-      eyebrow: "VEGO Legal",
+      eyebrow: "Vego Legal",
       title: t("hero.title"),
       description: t("hero.description"),
       highlights: [
