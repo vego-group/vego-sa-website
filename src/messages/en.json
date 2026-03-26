@@ -307,7 +307,7 @@
         "title": "3. Products and Services",
         "items": {
           "vehicles": {
-            "label": "Electric Vehicles and Motorcycles",
+            "label": "Electric Vehicles",
             "description": "Vego Group offers electric cars and motorcycles designed to enhance urban mobility and reduce environmental impact. By purchasing and using these vehicles, you agree to follow all applicable driving and safety regulations in your country or region."
           },
           "smart-os": {
@@ -605,7 +605,7 @@
     },
     "electric-motorcycles": {
       "badge": "Flagship Product",
-      "title": "Electric Motorcycles",
+      "title": "Electric Vehicles",
       "description": "The ultimate generation of electric transport combines intelligence, modern technologies, and innovative design to create a leading Saudi industry. VEGO electric motorcycles carry a sustainable future vision powered by smart technology to support the future of intelligent mobility.",
       "features": [
         "Smart Battery System",
