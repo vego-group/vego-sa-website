@@ -20,7 +20,7 @@ function BlogDetailSummary({ title, excerpt, image }: BlogDetailSummaryProps) {
         transition={{ duration: 0.5 }}
         className="mb-6 overflow-hidden rounded-[28px] bg-white shadow-xl shadow-slate-300/50"
       >
-        <div className="relative aspect-[16/7] w-full">
+        <div className="relative aspect-16/7 w-full">
           <Image
             src={coverImage || "/images/placeholder-logo.jpeg"}
             alt={title}
