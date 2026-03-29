@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect } from "react";
+import Script from "next/script";
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
@@ -26,11 +28,23 @@ function BlogDetailPage({ id }: BlogProps) {
   const recommendedBlogs: RecommendedBlog[] | undefined =
     blog?.recommended_blogs;
 
+  useEffect(() => {
+    if (window.twttr?.widgets) {
+      window.twttr.widgets.load();
+    }
+  }, [blog?.content]);
+
   if (isLoading) return <BlogDetailLoading />;
   if (!blog) return <BlogDetailEmpty />;
 
   return (
     <div className="min-h-screen bg-white">
+      {/* ✅ سكربت تويتر */}
+      <Script
+        src="https://platform.twitter.com/widgets.js"
+        strategy="lazyOnload"
+      />
+
       <BlogDetailHero title={blog.title} coverImage={blog?.cover_image} />
 
       <div className="container mx-auto max-w-4xl px-4 py-12">
@@ -48,20 +62,12 @@ function BlogDetailPage({ id }: BlogProps) {
           image={blog.cover_image}
         />
 
-        <motion.h3
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
-          className="mb-4 text-2xl font-extrabold text-primary"
-        >
-          {t("contentHeading")}
-        </motion.h3>
-
         <motion.article
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
-          className="max-w-none text-base leading-8 text-slate-700 whitespace-pre-line"
+          // ❌ شيلنا whitespace-pre-line
+          className="max-w-none text-base leading-8 text-slate-700"
           dangerouslySetInnerHTML={{ __html: blog.content }}
         />
 
