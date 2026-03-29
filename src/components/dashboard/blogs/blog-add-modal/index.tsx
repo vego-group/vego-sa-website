@@ -50,6 +50,7 @@ function AddBlogPopup({ isOpen, onClose }: AddBlogPopupProps) {
       meta_description_en: "",
       meta_description_ar: "",
       status: "draft",
+      created_at: "",
     },
   });
 
@@ -69,6 +70,7 @@ function AddBlogPopup({ isOpen, onClose }: AddBlogPopupProps) {
       meta_description_en: "",
       meta_description_ar: "",
       status: "draft",
+      created_at: "",
       cover_image: undefined,
     });
   }, [isOpen, reset]);
@@ -153,6 +155,9 @@ function AddBlogPopup({ isOpen, onClose }: AddBlogPopupProps) {
     payload.append("meta_description_en", data.meta_description_en);
     payload.append("meta_description_ar", data.meta_description_ar);
     payload.append("status", data.status);
+    if (data.created_at?.trim()) {
+      payload.append("created_at", data.created_at);
+    }
 
     const coverImageFile = data.cover_image?.[0];
     if (coverImageFile) {
@@ -447,6 +452,18 @@ function AddBlogPopup({ isOpen, onClose }: AddBlogPopupProps) {
               </option>
             </select>
             <InputErrorMessage msg={errors.status?.message} />
+          </div>
+
+          <div>
+            <label className="block text-xs sm:text-sm font-medium text-white/80 mb-1 sm:mb-2">
+              Created Date
+            </label>
+            <input
+              type="date"
+              {...register("created_at")}
+              className="w-full sm:max-w-xs rounded-xl border border-white/10 bg-white/5 px-3 sm:px-4 py-2 text-sm text-white focus:border-secondary/60 focus:ring-1 focus:ring-secondary/30 focus:outline-none"
+            />
+            <InputErrorMessage msg={errors.created_at?.message} />
           </div>
         </div>
 
