@@ -62,9 +62,8 @@ function BlogDetailPage({ id }: BlogProps) {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
           className="max-w-none text-base leading-8 text-slate-700 whitespace-pre-line"
-        >
-          {blog.content}
-        </motion.article>
+          dangerouslySetInnerHTML={{ __html: blog.content }}
+        />
 
         <BlogDetailRelated recommendedBlogs={recommendedBlogs} />
       </div>
