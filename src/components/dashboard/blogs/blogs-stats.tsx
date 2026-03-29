@@ -7,7 +7,6 @@ function BlogsStats() {
   const { data, isLoading, isFetching } = useDashboardBlogs(1);
   const statistics = data?.statistics;
   type StatsCardVariant = ComponentProps<typeof StatsCard>["variant"];
-
   const stats: Array<{
     label: string;
     value: string;

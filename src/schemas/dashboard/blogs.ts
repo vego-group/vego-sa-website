@@ -15,6 +15,7 @@ const addBlogSchema = z.object({
   meta_description_en: requiredText("English meta description"),
   meta_description_ar: requiredText("Arabic meta description"),
   status: z.enum(["draft", "publish"]),
+  created_at: z.string().trim().optional(),
   cover_image: z
     .any()
     .refine(

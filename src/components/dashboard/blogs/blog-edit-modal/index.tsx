@@ -47,6 +47,7 @@ function BlogEditorPopup({ isOpen, onClose, id }: BlogEditorPopupProps) {
       meta_description_en: "",
       meta_description_ar: "",
       status: "draft",
+      created_at: "",
       cover_image: undefined,
     },
   });
@@ -85,6 +86,7 @@ function BlogEditorPopup({ isOpen, onClose, id }: BlogEditorPopupProps) {
         blog?.status === "publish" || blog?.status === "published"
           ? "publish"
           : "draft",
+      created_at: blog?.created_at?.slice(0, 10) ?? "",
       cover_image: undefined,
     });
     if (fileInputRef.current) {
@@ -126,6 +128,9 @@ function BlogEditorPopup({ isOpen, onClose, id }: BlogEditorPopupProps) {
     payload.append("meta_description_en", data.meta_description_en);
     payload.append("meta_description_ar", data.meta_description_ar);
     payload.append("status", data.status);
+    if (data.created_at?.trim()) {
+      payload.append("created_at", data.created_at);
+    }
 
     const coverImageFile = data.cover_image?.[0];
     if (coverImageFile) {
