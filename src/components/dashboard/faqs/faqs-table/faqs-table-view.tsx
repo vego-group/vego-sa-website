@@ -28,7 +28,12 @@ function ActionButtons({
         title="Edit"
         type="button"
       >
-        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg
+          className="w-4 h-4"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -43,7 +48,12 @@ function ActionButtons({
         title="Delete"
         type="button"
       >
-        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg
+          className="w-4 h-4"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -56,7 +66,12 @@ function ActionButtons({
   );
 }
 
-function FaqsTableView({ faqs, isFetching, onEdit, onDelete }: FaqsTableViewProps) {
+function FaqsTableView({
+  faqs,
+  isFetching,
+  onEdit,
+  onDelete,
+}: FaqsTableViewProps) {
   return (
     <div
       className={
@@ -67,10 +82,17 @@ function FaqsTableView({ faqs, isFetching, onEdit, onDelete }: FaqsTableViewProp
     >
       <div className="block lg:hidden divide-y divide-white/10">
         {faqs.map((faq) => (
-          <div key={faq.id} className="p-4 space-y-3 hover:bg-white/5 transition-colors">
+          <div
+            key={faq.id}
+            className="p-4 space-y-3 hover:bg-white/5 transition-colors"
+          >
             <div className="flex items-center justify-between gap-2">
-              <span className="text-xs font-medium text-white/40">#{getFaqOrder(faq)}</span>
-              <BlogStatusBadge status={isFaqPublished(faq) ? "published" : "draft"} />
+              <span className="text-xs font-medium text-white/40">
+                #{getFaqOrder(faq)}
+              </span>
+              <BlogStatusBadge
+                status={isFaqPublished(faq) ? "published" : "draft"}
+              />
             </div>
 
             <h3 className="text-sm font-medium text-white line-clamp-2 break-words">
@@ -82,19 +104,23 @@ function FaqsTableView({ faqs, isFetching, onEdit, onDelete }: FaqsTableViewProp
             </p>
 
             <div className="pt-2">
-              <ActionButtons faqId={faq.id} onEdit={onEdit} onDelete={onDelete} />
+              <ActionButtons
+                faqId={faq.id}
+                onEdit={onEdit}
+                onDelete={onDelete}
+              />
             </div>
           </div>
         ))}
       </div>
 
       <div className="hidden lg:block text-white/70 overflow-x-auto">
-        <div className="min-w-[700px]">
-          <div className="grid grid-cols-12 gap-4 px-6 py-4 border-b border-white/10 text-xs font-medium text-white/50 uppercase tracking-wider">
+        <div className="min-w-200">
+          <div className="grid grid-cols-13 gap-4 px-6 py-4 border-b border-white/10 text-xs font-medium text-white/50 uppercase tracking-wider">
             <div className="col-span-1">#</div>
-            <div className="col-span-6">Question</div>
-            <div className="col-span-3">Answer</div>
-            <div className="col-span-1">Status</div>
+            <div className="col-span-5">Question</div>
+            <div className="col-span-4">Answer</div>
+            <div className="col-span-2">Status</div>
             <div className="col-span-1 text-right">Actions</div>
           </div>
 
@@ -102,30 +128,38 @@ function FaqsTableView({ faqs, isFetching, onEdit, onDelete }: FaqsTableViewProp
             {faqs.map((faq) => (
               <div
                 key={faq.id}
-                className="grid grid-cols-12 gap-4 px-6 py-5 hover:bg-white/5 transition-colors"
+                className="grid grid-cols-13 gap-4 px-6 py-5 hover:bg-white/5 transition-colors"
               >
                 <div className="col-span-1 flex items-start">
-                  <span className="text-sm font-medium text-white/60">#{getFaqOrder(faq)}</span>
+                  <span className="text-sm font-medium text-white/60">
+                    #{getFaqOrder(faq)}
+                  </span>
                 </div>
 
-                <div className="col-span-6 min-w-0">
+                <div className="col-span-5 min-w-0">
                   <h3 className="text-sm font-medium text-white mb-1 line-clamp-1 break-words">
                     {faq.question_en || "Untitled FAQ"}
                   </h3>
                 </div>
 
-                <div className="col-span-3 min-w-0">
+                <div className="col-span-4 min-w-0">
                   <p className="text-xs text-white/50 line-clamp-2 break-words">
                     {faq.answer_en || "No answer"}
                   </p>
                 </div>
 
-                <div className="col-span-1 flex items-start">
-                  <BlogStatusBadge status={isFaqPublished(faq) ? "published" : "draft"} />
+                <div className="col-span-2 flex items-start">
+                  <BlogStatusBadge
+                    status={isFaqPublished(faq) ? "published" : "draft"}
+                  />
                 </div>
 
                 <div className="col-span-1 flex items-start justify-end">
-                  <ActionButtons faqId={faq.id} onEdit={onEdit} onDelete={onDelete} />
+                  <ActionButtons
+                    faqId={faq.id}
+                    onEdit={onEdit}
+                    onDelete={onDelete}
+                  />
                 </div>
               </div>
             ))}
