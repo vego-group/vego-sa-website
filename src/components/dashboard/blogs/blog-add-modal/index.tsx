@@ -11,6 +11,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { type FieldErrors, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import { BlogDatePicker } from "../blog-date-picker";
 
 type ActiveLanguage = "en" | "ar";
 
@@ -33,6 +34,7 @@ function AddBlogPopup({ isOpen, onClose }: AddBlogPopupProps) {
     register,
     handleSubmit,
     reset,
+    setValue,
     watch,
     formState: { errors, isSubmitting },
   } = useForm<AddBlogSchema>({
@@ -458,10 +460,14 @@ function AddBlogPopup({ isOpen, onClose }: AddBlogPopupProps) {
             <label className="block text-xs sm:text-sm font-medium text-white/80 mb-1 sm:mb-2">
               Created Date
             </label>
-            <input
-              type="date"
-              {...register("created_at")}
-              className="w-full sm:max-w-xs rounded-xl border border-white/10 bg-white/5 px-3 sm:px-4 py-2 text-sm text-white focus:border-secondary/60 focus:ring-1 focus:ring-secondary/30 focus:outline-none"
+            <BlogDatePicker
+              value={watch("created_at")}
+              onChange={(value) =>
+                setValue("created_at", value, {
+                  shouldDirty: true,
+                  shouldValidate: true,
+                })
+              }
             />
             <InputErrorMessage msg={errors.created_at?.message} />
           </div>
