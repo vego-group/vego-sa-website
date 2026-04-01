@@ -31,6 +31,7 @@ function BlogEditorPopup({ isOpen, onClose, id }: BlogEditorPopupProps) {
     handleSubmit,
     reset,
     setValue,
+    watch,
     formState: { errors, isSubmitting },
   } = useForm<EditBlogSchema>({
     resolver: zodResolver(editBlogSchema),
@@ -218,6 +219,13 @@ function BlogEditorPopup({ isOpen, onClose, id }: BlogEditorPopupProps) {
               blog={blog}
               register={register}
               errors={errors}
+              createdAtValue={watch("created_at")}
+              onCreatedAtChange={(value) =>
+                setValue("created_at", value, {
+                  shouldDirty: true,
+                  shouldValidate: true,
+                })
+              }
             />
           </>
         )}
