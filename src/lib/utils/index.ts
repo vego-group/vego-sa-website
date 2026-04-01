@@ -1,6 +1,7 @@
 export * from "./utils";
 export * from "./motion";
 export * from "./auth";
+export * from "./cookie-policy";
 export * from "./helper";
 export * from "./query";
 export * from "./formatDate";

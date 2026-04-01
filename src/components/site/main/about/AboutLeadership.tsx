@@ -4,24 +4,43 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { Linkedin, Mail, Sparkles } from "lucide-react";
+import { aboutLeadershipLeaders } from "@/data/main";
 
-const leaders = [
+/* Legacy local data moved to src/data/main/about.ts
+
+
   {
     key: "abdullah2",
-    image: "/images/leadership/abdullah2.jpeg",
+    image: "/images/leadership/عبدالله السبيعي.png",
     gradient: "from-secondary/60 to-cyan-600",
   },
   {
     key: "abdulaziz",
-    image: "/images/leadership/abdulaziz.png",
+    image: "/images/leadership/عبدالعزيز بو عمر.png",
     gradient: "from-secondary to-emerald-600",
   },
   {
-    key: "abdullah1",
-    image: "/images/leadership/abdullah1.jpeg",
+    key: "abdullahQ",
+    image: "/images/leadership/عبدالله قندس.png",
+    gradient: "from-secondary/85 to-green-600",
+  },
+  {
+    key: "hadi",
+    image: "/images/leadership/هادي الهضبان.png",
+    gradient: "from-secondary/75 to-sky-600",
+  },
+  {
+    key: "alaa",
+    image: "/images/leadership/علاء الجبرين.png",
+    gradient: "from-secondary/70 to-lime-600",
+  },
+  {
+    key: "sara",
+    image: "/images/leadership/سارة العتيبي.png",
     gradient: "from-secondary/80 to-teal-600",
   },
 ];
+*/
 
 export default function AboutLeadership() {
   const t = useTranslations("about.leadership");
@@ -81,7 +100,7 @@ export default function AboutLeadership() {
 
         {/* Leadership Grid */}
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {leaders.map((leader, index) => (
+          {aboutLeadershipLeaders.map((leader, index) => (
             <motion.div
               key={leader.key}
               className="group relative"
@@ -93,20 +112,20 @@ export default function AboutLeadership() {
               {/* Card Container */}
               <div className="relative h-full overflow-hidden rounded-3xl bg-white shadow-xl shadow-slate-200/50 transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-secondary/20 group-hover:-translate-y-2">
                 {/* Image Section */}
-                <div className="relative h-72 overflow-hidden">
+                <div className="relative h-80 overflow-hidden">
                   <Image
                     src={leader.image}
                     alt={t(`items.${leader.key}.name`)}
                     fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
                     sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                   />
 
                   {/* Gradient Overlay */}
                   <div
-                    className={`absolute inset-0 bg-linear-to-t ${leader.gradient} opacity-20`}
+                    className={`absolute inset-0 bg-linear-to-t ${leader.gradient} opacity-8`}
                   />
-                  <div className="absolute inset-0 bg-linear-to-t from-primary/40 via-primary/20 to-transparent" />
+                  <div className="absolute inset-0 bg-linear-to-t from-primary/22 via-primary/8 to-transparent" />
 
                   {/* Role Badge */}
                   <div className="absolute bottom-4 right-4">
@@ -145,14 +164,6 @@ export default function AboutLeadership() {
                 />
               </div>
 
-              {/* Floating Number */}
-              <div className="absolute -top-3 -right-3 z-10">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-linear-to-r from-secondary to-emerald-500 shadow-lg">
-                  <span className="text-lg font-bold text-white">
-                    {index + 1}
-                  </span>
-                </div>
-              </div>
             </motion.div>
           ))}
         </div>
