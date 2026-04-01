@@ -21,6 +21,7 @@ export const footerLinks: FooterLink[] = [
     links: [
       { label: "legal.privacy-policy", href: "/privacy-policy" },
       { label: "legal.terms-and-conditions", href: "/terms-and-conditions" },
+      { label: "legal.cookies-policy", href: "/cookie-policy" },
     ],
   },
 ];
