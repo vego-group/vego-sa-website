@@ -3,3 +3,5 @@ export * from "./who-we-serve";
 export * from "./our-branches";
 export * from "./terms-and-conditions";
 export * from "./privacy-policy";
+export * from "./about";
+export * from "./cookie-policy";

@@ -202,18 +202,28 @@
       "items": {
         "abdulaziz": {
           "name": "Abdulaziz Al-Subaie",
-          "role": "Chief Executive Officer",
+          "role": "Chief Executive Officer | Partner & Co-Founder",
           "bio": "Holder of an MBA degree, co-founder of several companies specializing in industry, import, export, logistics and supply chains..."
-        },
-        "abdullah1": {
-          "name": "Abdullah Salah",
-          "role": "Executive Committee & International Relations Advisor",
-          "bio": "Graduate of Jordan University 1996, Business Administration major. Founder and partner in multiple companies and factories..."
         },
         "abdullah2": {
           "name": "Abdullah Al-Subaie",
-          "role": "Chairman of the Board",
+          "role": "Chairman of the Board | Partner & Co-Founder",
           "bio": "Saudi entrepreneur with ambitious vision and high expertise in trade and e-commerce..."
+        },
+        "sara": {
+          "name": "Sara Alotaibi",
+          "role": "Marketing and Sales Manager",
+          "bio": "Marketing manager with more than 3 years of experience in advertising campaigns and digital marketing. Specialized in building effective marketing strategies, developing impactful partnerships, and executing campaigns that drive brand growth and sales."
+        },
+        "alaa": {
+          "name": "Alaa Aljabrin",
+          "role": "Business Development Manager",
+          "bio": "Strategic expert and engineer with more than 15 years of experience driving growth and expansion. He combines technical understanding with hands-on execution, supported by leadership experience at global companies including Zain, Huawei, and Uber."
+        },
+        "abdullahQ": {
+          "name": "Eng. Abdullah Qandas",
+          "role": "Product Development Manager",
+          "bio": "A specialized and certified engineer in electric vehicles with more than 7 years of experience in developing and advancing electric mobility technologies. He has contributed to innovative solutions that support sustainability and strengthen the future of smart mobility."
         }
       }
     },
@@ -528,7 +538,8 @@
     "legal": {
       "title": "Legal",
       "privacy-policy": "Privacy Policy",
-      "terms-and-conditions": "Terms and Conditions"
+      "terms-and-conditions": "Terms and Conditions",
+      "cookies-policy": "Cookie Policy"
     }
   },
   "not-found": {
