@@ -21,6 +21,8 @@ type PublishSettingsSectionFormProps = {
   register?: UseFormRegister<EditBlogSchema>;
   errors?: FieldErrors<EditBlogSchema>;
   defaultStatus?: string | null;
+  createdAtValue?: string;
+  onCreatedAtChange?: (value: string) => void;
 };
 
 export type {
