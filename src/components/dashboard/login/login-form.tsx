@@ -69,7 +69,7 @@ function LoginForm() {
             name="email"
             label="Email"
             type="email"
-            placeholder="admin@vego.sa"
+            placeholder="admin@vegogroup.com"
             autoComplete="email"
             icon={<Mail size={18} />}
             register={register}
