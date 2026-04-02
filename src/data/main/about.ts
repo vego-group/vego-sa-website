@@ -2,7 +2,7 @@ import type { AboutLeader } from "@/types/main";
 
 export const aboutLeadershipLeaders: AboutLeader[] = [
   {
-    key: "abdullah2",
+    key: "abdullahS",
     image: "/images/leadership/عبدالله السبيعي.png",
     gradient: "from-secondary/60 to-cyan-600",
   },
@@ -10,6 +10,12 @@ export const aboutLeadershipLeaders: AboutLeader[] = [
     key: "abdulaziz",
     image: "/images/leadership/عبدالعزيز بو عمر.png",
     gradient: "from-secondary to-emerald-600",
+  },
+
+  {
+    key: "abdullahSa",
+    image: "/images/leadership/عبدالله صلاح.png",
+    gradient: "from-secondary/75 to-sky-600",
   },
   {
     key: "abdullahQ",
