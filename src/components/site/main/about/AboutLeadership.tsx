@@ -6,42 +6,6 @@ import { useTranslations } from "next-intl";
 import { Linkedin, Mail, Sparkles } from "lucide-react";
 import { aboutLeadershipLeaders } from "@/data/main";
 
-/* Legacy local data moved to src/data/main/about.ts
-
-
-  {
-    key: "abdullah2",
-    image: "/images/leadership/عبدالله السبيعي.png",
-    gradient: "from-secondary/60 to-cyan-600",
-  },
-  {
-    key: "abdulaziz",
-    image: "/images/leadership/عبدالعزيز بو عمر.png",
-    gradient: "from-secondary to-emerald-600",
-  },
-  {
-    key: "abdullahQ",
-    image: "/images/leadership/عبدالله قندس.png",
-    gradient: "from-secondary/85 to-green-600",
-  },
-  {
-    key: "hadi",
-    image: "/images/leadership/هادي الهضبان.png",
-    gradient: "from-secondary/75 to-sky-600",
-  },
-  {
-    key: "alaa",
-    image: "/images/leadership/علاء الجبرين.png",
-    gradient: "from-secondary/70 to-lime-600",
-  },
-  {
-    key: "sara",
-    image: "/images/leadership/سارة العتيبي.png",
-    gradient: "from-secondary/80 to-teal-600",
-  },
-];
-*/
-
 export default function AboutLeadership() {
   const t = useTranslations("about.leadership");
 
@@ -146,16 +110,6 @@ export default function AboutLeadership() {
                   <p className="mt-3 text-sm leading-relaxed text-slate-600 line-clamp-3">
                     {t(`items.${leader.key}.bio`)}
                   </p>
-
-                  {/* Social Links */}
-                  <div className="mt-6 flex justify-center gap-3">
-                    <button className="rounded-full bg-slate-100 p-3 text-slate-700 transition-all hover:bg-secondary hover:text-white hover:scale-110">
-                      <Linkedin className="h-5 w-5" />
-                    </button>
-                    <button className="rounded-full bg-slate-100 p-3 text-slate-700 transition-all hover:bg-secondary hover:text-white hover:scale-110">
-                      <Mail className="h-5 w-5" />
-                    </button>
-                  </div>
                 </div>
 
                 {/* Accent Border */}
@@ -163,7 +117,6 @@ export default function AboutLeadership() {
                   className={`absolute bottom-0 left-0 right-0 h-1 bg-linear-to-r ${leader.gradient} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left`}
                 />
               </div>
-
             </motion.div>
           ))}
         </div>
