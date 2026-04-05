@@ -9,6 +9,7 @@ export default function LocationSection() {
   const locale = useLocale();
   const isArabic = locale === "ar";
   const ArrowIcon = isArabic ? ArrowLeft : ArrowRight;
+  const locations = ["hq", "showroom", "china"] as const;
 
   return (
     <section>
@@ -36,12 +37,39 @@ export default function LocationSection() {
               </div>
 
               <div className="space-y-4 text-base leading-relaxed text-slate-600">
-                <p>
+                <div>
                   <span className="font-medium text-slate-800">
                     {t("addressLabel")}
-                  </span>{" "}
-                  {t("address")}
-                </p>
+                  </span>
+                  <div className="mt-3 space-y-3">
+                    {locations.map((location) => (
+                      <a
+                        key={location}
+                        href={t(`locations.${location}.link`)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group flex items-start gap-3 rounded-2xl border border-slate-200 px-4 py-3 transition-colors hover:border-primary/30 hover:bg-slate-50"
+                      >
+                        <MapPin className="mt-1 h-4 w-4 shrink-0 text-primary" />
+                        <div className="space-y-1">
+                          <p className="font-medium text-slate-800">
+                            {t(`locations.${location}.title`)}
+                          </p>
+                          <span className="inline-flex items-center gap-2 text-sm font-medium text-primary transition-colors group-hover:text-emerald-600">
+                            {t("directionsText")}
+                            <ArrowIcon
+                              className={`h-4 w-4 transition-transform ${
+                                isArabic
+                                  ? "group-hover:-translate-x-0.5"
+                                  : "group-hover:translate-x-0.5"
+                              }`}
+                            />
+                          </span>
+                        </div>
+                      </a>
+                    ))}
+                  </div>
+                </div>
 
                 <p>
                   <span className="font-medium text-slate-800">
@@ -68,21 +96,6 @@ export default function LocationSection() {
                 </p>
               </div>
 
-              <a
-                href={t("directionsLink")}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group mt-8 inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-white shadow-md transition-all hover:-translate-y-0.5 hover:shadow-lg"
-              >
-                {t("directionsText")}
-                <ArrowIcon
-                  className={`h-4 w-4 transition-transform ${
-                    isArabic
-                      ? "group-hover:-translate-x-0.5"
-                      : "group-hover:translate-x-0.5"
-                  }`}
-                />
-              </a>
             </div>
 
             {/* Right: Map */}
