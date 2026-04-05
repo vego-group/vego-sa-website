@@ -114,17 +114,23 @@
           "location": "الكويت",
           "image-alt": "فرع إقليمي في الكويت"
         },
-        "international-china": {
-          "tag": "سلسلة الإمداد العالمية",
-          "title": "فرع دولي",
-          "location": "الصين - ييوو",
-          "image-alt": "فرع دولي في الصين"
+        "international-yiwu": {
+          "tag": "سلسلة إمداد عالمية",
+          "title": "الفرع الدولي",
+          "location": "Yiwu, China",
+          "image-alt": "الفرع الدولي في Yiwu"
         },
         "international-hongkong": {
           "tag": "التجارة الدولية",
           "title": "فرع دولي",
           "location": "هونغ كونغ",
           "image-alt": "فرع دولي في هونغ كونغ"
+        },
+        "international-guangdong": {
+          "tag": "سلسلة إمداد عالمية",
+          "title": "الفرع الدولي",
+          "location": "Guangdong, China",
+          "image-alt": "الفرع الدولي في Guangdong"
         }
       }
     },

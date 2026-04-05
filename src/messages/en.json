@@ -114,17 +114,23 @@
           "location": "Kuwait",
           "image-alt": "Regional branch in Kuwait"
         },
-        "international-china": {
+        "international-yiwu": {
           "tag": "GLOBAL SUPPLY CHAIN",
           "title": "International Branch",
-          "location": "China - Yiwu",
-          "image-alt": "International branch in China"
+          "location": "Yiwu, China",
+          "image-alt": "International branch in Yiwu"
         },
         "international-hongkong": {
           "tag": "INTERNATIONAL TRADING",
           "title": "International Branch",
           "location": "Hong Kong",
           "image-alt": "International branch in Hong Kong"
+        },
+        "international-guangdong": {
+          "tag": "GLOBAL SUPPLY CHAIN",
+          "title": "International Branch",
+          "location": "Guangdong, China",
+          "image-alt": "International branch in Guangdong"
         }
       }
     },
