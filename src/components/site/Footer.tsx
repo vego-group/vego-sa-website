@@ -11,6 +11,7 @@ function Footer() {
   const locale = useLocale();
   const isArabic = locale === "ar";
   const t = useTranslations("footer");
+  const locations = ["hq", "showroom", "china"] as const;
   const handleScrollToTop = (): void => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -75,9 +76,21 @@ function Footer() {
                   </Link>
                 </div>
 
-                <div className="flex items-center gap-3">
-                  <MapPin className="h-4 w-4 text-slate-500" />
-                  <span>{t("location")}</span>
+                <div className="flex items-start gap-3">
+                  <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-slate-500" />
+                  <div className="space-y-2">
+                    {locations.map((location) => (
+                      <Link
+                        key={location}
+                        href={t(`locations.${location}.link`)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block leading-relaxed hover:underline"
+                      >
+                        {t(`locations.${location}.label`)}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
