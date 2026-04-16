@@ -555,10 +555,11 @@
       "branches": "Our Branches",
       "about-us": "About Us"
     },
-    "support": {
-      "title": "Support",
-      "contact-us": "Contact Us"
-    },
+      "support": {
+        "title": "Support",
+        "contact-us": "Contact Us",
+        "test-drive": "Test Drive"
+      },
     "legal": {
       "title": "Legal",
       "privacy-policy": "Privacy Policy",
@@ -577,6 +578,7 @@
       "subtitle": "Saudi Arabia's First Electric Mobility Company",
       "title": "Innovating the Future of Electric Mobility",
       "description": "Integrated solutions combining technology, design, and sustainability to make every journey smarter, cleaner, and more efficient.",
+      "test-drive": "Book Test Drive",
       "discover-our-products": "Discover Our Products",
       "contact-us": "Contact Us"
     },
@@ -816,5 +818,105 @@
     "backToBlog": "Back to blog",
     "relatedBlogs": "Related Blogs",
     "relatedBlogPlaceholder": "Related blog title"
+  },
+  "test-drive": {
+    "badge": "Book A Test Ride",
+    "title": "Experience VEGO products before you decide",
+    "description": "Share your details, pick the day, time, and product that fits you, and we will arrange a smooth, polished VEGO test ride around your schedule.",
+    "heroNote": "Pick the day, time, and product that fits you, and we will line up a fast, polished test drive around your schedule.",
+    "statsLabel": "Fast booking flow with a polished interface",
+    "benefitsTitle": "Why This Flow",
+    "benefitsDescription": "This page is built to feel premium and direct: clear product selection, quick scheduling, and a layout that matches the VEGO visual language.",
+    "formBadge": "Test Drive Registration",
+    "formTitle": "Booking Details",
+    "formDescription": "Fill out the form and choose the product you want to try. We use these details only to arrange and confirm your test drive booking.",
+    "productPlaceholder": "Choose the product you want to ride",
+    "genderPlaceholder": "Select gender",
+    "quickNoteTitle": "Quick note",
+    "quickNoteDescription": "After submission, we will review your preferred slot and contact you quickly to confirm the booking.",
+    "phoneCountryCode": "+966",
+    "phoneFlagAlt": "Saudi flag",
+    "submit": "Register Test Drive",
+    "submitting": "Submitting request...",
+    "successMessage": "Your test drive request has been received successfully.",
+    "placeholders": {
+      "name": "Enter your full name",
+      "email": "example@email.com",
+      "phone": "",
+      "phoneExample": "552253991",
+      "age": "18",
+      "date": "",
+      "time": ""
+    },
+    "labels": {
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone",
+      "age": "Age",
+      "gender": "Gender",
+      "date": "Day",
+      "time": "Time",
+      "product": "Product"
+    },
+    "genders": {
+      "male": "Male",
+      "female": "Female"
+    },
+    "validation": {
+      "required": "This field is required",
+      "email": "Enter a valid email address",
+      "phone": "Enter a valid phone number",
+      "age": "Age must be 18 or older"
+    },
+    "metrics": [
+      { "value": "05", "label": "Products ready to choose from" },
+      { "value": "24h", "label": "Fast booking confirmation response" },
+      { "value": "UI", "label": "Clean premium booking experience" },
+      { "value": "100%", "label": "Straightforward flow to complete" }
+    ],
+    "benefits": [
+      {
+        "id": "clarity",
+        "title": "Product selection that feels premium",
+        "description": "Instead of a dull dropdown, the product choice is presented as polished cards that make every model easier to scan."
+      },
+      {
+        "id": "speed",
+        "title": "Fast booking with no visual clutter",
+        "description": "The fields are arranged for quick completion, with clear grouping for personal details, scheduling, and product choice."
+      },
+      {
+        "id": "confidence",
+        "title": "Built around VEGO brand colors",
+        "description": "Primary and secondary colors drive the layout and the motion, so the page feels consistent with the rest of the site."
+      }
+    ],
+    "products": [
+      {
+        "id": "vego-2030",
+        "name": "Vego 2030",
+        "tagline": "Smart everyday mobility with a confident modern edge."
+      },
+      {
+        "id": "vg-26",
+        "name": "VG-26",
+        "tagline": "A practical ride tuned for daily efficiency and ease."
+      },
+      {
+        "id": "vego-cem",
+        "name": "Vego-CEM",
+        "tagline": "Balanced performance, comfort, and utility in one model."
+      },
+      {
+        "id": "vg-20",
+        "name": "VG-20",
+        "tagline": "Compact urban mobility designed for flexible city movement."
+      },
+      {
+        "id": "vr-70",
+        "name": "VR-70",
+        "tagline": "A stronger stance with a more commanding ride feel."
+      }
+    ]
   }
 }
