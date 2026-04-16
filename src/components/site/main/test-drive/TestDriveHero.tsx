@@ -9,7 +9,7 @@ function TestDriveHero({ copy, metrics, locale }: TestDriveHeroProps) {
   const Arrow = locale === "ar" ? ArrowLeft : ArrowRight;
 
   return (
-    <section className="relative overflow-hidden bg-[radial-gradient(circle_at_top_left,_rgba(27,217,137,0.28),_transparent_28%),linear-gradient(135deg,_#07102f_0%,_#0d163f_45%,_#0c2d54_100%)]">
+    <section className="relative overflow-hidden flex flex-col justify-center items-center bg-[radial-gradient(circle_at_top_left,rgba(27,217,137,0.28),transparent_28%),linear-gradient(135deg,#07102f_0%,#0d163f_45%,#0c2d54_100%)] h-[calc(100svh-80px)] md:h-[calc(100svh-88px)]">
       <div className="absolute inset-0">
         <div className="absolute inset-y-0 left-[-12%] w-80 rounded-full bg-secondary/18 blur-3xl" />
         <div className="absolute right-[-10%] top-12 h-72 w-72 rounded-full bg-white/8 blur-3xl" />
@@ -70,7 +70,9 @@ function TestDriveHero({ copy, metrics, locale }: TestDriveHeroProps) {
             </div>
 
             <div className="mt-5 rounded-3xl border border-white/10 bg-linear-to-r from-white/8 to-transparent p-5">
-              <p className="text-sm leading-7 text-slate-200">{copy.heroNote}</p>
+              <p className="text-sm leading-7 text-slate-200">
+                {copy.heroNote}
+              </p>
             </div>
           </div>
         </motion.div>

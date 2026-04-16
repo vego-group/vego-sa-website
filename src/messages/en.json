@@ -844,7 +844,7 @@
       "email": "example@email.com",
       "phone": "",
       "phoneExample": "552253991",
-      "age": "18",
+      "age": "16",
       "date": "",
       "time": ""
     },
@@ -866,13 +866,13 @@
       "required": "This field is required",
       "email": "Enter a valid email address",
       "phone": "Enter a valid phone number",
-      "age": "Age must be 18 or older"
+      "age": "Age must be 16 or older"
     },
     "metrics": [
       { "value": "05", "label": "Products ready to choose from" },
-      { "value": "24h", "label": "Fast booking confirmation response" },
+      { "value": "Sun-Thu", "label": "Available test drive days" },
       { "value": "UI", "label": "Clean premium booking experience" },
-      { "value": "100%", "label": "Straightforward flow to complete" }
+      { "value": "1-7 PM", "label": "Available booking hours" }
     ],
     "benefits": [
       {
