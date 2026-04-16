@@ -44,17 +44,18 @@ function HeroSection() {
 
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
           <Link
-            href="/products"
+            href="/test-drive"
             className="inline-flex items-center gap-2 rounded-full bg-secondary px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-emerald-500/40 transition hover:bg-emerald-400"
           >
-            {t("discover-our-products")}
+            {t("test-drive")}
             <Arrow className="size-5" />
           </Link>
           <Link
-            href="/contact"
-            className="rounded-full border border-white/40 px-6 py-3 text-sm font-semibold text-white/90 backdrop-blur transition hover:border-white/70 hover:text-white"
+            href="/products"
+            className="inline-flex items-center gap-2 rounded-full border border-white/40 px-6 py-3 text-sm font-semibold text-white/90 backdrop-blur transition hover:border-white/70 hover:text-white"
           >
-            {t("contact-us")}
+            {t("discover-our-products")}
+            <Arrow className="size-5" />
           </Link>
         </div>
       </div>

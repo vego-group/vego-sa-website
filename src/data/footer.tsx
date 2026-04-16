@@ -14,7 +14,10 @@ export const footerLinks: FooterLink[] = [
   },
   {
     title: "support.title",
-    links: [{ label: "support.contact-us", href: "/contact" }],
+    links: [
+      { label: "support.contact-us", href: "/contact" },
+      { label: "support.test-drive", href: "/test-drive" },
+    ],
   },
   {
     title: "legal.title",
