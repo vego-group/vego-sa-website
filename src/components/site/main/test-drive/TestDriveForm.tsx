@@ -12,6 +12,8 @@ import toast from "react-hot-toast";
 import { Button } from "@/components/ui/button";
 import InputErrorMessage from "@/components/ui/InputErrorMessage";
 import type { TestDriveFormProps } from "@/interfaces";
+import type { TestDriveSchema } from "@/schemas";
+import { addTestDriveRegistrationAPI } from "@/services/mutations/test-drive";
 import type { TestDriveFormValues } from "@/types";
 
 import TestDriveField from "./TestDriveField";
@@ -21,6 +23,23 @@ function TestDriveForm({ copy, products, locale }: TestDriveFormProps) {
   const dir = locale === "ar" ? "rtl" : "ltr";
   const [isDateOpen, setIsDateOpen] = useState(false);
   const [isTimeOpen, setIsTimeOpen] = useState(false);
+  const normalizeSaudiPhone = (value: string) => {
+    let digits = value.replace(/\D/g, "");
+
+    if (!digits) {
+      return "";
+    }
+
+    if (digits.startsWith("0")) {
+      digits = digits.slice(1);
+    }
+
+    if (digits.startsWith("966")) {
+      digits = digits.slice(3);
+    }
+
+    return `966${digits}`;
+  };
   const getRequiredMessage = (label: string) =>
     locale === "ar" ? `${label} مطلوب` : `${label} is required`;
   const parseDateValue = (value: string): Date | undefined => {
@@ -44,11 +63,12 @@ function TestDriveForm({ copy, products, locale }: TestDriveFormProps) {
     defaultValues: {
       name: "",
       email: "",
-      phone: "",
-      age: "",
+      phone_number: "",
+      age: undefined,
       gender: "",
       date: "",
       time: "",
+      time_and_day: "",
       product: "",
     },
     mode: "onChange",
@@ -57,17 +77,38 @@ function TestDriveForm({ copy, products, locale }: TestDriveFormProps) {
   const selectedProduct = useWatch({ control, name: "product" });
   const selectedGender = useWatch({ control, name: "gender" });
   const selectedProductData = useMemo(
-    () => products.find((product) => product.id === selectedProduct),
+    () => products.find((product) => product.name === selectedProduct),
     [products, selectedProduct],
   );
 
   const today = new Date().toISOString().split("T")[0] ?? "";
 
   const onSubmit = async (values: TestDriveFormValues) => {
-    await new Promise((resolve) => setTimeout(resolve, 900));
-    toast.success(copy.successMessage);
-    reset();
-    return values;
+    if (!values.gender || !values.product || !values.date || !values.time) {
+      toast.error("Please complete all required fields");
+      return;
+    }
+
+    const payload: TestDriveSchema = {
+      name: values.name,
+      email: values.email,
+      phone_number: normalizeSaudiPhone(values.phone_number),
+      age: values.age ?? 0,
+      gender: values.gender,
+      time_and_day:
+        values.date && values.time ? `${values.date} ${values.time}:00` : "",
+      product: values.product,
+    };
+
+    const result = await addTestDriveRegistrationAPI(payload);
+
+    if (result?.ok) {
+      toast.success(result?.message || copy.successMessage);
+      reset();
+      return;
+    }
+
+    toast.error(result?.message || "Something went wrong");
   };
 
   return (
@@ -123,7 +164,9 @@ function TestDriveForm({ copy, products, locale }: TestDriveFormProps) {
                   </div>
                   <p className="mt-3 text-lg font-semibold text-white">
                     {selectedGender
-                      ? copy.genders[selectedGender]
+                      ? copy.genders[
+                          selectedGender.toLowerCase() as "male" | "female"
+                        ]
                       : locale === "ar"
                         ? "حدد الجنس"
                         : "Select gender"}
@@ -205,11 +248,16 @@ function TestDriveForm({ copy, products, locale }: TestDriveFormProps) {
                 prefixIconAlt={copy.phoneFlagAlt}
                 inputMode="numeric"
                 autoComplete="tel-national"
-                error={errors.phone?.message}
-                {...register("phone", {
+                maxLength={9}
+                onInput={(event) => {
+                  const input = event.currentTarget;
+                  input.value = input.value.replace(/\D/g, "").slice(0, 9);
+                }}
+                error={errors.phone_number?.message}
+                {...register("phone_number", {
                   required: getRequiredMessage(copy.labels.phone),
                   pattern: {
-                    value: /^[0-9\s-]{8,20}$/,
+                    value: /^5\d{8}$/,
                     message: copy.validation.phone,
                   },
                 })}
@@ -217,14 +265,16 @@ function TestDriveForm({ copy, products, locale }: TestDriveFormProps) {
               <TestDriveField
                 label={copy.labels.age}
                 type="number"
-                min="18"
+                min="16"
                 placeholder={copy.placeholders.age}
                 dir={dir}
                 error={errors.age?.message}
                 {...register("age", {
+                  valueAsNumber: true,
                   required: getRequiredMessage(copy.labels.age),
                   validate: (value) =>
-                    Number(value) >= 18 || copy.validation.age,
+                    (typeof value === "number" && value >= 16) ||
+                    copy.validation.age,
                 })}
               />
             </div>
@@ -239,11 +289,12 @@ function TestDriveForm({ copy, products, locale }: TestDriveFormProps) {
               </p>
               <div className="grid gap-4 sm:grid-cols-2">
                 {(["male", "female"] as const).map((gender) => {
-                  const checked = selectedGender === gender;
+                  const value = gender === "male" ? "Male" : "Female";
+                  const checked = selectedGender === value;
 
                   return (
                     <label
-                      key={gender}
+                      key={value}
                       className={`flex cursor-pointer items-center justify-between rounded-3xl border px-5 py-4 transition-all duration-300 ${
                         checked
                           ? "border-secondary bg-secondary/12 shadow-[0_12px_30px_-24px_rgba(27,217,137,0.95)]"
@@ -252,7 +303,7 @@ function TestDriveForm({ copy, products, locale }: TestDriveFormProps) {
                     >
                       <input
                         type="radio"
-                        value={gender}
+                        value={value}
                         className="sr-only"
                         {...register("gender", {
                           required: getRequiredMessage(copy.labels.gender),
@@ -393,14 +444,14 @@ function TestDriveForm({ copy, products, locale }: TestDriveFormProps) {
                   <label key={option.id}>
                     <input
                       type="radio"
-                      value={option.id}
+                      value={option.name}
                       className="sr-only"
                       {...register("product", {
                         required: getRequiredMessage(copy.labels.product),
                       })}
                     />
                     <TestDriveProductCard
-                      checked={selectedProduct === option.id}
+                      checked={selectedProduct === option.name}
                       option={option}
                     />
                   </label>

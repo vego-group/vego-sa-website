@@ -2,14 +2,14 @@ export type TestDriveLocale = "ar" | "en";
 
 export type TestDriveDirection = "rtl" | "ltr";
 
-export type TestDriveGender = "male" | "female";
+export type TestDriveGender = "Male" | "Female";
 
 export type TestDriveProductId =
-  | "vego-2030"
-  | "vg-26"
-  | "vego-cem"
-  | "vg-20"
-  | "vr-70";
+  | "Vego 2030"
+  | "VG-26"
+  | "Vego-CEM"
+  | "VG-20"
+  | "VR-70";
 
 export type TestDriveMetric = {
   value: string;
@@ -23,7 +23,7 @@ export type TestDriveBenefit = {
 };
 
 export type TestDriveProductOption = {
-  id: TestDriveProductId;
+  id: string;
   name: string;
   tagline: string;
 };
@@ -31,10 +31,11 @@ export type TestDriveProductOption = {
 export type TestDriveFormValues = {
   name: string;
   email: string;
-  phone: string;
-  age: string;
+  phone_number: string;
+  age: number | undefined;
   gender: TestDriveGender | "";
   date: string;
   time: string;
+  time_and_day: string;
   product: TestDriveProductId | "";
 };
