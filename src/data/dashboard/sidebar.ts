@@ -5,6 +5,12 @@ export const sidebarNavItems: SidebarNavLink[] = [
   { id: "blogs", label: "Blogs", icon: "📝", path: "/dashboard/blogs" },
   { id: "faqs", label: "FAQs", icon: "❓", path: "/dashboard/faqs" },
   {
+    id: "test-drive",
+    label: "Test Drive",
+    icon: "🚗",
+    path: "/dashboard/test-drive",
+  },
+  {
     id: "leads",
     label: "Contact Leads",
     icon: "✉️",

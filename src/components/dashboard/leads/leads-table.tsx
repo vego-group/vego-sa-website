@@ -233,24 +233,25 @@ function LeadsTableContent({ searchQuery }: Required<LeadsTableProps>) {
         ))}
       </div>
 
-      <div className="hidden sm:block text-white/70">
-        <div className="grid grid-cols-12 gap-4 px-6 py-4 border-b border-white/10 text-xs font-medium text-white/50 uppercase tracking-wider">
-          <div className="col-span-2">Name</div>
-          <div className="col-span-2">Contact Info</div>
-          <div className="col-span-3">Message Preview</div>
-          <div className="col-span-1">Date</div>
-          <div className="col-span-2">Category</div>
-          <div className="col-span-1">Status</div>
-          <div className="col-span-1 text-right">Actions</div>
-        </div>
+      <div className="hidden overflow-x-auto text-white/70 sm:block">
+        <div className="min-w-220">
+          <div className="grid grid-cols-12 gap-4 px-6 py-4 border-b border-white/10 text-xs font-medium text-white/50 uppercase tracking-wider">
+            <div className="col-span-2">Name</div>
+            <div className="col-span-2">Contact Info</div>
+            <div className="col-span-3">Message Preview</div>
+            <div className="col-span-1">Date</div>
+            <div className="col-span-2">Category</div>
+            <div className="col-span-1">Status</div>
+            <div className="col-span-1 text-right">Actions</div>
+          </div>
 
-        <div className="divide-y divide-white/10">
-          {visibleLeads.map((lead) => (
-            <div
-              key={lead.id}
-              className="grid grid-cols-12 gap-4 px-6 py-5 hover:bg-white/5 transition-colors cursor-pointer"
-              onClick={() => handleViewDetails(lead.id)}
-            >
+          <div className="divide-y divide-white/10">
+            {visibleLeads.map((lead) => (
+              <div
+                key={lead.id}
+                className="grid grid-cols-12 gap-4 px-6 py-5 hover:bg-white/5 transition-colors cursor-pointer"
+                onClick={() => handleViewDetails(lead.id)}
+              >
               <div className="col-span-2">
                 <h3
                   className="text-sm font-medium text-white mb-1 truncate"
@@ -333,8 +334,9 @@ function LeadsTableContent({ searchQuery }: Required<LeadsTableProps>) {
                   </svg>
                 </button>
               </div>
-            </div>
-          ))}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
