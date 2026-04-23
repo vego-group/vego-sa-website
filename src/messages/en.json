@@ -223,12 +223,12 @@
         },
         "sara": {
           "name": "Sara Alotaibi",
-          "role": "Marketing and Sales Manager",
-          "bio": "Marketing manager with more than 3 years of experience in advertising campaigns and digital marketing. Specialized in building effective marketing strategies, developing impactful partnerships, and executing campaigns that drive brand growth and sales."
+          "role": "Marketing Manager",
+          "bio": "Marketing manager with more than 8 years of experience in advertising campaigns and digital marketing. Specialized in building effective marketing strategies, developing impactful partnerships, and executing campaigns that drive brand growth and sales."
         },
         "alaa": {
-          "name": "Alaa Aljabrin",
-          "role": "Business Development Manager",
+          "name": "Ala Jebrin",
+          "role": "Chief Commercial Officer",
           "bio": "Strategic expert and engineer with more than 15 years of experience driving growth and expansion. He combines technical understanding with hands-on execution, supported by leadership experience at global companies including Zain, Huawei, and Uber."
         },
         "abdullahQ": {
@@ -555,11 +555,11 @@
       "branches": "Our Branches",
       "about-us": "About Us"
     },
-      "support": {
-        "title": "Support",
-        "contact-us": "Contact Us",
-        "test-drive": "Test Drive"
-      },
+    "support": {
+      "title": "Support",
+      "contact-us": "Contact Us",
+      "test-drive": "Test Drive"
+    },
     "legal": {
       "title": "Legal",
       "privacy-policy": "Privacy Policy",
