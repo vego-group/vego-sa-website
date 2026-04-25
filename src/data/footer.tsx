@@ -1,4 +1,4 @@
-import { FooterLink, SocialLink } from "@/interfaces/footer";
+import { FooterLink, SocialLink } from "@/interfaces";
 import { Instagram, Twitter, Linkedin } from "lucide-react";
 import { TbBrandSnapchat } from "react-icons/tb";
 import { FaWhatsapp } from "react-icons/fa";
@@ -9,18 +9,22 @@ export const footerLinks: FooterLink[] = [
     links: [
       { label: "company.products", href: "/products" },
       { label: "company.branches", href: "/branches" },
-      { label: "company.about-us", href: "/about-us" },
+      { label: "company.about-us", href: "/about" },
     ],
   },
   {
     title: "support.title",
-    links: [{ label: "support.contact-us", href: "/contact-us" }],
+    links: [
+      { label: "support.contact-us", href: "/contact" },
+      { label: "support.test-drive", href: "/test-drive" },
+    ],
   },
   {
     title: "legal.title",
     links: [
       { label: "legal.privacy-policy", href: "/privacy-policy" },
       { label: "legal.terms-and-conditions", href: "/terms-and-conditions" },
+      { label: "legal.cookies-policy", href: "/cookie-policy" },
     ],
   },
 ];
@@ -29,7 +33,7 @@ export const socialLinks: SocialLink[] = [
   {
     label: "WhatsApp",
     icon: FaWhatsapp,
-    href: "https://wa.me/966112345678",
+    href: "https://wa.me/966579820538",
   },
   {
     label: "Instagram",

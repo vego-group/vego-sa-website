@@ -114,17 +114,23 @@
           "location": "Kuwait",
           "image-alt": "Regional branch in Kuwait"
         },
-        "international-china": {
+        "international-yiwu": {
           "tag": "GLOBAL SUPPLY CHAIN",
           "title": "International Branch",
-          "location": "China - Yiwu",
-          "image-alt": "International branch in China"
+          "location": "Yiwu, China",
+          "image-alt": "International branch in Yiwu"
         },
         "international-hongkong": {
           "tag": "INTERNATIONAL TRADING",
           "title": "International Branch",
           "location": "Hong Kong",
           "image-alt": "International branch in Hong Kong"
+        },
+        "international-guangdong": {
+          "tag": "GLOBAL SUPPLY CHAIN",
+          "title": "International Branch",
+          "location": "Guangdong, China",
+          "image-alt": "International branch in Guangdong"
         }
       }
     },
@@ -202,18 +208,33 @@
       "items": {
         "abdulaziz": {
           "name": "Abdulaziz Al-Subaie",
-          "role": "Chief Executive Officer",
+          "role": "Chief Executive Officer | Partner & Co-Founder",
           "bio": "Holder of an MBA degree, co-founder of several companies specializing in industry, import, export, logistics and supply chains..."
         },
-        "abdullah1": {
-          "name": "Abdullah Salah",
-          "role": "Executive Committee & International Relations Advisor",
-          "bio": "Graduate of Jordan University 1996, Business Administration major. Founder and partner in multiple companies and factories..."
-        },
-        "abdullah2": {
+        "abdullahS": {
           "name": "Abdullah Al-Subaie",
-          "role": "Chairman of the Board",
+          "role": "Chairman of the Board | Partner & Co-Founder",
           "bio": "Saudi entrepreneur with ambitious vision and high expertise in trade and e-commerce..."
+        },
+        "abdullahSa": {
+          "name": "Abdullah Salah",
+          "role": "Executive Committee and International Relations Advisor",
+          "bio": "A graduate of the University of Jordan in 1996, majoring in Business Administration. He is a founder and partner in several companies and factories across the Arab world..."
+        },
+        "sara": {
+          "name": "Sara Alotaibi",
+          "role": "Marketing Manager",
+          "bio": "Marketing manager with more than 8 years of experience in advertising campaigns and digital marketing. Specialized in building effective marketing strategies, developing impactful partnerships, and executing campaigns that drive brand growth and sales."
+        },
+        "alaa": {
+          "name": "Ala Jebrin",
+          "role": "Chief Commercial Officer",
+          "bio": "Strategic expert and engineer with more than 15 years of experience driving growth and expansion. He combines technical understanding with hands-on execution, supported by leadership experience at global companies including Zain, Huawei, and Uber."
+        },
+        "abdullahQ": {
+          "name": "Eng. Abdullah Qandas",
+          "role": "Product Development Manager",
+          "bio": "A specialized and certified engineer in electric vehicles with more than 7 years of experience in developing and advancing electric mobility technologies. He has contributed to innovative solutions that support sustainability and strengthen the future of smart mobility."
         }
       }
     },
@@ -268,25 +289,282 @@
     "customer-service": "Customer Service",
     "customer-service-desc": "Our relationship extends beyond the purchase, with dedicated support and effective after-sales care."
   },
+  "terms-and-conditions": {
+    "hero": {
+      "title": "Terms and Conditions",
+      "description": "Welcome to the Vego Group website and services. By accessing and using our website, My Vego App, or any of our services, you agree to comply with and be bound by the following Terms and Conditions. Please read them carefully before using our products and services."
+    },
+    "sections": {
+      "introduction": {
+        "title": "1. Introduction",
+        "paragraphs": [
+          "These Terms and Conditions govern your use of the Vego Group website, products, and services, including the My Vego App, and apply to all users, including visitors, customers, and partners.",
+          "By using our website or services, you agree to these terms. If you do not agree with these terms, you must not use our website or services."
+        ]
+      },
+      "use-of-services": {
+        "title": "2. Use of the Website and Services",
+        "items": {
+          "eligibility": {
+            "label": "Eligibility",
+            "description": "You must be at least 18 years old to use our services. By using our services, you represent that you are of legal age."
+          },
+          "license": {
+            "label": "License",
+            "description": "We grant you a limited, non-exclusive, non-transferable license to access and use our website and services for personal, non-commercial purposes."
+          },
+          "prohibited": {
+            "label": "Prohibited Activities",
+            "description": "You agree not to misuse our services, including but not limited to:"
+          },
+          "prohibited-list": [
+            "Attempting to hack or disrupt our systems.",
+            "Using our services for any illegal or unauthorized purposes.",
+            "Violating any applicable laws while using our services."
+          ]
+        }
+      },
+      "products-services": {
+        "title": "3. Products and Services",
+        "items": {
+          "vehicles": {
+            "label": "Electric Vehicles",
+            "description": "Vego Group offers electric cars and motorcycles designed to enhance urban mobility and reduce environmental impact. By purchasing and using these vehicles, you agree to follow all applicable driving and safety regulations in your country or region."
+          },
+          "smart-os": {
+            "label": "Smart OS",
+            "description": "Our vehicles are equipped with a smart operating system that integrates real-time updates, navigation, and personalized settings to improve your driving experience. Vego Group is not liable for any navigation errors or system failures."
+          },
+          "sadiq-app": {
+            "label": "My Vego App",
+            "description": "The My Vego App provides delivery drivers with tools to maximize efficiency and income. Vego Group is not responsible for earnings or delivery outcomes, as they depend on driver performance and market demand."
+          }
+        }
+      },
+      "payment": {
+        "title": "4. Payment Terms",
+        "items": {
+          "pricing": {
+            "label": "Pricing",
+            "description": "All prices for products and services are displayed on our website and are subject to change without prior notice."
+          },
+          "payment": {
+            "label": "Payment",
+            "description": "You agree to pay for any products or services you purchase through our website or My Vego App. Payment details must be accurate and complete."
+          },
+          "refunds": {
+            "label": "Refunds and Cancellations",
+            "description": "All sales are final unless otherwise specified. For refund and cancellation policies, please contact us at info@vego.sa."
+          }
+        }
+      },
+      "warranties": {
+        "title": "5. Warranties and Disclaimers",
+        "items": {
+          "products": {
+            "label": "Products Warranty",
+            "description": "Vego Group guarantees that its products meet the highest industry standards and have undergone rigorous testing. However, we do not provide any warranty beyond those legally required unless expressly stated."
+          },
+          "service": {
+            "label": "Service Disclaimer",
+            "description": "While we strive to provide uninterrupted access to our website and services, we do not guarantee that they will always be available or free from errors or interruptions."
+          }
+        }
+      },
+      "liability": {
+        "title": "6. Limitation of Liability",
+        "description": "To the fullest extent permitted by law, Vego Group shall not be held liable for any direct, indirect, incidental, or consequential damages resulting from the use or inability to use our products or services, including but not limited to:",
+        "items": [
+          "Loss of profits or revenue.",
+          "Damage to your vehicle or personal property.",
+          "Data loss or system failures."
+        ]
+      },
+      "intellectual-property": {
+        "title": "7. Intellectual Property",
+        "description": "All content on the Vego Group website, including text, graphics, logos, images, and software, is the intellectual property of Vego Group or its licensors. You may not use, reproduce, or distribute any content without our prior written permission."
+      },
+      "third-party-links": {
+        "title": "8. Third-Party Links",
+        "description": "Our website and services may contain links to third-party websites or services that are not owned or controlled by Vego Group. We are not responsible for the content, policies, or practices of any third-party sites."
+      },
+      "termination": {
+        "title": "9. Termination",
+        "description": "We reserve the right to terminate or suspend your access to our website or services at any time, without notice, for any reason, including violation of these Terms and Conditions."
+      },
+      "governing-law": {
+        "title": "10. Governing Law",
+        "description": "These Terms and Conditions are governed by the laws of the Kingdom of Saudi Arabia. Any disputes arising from the use of our website or services shall be subject to the exclusive jurisdiction of the courts in Riyadh, Saudi Arabia."
+      },
+      "changes": {
+        "title": "11. Changes to the Terms and Conditions",
+        "description": "We reserve the right to modify these Terms and Conditions at any time. Any changes will be posted on this page, and your continued use of our services constitutes acceptance of the revised terms."
+      },
+      "contact": {
+        "title": "12. Contact Us",
+        "description": "If you have any questions about these Terms and Conditions, please contact us at:",
+        "company": "Vego Group",
+        "location": "Riyadh, Saudi Arabia",
+        "emailLabel": "Email",
+        "email": "info@vego.sa"
+      }
+    }
+  },
+  "privacy-policy": {
+    "hero": {
+      "eyebrow": "Privacy Policy",
+      "title": "How Vego Group Protects Your Data",
+      "description": "This policy explains how we collect, use, and protect your personal information when you use our website, app, or services related to electric bike sharing and fast charging."
+    },
+    "intro": {
+      "eyebrow": "Privacy Policy",
+      "title": "Introduction",
+      "description": "Vego Group is committed to protecting the privacy of its users and handling personal data in line with operational needs, security standards, and applicable legal requirements in the Kingdom of Saudi Arabia.",
+      "highlights": [
+        "Account, location, and usage data are processed to operate the service efficiently.",
+        "We do not sell your personal information to any third party.",
+        "You may request access to, correction of, or deletion of your data in accordance with applicable regulations."
+      ]
+    },
+    "sections": {
+      "information-collected": {
+        "title": "1. Information We Collect",
+        "items": {
+          "account": {
+            "label": "Account Information",
+            "description": "Name, email address, phone number, and password."
+          },
+          "location": {
+            "label": "Location Information",
+            "description": "Used to identify the nearest battery locker or charging station to you."
+          },
+          "device": {
+            "label": "Device Information",
+            "description": "Device type, operating system, and IP address."
+          },
+          "usage": {
+            "label": "Usage Data",
+            "description": "Your trip history, usage duration, and stations visited."
+          },
+          "payment": {
+            "label": "Payment Information",
+            "description": "Bank card details or other payment methods, processed securely through approved payment service providers."
+          }
+        }
+      },
+      "how-we-use-information": {
+        "title": "2. How We Use Your Information",
+        "bullets": [
+          "Operate electric bike sharing services, battery lockers, and fast charging stations.",
+          "Process payments and issue invoices.",
+          "Improve user experience and develop our services.",
+          "Send notifications related to your account, trips, or promotional offers.",
+          "Comply with legal and regulatory requirements in the Kingdom of Saudi Arabia.",
+          "Maintain platform security and prevent fraud."
+        ]
+      },
+      "third-parties": {
+        "title": "3. Sharing Information with Third Parties",
+        "description": "We do not sell your personal information to any third party. We may share your data only when operationally or legally required.",
+        "items": {
+          "providers": {
+            "label": "Service Providers",
+            "description": "Payment partners, cloud service providers, and analytics companies, solely for operating our services."
+          },
+          "government": {
+            "label": "Government Authorities",
+            "description": "When legally requested or required to comply with regulations in the Kingdom of Saudi Arabia."
+          },
+          "admins": {
+            "label": "Administrative Users (Admins)",
+            "description": "Authorized Vego administrators may access user data within their defined permissions for service management."
+          }
+        }
+      },
+      "data-security": {
+        "title": "4. Data Security",
+        "description": "We take appropriate technical and organizational security measures to protect your data from unauthorized access, disclosure, alteration, or destruction.",
+        "bullets": [
+          "Encrypting data in transit using HTTPS.",
+          "Storing passwords in encrypted form.",
+          "Restricting data access to authorized personnel only."
+        ]
+      },
+      "cookies": {
+        "title": "5. Cookies",
+        "description": "We use cookies to improve your experience on our platform, and you can manage them through your browser settings.",
+        "bullets": [
+          "Maintaining your login session.",
+          "Remembering your preferences.",
+          "Analyzing usage patterns to improve the service.",
+          "Disabling some cookies may affect site functionality."
+        ]
+      },
+      "your-rights": {
+        "title": "6. Your Rights",
+        "description": "You have the right to exercise several rights related to your personal data at any time.",
+        "bullets": [
+          "Access the personal data we hold about you.",
+          "Correct inaccurate information.",
+          "Delete your account and data in accordance with applicable regulations.",
+          "Unsubscribe from marketing messages at any time."
+        ]
+      },
+      "retention": {
+        "title": "7. Data Retention",
+        "description": "We retain your data for as long as your account remains active, and after closure for the period required by law or necessary operational purposes."
+      },
+      "children-privacy": {
+        "title": "8. Children's Privacy",
+        "description": "Our services are not directed to persons under the age of 18. If we learn that we have collected data from a minor without parental consent, we will delete it immediately."
+      },
+      "policy-updates": {
+        "title": "9. Changes to This Policy",
+        "description": "We may update this policy from time to time. We will notify you of any material changes by email or through a notice on our platform. Your continued use of our services after an update means you accept the revised policy."
+      }
+    },
+    "contact": {
+      "title": "10. Contact Us",
+      "description": "If you have any questions or complaints related to this policy, please contact us through the following channels.",
+      "company": "Vego Group",
+      "location": "Riyadh, Saudi Arabia",
+      "email": "info@vego.sa"
+    }
+  },
   "footer": {
     "description": "Leading the electric revolution with innovative, sustainable, and high-perforance electric vehicles. Join us in creating a cleaner, greener future.",
-    "location": "Riyadh, Saudi Arabia",
+    "locations": {
+      "hq": {
+        "label": "SaaD tower, Malqa (HQ)",
+        "link": "https://maps.app.goo.gl/TVW7RBEZjYyoqyZW7?g_st=ic"
+      },
+      "showroom": {
+        "label": "VEGO Northern ring road Riyadh (Showroom)",
+        "link": "https://maps.app.goo.gl/VcjrLBbBstWjYzbQA?g_st=ic"
+      },
+      "china": {
+        "label": "China Branch",
+        "link": "https://maps.app.goo.gl/aWRh8mzmzwhWpkSz8"
+      }
+    },
     "rights-reserved": "© 2026 VEGO Group. All rights reserved.",
     "electric": "100% Electric. 0% Emissions.",
     "company": {
       "title": "Company",
-      "products": "Our-Products",
-      "branches": "Our-Branches",
+      "products": "Our Products",
+      "branches": "Our Branches",
       "about-us": "About Us"
     },
     "support": {
       "title": "Support",
-      "contact-us": "Contact Us"
+      "contact-us": "Contact Us",
+      "test-drive": "Test Drive"
     },
     "legal": {
       "title": "Legal",
       "privacy-policy": "Privacy Policy",
-      "terms-and-conditions": "Terms and Conditions"
+      "terms-and-conditions": "Terms and Conditions",
+      "cookies-policy": "Cookie Policy"
     }
   },
   "not-found": {
@@ -300,6 +578,7 @@
       "subtitle": "Saudi Arabia's First Electric Mobility Company",
       "title": "Innovating the Future of Electric Mobility",
       "description": "Integrated solutions combining technology, design, and sustainability to make every journey smarter, cleaner, and more efficient.",
+      "test-drive": "Book Test Drive",
       "discover-our-products": "Discover Our Products",
       "contact-us": "Contact Us"
     },
@@ -328,25 +607,31 @@
       "charging-systems": "Charging Systems",
       "charging-systems-desc": "Fast, advanced charging stations that ensure a safe, efficient charging experience for individuals and businesses."
     },
-   "news": {
-    "title": "Latest News",
-    "more": "More",
-    "read-more": "Read more",
-    "news": {                    
-      "erp": {
-        "title": "Getting Started with ERP: A Comprehensive Guide",
-        "summary": "Learn the basics of ERP systems and how they can transform your business operations."
-      },
-      "cloud": {
-        "title": "Cloud ERP vs On-Premise: Which is Right for You?",
-        "summary": "Compare the pros and cons of cloud-based and on-premise ERP solutions."
-      },
-      "implementation": {
-        "title": "ERP Implementation Best Practices",
-        "summary": "Discover key strategies and best practices for successful ERP implementation."
+    "faqs": {
+      "title": "Frequently Asked Questions",
+      "description": "Quick answers to the most common questions.",
+      "empty": "No FAQs available right now.",
+      "load-more": "Load more"
+    },
+    "news": {
+      "title": "Latest News",
+      "more": "More",
+      "read-more": "Read more",
+      "news": {
+        "erp": {
+          "title": "Getting Started with ERP: A Comprehensive Guide",
+          "summary": "Learn the basics of ERP systems and how they can transform your business operations."
+        },
+        "cloud": {
+          "title": "Cloud ERP vs On-Premise: Which is Right for You?",
+          "summary": "Compare the pros and cons of cloud-based and on-premise ERP solutions."
+        },
+        "implementation": {
+          "title": "ERP Implementation Best Practices",
+          "summary": "Discover key strategies and best practices for successful ERP implementation."
+        }
       }
     }
-  }
   },
   "products": {
     "hero": {
@@ -357,7 +642,7 @@
     },
     "electric-motorcycles": {
       "badge": "Flagship Product",
-      "title": "Electric Motorcycles",
+      "title": "Electric Vehicles",
       "description": "The ultimate generation of electric transport combines intelligence, modern technologies, and innovative design to create a leading Saudi industry. VEGO electric motorcycles carry a sustainable future vision powered by smart technology to support the future of intelligent mobility.",
       "features": [
         "Smart Battery System",
@@ -429,6 +714,27 @@
       }
     }
   },
+  "blogs": {
+    "hero": {
+      "title": "Vego Group Blogs",
+      "description": "Latest news, updates, and achievements in electric mobility and sustainable solutions"
+    },
+    "search": {
+      "placeholder": "Start searching..."
+    },
+    "empty": {
+      "title": "No blogs found",
+      "description": "Try adjusting your search"
+    },
+    "fallback": {
+      "noImage": "No image"
+    },
+    "actions": {
+      "readMore": "Read more",
+      "showMore": "Show more",
+      "loading": "Loading..."
+    }
+  },
   "contact": {
     "hero": {
       "title": "Get in Touch with VEGO",
@@ -467,19 +773,150 @@
         "partnership": "Partnership",
         "support": "Support",
         "jobs": "Jobs"
+      },
+      "validation": {
+        "nameRequired": "Name is required",
+        "emailRequired": "Email is required",
+        "emailInvalid": "Enter a valid email",
+        "phoneRequired": "Phone is required",
+        "subjectRequired": "Subject is required",
+        "subjectInvalid": "Invalid subject",
+        "messageRequired": "Message is required",
+        "localeRequired": "Locale is required"
       }
     },
     "location": {
       "title": "Our Location",
-      "addressLabel": "Address:",
-      "address": "Vego Group, Saad Tower 12th Floor, King Fahd Branch St, Al Malqa, Riyadh 13521, Saudi Arabia",
+      "addressLabel": "Locations:",
+      "locations": {
+        "hq": {
+          "title": "SaaD tower, Malqa (HQ)",
+          "link": "https://maps.app.goo.gl/TVW7RBEZjYyoqyZW7?g_st=ic"
+        },
+        "showroom": {
+          "title": "VEGO Northern ring road Riyadh (Showroom)",
+          "link": "https://maps.app.goo.gl/VcjrLBbBstWjYzbQA?g_st=ic"
+        },
+        "china": {
+          "title": "China Branch",
+          "link": "https://maps.app.goo.gl/aWRh8mzmzwhWpkSz8"
+        }
+      },
       "phoneLabel": "Phone:",
       "phone": "920014486",
       "emailLabel": "Email:",
       "email": "info@vego.sa",
       "directionsText": "Get Directions",
-      "directionsLink": "https://maps.app.goo.gl/f7SbBRdjzA5zbSVB6",
       "mapSrc": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3623.384237511246!2d46.69263971501215!3d24.769903684114865!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e2f03b9e3b1d4f7%3A0x5de7f8a2a1d4f7a6!2sVego%20Group!5e0!3m2!1sen!2ssa!4v1706490000000!5m2!1sen!2ssa"
     }
+  },
+  "blogs-detail": {
+    "backToAllArticles": "Back to all blogs",
+    "publishedOn": "Published on:",
+    "updating": "Updating...",
+    "notFoundTitle": "Blog not found",
+    "backToBlog": "Back to blog",
+    "relatedBlogs": "Related Blogs",
+    "relatedBlogPlaceholder": "Related blog title"
+  },
+  "test-drive": {
+    "badge": "Book A Test Ride",
+    "title": "Experience VEGO products before you decide",
+    "description": "Share your details, pick the day, time, and product that fits you, and we will arrange a smooth, polished VEGO test ride around your schedule.",
+    "heroNote": "Pick the day, time, and product that fits you, and we will line up a fast, polished test drive around your schedule.",
+    "statsLabel": "Fast booking flow with a polished interface",
+    "benefitsTitle": "Why This Flow",
+    "benefitsDescription": "This page is built to feel premium and direct: clear product selection, quick scheduling, and a layout that matches the VEGO visual language.",
+    "formBadge": "Test Drive Registration",
+    "formTitle": "Booking Details",
+    "formDescription": "Fill out the form and choose the product you want to try. We use these details only to arrange and confirm your test drive booking.",
+    "productPlaceholder": "Choose the product you want to ride",
+    "genderPlaceholder": "Select gender",
+    "quickNoteTitle": "Quick note",
+    "quickNoteDescription": "After submission, we will review your preferred slot and contact you quickly to confirm the booking.",
+    "phoneCountryCode": "+966",
+    "phoneFlagAlt": "Saudi flag",
+    "submit": "Register Test Drive",
+    "submitting": "Submitting request...",
+    "successMessage": "Your test drive request has been received successfully.",
+    "placeholders": {
+      "name": "Enter your full name",
+      "email": "example@email.com",
+      "phone": "",
+      "phoneExample": "552253991",
+      "age": "16",
+      "date": "",
+      "time": ""
+    },
+    "labels": {
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone",
+      "age": "Age",
+      "gender": "Gender",
+      "date": "Day",
+      "time": "Time",
+      "product": "Product"
+    },
+    "genders": {
+      "male": "Male",
+      "female": "Female"
+    },
+    "validation": {
+      "required": "This field is required",
+      "email": "Enter a valid email address",
+      "phone": "Enter a valid phone number",
+      "age": "Age must be 16 or older"
+    },
+    "metrics": [
+      { "value": "05", "label": "Products ready to choose from" },
+      { "value": "Sun-Thu", "label": "Available test drive days" },
+      { "value": "UI", "label": "Clean premium booking experience" },
+      { "value": "1-7 PM", "label": "Available booking hours" }
+    ],
+    "benefits": [
+      {
+        "id": "clarity",
+        "title": "Product selection that feels premium",
+        "description": "Instead of a dull dropdown, the product choice is presented as polished cards that make every model easier to scan."
+      },
+      {
+        "id": "speed",
+        "title": "Fast booking with no visual clutter",
+        "description": "The fields are arranged for quick completion, with clear grouping for personal details, scheduling, and product choice."
+      },
+      {
+        "id": "confidence",
+        "title": "Built around VEGO brand colors",
+        "description": "Primary and secondary colors drive the layout and the motion, so the page feels consistent with the rest of the site."
+      }
+    ],
+    "products": [
+      {
+        "id": "vego-2030",
+        "name": "Vego 2030",
+        "tagline": "Smart everyday mobility with a confident modern edge."
+      },
+      {
+        "id": "vg-26",
+        "name": "VG-26",
+        "tagline": "A practical ride tuned for daily efficiency and ease."
+      },
+      {
+        "id": "vego-cem",
+        "name": "Vego-CEM",
+        "tagline": "Balanced performance, comfort, and utility in one model."
+      },
+      {
+        "id": "vg-20",
+        "name": "VG-20",
+        "tagline": "Compact urban mobility designed for flexible city movement."
+      },
+      {
+        "id": "vr-70",
+        "name": "VR-70",
+        "tagline": "A stronger stance with a more commanding ride feel."
+      }
+    ]
   }
 }

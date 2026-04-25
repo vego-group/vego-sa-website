@@ -2,17 +2,23 @@ import type { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  experimental: {
+    serverActions: {
+      bodySizeLimit: "10mb",
+    },
+  },
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'images.unsplash.com',
-        port: '',
-        pathname: '/**',
+        protocol: "https",
+        hostname: "images.unsplash.com",
+        pathname: "/**",
       },
-      // يمكنك إضافة المزيد من النطاقات هنا إذا احتجت
-      // مثال: hostname: 'another-image-host.com',
+      {
+        protocol: "https",
+        hostname: "api.vego.sa",
+        pathname: "/**",
+      },
     ],
   },
 };

@@ -1,37 +1,47 @@
 "use client";
 
+import Loader from "@/components/ui/loader";
 import Modal from "@/components/ui/modal";
-import { useEffect } from "react";
+import { deleteFaqAPI } from "@/services/mutations/faqs";
+import { useQueryClient } from "@tanstack/react-query";
+import { Trash2 } from "lucide-react";
+import { useState } from "react";
+import toast from "react-hot-toast";
 
 type DeleteFaqConfirmationPopupProps = {
   isOpen: boolean;
   onClose: () => void;
-  onConfirm: () => void;
+  id?: number | string;
   faqQuestion?: string;
 };
 
 function DeleteFaqConfirmationPopup({
   isOpen,
   onClose,
-  onConfirm,
+  id,
   faqQuestion,
 }: DeleteFaqConfirmationPopupProps) {
-  useEffect(() => {
-    // Prevent scrolling when popup is open
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
+  const queryClient = useQueryClient();
+  const [isDeleting, setIsDeleting] = useState(false);
+  const faqId = Number(id);
+
+  const handleDelete = async () => {
+    if (!faqId || isDeleting) return;
+
+    setIsDeleting(true);
+    const result = await deleteFaqAPI(faqId);
+    setIsDeleting(false);
+
+    if (!result.ok) {
+      toast.error(result.message ?? "Could not delete FAQ.");
+      return;
     }
 
-    return () => {
-      document.body.style.overflow = "unset";
-    };
-  }, [isOpen]);
-
-  const handleConfirm = () => {
-    onConfirm();
+    toast.success(result.message ?? "FAQ deleted successfully");
     onClose();
+    await queryClient.invalidateQueries({
+      queryKey: ["dashboard", "faqs"],
+    });
   };
 
   return (
@@ -39,16 +49,15 @@ function DeleteFaqConfirmationPopup({
       open={isOpen}
       onClose={onClose}
       title="Delete FAQ"
-      titleClassName="text-2xl font-semibold text-white"
-      contentClassName="bg-linear-to-br from-emerald-950 via-primary to-emerald-950 sm:max-w-md"
+      titleClassName="text-lg sm:text-xl md:text-2xl font-semibold text-white"
+      contentClassName="bg-linear-to-br from-emerald-950 via-primary to-emerald-950 sm:max-w-md sm:w-[90vw]"
       closeButtonClassname="text-white"
     >
-      <div className="space-y-6 p-1">
-        {/* Warning Message - نفس التصميم تماماً */}
-        <div className="bg-white/5 rounded-2xl border border-white/10 p-6 text-center">
-          <div className="w-16 h-16 rounded-full bg-red-500/20 flex items-center justify-center mx-auto mb-4">
+      <div className="space-y-4 sm:space-y-6 p-2 sm:p-4">
+        <div className="bg-white/5 rounded-lg sm:rounded-2xl border border-white/10 p-4 sm:p-6 text-center">
+          <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-red-500/20 flex items-center justify-center mx-auto mb-3 sm:mb-4">
             <svg
-              className="w-8 h-8 text-red-400"
+              className="w-6 h-6 sm:w-8 sm:h-8 text-red-400"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -62,39 +71,38 @@ function DeleteFaqConfirmationPopup({
             </svg>
           </div>
 
-          <p className="text-white/70 mb-2">
+          <p className="text-white/70 mb-2 text-xs sm:text-sm">
             Are you sure you want to delete this FAQ?
           </p>
+          {faqQuestion ? (
+            <p className="text-white text-sm font-medium line-clamp-2 max-w-full break-all">
+              {faqQuestion}
+            </p>
+          ) : null}
         </div>
 
-        {/* Buttons - نفس التصميم تماماً مع تغيير النص فقط */}
-        <div className="flex flex-col sm:flex-row justify-end gap-3 pt-4">
+        <div className="flex flex-col-reverse sm:flex-row justify-end gap-2 sm:gap-3 pt-3 sm:pt-4 border-t border-white/10">
           <button
             type="button"
             onClick={onClose}
-            className="px-6 py-3 rounded-2xl border border-white/20 text-white/80 hover:text-white hover:bg-white/5 transition-colors text-sm sm:text-base order-2 sm:order-1"
+            className="px-3 sm:px-6 py-2 sm:py-3 rounded-lg sm:rounded-2xl border border-white/20 text-white/80 hover:text-white hover:bg-white/5 transition-colors text-xs sm:text-sm md:text-base order-2 sm:order-1 font-medium"
           >
             Cancel
           </button>
           <button
+            disabled={isDeleting || !faqId}
             type="button"
-            onClick={handleConfirm}
-            className="px-6 py-3 rounded-2xl bg-red-600 text-white font-semibold hover:bg-red-700 transition-colors flex items-center justify-center gap-2 text-sm sm:text-base order-1 sm:order-2"
+            onClick={handleDelete}
+            className="px-3 sm:px-6 py-2 sm:py-3 rounded-lg sm:rounded-2xl bg-red-600 text-white font-semibold hover:bg-red-700 transition-colors flex items-center justify-center gap-2 text-xs sm:text-sm md:text-base order-1 sm:order-2 disabled:opacity-60 disabled:cursor-not-allowed"
           >
-            <svg
-              className="w-4 h-4"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-              />
-            </svg>
-            Delete FAQ
+            {isDeleting ? (
+              <Loader />
+            ) : (
+              <>
+                <Trash2 className="size-5" />
+                Delete
+              </>
+            )}
           </button>
         </div>
       </div>

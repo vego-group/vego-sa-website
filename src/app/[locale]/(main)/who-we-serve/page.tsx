@@ -1,4 +1,4 @@
-import WhoWeServe from "@/components/main/who-we-serve";
+import WhoWeServe from "@/components/site/main/who-we-serve";
 
 function WhoWeServePage() {
   return (

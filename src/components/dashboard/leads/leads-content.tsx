@@ -13,7 +13,7 @@ function LeadsContent() {
     <div className="w-full space-y-4 sm:space-y-6 lg:space-y-8 px-4 sm:px-6 lg:px-8">
       <LeadsHeader />
       <LeadsStats />
-      <DashboardSearch 
+      <DashboardSearch
         placeholder="Search by name, email, or company..."
         onSearch={setSearchQuery}
       />
