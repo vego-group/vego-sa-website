@@ -1,3 +1,4 @@
+import "react-datepicker/dist/react-datepicker.css";
 import { Toaster } from "react-hot-toast";
 import type { Metadata } from "next";
 import QueryProvider from "@/provider";

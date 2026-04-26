@@ -918,5 +918,89 @@
     "backToBlog": "العودة للمدونة",
     "relatedBlogs": "مدونات ذات صلة",
     "relatedBlogPlaceholder": "عنوان مدونة ذات صلة"
+  },
+  "companiesRegister": {
+    "meta": {
+      "title": "تسجيل الشركات | فيجو",
+      "description": "سجّل شركتك معنا لشراء دراجات نارية بأسعار الجملة والاستفادة من خدماتنا"
+    },
+    "hero": {
+      "title": "سجّل شركتك معنا",
+      "subtitle": "املأ النموذج التالي لتقديم طلب شراء دراجات نارية لشركتك. سنراجع طلبك ونتواصل معك في أقرب وقت."
+    },
+    "sections": {
+      "companyInfo": "معلومات الشركة",
+      "companyInfoDesc": "البيانات الأساسية والتسجيل التجاري",
+      "contactInfo": "بيانات المسؤول",
+      "contactInfoDesc": "بيانات الشخص المسؤول عن التواصل",
+      "address": "العنوان",
+      "addressDesc": "موقع الشركة (اختياري)",
+      "fleetBilling": "الأسطول والفوترة",
+      "fleetBillingDesc": "تفاصيل الأسطول وطريقة الدفع المفضلة (اختياري)",
+      "documents": "المستندات",
+      "documentsDesc": "حمّل المستندات المطلوبة بصيغة PDF أو صورة"
+    },
+    "fields": {
+      "companyName": "اسم الشركة",
+      "commercialRegNo": "رقم السجل التجاري",
+      "taxId": "الرقم الضريبي",
+      "contactPersonName": "اسم الشخص المسؤول",
+      "contactPhone": "رقم الجوال",
+      "contactEmail": "البريد الإلكتروني",
+      "address": "العنوان",
+      "city": "المدينة",
+      "region": "المنطقة",
+      "maxMotorcycles": "عدد الدراجات",
+      "maxDrivers": "عدد السائقين",
+      "billingType": "نوع الفوترة",
+      "commercialRegFile": "صورة السجل التجاري",
+      "commercialLicenseFile": "صورة الرخصة التجارية",
+      "salesContractFile": "عقد البيع"
+    },
+    "placeholders": {
+      "companyName": "مثال: شركة أكمي للوجستيات",
+      "contactPersonName": "الاسم الكامل",
+      "address": "مثال: طريق الملك فهد، حي العليا، مبنى 123",
+      "selectBilling": "اختر نوع الفوترة"
+    },
+    "billingOptions": {
+      "prepaid": "دفع مقدم",
+      "postpaid": "دفع آجل"
+    },
+    "buttons": {
+      "submit": "إرسال الطلب",
+      "submitting": "جاري الإرسال...",
+      "reset": "مسح البيانات",
+      "remove": "إزالة"
+    },
+    "clickToUpload": "اضغط لرفع الملف",
+    "fileHelp": "PDF أو صورة (JPG/PNG) • حتى 10MB",
+    "successTitle": "تم استلام طلبك بنجاح!",
+    "successMessage": "شكراً لتسجيلك. سيقوم فريقنا بمراجعة طلبك والتواصل معك قريباً.",
+    "errorTitle": "حدث خطأ",
+    "errorMessage": "حدث خطأ أثناء إرسال الطلب. حاول مرة أخرى.",
+    "validation": {
+      "required": "هذا الحقل مطلوب",
+      "phone": "رقم الجوال غير صحيح",
+      "companyNameMin": "اسم الشركة يجب أن يكون على الأقل حرفين",
+      "companyNameMax": "اسم الشركة طويل جداً",
+      "contactPersonNameMin": "الاسم يجب أن يكون على الأقل حرفين",
+      "contactPersonNameMax": "الاسم طويل جداً",
+      "emailRequired": "البريد الإلكتروني مطلوب",
+      "emailInvalid": "البريد الإلكتروني غير صحيح",
+      "commercialRegNoMin": "رقم السجل التجاري قصير جداً",
+      "commercialRegNoMax": "رقم السجل التجاري طويل جداً",
+      "fileRequired": "الملف مطلوب",
+      "fileTooLarge": "حجم الملف يجب ألا يتجاوز 10 ميجا",
+      "fileInvalidType": "نوع الملف غير مدعوم. استخدم PDF أو JPG أو PNG",
+      "addressMax": "العنوان طويل جداً",
+      "cityMax": "اسم المدينة طويل جداً",
+      "regionMax": "اسم المنطقة طويل جداً",
+      "taxIdMax": "الرقم الضريبي طويل جداً",
+      "mustBeNumber": "يجب أن يكون رقم",
+      "mustBeInteger": "يجب أن يكون رقم صحيح",
+      "mustBePositive": "يجب أن يكون رقم موجب",
+      "billingTypeInvalid": "نوع الفوترة غير صحيح"
+    }
   }
 }
