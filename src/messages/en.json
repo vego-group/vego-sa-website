@@ -918,5 +918,88 @@
         "tagline": "A stronger stance with a more commanding ride feel."
       }
     ]
+  },
+  "companiesRegister": {
+    "meta": {
+      "title": "Company Registration | Vego",
+      "description": "Register your company with us to purchase motorcycles at wholesale prices and enjoy our services"
+    },
+    "hero": {
+      "title": "Register Your Company",
+      "subtitle": "Fill out the form below to submit a request to purchase motorcycles for your company. We'll review your application and contact you shortly."
+    },
+    "sections": {
+      "companyInfo": "Company Information",
+      "companyInfoDesc": "Basic details and commercial registration",
+      "contactInfo": "Contact Person",
+      "contactInfoDesc": "Details of the person responsible for communication",
+      "address": "Address",
+      "addressDesc": "Company location (optional)",
+      "fleetBilling": "Fleet & Billing",
+      "fleetBillingDesc": "Fleet details and preferred payment method (optional)",
+      "documents": "Documents",
+      "documentsDesc": "Upload the required documents as PDF or image"
+    },
+    "fields": {
+      "companyName": "Company Name",
+      "commercialRegNo": "Commercial Registration No.",
+      "taxId": "Tax ID",
+      "contactPersonName": "Contact Person Name",
+      "contactPhone": "Phone Number",
+      "contactEmail": "Email Address",
+      "address": "Address",
+      "city": "City",
+      "region": "Region",
+      "maxMotorcycles": "Max Motorcycles",
+      "maxDrivers": "Max Drivers",
+      "billingType": "Billing Type",
+      "commercialRegFile": "Commercial Registration File",
+      "commercialLicenseFile": "Commercial License File",
+      "salesContractFile": "Sales Contract"
+    },
+    "placeholders": {
+      "companyName": "e.g., Acme Logistics Co.",
+      "contactPersonName": "Full name",
+      "address": "e.g., King Fahd Road, Al Olaya District, Building 123",
+      "selectBilling": "Select billing type"
+    },
+    "billingOptions": {
+      "prepaid": "Prepaid",
+      "postpaid": "Postpaid"
+    },
+    "buttons": {
+      "submit": "Submit Application",
+      "submitting": "Submitting...",
+      "reset": "Reset",
+      "remove": "Remove"
+    },
+    "clickToUpload": "Click to upload",
+    "fileHelp": "PDF or Image (JPG/PNG) • Up to 10MB",
+    "successTitle": "Application received successfully!",
+    "successMessage": "Thank you for registering. Our team will review your application and contact you soon.",
+    "errorTitle": "An error occurred",
+    "errorMessage": "An error occurred while submitting your application. Please try again.",
+    "validation": {
+      "required": "This field is required",
+      "phone": "Invalid phone number",
+      "companyNameMin": "Company name must be at least 2 characters",
+      "companyNameMax": "Company name is too long",
+      "contactPersonNameMin": "Name must be at least 2 characters",
+      "contactPersonNameMax": "Name is too long",
+      "emailRequired": "Email is required",
+      "emailInvalid": "Invalid email address",
+      "commercialRegNoInvalid": "Commercial registration number must be exactly 10 digits",
+      "fileRequired": "File is required",
+      "fileTooLarge": "File size must not exceed 10MB",
+      "fileInvalidType": "Unsupported file type. Use PDF, JPG or PNG",
+      "addressMax": "Address is too long",
+      "cityMax": "City name is too long",
+      "regionMax": "Region name is too long",
+      "taxIdInvalid": "Tax ID must be exactly 15 digits",
+      "mustBeNumber": "Must be a number",
+      "mustBeInteger": "Must be a whole number",
+      "mustBePositive": "Must be a positive number",
+      "billingTypeInvalid": "Invalid billing type"
+    }
   }
 }
