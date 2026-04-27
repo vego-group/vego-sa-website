@@ -67,8 +67,8 @@ const companiesRegisterSchema = z.object({
   commercial_reg_no: z
     .string()
     .trim()
-    .min(3, "validation.commercialRegNoMin")
-    .max(50, "validation.commercialRegNoMax"),
+    .min(1, "validation.required")
+    .regex(/^\d{10}$/, "validation.commercialRegNoInvalid"),
 
   commercial_reg_file: fileValidator,
 
@@ -79,7 +79,12 @@ const companiesRegisterSchema = z.object({
   address: z.string().trim().max(255, "validation.addressMax").optional(),
   city: z.string().trim().max(100, "validation.cityMax").optional(),
   region: z.string().trim().max(100, "validation.regionMax").optional(),
-  tax_id: z.string().trim().max(50, "validation.taxIdMax").optional(),
+  tax_id: z
+    .string()
+    .trim()
+    .regex(/^\d{15}$/, "validation.taxIdInvalid")
+    .optional()
+    .or(z.literal("")),
 
   max_motorcycles: z
     .number("validation.mustBeNumber")

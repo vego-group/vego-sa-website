@@ -6,7 +6,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
 import {
   companiesRegisterSchema,
-  normalizeSaudiPhone,
   type CompaniesRegisterSchema,
 } from "@/schemas/companies-register";
 import { useRegisterCompany } from "@/hooks/api/companies-register";
@@ -46,13 +45,7 @@ export const CompaniesRegisterForm = () => {
     setSubmitError(null);
 
     try {
-      // normalize phone to 9665XXXXXXXX before submit (matches schema regex)
-      const normalizedValues: CompaniesRegisterSchema = {
-        ...values,
-        contact_phone: normalizeSaudiPhone(values.contact_phone),
-      };
-
-      const response = await mutateAsync(normalizedValues);
+      const response = await mutateAsync(values);
 
       // safeApi returns { ok: boolean, status: number, data?, error?, message }
       if (!response.ok) {
@@ -144,8 +137,34 @@ export const CompaniesRegisterForm = () => {
             <input
               id="commercial_reg_no"
               type="text"
-              {...register("commercial_reg_no")}
-              placeholder="CR1234567890"
+              dir="ltr"
+              inputMode="numeric"
+              maxLength={10}
+              {...register("commercial_reg_no", {
+                setValueAs: (v) => String(v ?? "").replace(/\D/g, ""),
+              })}
+              onKeyDown={(e) => {
+                const allowedKeys = [
+                  "Backspace",
+                  "Delete",
+                  "Tab",
+                  "Escape",
+                  "Enter",
+                  "ArrowLeft",
+                  "ArrowRight",
+                  "ArrowUp",
+                  "ArrowDown",
+                  "Home",
+                  "End",
+                ];
+                if (allowedKeys.includes(e.key) || e.ctrlKey || e.metaKey) {
+                  return;
+                }
+                if (!/^\d$/.test(e.key)) {
+                  e.preventDefault();
+                }
+              }}
+              placeholder="1234567890"
               className="w-full rounded-lg border border-gray-300 px-3 py-2 outline-none focus:border-primary focus:ring-1 focus:ring-primary"
             />
             {errors.commercial_reg_no && (
@@ -163,7 +182,33 @@ export const CompaniesRegisterForm = () => {
             <input
               id="tax_id"
               type="text"
-              {...register("tax_id")}
+              dir="ltr"
+              inputMode="numeric"
+              maxLength={15}
+              {...register("tax_id", {
+                setValueAs: (v) => String(v ?? "").replace(/\D/g, ""),
+              })}
+              onKeyDown={(e) => {
+                const allowedKeys = [
+                  "Backspace",
+                  "Delete",
+                  "Tab",
+                  "Escape",
+                  "Enter",
+                  "ArrowLeft",
+                  "ArrowRight",
+                  "ArrowUp",
+                  "ArrowDown",
+                  "Home",
+                  "End",
+                ];
+                if (allowedKeys.includes(e.key) || e.ctrlKey || e.metaKey) {
+                  return;
+                }
+                if (!/^\d$/.test(e.key)) {
+                  e.preventDefault();
+                }
+              }}
               placeholder="300123456700003"
               className="w-full rounded-lg border border-gray-300 px-3 py-2 outline-none focus:border-primary focus:ring-1 focus:ring-primary"
             />
@@ -212,15 +257,70 @@ export const CompaniesRegisterForm = () => {
             <label htmlFor="contact_phone" className="mb-1 block text-sm font-medium">
               {t("fields.contactPhone")} <span className="text-red-500">*</span>
             </label>
-            <input
-              id="contact_phone"
-              type="tel"
-              dir="ltr"
-              {...register("contact_phone", {
-                setValueAs: (v) => normalizeSaudiPhone(v),
-              })}
-              placeholder="966512345678"
-              className="w-full rounded-lg border border-gray-300 px-3 py-2 outline-none focus:border-primary focus:ring-1 focus:ring-primary"
+            <Controller
+              name="contact_phone"
+              control={control}
+              render={({ field }) => {
+                // Strip the "966" prefix from the stored value to display only 9 digits
+                const localDigits = (field.value || "").replace(/^966/, "");
+
+                return (
+                  <div
+                    dir="ltr"
+                    className="flex items-stretch overflow-hidden rounded-lg border border-gray-300 focus-within:border-primary focus-within:ring-1 focus-within:ring-primary"
+                  >
+                    <span className="flex select-none items-center justify-center bg-gray-100 px-3 text-sm font-medium text-gray-700 border-e border-gray-300">
+                      +966
+                    </span>
+                    <input
+                      id="contact_phone"
+                      type="tel"
+                      dir="ltr"
+                      inputMode="numeric"
+                      autoComplete="tel-national"
+                      maxLength={9}
+                      value={localDigits}
+                      onChange={(e) => {
+                        // keep digits only, max 9
+                        const onlyDigits = e.target.value
+                          .replace(/\D/g, "")
+                          .slice(0, 9);
+                        // store with 966 prefix to match schema regex /^9665\d{8}$/
+                        field.onChange(onlyDigits ? `966${onlyDigits}` : "");
+                      }}
+                      onBlur={field.onBlur}
+                      onKeyDown={(e) => {
+                        // block non-digit keys (allow control keys)
+                        const allowedKeys = [
+                          "Backspace",
+                          "Delete",
+                          "Tab",
+                          "Escape",
+                          "Enter",
+                          "ArrowLeft",
+                          "ArrowRight",
+                          "ArrowUp",
+                          "ArrowDown",
+                          "Home",
+                          "End",
+                        ];
+                        if (
+                          allowedKeys.includes(e.key) ||
+                          e.ctrlKey ||
+                          e.metaKey
+                        ) {
+                          return;
+                        }
+                        if (!/^\d$/.test(e.key)) {
+                          e.preventDefault();
+                        }
+                      }}
+                      placeholder="5XXXXXXXX"
+                      className="w-full bg-white px-3 py-2 outline-none"
+                    />
+                  </div>
+                );
+              }}
             />
             {errors.contact_phone && (
               <p className="mt-1 text-xs text-red-500">
