@@ -954,8 +954,7 @@
       "maxDrivers": "Max Drivers",
       "billingType": "Billing Type",
       "commercialRegFile": "Commercial Registration File",
-      "commercialLicenseFile": "Commercial License File",
-      "salesContractFile": "Sales Contract"
+      "commercialLicenseFile": "Commercial License File"
     },
     "placeholders": {
       "companyName": "e.g., Acme Logistics Co.",

@@ -530,22 +530,6 @@ export const CompaniesRegisterForm = () => {
               />
             )}
           />
-
-          {/* Sales Contract File - OPTIONAL */}
-          <Controller
-            name="sales_contract_file"
-            control={control}
-            render={({ field }) => (
-              <FileUploadField
-                id="sales_contract_file"
-                label={t("fields.salesContractFile")}
-                value={field.value}
-                onChange={field.onChange}
-                error={getErrorMessage(errors.sales_contract_file?.message)}
-                helpText={t("fileHelp")}
-              />
-            )}
-          />
         </div>
       </section>
 

@@ -954,8 +954,7 @@
       "maxDrivers": "عدد السائقين",
       "billingType": "نوع الفوترة",
       "commercialRegFile": "صورة السجل التجاري",
-      "commercialLicenseFile": "صورة الرخصة التجارية",
-      "salesContractFile": "عقد البيع"
+      "commercialLicenseFile": "صورة الرخصة التجارية"
     },
     "placeholders": {
       "companyName": "مثال: شركة أكمي للوجستيات",
