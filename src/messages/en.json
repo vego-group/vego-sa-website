@@ -580,7 +580,8 @@
       "description": "Integrated solutions combining technology, design, and sustainability to make every journey smarter, cleaner, and more efficient.",
       "test-drive": "Book Test Drive",
       "discover-our-products": "Discover Our Products",
-      "contact-us": "Contact Us"
+      "contact-us": "Contact Us",
+      "compare-costs": "Compare running costs"
     },
     "who-is-vego": {
       "title": "Who is VEGO?",
@@ -999,6 +1000,61 @@
       "mustBeInteger": "Must be a whole number",
       "mustBePositive": "Must be a positive number",
       "billingTypeInvalid": "Invalid billing type"
+    }
+  },
+  "electric-vs-petrol-bike": {
+    "eyebrow": "Save more with VEGO",
+    "title": "Electric Bike vs Petrol Bike Comparison",
+    "description": "Compare the estimated monthly running cost between an electric bike and a petrol bike in a clear and simple way.",
+    "totalLabel": "Total",
+    "note": "The numbers are estimates based on a monthly usage of 3000 km, and may vary depending on usage style and operating conditions.",
+    "cards": {
+      "electric": {
+        "label": "Electric",
+        "title": "Electric Bike",
+        "total": "≈ 25 SAR",
+        "items": {
+          "charging": {
+            "label": "Charging",
+            "value": "≈ 25 SAR"
+          },
+          "maintenance": {
+            "label": "Maintenance",
+            "value": "Almost 0"
+          }
+        }
+      },
+      "petrol": {
+        "label": "Petrol",
+        "title": "Petrol Bike",
+        "total": "≈ 218 SAR",
+        "items": {
+          "fuel": {
+            "label": "Fuel",
+            "value": "118 SAR"
+          },
+          "oil": {
+            "label": "Oil",
+            "value": "23 SAR"
+          },
+          "sparkPlug": {
+            "label": "Spark plug",
+            "value": "17 SAR"
+          },
+          "filter": {
+            "label": "Filter",
+            "value": "17 SAR"
+          },
+          "chainLubrication": {
+            "label": "Chain lubrication",
+            "value": "10 SAR"
+          },
+          "chainSet": {
+            "label": "Chain set",
+            "value": "33 SAR"
+          }
+        }
+      }
     }
   }
 }

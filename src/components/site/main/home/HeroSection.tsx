@@ -6,7 +6,7 @@ import Image from "next/image";
 function HeroSection() {
   const t = useTranslations("home.hero");
   const locale = useLocale();
-  const Arrow = locale === "en" ? ArrowRight : ArrowLeft;
+  const Arrow = locale === "ar" ? ArrowLeft : ArrowRight;
   return (
     <section className="relative overflow-hidden bg-primary h-[calc(100svh-80px)] md:h-[calc(100svh-88px)]">
       <div className="absolute inset-0">
@@ -50,11 +50,20 @@ function HeroSection() {
             {t("test-drive")}
             <Arrow className="size-5" />
           </Link>
+
           <Link
             href="/products"
             className="inline-flex items-center gap-2 rounded-full border border-white/40 px-6 py-3 text-sm font-semibold text-white/90 backdrop-blur transition hover:border-white/70 hover:text-white"
           >
             {t("discover-our-products")}
+            <Arrow className="size-5" />
+          </Link>
+
+          <Link
+            href="/electric-vs-petrol-bike"
+            className="inline-flex items-center gap-2 rounded-full border border-secondary/50 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur transition hover:border-secondary hover:bg-secondary/20"
+          >
+            {t("compare-costs")}
             <Arrow className="size-5" />
           </Link>
         </div>
