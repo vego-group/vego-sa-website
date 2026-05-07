@@ -112,7 +112,7 @@ function TestDriveForm({ copy, products, locale }: TestDriveFormProps) {
   };
 
   return (
-    <section className="pb-20 lg:pb-28">
+    <section className="pb-20">
       <div
         dir={dir}
         className="mx-auto grid max-w-7xl items-start gap-8 px-6 lg:grid-cols-[0.82fr_1.18fr]"

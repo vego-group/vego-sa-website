@@ -580,7 +580,8 @@
       "description": "حلول متكاملة تجمع بين التقنية والتصميم والاستدامة لجعل كل رحلة أذكى وأنظف وأكثر كفاءة.",
       "test-drive": "احجز تجربة قيادة",
       "discover-our-products": "اكتشف منتجاتنا",
-      "contact-us": "تواصل معنا"
+      "contact-us": "تواصل معنا",
+      "compare-costs": "قارن تكلفة التشغيل"
     },
     "who-is-vego": {
       "title": "من هي VEGO؟",
@@ -1000,6 +1001,61 @@
       "mustBeInteger": "يجب أن يكون رقم صحيح",
       "mustBePositive": "يجب أن يكون رقم موجب",
       "billingTypeInvalid": "نوع الفوترة غير صحيح"
+    }
+  },
+  "electric-vs-petrol-bike": {
+    "eyebrow": "وفر أكثر مع VEGO",
+    "title": "مقارنة بين الدراجة الكهربائية والبنزين",
+    "description": "قارن تكلفة الاستخدام الشهرية بين الدراجة الكهربائية ودراجة البنزين بشكل واضح وسريع.",
+    "totalLabel": "المجموع",
+    "note": "الأرقام تقديرية مبنية على استخدام شهري 3000 كم، وقد تختلف حسب طريقة الاستخدام وظروف التشغيل.",
+    "cards": {
+      "electric": {
+        "label": "Electric",
+        "title": "دراجة كهرباء",
+        "total": "≈ 25 ريال",
+        "items": {
+          "charging": {
+            "label": "الشحن",
+            "value": "≈ 25 ريال"
+          },
+          "maintenance": {
+            "label": "صيانة",
+            "value": "0 تقريبًا"
+          }
+        }
+      },
+      "petrol": {
+        "label": "Petrol",
+        "title": "دراجة البنزين",
+        "total": "≈ 218 ريال",
+        "items": {
+          "fuel": {
+            "label": "الوقود",
+            "value": "118 ريال"
+          },
+          "oil": {
+            "label": "زيت",
+            "value": "23 ريال"
+          },
+          "sparkPlug": {
+            "label": "بواجي",
+            "value": "17 ريال"
+          },
+          "filter": {
+            "label": "فلتر",
+            "value": "17 ريال"
+          },
+          "chainLubrication": {
+            "label": "تشحيم جنزير",
+            "value": "10 ريال"
+          },
+          "chainSet": {
+            "label": "طقم جنزير",
+            "value": "33 ريال"
+          }
+        }
+      }
     }
   }
 }
