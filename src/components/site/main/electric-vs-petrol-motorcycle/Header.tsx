@@ -1,16 +1,16 @@
 import { Sparkles } from "lucide-react";
 
-interface ElectricVsPetrolBikeHeaderProps {
+interface ElectricVsPetrolMotorcycleHeaderProps {
   eyebrow: string;
   title: string;
   description: string;
 }
 
-function ElectricVsPetrolBikeHeader({
+function ElectricVsPetrolMotorcycleHeader({
   eyebrow,
   title,
   description,
-}: ElectricVsPetrolBikeHeaderProps) {
+}: ElectricVsPetrolMotorcycleHeaderProps) {
   return (
     <div className="mx-auto max-w-3xl text-center">
       <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-secondary/20 bg-secondary/10 px-5 py-2 text-sm font-bold text-primary">
@@ -29,4 +29,4 @@ function ElectricVsPetrolBikeHeader({
   );
 }
 
-export default ElectricVsPetrolBikeHeader;
+export default ElectricVsPetrolMotorcycleHeader;

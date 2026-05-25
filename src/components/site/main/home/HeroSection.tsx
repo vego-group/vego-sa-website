@@ -60,7 +60,7 @@ function HeroSection() {
           </Link>
 
           <Link
-            href="/electric-vs-petrol-bike"
+            href="/electric-vs-petrol-motorcycle"
             className="inline-flex items-center gap-2 rounded-full border border-secondary/50 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur transition hover:border-secondary hover:bg-secondary/20"
           >
             {t("compare-costs")}

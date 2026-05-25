@@ -16,12 +16,6 @@ export type TestDriveMetric = {
   label: string;
 };
 
-export type TestDriveBenefit = {
-  id: string;
-  title: string;
-  description: string;
-};
-
 export type TestDriveProductOption = {
   id: string;
   name: string;
