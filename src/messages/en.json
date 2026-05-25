@@ -825,7 +825,7 @@
     "title": "Experience VEGO products before you decide",
     "description": "Share your details, pick the day, time, and product that fits you, and we will arrange a smooth, polished VEGO test ride around your schedule.",
     "heroNote": "Pick the day, time, and product that fits you, and we will line up a fast, polished test drive around your schedule.",
-    "statsLabel": "Fast booking flow with a polished interface",
+    "statsLabel": "Fast booking flow",
     "benefitsTitle": "Why This Flow",
     "benefitsDescription": "This page is built to feel premium and direct: clear product selection, quick scheduling, and a layout that matches the VEGO visual language.",
     "formBadge": "Test Drive Registration",
@@ -1002,16 +1002,16 @@
       "billingTypeInvalid": "Invalid billing type"
     }
   },
-  "electric-vs-petrol-bike": {
+  "electric-vs-petrol-motorcycle": {
     "eyebrow": "Save more with VEGO",
-    "title": "Electric Bike vs Petrol Bike Comparison",
-    "description": "Compare the estimated monthly running cost between an electric bike and a petrol bike in a clear and simple way.",
+    "title": "Electric Motorcycle vs Petrol Motorcycle Comparison",
+    "description": "Compare the estimated monthly running cost between an electric motorcycle and a petrol motorcycle in a clear and simple way.",
     "totalLabel": "Total",
     "note": "The numbers are estimates based on a monthly usage of 3000 km, and may vary depending on usage style and operating conditions.",
     "cards": {
       "electric": {
         "label": "Electric",
-        "title": "Electric Bike",
+        "title": "Electric Motorcycle",
         "total": "≈ 25 SAR",
         "items": {
           "charging": {
@@ -1026,7 +1026,7 @@
       },
       "petrol": {
         "label": "Petrol",
-        "title": "Petrol Bike",
+        "title": "Petrol Motorcycle",
         "total": "≈ 218 SAR",
         "items": {
           "fuel": {

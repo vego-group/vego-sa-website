@@ -5,4 +5,4 @@ export * from "./terms-and-conditions";
 export * from "./privacy-policy";
 export * from "./about";
 export * from "./cookie-policy";
-export * from "./electric-vs-petrol-bike";
+export * from "./electric-vs-petrol-motorcycle";

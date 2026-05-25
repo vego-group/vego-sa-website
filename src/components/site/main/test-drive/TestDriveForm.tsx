@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 
 import { format, isValid, parse } from "date-fns";
 import { motion } from "framer-motion";
-import { Bike, CalendarRange, Clock3, UserRound } from "lucide-react";
+import { CalendarRange, Clock3, UserRound } from "lucide-react";
 import DatePicker from "react-datepicker";
 import { Controller, useForm, useWatch } from "react-hook-form";
 import toast from "react-hot-toast";
@@ -142,7 +142,16 @@ function TestDriveForm({ copy, products, locale }: TestDriveFormProps) {
               <div className="mt-8 space-y-4">
                 <div className="rounded-3xl border border-white/10 bg-white/8 p-5">
                   <div className="flex items-center gap-3">
-                    <Bike className="size-5 text-secondary" />
+                    <svg
+                      aria-hidden="true"
+                      viewBox="0 0 24 24"
+                      className="size-5 text-secondary"
+                    >
+                      <path
+                        d="M13.5 2.5L4.5 14h6l-1 7.5 9-11.5h-6l1-7.5z"
+                        fill="currentColor"
+                      />
+                    </svg>
                     <p className="text-sm font-semibold text-white/90">
                       {copy.labels.product}
                     </p>

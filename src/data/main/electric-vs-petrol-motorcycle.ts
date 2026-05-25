@@ -1,12 +1,9 @@
-import { Bike, Fuel } from "lucide-react";
+import type { MotorcycleComparisonCard } from "@/interfaces";
 
-import type { BikeComparisonCard } from "@/interfaces";
-
-export const electricVsPetrolBikeCards: BikeComparisonCard[] = [
+export const electricVsPetrolMotorcycleCards: MotorcycleComparisonCard[] = [
   {
     id: 1,
     key: "electric",
-    icon: Bike,
     highlight: true,
     items: [
       {
@@ -22,7 +19,6 @@ export const electricVsPetrolBikeCards: BikeComparisonCard[] = [
   {
     id: 2,
     key: "petrol",
-    icon: Fuel,
     items: [
       {
         id: 1,

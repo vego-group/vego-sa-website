@@ -46,7 +46,7 @@ function TestDriveHero({ copy, metrics, locale }: TestDriveHeroProps) {
           initial={{ opacity: 0, y: 40, scale: 0.96 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.9, delay: 0.15, ease: "easeOut" }}
-          className="relative"
+          className="hidden md:block relative"
         >
           <div className="absolute inset-0 rounded-[2rem] bg-linear-to-br from-secondary/35 via-white/10 to-transparent blur-2xl" />
           <div className="relative overflow-hidden rounded-[2rem] border border-white/12 bg-white/8 p-6 shadow-[0_30px_80px_-38px_rgba(4,10,30,0.95)] backdrop-blur-xl sm:p-7">
