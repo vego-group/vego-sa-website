@@ -4,13 +4,11 @@ import { useLocale, useTranslations } from "next-intl";
 
 import type { TestDriveCopy, TestDrivePageContent } from "@/interfaces";
 import type {
-  TestDriveBenefit,
   TestDriveLocale,
   TestDriveMetric,
   TestDriveProductOption,
 } from "@/types";
 
-import TestDriveBenefits from "./TestDriveBenefits";
 import TestDriveForm from "./TestDriveForm";
 import TestDriveHero from "./TestDriveHero";
 
@@ -25,8 +23,6 @@ function TestDrive() {
     description: t("description"),
     heroNote: t("heroNote"),
     statsLabel: t("statsLabel"),
-    benefitsTitle: t("benefitsTitle"),
-    benefitsDescription: t("benefitsDescription"),
     formBadge: t("formBadge"),
     formTitle: t("formTitle"),
     formDescription: t("formDescription"),
@@ -73,7 +69,6 @@ function TestDrive() {
   const pageContent: TestDrivePageContent = {
     copy,
     metrics: t.raw("metrics") as TestDriveMetric[],
-    benefits: t.raw("benefits") as TestDriveBenefit[],
     products: t.raw("products") as TestDriveProductOption[],
   };
 
@@ -82,11 +77,6 @@ function TestDrive() {
       <TestDriveHero
         copy={pageContent.copy}
         metrics={pageContent.metrics}
-        locale={currentLocale}
-      />
-      <TestDriveBenefits
-        copy={pageContent.copy}
-        benefits={pageContent.benefits}
         locale={currentLocale}
       />
       <TestDriveForm

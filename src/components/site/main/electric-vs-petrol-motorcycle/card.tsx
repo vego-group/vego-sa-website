@@ -1,25 +1,39 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, Fuel } from "lucide-react";
 
-import type { BikeComparisonCard } from "@/interfaces";
+import type { MotorcycleComparisonCard } from "@/interfaces";
 import { useLocale } from "next-intl";
 
-interface ElectricVsPetrolBikeCardProps {
-  card: BikeComparisonCard;
+interface ElectricVsPetrolMotorcycleCardProps {
+  card: MotorcycleComparisonCard;
   index: number;
   totalLabel: string;
   getText: (key: string) => string;
 }
 
-function ElectricVsPetrolBikeCard({
+function ElectricMotorcycleIcon() {
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 24 24"
+      className="size-6 text-primary sm:size-7"
+    >
+      <path
+        d="M13.5 2.5L4.5 14h6l-1 7.5 9-11.5h-6l1-7.5z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
+function ElectricVsPetrolMotorcycleCard({
   card,
   index,
   totalLabel,
   getText,
-}: ElectricVsPetrolBikeCardProps) {
-  const Icon = card.icon;
+}: ElectricVsPetrolMotorcycleCardProps) {
   const locale = useLocale();
   const isArabic = locale === "ar";
   const ArrowIcon = isArabic ? ArrowLeft : ArrowRight;
@@ -62,7 +76,11 @@ function ElectricVsPetrolBikeCard({
               : "bg-primary text-white shadow-lg shadow-primary/20"
           }`}
         >
-          <Icon className="size-6 sm:size-7" />
+          {card.key === "electric" ? (
+            <ElectricMotorcycleIcon />
+          ) : (
+            <Fuel className="size-6 sm:size-7" />
+          )}
         </div>
       </div>
 
@@ -104,4 +122,4 @@ function ElectricVsPetrolBikeCard({
   );
 }
 
-export default ElectricVsPetrolBikeCard;
+export default ElectricVsPetrolMotorcycleCard;

@@ -5,7 +5,6 @@ import type {
 } from "react";
 
 import type {
-  TestDriveBenefit,
   TestDriveFormValues,
   TestDriveLocale,
   TestDriveMetric,
@@ -18,8 +17,6 @@ export interface TestDriveCopy {
   description: string;
   heroNote: string;
   statsLabel: string;
-  benefitsTitle: string;
-  benefitsDescription: string;
   formBadge: string;
   formTitle: string;
   formDescription: string;
@@ -72,10 +69,6 @@ export interface TestDriveHeroProps extends TestDriveSectionProps {
   metrics: TestDriveMetric[];
 }
 
-export interface TestDriveBenefitsProps extends TestDriveSectionProps {
-  benefits: TestDriveBenefit[];
-}
-
 export interface TestDriveFormProps extends TestDriveSectionProps {
   products: TestDriveProductOption[];
 }
@@ -110,7 +103,6 @@ export interface TestDriveProductCardProps
 export interface TestDrivePageContent {
   copy: TestDriveCopy;
   metrics: TestDriveMetric[];
-  benefits: TestDriveBenefit[];
   products: TestDriveProductOption[];
 }
 

@@ -1,10 +1,12 @@
 import { motion } from "framer-motion";
 
-interface ElectricVsPetrolBikeNoteProps {
+interface ElectricVsPetrolMotorcycleNoteProps {
   note: string;
 }
 
-function ElectricVsPetrolBikeNote({ note }: ElectricVsPetrolBikeNoteProps) {
+function ElectricVsPetrolMotorcycleNote({
+  note,
+}: ElectricVsPetrolMotorcycleNoteProps) {
   return (
     <motion.p
       initial={{ opacity: 0, y: 18 }}
@@ -18,4 +20,4 @@ function ElectricVsPetrolBikeNote({ note }: ElectricVsPetrolBikeNoteProps) {
   );
 }
 
-export default ElectricVsPetrolBikeNote;
+export default ElectricVsPetrolMotorcycleNote;
