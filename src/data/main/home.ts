@@ -1,5 +1,11 @@
-import { HomeCard, NewsItem } from "@/interfaces";
+import { HomeCard } from "@/interfaces";
 
+export interface NewsItem {
+  id: string;
+  title: string;
+  summary: string;
+  image: string;
+}
 export const cardData: HomeCard[] = [
   {
     title: "customer-focus",

@@ -1,4 +1,5 @@
-import { NavItem } from "@/interfaces";
+import type { NavItem } from "@/interfaces";
+import type { LandingNavItem } from "@/interfaces/landing/navbar";
 
 export const navItems: NavItem[] = [
   { label: "home", href: "/" },
