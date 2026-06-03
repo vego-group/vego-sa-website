@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Toaster } from "react-hot-toast";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
@@ -10,6 +11,12 @@ import Footer from "@/components/site/Footer";
 import Navbar from "@/components/site/navbar.tsx";
 import { getCookieConsent } from "@/lib";
 import { getCookiePolicyContent } from "@/data";
+import QueryProvider from "@/provider";
+import { cairo, cormorant } from "../root-config";
+import "../globals.css";
+import "react-datepicker/dist/react-datepicker.css";
+import "swiper/css";
+import "swiper/css/pagination";
 
 export async function generateMetadata({
   params,
@@ -75,18 +82,25 @@ export default async function LocaleLayout({
   const cookiePolicyContent = getCookiePolicyContent(locale);
 
   return (
-    <div lang={locale} dir={dir} className="min-h-svh">
-      <NextIntlClientProvider messages={messages}>
-        <Navbar />
-        <main>{children}</main>
-        <CookieConsentBanner
-          banner={cookiePolicyContent.banner}
-          initialConsent={initialConsent}
-          isArabic={locale === "ar"}
-        />
-        <CommitmentToExcellence />
-        <Footer />
-      </NextIntlClientProvider>
-    </div>
+    <html lang={locale} dir={dir}>
+      <body className={`${cairo.variable} ${cormorant.variable} antialiased`}>
+        <QueryProvider>
+          <Toaster />
+          <div className="min-h-svh">
+            <NextIntlClientProvider messages={messages}>
+              <Navbar />
+              <main>{children}</main>
+              <CookieConsentBanner
+                banner={cookiePolicyContent.banner}
+                initialConsent={initialConsent}
+                isArabic={locale === "ar"}
+              />
+              <CommitmentToExcellence />
+              <Footer />
+            </NextIntlClientProvider>
+          </div>
+        </QueryProvider>
+      </body>
+    </html>
   );
 }

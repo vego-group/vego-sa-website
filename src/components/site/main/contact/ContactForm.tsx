@@ -42,6 +42,7 @@ export default function ContactForm() {
     { value: "partnership", label: t("subjects.partnership") },
     { value: "support", label: t("subjects.support") },
     { value: "jobs", label: t("subjects.jobs") },
+    { value: "motorcycle-purchase", label: t("subjects.motorcycle-purchase") },
   ];
 
   const onSubmit = async (data: ContactSchema) => {

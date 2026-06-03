@@ -1,24 +1,19 @@
-import "react-datepicker/dist/react-datepicker.css";
-import { Toaster } from "react-hot-toast";
-import type { Metadata } from "next";
-import QueryProvider from "@/provider";
-import { LOGO, SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from "@/constants";
 import { Cairo, Cormorant_Garamond } from "next/font/google";
-import "./globals.css";
-import "swiper/css";
-import "swiper/css/pagination";
+import type { Metadata } from "next";
+import { LOGO, SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from "@/constants";
 
-const cairo = Cairo({
+export const cairo = Cairo({
   variable: "--font-cairo",
   subsets: ["arabic", "latin"],
 });
 
-const cormorant = Cormorant_Garamond({
+export const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
 });
-export const metadata: Metadata = {
+
+export const rootMetadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: SITE_TITLE,
   description: SITE_DESCRIPTION,
@@ -48,20 +43,3 @@ export const metadata: Metadata = {
     images: [LOGO],
   },
 };
-
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return (
-    <html lang="en">
-      <body className={`${cairo.variable} ${cormorant.variable} antialiased`}>
-        <QueryProvider>
-          <Toaster />
-          {children}
-        </QueryProvider>
-      </body>
-    </html>
-  );
-}

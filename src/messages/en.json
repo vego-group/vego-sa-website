@@ -532,7 +532,7 @@
     }
   },
   "footer": {
-    "description": "Leading the electric revolution with innovative, sustainable, and high-perforance electric vehicles. Join us in creating a cleaner, greener future.",
+    "description": "Leading the electric revolution with innovative, sustainable, and high-performance electric vehicles. Join us in creating a cleaner, greener future.",
     "locations": {
       "hq": {
         "label": "SaaD tower, Malqa (HQ)",
@@ -773,7 +773,8 @@
         "products": "Products",
         "partnership": "Partnership",
         "support": "Support",
-        "jobs": "Jobs"
+        "jobs": "Jobs",
+        "motorcycle-purchase": "Motorcycle Purchase"
       },
       "validation": {
         "nameRequired": "Name is required",
