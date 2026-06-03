@@ -6,6 +6,7 @@ const contactSubjectValues = [
   "partnership",
   "support",
   "jobs",
+  "motorcycle-purchase",
 ] as const;
 
 const contactSchema = z.object({

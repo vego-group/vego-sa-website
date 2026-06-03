@@ -773,7 +773,8 @@
         "products": "معلومات عن المنتجات",
         "partnership": "فرص الشراكة",
         "support": "الدعم الفني",
-        "jobs": "فرص العمل"
+        "jobs": "فرص العمل",
+        "motorcycle-purchase": "شراء دراجة نارية"
       },
       "validation": {
         "nameRequired": "الاسم مطلوب",
