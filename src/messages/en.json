@@ -924,11 +924,11 @@
   "companiesRegister": {
     "meta": {
       "title": "Company Registration | Vego",
-      "description": "Register your company with us to purchase motorcycles at wholesale prices and enjoy our services"
+      "description": "Register your company with us to purchase electric motorcycles at wholesale prices and enjoy our services"
     },
     "hero": {
       "title": "Register Your Company",
-      "subtitle": "Fill out the form below to submit a request to purchase motorcycles for your company. We'll review your application and contact you shortly."
+      "subtitle": "Fill out the form below to submit a request to purchase electric motorcycles for your company. We'll review your application and contact you shortly."
     },
     "sections": {
       "companyInfo": "Company Information",

@@ -514,22 +514,6 @@ export const CompaniesRegisterForm = () => {
               />
             )}
           />
-
-          {/* Commercial License File - OPTIONAL */}
-          <Controller
-            name="commercial_license_file"
-            control={control}
-            render={({ field }) => (
-              <FileUploadField
-                id="commercial_license_file"
-                label={t("fields.commercialLicenseFile")}
-                value={field.value}
-                onChange={field.onChange}
-                error={getErrorMessage(errors.commercial_license_file?.message)}
-                helpText={t("fileHelp")}
-              />
-            )}
-          />
         </div>
       </section>
 

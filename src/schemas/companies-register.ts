@@ -72,9 +72,6 @@ const companiesRegisterSchema = z.object({
 
   commercial_reg_file: fileValidator,
 
-  // Optional fields
-  commercial_license_file: fileValidator.optional(),
-
   address: z.string().trim().max(255, "validation.addressMax").optional(),
   city: z.string().trim().max(100, "validation.cityMax").optional(),
   region: z.string().trim().max(100, "validation.regionMax").optional(),
