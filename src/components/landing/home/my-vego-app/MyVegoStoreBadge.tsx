@@ -15,10 +15,13 @@ const storeIcons: Record<MyVegoStoreLink["platform"], IconType> = {
 
 function MyVegoStoreBadge({ store }: MyVegoStoreBadgeProps): ReactElement {
   const Icon = storeIcons[store.platform];
+  const isExternalLink = store.href.startsWith("http");
 
   return (
     <a
       href={store.href}
+      target={isExternalLink ? "_blank" : undefined}
+      rel={isExternalLink ? "noopener noreferrer" : undefined}
       aria-label={`${store.eyebrow} ${store.label}`}
       className="inline-flex h-16 w-60 max-w-full items-center justify-center gap-3 rounded-lg border-2 border-white bg-transparent ps-4 pe-5 text-white shadow-[0_16px_42px_rgba(0,0,0,0.2)] transition duration-300 hover:border-secondary hover:text-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-[#00091f]"
     >

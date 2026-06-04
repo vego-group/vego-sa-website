@@ -5,7 +5,8 @@ import DepositStepItem from "./DepositStepItem";
 
 const activeStepByPhase = {
   details: 2,
-  review: 3,
+  "pay-deposit": 3,
+  "booking-confirmed": 4,
 };
 
 function DepositStepper({ steps, phase }: DepositStepperProps): ReactElement {
@@ -13,14 +14,19 @@ function DepositStepper({ steps, phase }: DepositStepperProps): ReactElement {
 
   return (
     <nav aria-label="خطوات الحجز" className="overflow-x-auto pb-2">
-      <ol className="mx-auto flex w-max min-w-full items-start justify-between gap-4 lg:max-w-4xl">
+      <ol className="mx-auto flex min-w-[44rem] items-start lg:min-w-0 lg:max-w-4xl">
         {steps.map((step, index) => {
           const stepNumber = index + 1;
           const isCompleted = stepNumber < activeStep;
           const isActive = stepNumber === activeStep;
 
           return (
-            <li key={step.id} className="flex items-center gap-4">
+            <li
+              key={step.id}
+              className={`flex items-start ${
+                stepNumber < steps.length ? "flex-1" : "shrink-0"
+              }`}
+            >
               <DepositStepItem
                 index={stepNumber}
                 isActive={isActive}
@@ -30,7 +36,7 @@ function DepositStepper({ steps, phase }: DepositStepperProps): ReactElement {
               {stepNumber < steps.length ? (
                 <span
                   aria-hidden="true"
-                  className={`mt-6 hidden h-1 w-14 rounded-full sm:block ${
+                  className={`mt-6 h-1 flex-1 rounded-full ${
                     stepNumber < activeStep ? "bg-secondary" : "bg-white/12"
                   }`}
                 />
