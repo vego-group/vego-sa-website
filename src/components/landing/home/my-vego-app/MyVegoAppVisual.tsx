@@ -10,14 +10,14 @@ type MyVegoAppVisualProps = {
 
 function MyVegoAppVisual({ image }: MyVegoAppVisualProps): ReactElement {
   return (
-    <figure className="relative min-h-[19rem] overflow-hidden rounded-[2rem] bg-black shadow-[0_34px_90px_rgba(0,0,0,0.34)] ring-1 ring-white/8 sm:min-h-[27rem] lg:min-h-[34rem] xl:min-h-[38rem]">
+    <figure className="relative min-h-[16rem] overflow-hidden rounded-[2rem] bg-black shadow-[0_34px_90px_rgba(0,0,0,0.34)] ring-1 ring-white/8 sm:min-h-[22rem] lg:min-h-[28rem] xl:min-h-[31rem]">
       <Image
         src={image.src}
         alt={image.alt}
         fill
         priority={false}
         className="object-cover"
-        sizes="(min-width: 1280px) 760px, (min-width: 1024px) 58vw, 92vw"
+        sizes="(min-width: 1280px) 620px, (min-width: 1024px) 48vw, 92vw"
       />
     </figure>
   );

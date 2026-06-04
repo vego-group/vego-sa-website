@@ -6,10 +6,6 @@ export interface CompaniesRegisterPayload {
   contact_email: string;
   commercial_reg_no: string;
   commercial_reg_file: File;
-
-  // Optional
-  commercial_license_file?: File;
-  sales_contract_file?: File;
   address?: string;
   city?: string;
   region?: string;

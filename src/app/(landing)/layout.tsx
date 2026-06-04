@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { Toaster } from "react-hot-toast";
 import Footer from "@/components/landing/footer";
-import Navbar from "@/components/landing/navbar";
+
 import QueryProvider from "@/provider";
 import { cairo, cormorant, rootMetadata } from "../root-config";
 import "../globals.css";
@@ -30,7 +30,6 @@ function LandingLayout({ children }: LandingLayoutProps) {
         <QueryProvider>
           <Toaster />
           <div className="min-h-svh bg-linear-to-br from-emerald-950 via-primary to-emerald-950">
-            <Navbar />
             {children}
             <Footer />
           </div>

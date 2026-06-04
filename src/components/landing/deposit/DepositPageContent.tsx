@@ -1,61 +1,194 @@
 "use client";
 
+import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { useMemo, useState, type ReactElement } from "react";
+import { useState, type ReactElement } from "react";
+import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
 import {
   depositDefaultPersonalInfo,
   depositPersonalFields,
   depositSteps,
-  landingCollection,
 } from "@/data/landing";
+import { useProduct } from "@/hooks";
 import type { DepositPageContentProps } from "@/interfaces/landing/deposit";
-import type { DepositPersonalInfo, DepositPhase } from "@/types/landing/deposit";
+import {
+  buildMoyasarCardTokenPayload,
+  createPreOrderFormSchema,
+  payPreOrderFormSchema,
+  type CreatePreOrderFormInput,
+  type CreatePreOrderFormSchema,
+  type CreatePreOrderPayloadSchema,
+  type PayPreOrderFormInput,
+  type PayPreOrderFormSchema,
+} from "@/schemas";
+import {
+  createMoyasarCardTokenAPI,
+  createPreorderAPI,
+  payPreorderAPI,
+} from "@/services/mutations/pre-order";
+import type {
+  DepositPhase,
+  PreorderPaymentConfig,
+  Preorder,
+  PreordersApiResponse,
+} from "@/types/landing/deposit";
 import DepositHero from "./DepositHero";
+import PayDepositForm from "./form/PayDepositForm";
 import PersonalInfoForm from "./form/PersonalInfoForm";
-import DepositReview from "./review/DepositReview";
 import DepositStepper from "./stepper/DepositStepper";
 
+const buildPreorderPayload = (
+  values: CreatePreOrderFormSchema,
+  productName: string,
+): CreatePreOrderPayloadSchema => ({
+  customer_name: values.fullName,
+  phone: values.phone,
+  email: values.email,
+  city: values.city,
+  product_name: productName,
+});
+
+function getPreorderPaymentData(
+  data?: PreordersApiResponse | Preorder,
+): { preorderId: string; payment?: PreorderPaymentConfig } | null {
+  const preorder = data && "preorder" in data ? data.preorder : data;
+
+  if (!preorder?.id) {
+    return null;
+  }
+
+  return {
+    preorderId: String(preorder.id),
+    payment: data && "payment" in data ? data.payment : undefined,
+  };
+}
+
 function DepositPageContent({
-  initialProductId,
+  initialProductSlug,
 }: DepositPageContentProps): ReactElement {
+  const productSlug = initialProductSlug ?? "";
+  const { data: productResponse, isLoading: isProductLoading } =
+    useProduct(productSlug);
+  const product = productResponse?.data;
   const [phase, setPhase] = useState<DepositPhase>("details");
-  const [form, setForm] = useState<DepositPersonalInfo>(
-    depositDefaultPersonalInfo,
-  );
+  const [preorderId, setPreorderId] = useState<string | null>(null);
+  const [paymentConfig, setPaymentConfig] =
+    useState<PreorderPaymentConfig | null>(null);
 
-  const product = useMemo(() => {
-    return (
-      landingCollection.products.find((item) => item.id === initialProductId) ??
-      landingCollection.products[0]
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { errors, isSubmitting },
+  } = useForm<CreatePreOrderFormInput, unknown, CreatePreOrderFormSchema>({
+    resolver: zodResolver(createPreOrderFormSchema),
+    defaultValues: depositDefaultPersonalInfo,
+    mode: "onChange",
+  });
+
+  const {
+    register: registerPayment,
+    handleSubmit: handlePaymentSubmit,
+    formState: { errors: paymentErrors, isSubmitting: isPaymentSubmitting },
+  } = useForm<PayPreOrderFormInput, unknown, PayPreOrderFormSchema>({
+    resolver: zodResolver(payPreOrderFormSchema),
+    defaultValues: {
+      cardHolderName: "",
+      cardNumber: "",
+      expiryDate: "",
+      cvv: "",
+    },
+    mode: "onChange",
+  });
+
+  const goToPhase = (nextPhase: DepositPhase): void => {
+    setPhase(nextPhase);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const handleCreatePreorder = handleSubmit(async (values) => {
+    if (!productSlug) {
+      toast.error("معرّف المنتج غير موجود.");
+      return;
+    }
+
+    if (isProductLoading || !product?.name) {
+      toast.error("بيانات المنتج لا تزال قيد التحميل.");
+      return;
+    }
+
+    const result = await createPreorderAPI(
+      buildPreorderPayload(values, product.name),
     );
-  }, [initialProductId]);
 
-  const updateField = (
-    field: keyof DepositPersonalInfo,
-    value: string,
-  ): void => {
-    setForm((currentForm) => ({
-      ...currentForm,
-      [field]: value,
-    }));
-  };
+    if (result?.ok) {
+      const preorderPaymentData = getPreorderPaymentData(
+        "data" in result ? result.data : undefined,
+      );
 
-  const handleReview = (): void => {
-    setPhase("review");
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+      if (!preorderPaymentData) {
+        toast.error("تعذر قراءة رقم طلب الحجز من الخادم");
+        return;
+      }
 
-  const handleBack = (): void => {
-    setPhase("details");
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+      if (!preorderPaymentData.payment?.publishable_key) {
+        toast.error("تعذر قراءة بيانات الدفع من الخادم");
+        return;
+      }
 
-  const handleSubmit = (): void => {
-    toast.success("تم تجهيز طلب الحجز للانتقال إلى الدفع");
-  };
+      setPreorderId(preorderPaymentData.preorderId);
+      setPaymentConfig(preorderPaymentData.payment);
+      goToPhase("pay-deposit");
+      toast.success(result.message || "تم إنشاء طلب الحجز بنجاح");
+      return;
+    }
+
+    toast.error(result?.message || "فشل إنشاء طلب الحجز");
+  });
+
+  const handlePayPreorder = handlePaymentSubmit(async (values) => {
+    if (!preorderId) {
+      toast.error("أنشئ طلب الحجز قبل الدفع");
+      goToPhase("details");
+      return;
+    }
+
+    if (!paymentConfig?.publishable_key) {
+      toast.error("بيانات الدفع غير مكتملة. أعد إنشاء طلب الحجز");
+      goToPhase("details");
+      return;
+    }
+
+    const tokenPayload = buildMoyasarCardTokenPayload(
+      values,
+      paymentConfig.callback_url,
+    );
+    const tokenResult = await createMoyasarCardTokenAPI(
+      tokenPayload,
+      paymentConfig.publishable_key,
+    );
+    const cardToken = "data" in tokenResult ? tokenResult.data?.id : undefined;
+
+    if (!tokenResult.ok || !cardToken) {
+      toast.error(tokenResult.message || "فشل إنشاء رمز البطاقة");
+      return;
+    }
+
+    const payResult = await payPreorderAPI(preorderId, {
+      card_token: cardToken,
+    });
+
+    if (payResult.ok) {
+      goToPhase("booking-confirmed");
+      toast.success(payResult.message || "تم دفع العربون بنجاح");
+      return;
+    }
+
+    toast.error(payResult.message || "فشل دفع العربون");
+  });
 
   return (
     <main className="relative isolate overflow-hidden bg-[#00091f] px-6 py-12 text-white sm:py-16">
@@ -78,19 +211,36 @@ function DepositPageContent({
         {phase === "details" ? (
           <PersonalInfoForm
             fields={depositPersonalFields}
-            form={form}
-            product={product}
-            onChange={updateField}
-            onSubmit={handleReview}
+            productSlug={productSlug}
+            control={control}
+            errors={errors}
+            isSubmitting={isSubmitting}
+            register={register}
+            onSubmit={handleCreatePreorder}
           />
-        ) : (
-          <DepositReview
-            form={form}
-            product={product}
-            onBack={handleBack}
-            onSubmit={handleSubmit}
+        ) : null}
+
+        {phase === "pay-deposit" ? (
+          <PayDepositForm
+            productSlug={productSlug}
+            errors={paymentErrors}
+            isSubmitting={isPaymentSubmitting}
+            register={registerPayment}
+            onBack={() => goToPhase("details")}
+            onSubmit={handlePayPreorder}
           />
-        )}
+        ) : null}
+
+        {phase === "booking-confirmed" ? (
+          <section className="mx-auto grid w-full max-w-2xl gap-6 rounded-3xl border border-white/12 bg-white/8 p-8 text-center shadow-[0_28px_90px_rgba(0,0,0,0.24)]">
+            <div className="mx-auto grid size-16 place-items-center rounded-full bg-secondary text-3xl font-black text-primary">
+              ✓
+            </div>
+            <p className="text-lg font-bold leading-8 text-white/76">
+              تم تأكيد الحجز. سنقوم بالتواصل معك لاستكمال خطوات الاستلام.
+            </p>
+          </section>
+        ) : null}
       </div>
     </main>
   );

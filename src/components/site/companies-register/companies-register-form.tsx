@@ -112,7 +112,10 @@ export const CompaniesRegisterForm = () => {
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           {/* Company Name * */}
           <div className="md:col-span-2">
-            <label htmlFor="company_name" className="mb-1 block text-sm font-medium">
+            <label
+              htmlFor="company_name"
+              className="mb-1 block text-sm font-medium"
+            >
               {t("fields.companyName")} <span className="text-red-500">*</span>
             </label>
             <input
@@ -131,8 +134,12 @@ export const CompaniesRegisterForm = () => {
 
           {/* Commercial Registration No * */}
           <div>
-            <label htmlFor="commercial_reg_no" className="mb-1 block text-sm font-medium">
-              {t("fields.commercialRegNo")} <span className="text-red-500">*</span>
+            <label
+              htmlFor="commercial_reg_no"
+              className="mb-1 block text-sm font-medium"
+            >
+              {t("fields.commercialRegNo")}{" "}
+              <span className="text-red-500">*</span>
             </label>
             <input
               id="commercial_reg_no"
@@ -235,8 +242,12 @@ export const CompaniesRegisterForm = () => {
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           {/* Contact Person Name * */}
           <div>
-            <label htmlFor="contact_person_name" className="mb-1 block text-sm font-medium">
-              {t("fields.contactPersonName")} <span className="text-red-500">*</span>
+            <label
+              htmlFor="contact_person_name"
+              className="mb-1 block text-sm font-medium"
+            >
+              {t("fields.contactPersonName")}{" "}
+              <span className="text-red-500">*</span>
             </label>
             <input
               id="contact_person_name"
@@ -254,7 +265,10 @@ export const CompaniesRegisterForm = () => {
 
           {/* Contact Phone * */}
           <div>
-            <label htmlFor="contact_phone" className="mb-1 block text-sm font-medium">
+            <label
+              htmlFor="contact_phone"
+              className="mb-1 block text-sm font-medium"
+            >
               {t("fields.contactPhone")} <span className="text-red-500">*</span>
             </label>
             <Controller
@@ -331,7 +345,10 @@ export const CompaniesRegisterForm = () => {
 
           {/* Contact Email * */}
           <div className="md:col-span-2">
-            <label htmlFor="contact_email" className="mb-1 block text-sm font-medium">
+            <label
+              htmlFor="contact_email"
+              className="mb-1 block text-sm font-medium"
+            >
               {t("fields.contactEmail")} <span className="text-red-500">*</span>
             </label>
             <input
@@ -420,7 +437,10 @@ export const CompaniesRegisterForm = () => {
 
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
           <div>
-            <label htmlFor="max_motorcycles" className="mb-1 block text-sm font-medium">
+            <label
+              htmlFor="max_motorcycles"
+              className="mb-1 block text-sm font-medium"
+            >
               {t("fields.maxMotorcycles")}
             </label>
             <input
@@ -444,7 +464,10 @@ export const CompaniesRegisterForm = () => {
           </div>
 
           <div>
-            <label htmlFor="max_drivers" className="mb-1 block text-sm font-medium">
+            <label
+              htmlFor="max_drivers"
+              className="mb-1 block text-sm font-medium"
+            >
               {t("fields.maxDrivers")}
             </label>
             <input
@@ -468,7 +491,10 @@ export const CompaniesRegisterForm = () => {
           </div>
 
           <div>
-            <label htmlFor="billing_type" className="mb-1 block text-sm font-medium">
+            <label
+              htmlFor="billing_type"
+              className="mb-1 block text-sm font-medium"
+            >
               {t("fields.billingType")}
             </label>
             <select
@@ -492,9 +518,7 @@ export const CompaniesRegisterForm = () => {
           <h2 className="text-lg font-bold text-gray-900">
             {t("sections.documents")}
           </h2>
-          <p className="text-sm text-gray-500">
-            {t("sections.documentsDesc")}
-          </p>
+          <p className="text-sm text-gray-500">{t("sections.documentsDesc")}</p>
         </header>
 
         <div className="space-y-4">
@@ -510,38 +534,6 @@ export const CompaniesRegisterForm = () => {
                 value={field.value}
                 onChange={field.onChange}
                 error={getErrorMessage(errors.commercial_reg_file?.message)}
-                helpText={t("fileHelp")}
-              />
-            )}
-          />
-
-          {/* Commercial License File - OPTIONAL */}
-          <Controller
-            name="commercial_license_file"
-            control={control}
-            render={({ field }) => (
-              <FileUploadField
-                id="commercial_license_file"
-                label={t("fields.commercialLicenseFile")}
-                value={field.value}
-                onChange={field.onChange}
-                error={getErrorMessage(errors.commercial_license_file?.message)}
-                helpText={t("fileHelp")}
-              />
-            )}
-          />
-
-          {/* Sales Contract File - OPTIONAL */}
-          <Controller
-            name="sales_contract_file"
-            control={control}
-            render={({ field }) => (
-              <FileUploadField
-                id="sales_contract_file"
-                label={t("fields.salesContractFile")}
-                value={field.value}
-                onChange={field.onChange}
-                error={getErrorMessage(errors.sales_contract_file?.message)}
                 helpText={t("fileHelp")}
               />
             )}
@@ -567,7 +559,9 @@ export const CompaniesRegisterForm = () => {
           disabled={isSubmitting || isPending}
           className="rounded-lg bg-primary px-8 py-2.5 text-sm font-semibold text-white hover:bg-primary/90 disabled:opacity-50"
         >
-          {isSubmitting || isPending ? t("buttons.submitting") : t("buttons.submit")}
+          {isSubmitting || isPending
+            ? t("buttons.submitting")
+            : t("buttons.submit")}
         </button>
       </div>
     </form>
