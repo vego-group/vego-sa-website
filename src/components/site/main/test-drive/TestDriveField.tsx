@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import type { ChangeEvent } from "react";
 
 import InputErrorMessage from "@/components/ui/InputErrorMessage";
 import type { TestDriveFieldProps } from "@/interfaces";
@@ -12,8 +13,19 @@ function TestDriveField({
   prefixIconSrc,
   prefixIconAlt,
   className,
+  onChange,
   ...props
 }: TestDriveFieldProps) {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    if (prefix) {
+      event.currentTarget.value = event.currentTarget.value
+        .replace(/\D/g, "")
+        .slice(0, 9);
+    }
+
+    onChange?.(event);
+  };
+
   return (
     <label className="block">
       <span className="mb-3 block text-sm font-semibold text-slate-700 text-start">
@@ -39,6 +51,9 @@ function TestDriveField({
         ) : null}
         <input
           {...props}
+          onChange={handleChange}
+          maxLength={prefix ? 9 : props.maxLength}
+          inputMode={prefix ? "numeric" : props.inputMode}
           className={`h-13 w-full rounded-2xl border border-slate-200 bg-white/90 px-4 text-sm text-slate-900 shadow-[0_8px_25px_-18px_rgba(15,23,42,0.4)] transition-all duration-300 placeholder:text-slate-400 focus:border-secondary focus:ring-4 focus:ring-secondary/15 focus:outline-none text-start ${prefix ? "pl-28" : ""} ${className ?? ""}`}
         />
       </div>

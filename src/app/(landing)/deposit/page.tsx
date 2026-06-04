@@ -2,6 +2,7 @@ import DepositPageContent from "@/components/landing/deposit";
 
 type DepositPageProps = {
   searchParams: Promise<{
+    productSlug?: string;
     product?: string;
   }>;
 };
@@ -9,7 +10,9 @@ type DepositPageProps = {
 async function DepositPage({ searchParams }: DepositPageProps) {
   const params = await searchParams;
 
-  return <DepositPageContent initialProductId={params.product} />;
+  return (
+    <DepositPageContent initialProductSlug={params.productSlug ?? params.product} />
+  );
 }
 
 export default DepositPage;

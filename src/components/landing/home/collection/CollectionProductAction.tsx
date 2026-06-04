@@ -15,7 +15,7 @@ function CollectionProductAction({
 }: CollectionProductActionProps): ReactElement {
   return (
     <Link
-      href={`/deposit?product=${encodeURIComponent(product.id)}`}
+      href={`/deposit?productSlug=${encodeURIComponent(product.id)}`}
       className="inline-flex h-14 w-full cursor-pointer items-center justify-center gap-3 rounded-full bg-secondary ps-7 pe-7 text-sm font-black text-primary shadow-[0_0_34px_rgba(0,214,111,0.34)] transition hover:bg-secondary/90"
     >
       {product.cta.label}

@@ -17,9 +17,11 @@ function CollectionProductCard({
       <CollectionProductMedia product={product} />
 
       <div className="flex flex-col gap-7 ps-4 pe-4 pb-4 pt-7 sm:ps-5 sm:pe-5 sm:pb-5">
-        <h3 className="text-end text-3xl font-bold tracking-[-0.02em] text-white/88 sm:text-3xl">
-          {product.name}
-        </h3>
+        <div className="space-y-3 text-end">
+          <h3 className="text-3xl font-bold text-white/88 sm:text-3xl">
+            {product.name}
+          </h3>
+        </div>
 
         <CollectionPriceDetails product={product} />
         <CollectionProductAction product={product} />
