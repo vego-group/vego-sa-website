@@ -15,11 +15,12 @@ function LandingHome(): ReactElement {
     <>
       <HeroSection />
       <PreOrderSection />
+      <MyVegoAppSection />
       <BrandVisionSection />
       <CollectionSection />
       <PreOrderBenefitsSection />
       <ImmersiveTechnologySection />
-      <MyVegoAppSection />
+
       <PreOrderJourneySection />
       <OwnersSection />
     </>

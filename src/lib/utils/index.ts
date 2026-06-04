@@ -7,3 +7,4 @@ export * from "./query";
 export * from "./formatDate";
 export * from "./lang";
 export * from "./blog-date";
+export * from "./image";

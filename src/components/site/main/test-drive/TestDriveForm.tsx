@@ -112,7 +112,7 @@ function TestDriveForm({ copy, products, locale }: TestDriveFormProps) {
   };
 
   return (
-    <section className="pb-20">
+    <section className="py-20">
       <div
         dir={dir}
         className="mx-auto grid max-w-7xl items-start gap-8 px-6 lg:grid-cols-[0.82fr_1.18fr]"
@@ -255,13 +255,7 @@ function TestDriveForm({ copy, products, locale }: TestDriveFormProps) {
                 prefix={copy.phoneCountryCode}
                 prefixIconSrc="/images/flag.png"
                 prefixIconAlt={copy.phoneFlagAlt}
-                inputMode="numeric"
                 autoComplete="tel-national"
-                maxLength={9}
-                onInput={(event) => {
-                  const input = event.currentTarget;
-                  input.value = input.value.replace(/\D/g, "").slice(0, 9);
-                }}
                 error={errors.phone_number?.message}
                 {...register("phone_number", {
                   required: getRequiredMessage(copy.labels.phone),

@@ -124,7 +124,7 @@ export const landingPreOrder: PreOrderContent = {
   eyebrow: "MY VEGO - PRE-ORDER",
   title: "تعرف أكثر على نظام",
   highlight: "MY VEGO واحجز الآن",
-  description: `تحكم ذكي بدبابك الكهربائي ومنصة إدارة الأسطول الذكية.
+  description: `منصة إدارة الأسطول الذكية.
 تطبيق يربط مالك الدباب الكهربائي بمركبته ليمنحه تجربة استخدام أكثر أمانًا وسهولة.
 يمكنك التحكم بالسرعة، تحديد مناطق الاستخدام، استعراض محطات الشحن القريبة، واستلام التنبيهات المهمة من مكان واحد.
 My VEGO مخصص للأفراد الذين يمتلكون دبابًا كهربائيًا واحدًا، وكذلك للشركات والجهات التي تمتلك عدة دبابات وتحتاج إلى إدارة الأسطول بطريقة منظمة.`,
@@ -326,14 +326,14 @@ export const landingMyVegoApp: MyVegoAppContent = {
       platform: "google-play",
       eyebrow: "Download on the",
       label: "Google Play",
-      href: "#",
+      href: "https://play.google.com/store/apps/details?id=com.vego.myvego&hl=en",
     },
     {
       id: "app-store",
       platform: "app-store",
       eyebrow: "Download on the",
       label: "App Store",
-      href: "#",
+      href: "https://apps.apple.com/eg/app/myvego/id6760932250",
     },
   ],
 };

@@ -64,6 +64,8 @@ export type CollectionTitlePart = {
 export type CollectionProduct = {
   id: string;
   name: string;
+  description?: string;
+  badge?: string | null;
   image: {
     src: string;
     alt: string;
@@ -76,6 +78,44 @@ export type CollectionProduct = {
     label: string;
     target: string;
   };
+};
+
+export type ProductApiItem = {
+  name: string;
+  description: string;
+  badge: string | null;
+  image_url: string;
+  currency: string;
+  deposit: string;
+  deposit_percentage: number;
+  total_price: string;
+};
+
+export type ProductsApiResponse = {
+  data: ProductApiItem[];
+};
+
+export type ProductApiFeature = {
+  label: string;
+  value: string;
+};
+
+export type ProductApiDetails = ProductApiItem & {
+  slug: string;
+  features: ProductApiFeature[];
+  total_price_halalas: number;
+  deposit_halalas: number;
+};
+
+export type ProductApiMeta = {
+  publishable_key: string;
+  callback_url: string;
+};
+
+export type ProductApiResponse = {
+  success: boolean;
+  data: ProductApiDetails;
+  meta: ProductApiMeta;
 };
 
 export type CollectionContent = {

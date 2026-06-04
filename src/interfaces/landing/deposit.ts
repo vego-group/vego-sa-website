@@ -1,13 +1,23 @@
 import type {
+  Control,
+  FieldErrors,
+  UseFormRegister,
+} from "react-hook-form";
+
+import type {
+  CreatePreOrderFormInput,
+  CreatePreOrderFormSchema,
+  PayPreOrderFormInput,
+} from "@/schemas";
+import type {
   DepositFormField,
-  DepositPersonalInfo,
   DepositPhase,
-  DepositProduct,
   DepositStep,
+  Preorder,
 } from "@/types/landing/deposit";
 
 export interface DepositPageContentProps {
-  initialProductId?: string;
+  initialProductSlug?: string;
 }
 
 export interface DepositHeroProps {
@@ -27,27 +37,31 @@ export interface DepositStepItemProps {
 }
 
 export interface DepositProductSummaryProps {
-  product: DepositProduct;
+  productSlug: string;
   variant?: "compact" | "review";
 }
 
 export interface PersonalInfoFormProps {
   fields: DepositFormField[];
-  form: DepositPersonalInfo;
-  product: DepositProduct;
-  onChange: (field: keyof DepositPersonalInfo, value: string) => void;
+  productSlug: string;
+  control: Control<CreatePreOrderFormInput>;
+  errors: FieldErrors<CreatePreOrderFormInput>;
+  isSubmitting: boolean;
+  register: UseFormRegister<CreatePreOrderFormInput>;
   onSubmit: () => void;
 }
 
 export interface DepositFormFieldProps {
   field: DepositFormField;
-  value: string;
-  onChange: (value: string) => void;
+  control: Control<CreatePreOrderFormInput>;
+  error?: string;
+  register: UseFormRegister<CreatePreOrderFormInput>;
 }
 
 export interface DepositReviewProps {
-  form: DepositPersonalInfo;
-  product: DepositProduct;
+  form: CreatePreOrderFormSchema;
+  productSlug: string;
+  isSubmitting: boolean;
   onBack: () => void;
   onSubmit: () => void;
 }
@@ -55,4 +69,17 @@ export interface DepositReviewProps {
 export interface DepositReviewFieldProps {
   label: string;
   value: string;
+}
+
+export interface PayDepositFormProps {
+  productSlug: string;
+  errors: FieldErrors<PayPreOrderFormInput>;
+  isSubmitting: boolean;
+  register: UseFormRegister<PayPreOrderFormInput>;
+  onBack: () => void;
+  onSubmit: () => void;
+}
+
+export interface DepositPreorderResponseProps {
+  preorder: Preorder;
 }
