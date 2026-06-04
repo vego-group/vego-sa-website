@@ -13,11 +13,6 @@ function buildFormData(values: CompaniesRegisterSchema): FormData {
   formData.append("commercial_reg_no", values.commercial_reg_no);
   formData.append("commercial_reg_file", values.commercial_reg_file);
 
-  // Optional file fields
-  if (values.commercial_license_file) {
-    formData.append("commercial_license_file", values.commercial_license_file);
-  }
-
   // Optional text fields
   if (values.address) formData.append("address", values.address);
   if (values.city) formData.append("city", values.city);
