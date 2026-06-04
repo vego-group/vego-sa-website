@@ -83,7 +83,7 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} dir={dir}>
-      <body className={`${cairo.variable} ${cormorant.variable} antialiased`}>
+      <body className={`${cairo.variable} ${cormorant.variable} antialiased`} suppressHydrationWarning>
         <QueryProvider>
           <Toaster />
           <div className="min-h-svh">
