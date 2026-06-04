@@ -11,6 +11,7 @@ import { safeApi } from "..";
 import type {
   MoyasarCardTokenResponse,
   MoyasarErrorResponse,
+  PayPreorderApiResponse,
   Preorder,
   PreordersApiResponse,
 } from "@/types";
@@ -30,7 +31,7 @@ export const payPreorderAPI = async (
   preorderId: string,
   payload: PayPreOrderPayloadSchema,
 ) => {
-  return await safeApi("POST", `/v1/preorders/${preorderId}/pay`, payload);
+  return await safeApi<PayPreorderApiResponse>("POST", `/v1/preorders/${preorderId}/pay`, payload);
 };
 
 export const createMoyasarCardTokenAPI = async (
@@ -39,7 +40,7 @@ export const createMoyasarCardTokenAPI = async (
 ) => {
   try {
     const response = await axios.post<MoyasarCardTokenResponse>(
-      ` ${MOYASAR_BASE_URL}/tokens`,
+      `${MOYASAR_BASE_URL}/tokens`,
       payload,
       {
         auth: {
