@@ -1,7 +1,10 @@
 import { baseAPI } from "..";
-import type { PreordersApiResponse } from "@/types/landing/deposit";
 
-export const preordersAPI = async (
-  preorderId: string,
-): Promise<PreordersApiResponse> =>
-  await baseAPI("GET", `/v1/preorders/${preorderId}/products`);
+export const getPreorderAPI = async (preorderId: string) =>
+  await baseAPI("GET", `/v1/preorders/${preorderId}`);
+
+export const lookupPreorderAPI = async (phone: string) =>
+  await baseAPI(
+    "GET",
+    phone ? `/v1/preorders/lookup?phone=${phone}` : `/v1/preorders/lookup`,
+  );

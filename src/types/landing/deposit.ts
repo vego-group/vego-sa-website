@@ -96,6 +96,26 @@ export type PreordersApiResponse = {
   payment: PreorderPaymentConfig;
 };
 
+export type PreorderApiResponse = {
+  success: boolean;
+  preorder: Preorder;
+};
+
+export type PayPreorderStatus = "paid" | "redirect" | "failed";
+
+export type PayPreorderApiResponse = {
+  success: boolean;
+  status: PayPreorderStatus;
+  message: string;
+  redirect_url?: string;
+  preorder: Pick<Preorder, "id" | "payment_status" | "status">;
+};
+
+export type PreorderLookupApiResponse = {
+  success: boolean;
+  data: Preorder[];
+};
+
 export type MoyasarCardTokenResponse = {
   id: string;
   status?: string;
@@ -106,6 +126,12 @@ export type MoyasarCardTokenResponse = {
   year?: string;
   name?: string;
   last_four?: string;
+  verification_url?: string;
+  message?: string | null;
+  metadata?: unknown;
+  created_at?: string;
+  updated_at?: string;
+  expires_at?: string;
 };
 
 export type MoyasarErrorResponse = {

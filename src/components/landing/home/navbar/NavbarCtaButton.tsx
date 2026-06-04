@@ -6,7 +6,7 @@ import type { ReactElement } from "react";
 function NavbarCtaButton(): ReactElement {
   return (
     <ScrollLink
-      to="contact"
+      to="products"
       smooth
       duration={500}
       offset={-84}
