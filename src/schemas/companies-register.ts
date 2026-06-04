@@ -34,9 +34,7 @@ const fileValidator = z
   .refine((file) => file.size <= MAX_FILE_SIZE, "validation.fileTooLarge")
   .refine(
     (file) =>
-      acceptedFileTypes.includes(
-        file.type as (typeof acceptedFileTypes)[number],
-      ),
+      acceptedFileTypes.includes(file.type as (typeof acceptedFileTypes)[number]),
     "validation.fileInvalidType",
   );
 
@@ -74,6 +72,9 @@ const companiesRegisterSchema = z.object({
 
   commercial_reg_file: fileValidator,
 
+  // Optional fields
+  commercial_license_file: fileValidator.optional(),
+
   address: z.string().trim().max(255, "validation.addressMax").optional(),
   city: z.string().trim().max(100, "validation.cityMax").optional(),
   region: z.string().trim().max(100, "validation.regionMax").optional(),
@@ -96,9 +97,7 @@ const companiesRegisterSchema = z.object({
     .min(0, "validation.mustBePositive")
     .optional(),
 
-  billing_type: z
-    .enum(billingTypeValues, "validation.billingTypeInvalid")
-    .optional(),
+  billing_type: z.enum(billingTypeValues, "validation.billingTypeInvalid").optional(),
 });
 
 type CompaniesRegisterSchema = z.infer<typeof companiesRegisterSchema>;
