@@ -3,7 +3,9 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { useState, type ReactElement } from "react";
+import { useEffect, useState, type ReactElement } from "react";
+import { useSearchParams } from "next/navigation";
+
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
@@ -73,7 +75,11 @@ function DepositPageContent({
   const { data: productResponse, isLoading: isProductLoading } =
     useProduct(productSlug);
   const product = productResponse?.data;
-  const [phase, setPhase] = useState<DepositPhase>("details");
+  const searchParams = useSearchParams();
+  const payment = searchParams.get("payment");
+  const [phase, setPhase] = useState<DepositPhase>(
+    payment === "paid" ? "booking-confirmed" : "details",
+  );
   const [preorderId, setPreorderId] = useState<string | null>(null);
   const [paymentConfig, setPaymentConfig] =
     useState<PreorderPaymentConfig | null>(null);
@@ -103,6 +109,12 @@ function DepositPageContent({
     },
     mode: "onChange",
   });
+
+  useEffect(() => {
+    if (payment === "failed") {
+      toast.error("فشل الدفع، يرجى المحاولة مرة أخرى");
+    }
+  }, [payment]);
 
   const goToPhase = (nextPhase: DepositPhase): void => {
     setPhase(nextPhase);
@@ -162,32 +174,49 @@ function DepositPageContent({
       return;
     }
 
-    const tokenPayload = buildMoyasarCardTokenPayload(
-      values,
-      paymentConfig.callback_url,
-    );
+    const callbackUrl = `${window.location.origin}/deposit?productSlug=${productSlug}`;
+    const tokenPayload = buildMoyasarCardTokenPayload(values, callbackUrl);
     const tokenResult = await createMoyasarCardTokenAPI(
       tokenPayload,
       paymentConfig.publishable_key,
     );
-    const cardToken = "data" in tokenResult ? tokenResult.data?.id : undefined;
-
-    if (!tokenResult.ok || !cardToken) {
+    if (!tokenResult.ok) {
       toast.error(tokenResult.message || "فشل إنشاء رمز البطاقة");
       return;
     }
+
+    const tokenData = tokenResult.data;
+
+    if (!tokenData) {
+      toast.error("فشل إنشاء رمز البطاقة");
+      return;
+    }
+
+    const cardToken = tokenData.id;
 
     const payResult = await payPreorderAPI(preorderId, {
       card_token: cardToken,
     });
 
-    if (payResult.ok) {
-      goToPhase("booking-confirmed");
-      toast.success(payResult.message || "تم دفع العربون بنجاح");
+    if (!payResult.ok) {
+      toast.error(payResult.message || "فشل دفع العربون");
       return;
     }
 
-    toast.error(payResult.message || "فشل دفع العربون");
+    const payData = payResult.data;
+
+    if (payData?.status === "redirect" && payData?.redirect_url) {
+      window.location.assign(payData.redirect_url);
+      return;
+    }
+
+    if (payData?.status === "failed") {
+      toast.error(payData.message || "فشل الدفع، تحقق من بيانات البطاقة");
+      return;
+    }
+
+    goToPhase("booking-confirmed");
+    toast.success(payData?.message || "تم دفع العربون بنجاح");
   });
 
   return (
