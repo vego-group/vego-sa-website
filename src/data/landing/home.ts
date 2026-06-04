@@ -22,11 +22,11 @@ export const landingHero: HeroContent = {
   actions: {
     primary: {
       label: "احجز الآن",
-      target: "contact",
+      target: "products",
     },
     secondary: {
-      label: "استكشف المنتجات",
-      target: "products",
+      label: "حمّل التطبيق",
+      target: "my-vego-app",
     },
   },
   stats: [
