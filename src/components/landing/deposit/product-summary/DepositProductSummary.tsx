@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { SaudiRiyal } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, type ReactElement } from "react";
 
 import { SkeletonCard } from "@/components/skeleton/card";
@@ -73,15 +73,16 @@ function DepositProductSummary({
   variant = "compact",
 }: DepositProductSummaryProps): ReactElement {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const { data, isLoading } = useProduct(productSlug);
   const isReview = variant === "review";
   const product = data?.data;
 
   useEffect(() => {
-    if (!isLoading && !product) {
+    if (!isLoading && !product && searchParams.get("payment") !== "failed") {
       router.replace("/landing");
     }
-  }, [isLoading, product, router]);
+  }, [isLoading, product, router, searchParams]);
 
   if (isLoading || !product) {
     return <DepositProductSummarySkeleton variant={variant} />;

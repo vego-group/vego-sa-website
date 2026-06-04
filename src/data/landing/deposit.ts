@@ -6,10 +6,9 @@ import type {
 } from "@/types/landing/deposit";
 
 export const depositSteps: DepositStep[] = [
-  { id: "choose-bike", label: "اختر الدراجة" },
+  { id: "choose-bike", label: "اختر الدباب" },
   { id: "enter-details", label: "أدخل بياناتك" },
-  { id: "pay-deposit", label: "ادفع العربون" },
-  { id: "booking-confirmed", label: "تأكيد الحجز" },
+  { id: "booking-confirmed", label: "تم الدفع" },
 ];
 
 export const depositDefaultPersonalInfo: DepositPersonalInfo = {
@@ -121,30 +120,17 @@ export const depositCopy: DepositCopy = {
   details: {
     title: "معلوماتك",
     highlight: "الشخصية",
-    description:
-      "أدخل بياناتك لإتمام حجز دراجتك",
-    submitLabel: "تأكيد طلب الحجز",
+    description: "أدخل بياناتك لإتمام حجز دراجتك",
+    submitLabel: "المتابعة للمراجعة",
   },
   review: {
-    title: "مراجعة طلب",
-    highlight: "الحجز",
-    description:
-      "تأكد من صحة جميع البيانات قبل المتابعة للدفع",
-    submitLabel: "تأكيد والمتابعة للدفع",
     editLabel: "تعديل البيانات",
-  },
-  "pay-deposit": {
-    title: "ادفع",
-    highlight: "العربون",
-    description:
-      "أدخل بيانات البطاقة لتأكيد حجز دراجتك",
-    submitLabel: "ادفع العربون",
-    backLabel: "تعديل البيانات",
+    submitLabel: "المتابعة للدفع",
   },
   "booking-confirmed": {
-    title: "تم تأكيد",
-    highlight: "الحجز",
+    title: "تم الحجز",
+    highlight: "بنجاح!",
     description:
-      "تم استلام طلبك ودفع العربون بنجاح",
+      "تم تأكيد حجزك بنجاح. سيتم التواصل معك قريباً لتنسيق موعد الاستلام",
   },
 };
