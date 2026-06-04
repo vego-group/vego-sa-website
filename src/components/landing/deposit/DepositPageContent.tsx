@@ -21,7 +21,7 @@ import {
   type CreatePreOrderFormSchema,
   type CreatePreOrderPayloadSchema,
 } from "@/schemas";
-import { createPreorderAPI } from "@/services/mutations/pre-order";
+import { createPreorderAPI } from "@/services/mutations";
 import type { DepositPhase } from "@/types/landing/deposit";
 import DepositHero from "./DepositHero";
 import PersonalInfoForm from "./form/PersonalInfoForm";
@@ -215,7 +215,10 @@ function DepositPageContent({
             {preorderId ? (
               <div className="rounded-2xl border border-white/12 bg-white/6 px-6 py-5">
                 <p className="mb-2 text-sm text-white/52">رقم الحجز الخاص بك</p>
-                <p dir="ltr" className="text-2xl font-black tracking-widest text-secondary">
+                <p
+                  dir="ltr"
+                  className="text-2xl font-black tracking-widest text-secondary"
+                >
                   #VEGO{preorderId}
                 </p>
                 <p className="mt-2 text-xs text-white/38">

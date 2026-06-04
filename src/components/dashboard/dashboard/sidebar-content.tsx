@@ -57,7 +57,7 @@ function SidebarContent({
 
           {/* Navigation */}
           <ul className="space-y-3 mb-auto">
-            {sidebarNavItems.map(({ id, label, icon, path }) => {
+            {sidebarNavItems.map(({ id, label, icon: Icon, path }) => {
               const isActive = pathname === path;
               return (
                 <li key={id}>
@@ -70,7 +70,7 @@ function SidebarContent({
                           : "hover:bg-white/5 hover:text-white"
                       }`}
                   >
-                    <span className="text-lg">{icon}</span>
+                    <Icon className="size-5" />
                     <span className="text-sm">{label}</span>
                   </button>
                 </li>
@@ -105,7 +105,7 @@ function SidebarContent({
 
           {/* Navigation icons */}
           <ul className="space-y-1 mb-auto w-full px-2">
-            {sidebarNavItems.map(({ id, label, icon, path }) => {
+            {sidebarNavItems.map(({ id, label, icon: Icon, path }) => {
               const isActive = pathname === path;
               return (
                 <li key={id}>
@@ -119,7 +119,7 @@ function SidebarContent({
                           : "hover:bg-white/5 hover:text-white"
                       }`}
                   >
-                    <span className="text-xl">{icon}</span>
+                    <Icon className="size-5" />
                     {/* Tooltip on hover */}
                     <span className="absolute left-full ml-2 px-2 py-1 rounded-md bg-gray-900 text-white text-xs whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50 border border-white/10">
                       {label}
@@ -250,7 +250,7 @@ function SidebarContent({
 
           {/* Navigation */}
           <ul className="space-y-1 mb-auto">
-            {sidebarNavItems.map(({ id, label, icon, path }) => {
+            {sidebarNavItems.map(({ id, label, icon: Icon, path }) => {
               const isActive = pathname === path;
               return (
                 <li key={id}>
@@ -263,7 +263,7 @@ function SidebarContent({
                           : "hover:bg-white/5 hover:text-white"
                       }`}
                   >
-                    <span className="text-lg">{icon}</span>
+                    <Icon className="size-5" />
                     <span className="text-sm font-medium">{label}</span>
                   </button>
                 </li>
