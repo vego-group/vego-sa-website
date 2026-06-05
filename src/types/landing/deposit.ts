@@ -3,10 +3,9 @@ import type { CollectionProduct } from "./home";
 export type DepositStepId =
   | "choose-bike"
   | "enter-details"
-  | "pay-deposit"
   | "booking-confirmed";
 
-export type DepositPhase = "details" | "pay-deposit" | "booking-confirmed";
+export type DepositPhase = "details" | "booking-confirmed";
 
 export type DepositPersonalInfo = {
   fullName: string;
@@ -40,18 +39,8 @@ export type DepositCopy = {
     submitLabel: string;
   };
   review: {
-    title: string;
-    highlight: string;
-    description: string;
-    submitLabel: string;
     editLabel: string;
-  };
-  "pay-deposit": {
-    title: string;
-    highlight: string;
-    description: string;
     submitLabel: string;
-    backLabel: string;
   };
   "booking-confirmed": {
     title: string;
@@ -81,35 +70,25 @@ export type Preorder = {
   created_at: string;
 };
 
-export type PreorderPaymentConfig = {
-  publishable_key: string;
-  callback_url: string;
-  amount_halalas: number;
-  currency: string;
-  description: string;
-};
-
 export type PreordersApiResponse = {
   success: boolean;
   message: string;
+  preorder: {
+    id: number;
+    product: string;
+    deposit_amount: number;
+    status: string;
+    payment_status: string;
+  };
+  checkout_url: string;
+};
+
+export type PreorderApiResponse = {
+  success: boolean;
   preorder: Preorder;
-  payment: PreorderPaymentConfig;
 };
 
-export type MoyasarCardTokenResponse = {
-  id: string;
-  status?: string;
-  brand?: string;
-  funding?: string;
-  country?: string;
-  month?: string;
-  year?: string;
-  name?: string;
-  last_four?: string;
-};
-
-export type MoyasarErrorResponse = {
-  message?: string;
-  errors?: unknown;
-  type?: string;
+export type PreorderLookupApiResponse = {
+  success: boolean;
+  data: Preorder[];
 };

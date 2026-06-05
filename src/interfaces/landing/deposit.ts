@@ -7,7 +7,6 @@ import type {
 import type {
   CreatePreOrderFormInput,
   CreatePreOrderFormSchema,
-  PayPreOrderFormInput,
 } from "@/schemas";
 import type {
   DepositFormField,
@@ -69,15 +68,6 @@ export interface DepositReviewProps {
 export interface DepositReviewFieldProps {
   label: string;
   value: string;
-}
-
-export interface PayDepositFormProps {
-  productSlug: string;
-  errors: FieldErrors<PayPreOrderFormInput>;
-  isSubmitting: boolean;
-  register: UseFormRegister<PayPreOrderFormInput>;
-  onBack: () => void;
-  onSubmit: () => void;
 }
 
 export interface DepositPreorderResponseProps {
