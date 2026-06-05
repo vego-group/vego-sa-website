@@ -3,7 +3,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { logoutAPI } from "@/services/mutations/auth";
 import { removeToken } from "@/lib";
 import { sidebarNavItems } from "@/data";
-import { LogOut } from "lucide-react";
+import { LogOut, Menu, X } from "lucide-react";
 
 function SidebarContent({
   isMobileMenuOpen,
@@ -133,22 +133,11 @@ function SidebarContent({
           {/* Logout icon */}
           <div className="pt-4 mt-6 border-t border-white/10 w-full px-2">
             <button
+              onClick={handleLogout}
               title="Logout"
               className="flex items-center justify-center w-full py-3 text-red-400 hover:text-red-300 hover:bg-red-500/10 rounded-lg transition-colors group relative"
             >
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={2}
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
-                />
-              </svg>
+              <LogOut className="size-5" />
               <span className="absolute left-full ml-2 px-2 py-1 rounded-md bg-gray-900 text-white text-xs whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50 border border-white/10">
                 Logout
               </span>
@@ -170,19 +159,7 @@ function SidebarContent({
             className="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-white/10 transition-colors"
             aria-label="Open menu"
           >
-            <svg
-              className="w-6 h-6 text-white"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
+            <Menu className="size-6 text-white" />
           </button>
 
           {/* Page title */}
@@ -232,19 +209,7 @@ function SidebarContent({
               className="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-white/10 transition-colors"
               aria-label="Close menu"
             >
-              <svg
-                className="w-5 h-5 text-white"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
+              <X className="size-5 text-white" />
             </button>
           </div>
 
