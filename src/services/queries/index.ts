@@ -4,4 +4,4 @@ export * from "./blogs";
 export * from "./faq";
 export * from "./test-drive";
 export * from "./products";
-export * from "./pre-order";
+export * from "./pre-orders";
