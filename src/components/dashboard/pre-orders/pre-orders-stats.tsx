@@ -9,10 +9,11 @@ function PreOrdersStats() {
   type StatsCardVariant = ComponentProps<typeof StatsCard>["variant"];
 
   const { data, isLoading, isFetching } = usePreOrders(1);
-  const statistics = (data as PreOrdersApiListResponse | undefined)?.statistics;
-
-  const depositValue = statistics?.total_deposit_amount
-    ? statistics.total_deposit_amount
+  const analytics =
+    (data as PreOrdersApiListResponse | undefined)?.analytics ??
+    (data as PreOrdersApiListResponse | undefined)?.statistics;
+  const depositValue = analytics?.total_deposit_amount
+    ? analytics.total_deposit_amount
     : "0";
 
   const stats: Array<{
@@ -22,20 +23,20 @@ function PreOrdersStats() {
   }> = [
     {
       label: "Total Pre Orders",
-      value: String(statistics?.total_preorders ?? 0),
+      value: String(analytics?.total_preorders ?? 0),
     },
     {
       label: "Pending",
-      value: String(statistics?.pending_preorders ?? 0),
+      value: String(analytics?.pending_preorders ?? 0),
       variant: "accent",
     },
     {
       label: "Approved",
-      value: String(statistics?.approved_preorders ?? 0),
+      value: String(analytics?.approved_preorders ?? 0),
     },
     {
       label: "Cancelled",
-      value: String(statistics?.cancelled_preorders ?? 0),
+      value: String(analytics?.cancelled_preorders ?? 0),
     },
     {
       label: "Total Deposits",

@@ -67,5 +67,6 @@ export type PreOrdersApiListResponse = {
   data: PreOrder[];
   links: PreOrdersLinks;
   meta: PreOrdersMeta;
+  analytics?: PreOrdersStatistics;
   statistics?: PreOrdersStatistics;
 };
