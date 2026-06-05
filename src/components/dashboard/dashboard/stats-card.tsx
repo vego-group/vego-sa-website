@@ -1,6 +1,8 @@
+import type { ReactNode } from "react";
+
 type StatsCardProps = {
   label: string;
-  value: string;
+  value: ReactNode;
   variant?: "default" | "accent";
 };
 
