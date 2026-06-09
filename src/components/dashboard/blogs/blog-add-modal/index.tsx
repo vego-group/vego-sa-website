@@ -387,7 +387,7 @@ function AddBlogPopup({ isOpen, onClose }: AddBlogPopupProps) {
                     <span className="hidden sm:inline"> or drag and drop</span>
                   </p>
                   <p className="text-xs text-white/40 mt-1">
-                    PNG, JPG, JPEG, GIF (Max 5MB)
+                    PNG, JPG, JPEG, GIF (Max 2MB)
                   </p>
                 </div>
                 <input
