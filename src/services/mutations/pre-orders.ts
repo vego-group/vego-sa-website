@@ -9,3 +9,6 @@ export const createPreorderAPI = async (
 ) => {
   return await safeApi<PreordersApiResponse>("POST", `/v1/preorders`, payload);
 };
+
+export const deletePreorderAPI = async (id: number | string) =>
+  await safeApi("DELETE", `/v1/preorders/${id}`);

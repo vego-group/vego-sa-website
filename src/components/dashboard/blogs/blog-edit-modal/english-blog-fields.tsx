@@ -31,7 +31,7 @@ function EnglishBlogFields({
         <textarea
           {...register?.("excerpt_en")}
           rows={3}
-          className="w-full rounded-xl border border-white/10 bg-white/5 px-3 sm:px-4 py-2 sm:py-2.5 text-sm sm:text-base text-white placeholder:text-white/40 focus:border-secondary/60 focus:ring-1 focus:ring-secondary/30 focus:outline-none resize-none"
+          className="block w-full rounded-xl border border-white/10 bg-white/5 px-3 sm:px-4 py-2 sm:py-2.5 text-sm sm:text-base text-white placeholder:text-white/40 focus:border-secondary/60 focus:ring-1 focus:ring-secondary/30 focus:outline-none resize-none"
           required
           dir="ltr"
         />
@@ -45,7 +45,7 @@ function EnglishBlogFields({
         <textarea
           {...register?.("content_en")}
           rows={6}
-          className="w-full rounded-xl border border-white/10 bg-white/5 px-3 sm:px-4 py-2 sm:py-2.5 text-sm text-white placeholder:text-white/40 focus:border-secondary/60 focus:ring-1 focus:ring-secondary/30 focus:outline-none resize-none font-mono"
+          className="block w-full rounded-xl border border-white/10 bg-white/5 px-3 sm:px-4 py-2 sm:py-2.5 text-sm text-white placeholder:text-white/40 focus:border-secondary/60 focus:ring-1 focus:ring-secondary/30 focus:outline-none resize-none font-mono"
           required
           dir="ltr"
         />
@@ -68,7 +68,7 @@ function EnglishBlogFields({
           <textarea
             {...register?.("meta_description_en")}
             rows={2}
-            className="w-full rounded-xl border border-white/10 bg-white/5 px-3 sm:px-4 py-2 text-sm text-white placeholder:text-white/40 focus:border-secondary/60 focus:ring-1 focus:ring-secondary/30 focus:outline-none resize-none"
+            className="block w-full rounded-xl border border-white/10 bg-white/5 px-3 sm:px-4 py-2 text-sm text-white placeholder:text-white/40 focus:border-secondary/60 focus:ring-1 focus:ring-secondary/30 focus:outline-none resize-none"
             dir="ltr"
           />
           <InputErrorMessage msg={errors?.meta_description_en?.message} />

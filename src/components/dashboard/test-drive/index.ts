@@ -4,3 +4,4 @@ export { TestDriveHeader } from "./test-drive-header";
 export { TestDriveStats } from "./test-drive-stats";
 export { TestDriveTable } from "./test-drive-table";
 export { TestDriveDetailsPopup } from "./test-drive-details-popup";
+export { DeleteTestDriveConfirmationPopup } from "./delete-test-drive-confirmation-popup";

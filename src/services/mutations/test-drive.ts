@@ -24,3 +24,6 @@ export const addTestDriveRegistrationAPI = async (payload: TestDriveSchema) => {
     parsedPayload.data,
   );
 };
+
+export const deleteTestDriveRegistrationAPI = async (id: number | string) =>
+  await safeApi("DELETE", `/test-drive-registrations/${id}`);

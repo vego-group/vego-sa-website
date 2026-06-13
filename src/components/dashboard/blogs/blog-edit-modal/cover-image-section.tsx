@@ -82,7 +82,10 @@ function CoverImageSection({
               onChange={onImageUpload}
             />
           </label>
-          <InputErrorMessage msg={errorMessage} />
+          <InputErrorMessage
+            msg={errorMessage}
+            className="self-start text-left"
+          />
         </div>
 
         <div className="relative rounded-xl overflow-hidden border border-white/10 group">

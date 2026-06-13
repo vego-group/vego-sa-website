@@ -4,7 +4,9 @@ import { useState } from "react";
 import { SkeletonCard } from "@/components/skeleton/card";
 import { PAGE_SIZE } from "@/constants";
 import { useContacts } from "@/hooks/api/contact";
+import { Trash2 } from "lucide-react";
 import { BlogsPagination } from "../blogs/blogs-pagination";
+import { DeleteLeadConfirmationPopup } from "./delete-lead-confirmation-popup";
 import { LeadDetailsPopup } from "./lead-details-popup";
 
 type LeadsTableProps = {
@@ -81,7 +83,9 @@ function getStatusColor(status?: string | null) {
 function LeadsTableContent({ searchQuery }: Required<LeadsTableProps>) {
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedLead, setSelectedLead] = useState<ApiLead | null>(null);
+  const [leadToDelete, setLeadToDelete] = useState<ApiLead | null>(null);
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
+  const [isDeleteOpen, setIsDeleteOpen] = useState(false);
 
   const { data, isLoading, isFetching } = useContacts(currentPage);
 
@@ -149,6 +153,11 @@ function LeadsTableContent({ searchQuery }: Required<LeadsTableProps>) {
     setIsDetailsOpen(true);
   };
 
+  const handleDeleteClick = (lead: ApiLead) => {
+    setLeadToDelete(lead);
+    setIsDeleteOpen(true);
+  };
+
   if (isLoading) {
     return <SkeletonCard className="sm:h-100" />;
   }
@@ -199,7 +208,7 @@ function LeadsTableContent({ searchQuery }: Required<LeadsTableProps>) {
               </p>
             </div>
 
-            <div className="flex justify-end">
+            <div className="flex justify-end gap-1">
               <button
                 onClick={(e) => {
                   e.stopPropagation();
@@ -227,6 +236,16 @@ function LeadsTableContent({ searchQuery }: Required<LeadsTableProps>) {
                     d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
                   />
                 </svg>
+              </button>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleDeleteClick(lead);
+                }}
+                className="p-2 hover:bg-red-500/10 rounded-lg transition-colors text-white/60 hover:text-red-400"
+                title="Delete lead"
+              >
+                <Trash2 className="h-4 w-4" />
               </button>
             </div>
           </div>
@@ -333,6 +352,16 @@ function LeadsTableContent({ searchQuery }: Required<LeadsTableProps>) {
                     />
                   </svg>
                 </button>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleDeleteClick(lead);
+                  }}
+                  className="p-2 hover:bg-red-500/10 rounded-lg transition-colors text-white/60 hover:text-red-400"
+                  title="Delete lead"
+                >
+                  <Trash2 className="h-4 w-4 shrink-0" />
+                </button>
               </div>
               </div>
             ))}
@@ -357,6 +386,16 @@ function LeadsTableContent({ searchQuery }: Required<LeadsTableProps>) {
           setSelectedLead(null);
         }}
         lead={selectedLead}
+      />
+
+      <DeleteLeadConfirmationPopup
+        isOpen={isDeleteOpen}
+        onClose={() => {
+          setIsDeleteOpen(false);
+          setLeadToDelete(null);
+        }}
+        id={leadToDelete?.id}
+        leadName={leadToDelete?.name ?? leadToDelete?.email}
       />
     </>
   );
