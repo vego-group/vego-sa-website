@@ -3,7 +3,9 @@
 import { useState } from "react";
 import { SkeletonCard } from "@/components/skeleton/card";
 import { usePreOrders } from "@/hooks/api/pre-orders";
+import { Trash2 } from "lucide-react";
 import { BlogsPagination } from "../blogs/blogs-pagination";
+import { DeletePreOrderConfirmationPopup } from "./delete-pre-order-confirmation-popup";
 import { PreOrderDetailsPopup } from "./pre-order-details-popup";
 import type {
   PreOrder,
@@ -52,7 +54,9 @@ const tdClass = "px-4 py-4 align-top";
 function PreOrdersTableContent({ filters }: PreOrdersTableProps) {
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedPreOrder, setSelectedPreOrder] = useState<PreOrder | null>(null);
+  const [preOrderToDelete, setPreOrderToDelete] = useState<PreOrder | null>(null);
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
+  const [isDeleteOpen, setIsDeleteOpen] = useState(false);
 
   const { data, isLoading, isFetching } = usePreOrders(currentPage, filters);
   const response = data as PreOrdersApiListResponse | undefined;
@@ -65,6 +69,11 @@ function PreOrdersTableContent({ filters }: PreOrdersTableProps) {
   const handleView = (preOrder: PreOrder) => {
     setSelectedPreOrder(preOrder);
     setIsDetailsOpen(true);
+  };
+
+  const handleDeleteClick = (preOrder: PreOrder) => {
+    setPreOrderToDelete(preOrder);
+    setIsDeleteOpen(true);
   };
 
   if (isLoading) {
@@ -165,18 +174,46 @@ function PreOrdersTableContent({ filters }: PreOrdersTableProps) {
 
                 {/* Actions */}
                 <td className={`${tdClass} text-right`}>
-                  <button
-                    onClick={(e) => { e.stopPropagation(); handleView(order); }}
-                    className="p-2 hover:bg-white/10 rounded-lg transition-colors text-white/50 hover:text-white"
-                    title="View details"
-                  >
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                    </svg>
-                  </button>
+                  <div className="flex justify-end gap-1">
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleView(order);
+                      }}
+                      className="p-2 hover:bg-white/10 rounded-lg transition-colors text-white/50 hover:text-white"
+                      title="View details"
+                    >
+                      <svg
+                        className="w-4 h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                        />
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                        />
+                      </svg>
+                    </button>
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleDeleteClick(order);
+                      }}
+                      className="p-2 hover:bg-red-500/10 rounded-lg transition-colors text-white/50 hover:text-red-400"
+                      title="Delete pre-order"
+                    >
+                      <Trash2 className="h-4 w-4" />
+                    </button>
+                  </div>
                 </td>
               </tr>
             ))}
@@ -198,6 +235,17 @@ function PreOrdersTableContent({ filters }: PreOrdersTableProps) {
         isOpen={isDetailsOpen}
         onClose={() => { setIsDetailsOpen(false); setSelectedPreOrder(null); }}
         preOrder={selectedPreOrder}
+      />
+
+      <DeletePreOrderConfirmationPopup
+        isOpen={isDeleteOpen}
+        onClose={() => {
+          setIsDeleteOpen(false);
+          setPreOrderToDelete(null);
+        }}
+        id={preOrderToDelete?.id}
+        customerName={preOrderToDelete?.customer_name}
+        paymentStatus={preOrderToDelete?.payment_status.value}
       />
     </>
   );

@@ -65,7 +65,7 @@ function CoverImageSection({
                 <span className="hidden sm:inline"> or drag and drop</span>
               </p>
               <p className="text-xs text-white/40 mt-1">
-                PNG, JPG, JPEG, GIF (Max 5MB)
+                PNG, JPG, JPEG, GIF (Max 2MB)
               </p>
             </div>
             <input
@@ -82,7 +82,10 @@ function CoverImageSection({
               onChange={onImageUpload}
             />
           </label>
-          <InputErrorMessage msg={errorMessage} />
+          <InputErrorMessage
+            msg={errorMessage}
+            className="self-start text-left"
+          />
         </div>
 
         <div className="relative rounded-xl overflow-hidden border border-white/10 group">

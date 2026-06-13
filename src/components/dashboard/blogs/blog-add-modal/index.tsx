@@ -23,7 +23,7 @@ type AddBlogPopupProps = {
 const baseInputClassName =
   "w-full rounded-xl border border-white/10 bg-white/5 px-3 sm:px-4 py-2 sm:py-2.5 text-sm sm:text-base text-white placeholder:text-white/40 focus:border-secondary/60 focus:ring-1 focus:ring-secondary/30 focus:outline-none";
 
-const baseTextAreaClassName = `${baseInputClassName} resize-none`;
+const baseTextAreaClassName = `block ${baseInputClassName} resize-none`;
 
 function AddBlogPopup({ isOpen, onClose }: AddBlogPopupProps) {
   const queryClient = useQueryClient();
@@ -51,7 +51,7 @@ function AddBlogPopup({ isOpen, onClose }: AddBlogPopupProps) {
       meta_title_ar: "",
       meta_description_en: "",
       meta_description_ar: "",
-      status: "draft",
+      status: "publish",
       created_at: "",
     },
   });
@@ -71,7 +71,7 @@ function AddBlogPopup({ isOpen, onClose }: AddBlogPopupProps) {
       meta_title_ar: "",
       meta_description_en: "",
       meta_description_ar: "",
-      status: "draft",
+      status: "publish",
       created_at: "",
       cover_image: undefined,
     });
@@ -387,7 +387,7 @@ function AddBlogPopup({ isOpen, onClose }: AddBlogPopupProps) {
                     <span className="hidden sm:inline"> or drag and drop</span>
                   </p>
                   <p className="text-xs text-white/40 mt-1">
-                    PNG, JPG, JPEG, GIF (Max 5MB)
+                    PNG, JPG, JPEG, GIF (Max 2MB)
                   </p>
                 </div>
                 <input
@@ -414,7 +414,10 @@ function AddBlogPopup({ isOpen, onClose }: AddBlogPopupProps) {
                   }}
                 />
               </label>
-              <InputErrorMessage msg={errors.cover_image?.message as string} />
+              <InputErrorMessage
+                msg={errors.cover_image?.message as string}
+                className="text-left self-start"
+              />
             </div>
 
             <div className="relative rounded-xl overflow-hidden border border-white/10">

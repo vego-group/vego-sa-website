@@ -3,3 +3,4 @@ export { PreOrdersHeader } from "./pre-orders-header";
 export { PreOrdersStats } from "./pre-orders-stats";
 export { PreOrdersTable } from "./pre-orders-table";
 export { PreOrderDetailsPopup } from "./pre-order-details-popup";
+export { DeletePreOrderConfirmationPopup } from "./delete-pre-order-confirmation-popup";
