@@ -3,3 +3,4 @@ export { LeadsHeader } from "./leads-header";
 export { LeadsStats } from "./leads-stats";
 export { LeadsTable } from "./leads-table";
 export { LeadDetailsPopup } from "./lead-details-popup";
+export { DeleteLeadConfirmationPopup } from "./delete-lead-confirmation-popup";

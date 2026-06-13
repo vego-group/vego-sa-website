@@ -31,7 +31,7 @@ function ArabicBlogFields({
         <textarea
           {...register?.("excerpt_ar")}
           rows={3}
-          className="w-full rounded-xl border border-white/10 bg-white/5 px-3 sm:px-4 py-2 sm:py-2.5 text-sm sm:text-base text-white placeholder:text-white/40 focus:border-secondary/60 focus:ring-1 focus:ring-secondary/30 focus:outline-none resize-none text-right"
+          className="block w-full rounded-xl border border-white/10 bg-white/5 px-3 sm:px-4 py-2 sm:py-2.5 text-sm sm:text-base text-white placeholder:text-white/40 focus:border-secondary/60 focus:ring-1 focus:ring-secondary/30 focus:outline-none resize-none text-right"
           required
           dir="rtl"
         />
@@ -45,7 +45,7 @@ function ArabicBlogFields({
         <textarea
           {...register?.("content_ar")}
           rows={6}
-          className="w-full rounded-xl border border-white/10 bg-white/5 px-3 sm:px-4 py-2 sm:py-2.5 text-sm text-white placeholder:text-white/40 focus:border-secondary/60 focus:ring-1 focus:ring-secondary/30 focus:outline-none resize-none font-mono text-right"
+          className="block w-full rounded-xl border border-white/10 bg-white/5 px-3 sm:px-4 py-2 sm:py-2.5 text-sm text-white placeholder:text-white/40 focus:border-secondary/60 focus:ring-1 focus:ring-secondary/30 focus:outline-none resize-none font-mono text-right"
           required
           dir="rtl"
         />
@@ -68,7 +68,7 @@ function ArabicBlogFields({
           <textarea
             {...register?.("meta_description_ar")}
             rows={2}
-            className="w-full rounded-xl border border-white/10 bg-white/5 px-3 sm:px-4 py-2 text-sm text-white placeholder:text-white/40 focus:border-secondary/60 focus:ring-1 focus:ring-secondary/30 focus:outline-none resize-none text-right"
+            className="block w-full rounded-xl border border-white/10 bg-white/5 px-3 sm:px-4 py-2 text-sm text-white placeholder:text-white/40 focus:border-secondary/60 focus:ring-1 focus:ring-secondary/30 focus:outline-none resize-none text-right"
             dir="rtl"
           />
           <InputErrorMessage msg={errors?.meta_description_ar?.message} />

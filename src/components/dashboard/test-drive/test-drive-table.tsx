@@ -5,8 +5,10 @@ import { useState } from "react";
 import { SkeletonCard } from "@/components/skeleton/card";
 import { PAGE_SIZE } from "@/constants";
 import { useDashboardTestDriveRegistrations } from "@/hooks/api";
+import { Trash2 } from "lucide-react";
 
 import { BlogsPagination } from "../blogs/blogs-pagination";
+import { DeleteTestDriveConfirmationPopup } from "./delete-test-drive-confirmation-popup";
 import { TestDriveDetailsPopup } from "./test-drive-details-popup";
 
 type TestDriveTableProps = {
@@ -146,7 +148,10 @@ function TestDriveTableContent({ searchQuery }: Required<TestDriveTableProps>) {
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedRegistration, setSelectedRegistration] =
     useState<TestDriveApiItem | null>(null);
+  const [registrationToDelete, setRegistrationToDelete] =
+    useState<TestDriveApiItem | null>(null);
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
+  const [isDeleteOpen, setIsDeleteOpen] = useState(false);
 
   const { data, isLoading, isFetching } =
     useDashboardTestDriveRegistrations(currentPage);
@@ -199,6 +204,11 @@ function TestDriveTableContent({ searchQuery }: Required<TestDriveTableProps>) {
 
     setSelectedRegistration(registration);
     setIsDetailsOpen(true);
+  };
+
+  const handleDeleteClick = (registration: TestDriveApiItem) => {
+    setRegistrationToDelete(registration);
+    setIsDeleteOpen(true);
   };
 
   if (isLoading) {
@@ -265,7 +275,7 @@ function TestDriveTableContent({ searchQuery }: Required<TestDriveTableProps>) {
               </p>
             </div>
 
-            <div className="flex justify-end">
+            <div className="flex justify-end gap-1">
               <button
                 onClick={(event) => {
                   event.stopPropagation();
@@ -293,6 +303,16 @@ function TestDriveTableContent({ searchQuery }: Required<TestDriveTableProps>) {
                     d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
                   />
                 </svg>
+              </button>
+              <button
+                onClick={(event) => {
+                  event.stopPropagation();
+                  handleDeleteClick(registration);
+                }}
+                className="rounded-lg p-2 text-white/60 transition-colors hover:bg-red-500/10 hover:text-red-400"
+                title="Delete test drive"
+              >
+                <Trash2 className="h-4 w-4" />
               </button>
             </div>
           </div>
@@ -406,6 +426,16 @@ function TestDriveTableContent({ searchQuery }: Required<TestDriveTableProps>) {
                       />
                     </svg>
                   </button>
+                  <button
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      handleDeleteClick(registration);
+                    }}
+                    className="rounded-lg p-2 text-white/60 transition-colors hover:bg-red-500/10 hover:text-red-400"
+                    title="Delete test drive"
+                  >
+                    <Trash2 className="h-4 w-4 shrink-0" />
+                  </button>
                 </div>
               </div>
             ))}
@@ -445,6 +475,16 @@ function TestDriveTableContent({ searchQuery }: Required<TestDriveTableProps>) {
               }
             : null
         }
+      />
+
+      <DeleteTestDriveConfirmationPopup
+        isOpen={isDeleteOpen}
+        onClose={() => {
+          setIsDeleteOpen(false);
+          setRegistrationToDelete(null);
+        }}
+        id={registrationToDelete?.id}
+        registrationName={registrationToDelete?.name ?? registrationToDelete?.email}
       />
     </>
   );

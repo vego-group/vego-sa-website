@@ -25,11 +25,27 @@ const addBlogSchema = z.object({
         "length" in files &&
         Number(files.length) > 0,
       "Cover image is required",
+    )
+    .refine(
+      (files) =>
+        !files ||
+        !files[0] ||
+        files[0].size <= 2 * 1024 * 1024,
+      "Cover image must be smaller than 2MB",
     ),
 });
 
 const editBlogSchema = addBlogSchema.extend({
-  cover_image: z.any().optional(),
+  cover_image: z
+    .any()
+    .optional()
+    .refine(
+      (files) =>
+        !files ||
+        !files[0] ||
+        files[0].size <= 2 * 1024 * 1024,
+      "Cover image must be smaller than 2MB",
+    ),
 });
 
 type AddBlogSchema = z.infer<typeof addBlogSchema>;

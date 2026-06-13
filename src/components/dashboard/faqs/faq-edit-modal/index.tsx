@@ -13,7 +13,7 @@ import { updateFaqAPI } from "@/services/mutations/faqs";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useQueryClient } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
-import { type FieldErrors, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
 type ActiveLanguage = "en" | "ar";
@@ -40,15 +40,7 @@ type FaqDetails = {
 
 const inputClassName =
   "w-full rounded-xl border border-white/10 bg-white/5 px-3 sm:px-4 py-2 sm:py-2.5 text-sm sm:text-base text-white placeholder:text-white/40 focus:border-secondary/60 focus:ring-1 focus:ring-secondary/30 focus:outline-none";
-const textAreaClassName = `${inputClassName} resize-none`;
-
-function FieldError({ msg }: { msg?: string }) {
-  return (
-    <div className="mt-2 min-h-5">
-      <InputErrorMessage msg={msg} />
-    </div>
-  );
-}
+const textAreaClassName = `block ${inputClassName} resize-none`;
 
 function FaqEditorPopup({ isOpen, onClose, id }: FaqEditorPopupProps) {
   const queryClient = useQueryClient();
@@ -124,12 +116,12 @@ function FaqEditorPopup({ isOpen, onClose, id }: FaqEditorPopupProps) {
   const isCurrentLanguageComplete =
     activeLanguage === "en" ? isEnglishComplete : isArabicComplete;
 
-  const hasAnyFieldError = (
-    formErrors: FieldErrors<EditFaqFormValues>,
+  const hasAnyValidationError = (
+    formErrors: typeof errors,
     keys: (keyof EditFaqFormValues)[],
   ) => keys.some((key) => Boolean(formErrors[key]));
 
-  const onInvalidSubmit = (formErrors: FieldErrors<EditFaqFormValues>) => {
+  const onInvalidSubmit = (formErrors: typeof errors) => {
     const currentLanguage = activeLanguage;
     const oppositeLanguage = currentLanguage === "en" ? "ar" : "en";
 
@@ -138,12 +130,12 @@ function FaqEditorPopup({ isOpen, onClose, id }: FaqEditorPopupProps) {
     const oppositeLanguageKeys =
       oppositeLanguage === "en" ? englishFieldKeys : arabicFieldKeys;
 
-    if (hasAnyFieldError(formErrors, oppositeLanguageKeys)) {
+    if (hasAnyValidationError(formErrors, oppositeLanguageKeys)) {
       setActiveLanguage(oppositeLanguage);
       return;
     }
 
-    if (hasAnyFieldError(formErrors, currentLanguageKeys)) {
+    if (hasAnyValidationError(formErrors, currentLanguageKeys)) {
       setActiveLanguage(currentLanguage);
     }
   };
@@ -235,7 +227,7 @@ function FaqEditorPopup({ isOpen, onClose, id }: FaqEditorPopupProps) {
                   placeholder="Enter question in English..."
                   dir="ltr"
                 />
-                <FieldError msg={errors.question_en?.message} />
+                <InputErrorMessage msg={errors.question_en?.message} />
               </div>
 
               <div>
@@ -249,7 +241,7 @@ function FaqEditorPopup({ isOpen, onClose, id }: FaqEditorPopupProps) {
                   placeholder="Enter answer in English..."
                   dir="ltr"
                 />
-                <FieldError msg={errors.answer_en?.message} />
+                <InputErrorMessage msg={errors.answer_en?.message} />
               </div>
             </div>
 
@@ -269,7 +261,7 @@ function FaqEditorPopup({ isOpen, onClose, id }: FaqEditorPopupProps) {
                   placeholder="أدخل السؤال بالعربية..."
                   dir="rtl"
                 />
-                <FieldError msg={errors.question_ar?.message} />
+                <InputErrorMessage msg={errors.question_ar?.message} />
               </div>
 
               <div>
@@ -283,7 +275,7 @@ function FaqEditorPopup({ isOpen, onClose, id }: FaqEditorPopupProps) {
                   placeholder="أدخل الإجابة بالعربية..."
                   dir="rtl"
                 />
-                <FieldError msg={errors.answer_ar?.message} />
+                <InputErrorMessage msg={errors.answer_ar?.message} />
               </div>
             </div>
 
@@ -303,7 +295,7 @@ function FaqEditorPopup({ isOpen, onClose, id }: FaqEditorPopupProps) {
                     {...register("display_order", { valueAsNumber: true })}
                     className={inputClassName}
                   />
-                  <FieldError msg={errors.display_order?.message} />
+                  <InputErrorMessage msg={errors.display_order?.message} />
                 </div>
 
                 <div>
@@ -321,7 +313,7 @@ function FaqEditorPopup({ isOpen, onClose, id }: FaqEditorPopupProps) {
                       Publish Now
                     </option>
                   </select>
-                  <FieldError msg={errors.is_active?.message} />
+                  <InputErrorMessage msg={errors.is_active?.message} />
                 </div>
               </div>
             </div>
