@@ -4,6 +4,7 @@ import {
   FileText,
   HelpCircle,
   Car,
+  ChartNoAxesCombined,
   Mail,
   ShoppingCart,
 } from "lucide-react";
@@ -29,5 +30,11 @@ export const sidebarNavItems: SidebarNavLink[] = [
     label: "Pre Orders",
     icon: ShoppingCart,
     path: "/dashboard/pre-orders",
+  },
+  {
+    id: "investment-interests",
+    label: "Investment Interests",
+    icon: ChartNoAxesCombined,
+    path: "/dashboard/investment-interests",
   },
 ];

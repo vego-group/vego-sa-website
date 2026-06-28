@@ -2,11 +2,10 @@ import { Link } from "@/i18n/navigation";
 import { ArrowRight, ArrowLeft } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
+import type { ComponentProps, ReactNode } from "react";
 
 function HeroSection() {
   const t = useTranslations("home.hero");
-  const locale = useLocale();
-  const Arrow = locale === "ar" ? ArrowLeft : ArrowRight;
   return (
     <section className="relative overflow-hidden bg-primary h-[calc(100svh-80px)] md:h-[calc(100svh-88px)]">
       <div className="absolute inset-0">
@@ -42,33 +41,41 @@ function HeroSection() {
           {t("description")}
         </p>
 
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-          <Link
-            href="/test-drive"
-            className="inline-flex items-center gap-2 rounded-full bg-secondary px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-emerald-500/40 transition hover:bg-emerald-400"
-          >
+        <div className="mt-10 grid w-full max-w-3xl grid-cols-1 gap-3 sm:grid-cols-3">
+          <HeroButton href="/investment-interest">
+            {t("investment-interest")}
+          </HeroButton>
+
+          <HeroButton href="/test-drive">
             {t("test-drive")}
-            <Arrow className="size-5" />
-          </Link>
+          </HeroButton>
 
-          <Link
-            href="/products"
-            className="inline-flex items-center gap-2 rounded-full border border-white/40 px-6 py-3 text-sm font-semibold text-white/90 backdrop-blur transition hover:border-white/70 hover:text-white"
-          >
-            {t("discover-our-products")}
-            <Arrow className="size-5" />
-          </Link>
-
-          <Link
-            href="/electric-vs-petrol-motorcycle"
-            className="inline-flex items-center gap-2 rounded-full border border-secondary/50 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur transition hover:border-secondary hover:bg-secondary/20"
-          >
+          <HeroButton href="/electric-vs-petrol-motorcycle">
             {t("compare-costs")}
-            <Arrow className="size-5" />
-          </Link>
+          </HeroButton>
         </div>
       </div>
     </section>
+  );
+}
+
+type HeroButtonProps = {
+  children: ReactNode;
+  href: ComponentProps<typeof Link>["href"];
+};
+
+function HeroButton({ children, href }: HeroButtonProps) {
+  const locale = useLocale();
+  const Arrow = locale === "ar" ? ArrowLeft : ArrowRight;
+
+  return (
+    <Link
+      href={href}
+      className="group inline-flex min-h-13 items-center justify-center gap-2 rounded-full border border-secondary/60 bg-white/10 px-5 py-3 text-center text-sm font-semibold leading-snug text-white shadow-lg shadow-emerald-950/40 backdrop-blur transition hover:-translate-y-0.5 hover:border-secondary hover:bg-secondary/20 hover:shadow-xl hover:shadow-secondary/20"
+    >
+      <span className="whitespace-normal">{children}</span>
+      <Arrow className="size-4 shrink-0 transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1" />
+    </Link>
   );
 }
 
