@@ -23,12 +23,21 @@ function TicketTypeDropdown({
   const selectedOption = options.find((option) => option.value === value);
 
   useEffect(() => {
-    function handleMouseDown(event: MouseEvent) {
+    function handlePointerDown(event: PointerEvent) {
       if (!ref.current?.contains(event.target as Node)) setOpen(false);
     }
 
-    document.addEventListener("mousedown", handleMouseDown);
-    return () => document.removeEventListener("mousedown", handleMouseDown);
+    function handleScroll() {
+      setOpen(false);
+    }
+
+    document.addEventListener("pointerdown", handlePointerDown);
+    window.addEventListener("scroll", handleScroll, true);
+
+    return () => {
+      document.removeEventListener("pointerdown", handlePointerDown);
+      window.removeEventListener("scroll", handleScroll, true);
+    };
   }, []);
 
   return (
@@ -58,7 +67,7 @@ function TicketTypeDropdown({
                 onChange(option.value);
                 setOpen(false);
               }}
-              className={`block w-full px-4 py-3 text-sm text-slate-700 transition hover:bg-primary hover:text-white ${
+              className={`block w-full px-4 py-2 text-sm text-slate-700 transition hover:bg-primary hover:text-white sm:py-3 ${
                 isArabic ? "text-right" : "text-left"
               } ${option.value === value ? "bg-primary text-white" : ""}`}
             >
