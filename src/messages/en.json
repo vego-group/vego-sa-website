@@ -581,7 +581,8 @@
       "test-drive": "Book Test Drive",
       "discover-our-products": "Discover Our Products",
       "contact-us": "Contact Us",
-      "compare-costs": "Compare running costs"
+      "compare-costs": "Compare running costs",
+      "investment-interest": "Register Your Investment Interest"
     },
     "who-is-vego": {
       "title": "Who is VEGO?",
@@ -810,6 +811,36 @@
       "email": "info@vego.sa",
       "directionsText": "Get Directions",
       "mapSrc": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3623.384237511246!2d46.69263971501215!3d24.769903684114865!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e2f03b9e3b1d4f7%3A0x5de7f8a2a1d4f7a6!2sVego%20Group!5e0!3m2!1sen!2ssa!4v1706490000000!5m2!1sen!2ssa"
+    }
+  },
+  "investment-interest": {
+    "badge": "Investment Interest",
+    "title": "Invest in VEGO's Growth",
+    "description": "Share your details and preferred investment range. Our investment team will review your request and contact you with the next steps.",
+    "form": {
+      "title": "Submit Investment Request",
+      "description": "Fill out the form below and we will route your request to the investment team.",
+      "fullName": "Full Name",
+      "phone": "Phone Number",
+      "email": "Email Address (optional)",
+      "ticketTypePlaceholder": "Select investment range",
+      "submit": "Submit Request",
+      "successMessage": "Investment request submitted successfully",
+      "errorMessage": "Failed to submit investment request",
+      "ticketTypes": {
+        "50000-100000": "SAR 50,000 - 100,000",
+        "100000-200000": "SAR 100,000 - 200,000",
+        "250000-350000": "SAR 250,000 - 350,000",
+        "350000+": "SAR 350,000+"
+      },
+      "validation": {
+        "fullNameRequired": "Full name is required",
+        "phoneRequired": "Phone number is required",
+        "phoneMax": "Phone number must be 20 characters or less",
+        "emailInvalid": "Enter a valid email",
+        "ticketTypeRequired": "Investment range is required",
+        "ticketTypeInvalid": "Choose one of the available investment ranges"
+      }
     }
   },
   "blogs-detail": {
