@@ -828,8 +828,7 @@
       "successMessage": "Investment request submitted successfully",
       "errorMessage": "Failed to submit investment request",
       "ticketTypes": {
-        "50000-100000": "SAR 50,000 - 100,000",
-        "100000-200000": "SAR 100,000 - 200,000",
+        "150000-200000": "SAR 150,000 - 200,000",
         "250000-350000": "SAR 250,000 - 350,000",
         "350000+": "SAR 350,000+"
       },

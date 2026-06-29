@@ -11,11 +11,10 @@ function InvestmentInterestsStats() {
   const stats: Array<{ label: string; value: string; variant?: StatsCardVariant }> = [
     { label: "Total Requests", value: String(data?.statistics?.total ?? 0) },
     {
-      label: "50k - 100k",
-      value: String(ticketTypes["50000-100000"] ?? 0),
+      label: "150k - 200k",
+      value: String(ticketTypes["150000-200000"] ?? 0),
       variant: "accent",
     },
-    { label: "100k - 200k", value: String(ticketTypes["100000-200000"] ?? 0) },
     { label: "250k - 350k", value: String(ticketTypes["250000-350000"] ?? 0) },
     { label: "350k+", value: String(ticketTypes["350000+"] ?? 0) },
   ];
