@@ -2,6 +2,7 @@
 
 import Modal from "@/components/ui/modal";
 import type { InvestmentInterest } from "@/interfaces";
+import { formatInvestmentTicketType } from "./investment-ticket-type";
 
 type InvestmentInterestDetailsPopupProps = {
   isOpen: boolean;
@@ -33,7 +34,7 @@ function InvestmentInterestDetailsPopup({
           <Detail label="Email" value={item.email ?? "N/A"} href={item.email ? `mailto:${item.email}` : undefined} />
         </div>
         <div className="grid gap-4 sm:grid-cols-2">
-          <Detail label="Ticket Type" value={item.ticket_type} />
+          <Detail label="Ticket Type" value={formatInvestmentTicketType(item.ticket_type)} />
           <Detail label="Submitted At" value={formatDate(item.created_at)} />
         </div>
         <div className="flex justify-end pt-4">

@@ -3,6 +3,7 @@
 import { Eye, Trash2 } from "lucide-react";
 
 import type { InvestmentInterest } from "@/interfaces";
+import { formatInvestmentTicketType } from "./investment-ticket-type";
 
 type InvestmentInterestTableRowProps = {
   item: InvestmentInterest;
@@ -35,7 +36,7 @@ function InvestmentInterestTableRow({
       </div>
       <div className="col-span-3">
         <span className="inline-flex rounded-full border border-cyan-500/30 bg-cyan-500/20 px-3 py-1.5 text-xs font-medium text-cyan-300">
-          {getText(item.ticket_type)}
+          {getText(formatInvestmentTicketType(item.ticket_type))}
         </span>
       </div>
       <div className="col-span-2">
@@ -86,7 +87,7 @@ function InvestmentInterestMobileRow({
       <p className="mb-3 break-all text-xs text-white/70">{getText(item.email)}</p>
       <div className="flex items-center justify-between gap-3">
         <span className="rounded-full border border-cyan-500/30 bg-cyan-500/20 px-2 py-1 text-xs font-medium text-cyan-300">
-          {getText(item.ticket_type)}
+          {getText(formatInvestmentTicketType(item.ticket_type))}
         </span>
         <div className="flex items-center gap-1">
           <button

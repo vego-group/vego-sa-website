@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import type { InvestmentInterestsResponse } from "@/types/dashboard/investment-interests";
 import { investmentInterestsAPI } from "@/services/queries/investment-interests";
+import { formatInvestmentTicketType } from "./investment-ticket-type";
 
 function InvestmentInterestsHeader() {
   const [isExporting, setIsExporting] = useState(false);
@@ -22,7 +23,7 @@ function InvestmentInterestsHeader() {
             escapeCsv(row.full_name),
             escapeCsv(row.phone_number),
             escapeCsv(row.email),
-            escapeCsv(row.ticket_type),
+            escapeCsv(formatInvestmentTicketType(row.ticket_type)),
             escapeCsv(row.created_at),
           ].join(","),
         ),
