@@ -1,8 +1,7 @@
 import { z } from "zod";
 
 const investmentTicketTypeValues = [
-  "50000-100000",
-  "100000-200000",
+  "150000-200000",
   "250000-350000",
   "350000+",
 ] as const;
