@@ -4,6 +4,7 @@ import Footer from "@/components/landing/footer";
 
 import QueryProvider from "@/provider";
 import { cairo, cormorant, rootMetadata } from "../root-config";
+import { GoogleTagManagerNoScript, GoogleTagManagerScript } from "../google-tag-manager";
 import "../globals.css";
 import "react-datepicker/dist/react-datepicker.css";
 import "swiper/css";
@@ -24,9 +25,13 @@ type LandingLayoutProps = {
 function LandingLayout({ children }: LandingLayoutProps) {
   return (
     <html lang="ar" dir="rtl">
+      <head>
+        <GoogleTagManagerScript />
+      </head>
       <body
         className={`${cairo.variable} ${cormorant.variable} bg-linear-to-br from-primary via-primary to-secondary antialiased`}
       >
+        <GoogleTagManagerNoScript />
         <QueryProvider>
           <Toaster />
           <div className="min-h-svh bg-linear-to-br from-emerald-950 via-primary to-emerald-950">

@@ -13,6 +13,7 @@ import { getCookieConsent } from "@/lib";
 import { getCookiePolicyContent } from "@/data";
 import QueryProvider from "@/provider";
 import { cairo, cormorant } from "../root-config";
+import { GoogleTagManagerNoScript, GoogleTagManagerScript } from "../google-tag-manager";
 import "../globals.css";
 import "react-datepicker/dist/react-datepicker.css";
 import "swiper/css";
@@ -83,7 +84,11 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} dir={dir}>
+      <head>
+        <GoogleTagManagerScript />
+      </head>
       <body className={`${cairo.variable} ${cormorant.variable} antialiased`} suppressHydrationWarning>
+        <GoogleTagManagerNoScript />
         <QueryProvider>
           <Toaster />
           <div className="min-h-svh">
