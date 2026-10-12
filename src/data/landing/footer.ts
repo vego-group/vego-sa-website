@@ -18,8 +18,8 @@ export const landingFooterContent: LandingFooterContent = {
     "نقود ثورة التنقل الكهربائي من خلال حلول مبتكرة ومستدامة تعيد تعريف مستقبل المركبات الكهربائية. انضم إلينا لبناء مستقبل أنظف وأكثر خضرة.",
   contact: {
     phone: {
-      label: "+966 53 824 1507",
-      href: "tel:+966538241507",
+      label: "+966 9200 14486",
+      href: "tel:+966920014486",
     },
     email: {
       label: "info@vego.sa",

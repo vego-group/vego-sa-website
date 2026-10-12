@@ -2,7 +2,6 @@ import AboutHero from "./AboutHero";
 import AboutMissionVision from "./AboutMissionVision";
 import AboutValues from "./AboutValues";
 import AboutJourney from "./AboutJourney";
-import AboutLeadership from "./AboutLeadership";
 import AboutSustainability from "./AboutSustainability";
 
 function About() {
@@ -12,7 +11,6 @@ function About() {
       <AboutJourney />
       <AboutMissionVision />
       <AboutValues />
-      <AboutLeadership />
       <AboutSustainability />
     </div>
   );
