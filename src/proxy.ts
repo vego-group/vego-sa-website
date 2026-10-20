@@ -5,7 +5,7 @@ import { routing } from "@/i18n/routing";
 
 const intlProxy = createMiddleware(routing);
 
-const unlocalizedPublicRoutes = ["/landing", "/deposit"];
+const unlocalizedPublicRoutes = ["/landing", "/deposit", "/qr"];
 
 function isRouteMatch(pathname: string, routes: string[]) {
   return routes.some(
